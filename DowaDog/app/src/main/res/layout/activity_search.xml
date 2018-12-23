@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".search.SearchActivity"
+    android:background="#FFFFFF"
+    >
+
+    <!--맨밑 검색 버튼을 뺀 나머지 뷰-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--백버튼-->
+        <RelativeLayout
+            android:id="@+id/btn_back_search_act"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_margin="16dp"
+                android:src="@drawable/back_arrow_btn" />
+        </RelativeLayout>
+
+        <!--안녕하세요,-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="안녕하세요,"
+            android:textSize="25dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="24dp"/>
+
+        <!--무엇을 찾으시나요?-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="무엇을 찾으시나요?"
+            android:textSize="25dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"/>
+
+        <!--검색어 EditTextBox-->
+        <RelativeLayout
+            android:id="@+id/rl_edit_box_search_act"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/search_act_gray_edit_box">
+
+            <EditText
+                android:id="@+id/et_keyword_search_act"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:hint="검색어를 입력해주세요"
+                android:textSize="15dp"
+                android:textColorHint="#c7c7c7"
+                android:textColor="#000000"
+                android:background="@android:color/transparent"
+                android:layout_centerVertical="true"
+                />
+
+            <ImageView
+                android:id="@+id/iv_search_icon_search_act"
+                android:src="@drawable/search_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="16dp"/>
+        </RelativeLayout>
+
+        <!--검색키워드-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="검색 키워드"
+            android:textColor="#707070"
+            android:textSize="16dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="48dp"/>
+
+    </LinearLayout>
+
+    <!--검색 버튼-->
+    <RelativeLayout
+        android:id="@+id/btn_search_search_act"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#e2e2e2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="검색"
+            android:textSize="18dp"
+            android:textColor="#FFFFFF"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+</RelativeLayout>
