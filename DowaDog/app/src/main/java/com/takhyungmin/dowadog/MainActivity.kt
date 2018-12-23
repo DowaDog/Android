@@ -9,10 +9,4 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
-    ////
-    ///fdfdfdfd
-
-    //yg test
-
-    //yg test2
 }
