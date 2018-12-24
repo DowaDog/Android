@@ -2,8 +2,8 @@ package com.takhyungmin.dowadog.contents.adapter
 
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import com.takhyungmin.dowadog.contents.ContentsEduFragment
-import com.takhyungmin.dowadog.contents.ContentsSenseFragment
+import com.takhyungmin.dowadog.contents.fragment.ContentsEduFragment
+import com.takhyungmin.dowadog.contents.fragment.ContentsSenseFragment
 
 class ContentsAdapter(fm : FragmentManager) : FragmentStatePagerAdapter(fm) {
 
