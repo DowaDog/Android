@@ -86,8 +86,7 @@
                     android:textColor="#484848"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="내용 들어가는 부분내용 들어가는 부분내용 들어가
-는 부분내용 들어가는 부분내용 들어가는 부분내용들어가는 부분내용 들어가는 부분내용 들어가는 부분내용 들어가는 부분내용 들어가는 부분내용 들어가는 부분내용 들어가는 부분내용 들어가는 부분내"
+                    android:text="abc"
                     android:layout_marginBottom="24dp"/>
 
             </RelativeLayout>
