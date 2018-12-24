@@ -21,7 +21,7 @@ class CommunityDetailViewPagerAdapter(val ctx: Context, var ImageData: ArrayList
 
     // instantiateItem() : ViewPager에서 사용할 뷰객체 생성 및 등록 한다.
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val itemView : View = LayoutInflater.from(ctx).inflate(R.layout.fragment_community_detail_item, container, false)
+        val itemView : View = LayoutInflater.from(ctx).inflate(R.layout.rv_item_community_detail, container, false)
         val imageView : ImageView = itemView.findViewById(R.id.iv_community_detail_item_frag) as ImageView
         Glide.with(ctx).load(ImageData[position]).into(imageView)
         container.addView(itemView)
