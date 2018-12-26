@@ -38,14 +38,14 @@ class HomeActivity : AppCompatActivity() {
         val fm = supportFragmentManager
         val transaction = fm.beginTransaction()
         transaction.add(R.id.frame_home, fragment)
-        transaction.commit()
+        transaction.commitNow()
     }
 
     fun replaceFragment(fragment : Fragment){
         val fm = supportFragmentManager
         val transaction = fm.beginTransaction()
         transaction.replace(R.id.frame_home, fragment)
-        transaction.commit()
+        transaction.commitNow()
     }
 
     fun setBinding(){

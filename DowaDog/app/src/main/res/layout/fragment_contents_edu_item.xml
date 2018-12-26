@@ -3,6 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="19.6dp">
+    <RelativeLayout
+        android:id="@+id/view_contents_edu_empty"
+        android:background="@null"
+        android:layout_centerHorizontal="true"
+        android:layout_width="300dp"
+        android:layout_height="348dp"/>
 
     <LinearLayout
         android:id="@+id/layout_contents_edu_frame"
@@ -59,5 +65,7 @@
 
 
     </LinearLayout>
+
+
 
 </RelativeLayout>
