@@ -1,4 +1,4 @@
-package com.takhyungmin.dowadog.contents
+package com.takhyungmin.dowadog.contents.fragment
 
 import android.os.Bundle
 import android.support.design.widget.TabLayout
@@ -30,7 +30,7 @@ class ContentsFragment : Fragment(){
         tab_contents.addTab(tab_contents.newTab().setText("교육"))
         tab_contents.addTab(tab_contents.newTab().setText("상식"))
 
-        val tabAdapter = ContentsAdapter(activity!!.supportFragmentManager)
+        val tabAdapter = ContentsAdapter(childFragmentManager)
 
         vp_contents.adapter = tabAdapter
         vp_contents.currentItem = 0

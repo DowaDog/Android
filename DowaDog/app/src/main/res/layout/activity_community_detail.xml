@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:attrs="http://schemas.android.com/apk/res-auto"
     tools:context=".communitydetail.CommunityDetailActivity"
     android:background="#FFFFFF">
 
@@ -24,10 +24,26 @@
                 <!--뷰페이저-->
                 <android.support.v4.view.ViewPager
                     android:id="@+id/vp_community_detail_act"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="260dp"
-                    android:background="@color/colorAccent">
+                    >
                 </android.support.v4.view.ViewPager>
+
+                <com.rd.PageIndicatorView
+                    android:id="@+id/pageIndicatorView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    app:piv_animationType="drop"
+                    app:piv_dynamicCount="true"
+                    app:piv_interactiveAnimation="true"
+                    app:piv_selectedColor="#00dada"
+                    app:piv_unselectedColor="#FFFFFF"
+                    app:piv_viewPager="@id/vp_community_detail_act"
+                    attrs:piv_padding="12dp"
+                    attrs:piv_radius="4dp"
+                    />
 
                 <!--백버튼-->
                 <RelativeLayout
@@ -54,7 +70,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="16dp">
 
                 <!--제목-->
                 <TextView
@@ -64,6 +81,7 @@
                     android:text="우리집에 처음 온 날,,"
                     android:textColor="#434343"
                     android:textSize="18dp"
+
                     />
 
                 <!--날짜-->
@@ -86,9 +104,9 @@
                     android:textColor="#484848"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="내용 들어가는 부분내용 들어가는 부분내용 들어가
-는 부분내용 들어가는 부분내용 들어가는 부분내용들어가는 부분내용 들어가는 부분내용 들어가는 부분내용 들어가는 부분내용 들어가는 부분내용 들어가는 부분내용 들어가는 부분내용 들어가는 부분내"
+                    android:text="abc"
                     android:layout_marginBottom="24dp"/>
+
 
             </RelativeLayout>
 
@@ -106,7 +124,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF">
 
         <View
             android:layout_alignParentTop="true"
@@ -115,13 +134,13 @@
             android:background="#c7c7c7"/>
 
         <!--서클이미지 뷰 들어가야함-->
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_writter_community_detail_act"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginLeft="16dp"
             android:layout_centerVertical="true"
-            android:background="@color/colorAccent"/>
+            android:src="@color/colorAccent"/>
 
         <!--댓글 입력해주세요 박스-->
         <RelativeLayout
@@ -136,13 +155,30 @@
                 android:id="@+id/et_comment_write_community_detail_act"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginHorizontal="16dp"
+                android:layout_marginLeft="16dp"
                 android:hint="댓글을 입력해주세요"
                 android:textColorHint="#e2e2e2"
                 android:textColor="#000000"
                 android:textSize="16dp"
                 android:background="@android:color/transparent"
+                android:layout_toLeftOf="@+id/btn_comment_write_community_detail_act"
                 />
+
+            <RelativeLayout
+                android:id="@+id/btn_comment_write_community_detail_act"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="게시"
+                    android:layout_centerInParent="true"
+                    android:layout_marginHorizontal="16dp"
+                    android:textSize="15dp"
+                    android:textColor="#00dada"/>
+            </RelativeLayout>
         </RelativeLayout>
 
     </RelativeLayout>
