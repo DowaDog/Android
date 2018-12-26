@@ -1,6 +1,5 @@
 package com.takhyungmin.dowadog.search
 
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -9,7 +8,6 @@ import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import com.takhyungmin.dowadog.R
-import com.takhyungmin.dowadog.communitydetail.CommunityDetailActivity
 import kotlinx.android.synthetic.main.activity_search.*
 import org.jetbrains.anko.sdk25.coroutines.textChangedListener
 
@@ -22,7 +20,6 @@ class SearchActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
-        startActivity(Intent(this, CommunityDetailActivity::class.java))
 
         setSearchBtnTextChangeListener()
 
