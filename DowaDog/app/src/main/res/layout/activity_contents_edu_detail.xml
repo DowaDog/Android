@@ -7,15 +7,14 @@
     android:id="@+id/layout_edu_detail"
     tools:context=".contents.activity.ContentsEduDetailActivity">
 
-        <com.takhyungmin.dowadog.contents.SquareFrameLayout
+        <RelativeLayout
+            android:id="@+id/shadow_contents_edu_detail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+            android:layout_height="260dp">
         <ImageView
             android:id="@+id/img_contents_edu_detail"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"/>
+            android:layout_height="match_parent"/>
 
         <TextView
             android:background="#ffffff"
@@ -26,6 +25,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        </com.takhyungmin.dowadog.contents.SquareFrameLayout>
 
+
+        </RelativeLayout>
+   
 </RelativeLayout>

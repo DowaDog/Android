@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.contents.ContentsObject
 import com.takhyungmin.dowadog.contents.adapter.ContentsAdapter
 import com.takhyungmin.dowadog.presenter.fragment.ContentsFragmentPresenter
 import kotlinx.android.synthetic.main.fragment_contents.*
@@ -27,25 +28,28 @@ class ContentsFragment : Fragment(){
 
     override fun onStart() {
         super.onStart()
-        tab_contents.addTab(tab_contents.newTab().setText("교육"))
-        tab_contents.addTab(tab_contents.newTab().setText("상식"))
+        if(!ContentsObject.isCreated) {
+            tab_contents.addTab(tab_contents.newTab().setText("교육"))
+            tab_contents.addTab(tab_contents.newTab().setText("상식"))
 
-        val tabAdapter = ContentsAdapter(childFragmentManager)
+            val tabAdapter = ContentsAdapter(activity!!.supportFragmentManager)
 
-        vp_contents.adapter = tabAdapter
-        vp_contents.currentItem = 0
-        vp_contents.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tab_contents))
+            vp_contents.adapter = tabAdapter
+            vp_contents.currentItem = 0
+            vp_contents.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tab_contents))
 
+            tab_contents.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+                override fun onTabReselected(tab: TabLayout.Tab?) {
+                }
 
-        tab_contents.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-            }
+                override fun onTabUnselected(tab: TabLayout.Tab?) {
+                }
 
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-            }
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                vp_contents.currentItem = tab!!.position
-            }
-        })
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+                    vp_contents.currentItem = tab!!.position
+                }
+            })
+        }
+        ContentsObject.isCreated = true
     }
 }
