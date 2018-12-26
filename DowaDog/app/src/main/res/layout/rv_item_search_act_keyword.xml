@@ -2,7 +2,9 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/rv_item_search_keyword_box">
+    android:background="@drawable/rv_item_search_keyword_box"
+    android:layout_marginBottom="8dp"
+    android:layout_marginRight="8dp">
 
 
     <LinearLayout
@@ -20,6 +22,7 @@
             android:layout_marginLeft="8dp"/>
 
         <TextView
+            android:id="@+id/tv_keyword_rv_item_search_act"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="-"
