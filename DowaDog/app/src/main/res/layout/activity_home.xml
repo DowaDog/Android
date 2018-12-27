@@ -33,6 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:textColor="#707070"
+                android:fontFamily="@font/nanum_bold"
                 android:textSize="18sp"
                 android:includeFontPadding="false"
                 android:text="홈"/>
