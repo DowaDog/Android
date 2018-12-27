@@ -3,117 +3,261 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <RelativeLayout
-        android:id="@+id/rl_set_bar_sign_info_wr_act"
+        android:id="@+id/rl_sign_info_wr_act"
         android:layout_width="match_parent"
-        android:layout_height="48dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"
-            android:src="@drawable/back_arrow_btn" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="개인 정보입력"
-            android:textColor="#707070"
-            android:textSize="18sp" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_page_num_sign_info_wr_act"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rl_set_bar_sign_info_wr_act">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_profile_img_sign_info_wr_act"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rl_page_num_sign_info_wr_act"
-        android:layout_marginTop="24dp">
+        android:layout_height="match_parent">
 
         <RelativeLayout
-            android:id="@+id/rl_camera_img_sign_info_wr_act"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true">
+            android:id="@+id/rl_set_bar_sign_info_wr_act"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img_profile_sign_info_wr_act"
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true" />
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="16dp"
+                android:src="@drawable/back_arrow_btn" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="개인 정보입력"
+                android:fontFamily="@font/nanum_bold"
+                android:textColor="#707070"
+                android:textSize="18sp" />
 
         </RelativeLayout>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/rl_camera_img_sign_info_wr_act"
-            android:layout_alignEnd="@+id/rl_camera_img_sign_info_wr_act" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rl_profile_img_sign_info_wr_act">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="사진을 등록해주세요 :)" />
-
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/rl_page_num_sign_info_wr_act"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="48dp">
+            android:layout_below="@+id/rl_set_bar_sign_info_wr_act"
+            android:layout_marginTop="56dp">
 
-        </LinearLayout>
-    </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
 
+                <RelativeLayout
+                    android:id="@+id/rl_page1_sign_info_wr_act"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/sign_id_setting_page_dot_blue">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="1"
+                        android:fontFamily="@font/nanum_bold"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp" />
 
+                </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
-        android:background="#00dada">
+                <RelativeLayout
+                    android:id="@+id/rl_page2_sign_info_wr_act"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_toRightOf="@+id/rl_page1_sign_info_wr_act"
+                    android:background="@drawable/sign_id_setting_page_dot_gray">
 
-        <TextView
-            android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="2"
+                        android:fontFamily="@font/nanum_bold"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_profile_img_sign_info_wr_act"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="다음"
-            android:textColor="#ffffff"
-            android:textSize="18sp" />
+            android:layout_below="@+id/rl_page_num_sign_info_wr_act"
+            android:layout_marginTop="24dp">
+
+            <RelativeLayout
+                android:id="@+id/rl_camera_img_sign_info_wr_act"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_profile_sign_info_wr_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/mypage_profile_img" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/rl_camera_img_sign_info_wr_act"
+                android:layout_alignEnd="@+id/rl_camera_img_sign_info_wr_act"
+                android:src="@drawable/mypage_camera_img" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_img_text_sign_info_wr_act"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_profile_img_sign_info_wr_act"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/nanum_round"
+                android:text="사진을 등록해주세요 :)"
+                android:textColor="#c7c7c7"
+                android:textSize="13sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_img_text_sign_info_wr_act"
+            android:layout_marginHorizontal="48dp"
+            android:layout_marginTop="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:background="@drawable/sign_info_write_act_signup_box">
+
+                    <EditText
+                        android:id="@+id/et_name_sign_info_wr_act"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:background="@null"
+                        android:fontFamily="@font/nanum_round"
+                        android:hint="이름"
+                        android:textColorHint="#cecece"
+                        android:textSize="14dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/sign_info_write_act_signup_box">
+
+                    <EditText
+                        android:id="@+id/et_birth_sign_info_wr_act"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:background="@null"
+                        android:fontFamily="@font/nanum_round"
+                        android:inputType="datetime"
+                        android:hint="생년월일"
+                        android:textColorHint="#cecece"
+                        android:textSize="14dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/sign_info_write_act_signup_box">
+
+                    <EditText
+                        android:id="@+id/et_phonenum_sign_info_wr_act"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:background="@null"
+                        android:fontFamily="@font/nanum_round"
+                        android:inputType="phone"
+                        android:hint="전화번호"
+                        android:textColorHint="#cecece"
+                        android:textSize="14dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/sign_info_write_act_signup_box">
+
+                    <EditText
+                        android:id="@+id/et_email_sign_info_wr_act"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:background="@null"
+                        android:fontFamily="@font/nanum_round"
+                        android:inputType="textEmailAddress"
+                        android:hint="이메일"
+                        android:textColorHint="#cecece"
+                        android:textSize="14dp" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_next_btn_sign_info_wr_act"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_alignParentBottom="true"
+            android:background="#e2e2e2 ">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/nanum_extra_bold"
+                android:text="다음"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
 
     </RelativeLayout>
+
+
 </RelativeLayout>
+
