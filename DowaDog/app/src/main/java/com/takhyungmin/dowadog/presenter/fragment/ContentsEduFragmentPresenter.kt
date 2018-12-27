@@ -29,8 +29,8 @@ class ContentsEduFragmentPresenter : BasePresenter<ContentsEduFragment>() {
 //    fun toDetail(width : Int, height : Int, left : Int, top : Int, title : String, sub : String){
 //        view!!.toDetail(width, height, left, top, title, sub)
 //    }
-    fun toDetail(title : String){
-    //    view!!.toDetail(title)
+    fun toDetail(title : String, sub : String){
+        view!!.toDetail(title, sub)
     }
 
 }

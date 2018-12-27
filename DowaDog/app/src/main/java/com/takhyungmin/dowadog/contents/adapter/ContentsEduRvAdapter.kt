@@ -19,7 +19,7 @@ class ContentsEduRvAdapter(private var contentsEduItems : ArrayList<ContentsEduI
 
     override fun onCreateViewHolder(parnet: ViewGroup, p1: Int): ContentsEduViewHolder {
         mainView = LayoutInflater.from(parnet.context).inflate(R.layout.fragment_contents_edu_item, parnet,false)
-        mainView.setOnClickListener(onItemClick)
+        //mainView.setOnClickListener(onItemClick)
         return ContentsEduViewHolder(mainView)
     }
 
@@ -31,6 +31,10 @@ class ContentsEduRvAdapter(private var contentsEduItems : ArrayList<ContentsEduI
         requestManager.load(contentsEduItems[position].contentsFeed).into(holder.contentsFeed)
         if (contentsEduItems[position].contentsRead)
             holder.contentsRead.setBackgroundColor(R.drawable.drawer_btn)
+        holder.contentsFrame.setOnClickListener {
+            contentsEduFragmentPresenter.toDetail(contentsEduItems[position].contentsTitle,
+                    contentsEduItems[position].contentsSub)
+        }
     }
 
     fun setOnItemClickListener(l:View.OnClickListener){

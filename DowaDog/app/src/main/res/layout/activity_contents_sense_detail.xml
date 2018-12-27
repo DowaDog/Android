@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layout_sense_detail"
+    android:background="#ffffff"
+    tools:context=".contents.activity.ContentsSenseDetailActivity"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/sv_contents_sense_detail_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <RelativeLayout
+                android:id="@+id/layout_contents_sense_detail_frame"
+                android:layout_width="match_parent"
+                android:descendantFocusability="beforeDescendants"
+                android:layout_height="260dp">
+
+                <ImageView
+                    android:id="@+id/img_contents_sense_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#8C000000"
+                    />
+                <TextView
+                    android:textColor="#ffffff"
+                    android:fontFamily="@font/nanum_extra_bold"
+                    tools:text="@string/edu_detail_title"
+                    android:textSize="18sp"
+                    android:lineSpacingExtra="11sp"
+                    android:layout_centerInParent="true"
+                    android:id="@+id/tv_contents_sense_detail_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textColor="#e2e2e2"
+                    tools:text="2018. 04. 07"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/nanum_round"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/tv_contents_sense_detail_title"
+                    android:id="@+id/tv_contents_sense_detail_date"
+                    android:layout_marginTop="13dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_contents_sense_detail_content"
+                android:layout_marginTop="19dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_below="@+id/layout_contents_sense_detail_frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusable="false"
+                android:nestedScrollingEnabled="false">
+            </android.support.v7.widget.RecyclerView>
+
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:id="@+id/layout_contents_sense_detail_toolbar_basic"
+        android:layout_width="match_parent"
+        android:layout_marginTop="24dp"
+        android:layout_height="48dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/back_arrow" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/back_arrow_btn" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_contents_sense_detail_toolbar_move"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#ffffff"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/back_arrow" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/back_arrow_btn" />
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

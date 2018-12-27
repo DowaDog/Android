@@ -5,28 +5,147 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/layout_edu_detail"
-    tools:context=".contents.activity.ContentsEduDetailActivity">
+    android:background="#ffffff"
+    tools:context=".contents.activity.ContentsEduDetailActivity"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/sv_contents_edu_detail_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
         <RelativeLayout
-            android:id="@+id/shadow_contents_edu_detail"
             android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+    <RelativeLayout
+            android:id="@+id/layout_contents_edu_detail_frame"
+            android:layout_width="match_parent"
+            android:descendantFocusability="beforeDescendants"
             android:layout_height="260dp">
+
         <ImageView
             android:id="@+id/img_contents_edu_detail"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#8C000000"
+                />
         <TextView
-            android:background="#ffffff"
-            android:textColor="#000000"
-            android:text="121212"
+            android:textColor="#ffffff"
+            android:fontFamily="@font/nanum_extra_bold"
+            tools:text="@string/edu_detail_title"
+            android:textSize="18sp"
+            android:lineSpacingExtra="11sp"
             android:layout_centerInParent="true"
             android:id="@+id/tv_contents_edu_detail_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
+            <TextView
+                android:textColor="#e2e2e2"
+                tools:text="2018. 04. 07"
+                android:textSize="14sp"
+                android:fontFamily="@font/nanum_round"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/tv_contents_edu_detail_title"
+                android:id="@+id/tv_contents_edu_detail_date"
+                android:layout_marginTop="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_contents_edu_detail_content"
+        android:layout_marginTop="19dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_below="@+id/layout_contents_edu_detail_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="false"
+        android:nestedScrollingEnabled="false">
+    </android.support.v7.widget.RecyclerView>
+
+        <RelativeLayout
+            android:layout_below="@+id/rv_contents_edu_detail_content"
+            android:id="@+id/btn_contents_edu_detail_complete"
+            android:layout_width="163dp"
+            android:layout_height="41dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/contents_detail_btn_background">
+
+            <TextView
+                android:text="이수 완료"
+                android:textColor="#ffffff"
+                android:textSize="17sp"
+                android:fontFamily="@font/nanum_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+            <View
+                android:layout_below="@+id/btn_contents_edu_detail_complete"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                />
 
         </RelativeLayout>
-   
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:id="@+id/layout_contents_edu_detail_toolbar_basic"
+        android:layout_width="match_parent"
+        android:layout_marginTop="24dp"
+        android:layout_height="48dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/back_arrow" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/back_arrow_btn" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_contents_edu_detail_toolbar_move"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#ffffff"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/back_arrow" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/back_arrow_btn" />
+    </RelativeLayout>
+
+
+
 </RelativeLayout>
