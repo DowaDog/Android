@@ -167,7 +167,7 @@
                         android:fontFamily="@font/nanum_round"
                         android:hint="이름"
                         android:textColorHint="#cecece"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
 
                 </RelativeLayout>
 
@@ -188,7 +188,7 @@
                         android:inputType="datetime"
                         android:hint="생년월일"
                         android:textColorHint="#cecece"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
 
                 </RelativeLayout>
 
@@ -209,7 +209,7 @@
                         android:inputType="phone"
                         android:hint="전화번호"
                         android:textColorHint="#cecece"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
 
                 </RelativeLayout>
 
@@ -230,7 +230,7 @@
                         android:inputType="textEmailAddress"
                         android:hint="이메일"
                         android:textColorHint="#cecece"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
 
                 </RelativeLayout>
 
@@ -257,7 +257,6 @@
         </RelativeLayout>
 
     </RelativeLayout>
-
 
 </RelativeLayout>
 

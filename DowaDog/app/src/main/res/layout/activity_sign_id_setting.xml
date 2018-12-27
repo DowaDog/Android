@@ -137,22 +137,72 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="42dp"
                     android:background="@drawable/sign_info_write_act_signup_box">
 
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_id_sign_id_set_act"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="16dp"
+                            android:background="@null"
+                            android:fontFamily="@font/nanum_round"
+                            android:hint="아이디(영문 6자 이상)"
+                            android:inputType="textShortMessage"
+                            android:textColorHint="#cecece"
+                            android:textSize="13sp" />
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        >
+
+                        <TextView
+                            android:id="@+id/tv_id_check_sign_id_set_act"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="16dp"
+                            android:text="중복확인"
+                            android:textColor="#00dada"
+                            android:textSize="12sp" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/sign_info_write_act_signup_box">
+
                     <EditText
+                        android:id="@+id/et_pw_sign_id_set_act"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="16dp"
                         android:background="@null"
                         android:fontFamily="@font/nanum_round"
-                        android:inputType="text"
-                        android:hint="아이디"
+                        android:hint="패스워드(영문,숫자,특수문자 조합 8자 이상)"
+                        android:inputType="textPassword"
                         android:textColorHint="#cecece"
-                        android:textSize="14dp" />
+                        android:textSize="13sp" />
 
                 </RelativeLayout>
 
@@ -163,36 +213,17 @@
                     android:background="@drawable/sign_info_write_act_signup_box">
 
                     <EditText
+                        android:id="@+id/et_pw_check_sign_id_set_act"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="16dp"
                         android:background="@null"
                         android:fontFamily="@font/nanum_round"
-                        android:inputType="textPassword"
-                        android:hint="패스워드"
-                        android:textColorHint="#cecece"
-                        android:textSize="14dp" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="42dp"
-                    android:layout_marginTop="12dp"
-                    android:background="@drawable/sign_info_write_act_signup_box">
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="16dp"
-                        android:background="@null"
-                        android:fontFamily="@font/nanum_round"
-                        android:inputType="textPassword"
                         android:hint="패스워드 확인"
+                        android:inputType="textPassword"
                         android:textColorHint="#cecece"
-                        android:textSize="14dp" />
+                        android:textSize="13sp" />
 
                 </RelativeLayout>
 
@@ -201,6 +232,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rl_agree_sign_id_set_act"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_alignParentBottom="true"
