@@ -1,4 +1,7 @@
 package com.takhyungmin.dowadog.contents.adapter
 
-class ContentsSenseItem {
-}
+data class ContentsSenseItem (
+        var contentsSenseTitle : String,
+        var contentsSenseSub : String,
+        var contentsSenseFeed : Int
+)

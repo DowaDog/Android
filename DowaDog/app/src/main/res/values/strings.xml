@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">DowaDog</string>
+    <string name="edu_detail_title">새로운 가족을 맞이할 준비, 어렵지 않아요</string>
+    <string name="edu_detail_subtitle">낯선 첫만남, 애정과 신뢰를 나누는 법</string>
+    <string name="long_text">긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열
+        긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열
+        긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열
+        긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열
+        긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 </string>
+
 </resources>

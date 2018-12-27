@@ -1,107 +1,98 @@
 package com.takhyungmin.dowadog.contents.activity
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat
-import android.support.v4.app.SharedElementCallback
+import android.support.v4.widget.NestedScrollView
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import android.view.WindowManager
 import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.contents.adapter.ContentsEduDetailItem
+import com.takhyungmin.dowadog.contents.adapter.ContentsEduDetailRvAdapter
+import com.takhyungmin.dowadog.presenter.activity.ContentsEduDetailActivityPresenter
 import kotlinx.android.synthetic.main.activity_contents_edu_detail.*
 
 
 class ContentsEduDetailActivity : AppCompatActivity() {
 
-    companion object {
-        // Extra name for the ID parameter
-        val EXTRA_PARAM_ID = "detail:_id"
-
-        // View name of the header image. Used for activity scene transitions
-        val VIEW_NAME_HEADER_IMAGE = "detail:header:image"
-
-        // View name of the header title. Used for activity scene transitions
-        val VIEW_NAME_HEADER_TITLE = "detail:header:title"
-
-        val EXTRA_POSITION = "position"
-
-        var SelectedIndex = 0
-    }
-
-    var title = ""
+    private lateinit var contentsEduDetailActivityPresenter: ContentsEduDetailActivityPresenter
+    private lateinit var contentsEduDetailRvAdapter: ContentsEduDetailRvAdapter
+    private lateinit var requestManager : RequestManager
     override fun onCreate(savedInstanceState: Bundle?) {
-        ActivityCompat.setEnterSharedElementCallback(this, EnterTransitionCallback)
+        //ActivityCompat.setEnterSharedElementCallback(this, EnterTransitionCallback)
+//        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        //setTheme(R.style.ContentsDetailActivityBasic)
+        //window.statusBarColor = Color.TRANSPARENT
+        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contents_edu_detail)
-        SelectedIndex = intent.getIntExtra(EXTRA_POSITION, -1)
-        //ViewCompat.setTransitionName(img_contents_edu_detail, VIEW_NAME_HEADER_IMAGE)
-        //ViewCompat.setTransitionName(tv_contents_edu_detail_title, VIEW_NAME_HEADER_TITLE)
-        //title = intent.getStringExtra("title")
-        //loadItem()
-
-//        val title = intent.getStringExtra("title")
-//        val thumbnailTop = intent.getIntExtra("top", 0)
-//        val thumbnailLeft = intent.getIntExtra("left", 0)
-//        val thumbnailWidth = intent.getIntExtra("width", 0)
-//        val thumbnailHeight = intent.getIntExtra("height", 0)
-//        mOriginalOrientation = intent.getIntExtra("orientation", 0)
-
-
-        //img_contents_edu_detail.setImageResource(R.drawable.drawer_btn)
         Glide.with(this).load(R.drawable.pic1).into(img_contents_edu_detail)
-        //tv_contents_edu_detail_title.text = "일단 임시 제목"
+        tv_contents_edu_detail_title.text = intent.getStringExtra("title")
+        rv_contents_edu_detail_content.setFocusable(false)
+        layout_edu_detail.requestFocus()
+        init()
+    }
 
-//        mBackground = ColorDrawable(Color.WHITE)
-//        layout_edu_detail.background = mBackground
+    private fun init(){
+        contentsEduDetailActivityPresenter = ContentsEduDetailActivityPresenter()
+        contentsEduDetailActivityPresenter.view = this
+        contentsEduDetailActivityPresenter.initView()
+        setScrollListener()
+    }
 
-//        if (savedInstanceState == null) {
-//            val observer = img_contents_edu_detail.viewTreeObserver
-//            observer.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
-//
-//                override fun onPreDraw(): Boolean {
-//                    img_contents_edu_detail.viewTreeObserver.removeOnPreDrawListener(this)
-//
-//                    // Figure out where the thumbnail and full size versions are, relative
-//                    // to the screen and each other
-//                    val screenLocation = IntArray(2)
-//                    img_contents_edu_detail.getLocationOnScreen(screenLocation)
-//                    Log.v("data", "left : " + screenLocation[0])
-//                    Log.v("data", "top : " + screenLocation[1])
-//
-//
-//                    mLeftDelta = thumbnailLeft - screenLocation[0]
-//                    mTopDelta = thumbnailTop - screenLocation[1]
-//
-//                    // Scale factors to make the large version the same size as the thumbnail
-//                    mWidthScale = thumbnailWidth.toFloat() / img_contents_edu_detail.width
-//                    mHeightScale = thumbnailHeight.toFloat() / img_contents_edu_detail.height
-//
-//                    runEnterAnimation()
-//
-//                    return true
-//                }
-//            })
+    fun initView(contentsEduDetailItems : ArrayList<ContentsEduDetailItem>){
+        requestManager = Glide.with(this)
+        contentsEduDetailRvAdapter = ContentsEduDetailRvAdapter(contentsEduDetailItems, requestManager)
+        rv_contents_edu_detail_content.layoutManager = LinearLayoutManager(this)
+        rv_contents_edu_detail_content.adapter = contentsEduDetailRvAdapter
+    }
+
+    private fun setScrollListener(){
+        sv_contents_edu_detail_scroll.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, _, scrollY, _, oldScrollY ->
+            if (scrollY > oldScrollY + 30) {
+                //scroll down
+                window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+                layout_contents_edu_detail_toolbar_move.visibility = View.GONE
+                layout_contents_edu_detail_toolbar_basic.visibility = View.GONE
+                if(scrollY > img_contents_edu_detail.height){
+                    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                }
+
+            }
+            if (scrollY < oldScrollY - 30) {
+                //scroll up
+                window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+                window.statusBarColor = this.resources.getColor(R.color.status2)
+                layout_contents_edu_detail_toolbar_move.visibility = View.VISIBLE
+                if(scrollY < img_contents_edu_detail.height){
+                    window.decorView.systemUiVisibility = 0
+                    window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+                    layout_contents_edu_detail_toolbar_basic.visibility = View.VISIBLE
+                    layout_contents_edu_detail_toolbar_move.visibility = View.GONE
+                }
+            }
+
+            if (scrollY == 0) {
+                //scroll in top
+//                window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+//                layout_contents_edu_detail_toolbar_basic.visibility = View.VISIBLE
+//                layout_contents_edu_detail_toolbar_move.visibility = View.GONE
+            }
+
+            if (scrollY == ( v.getChildAt(0).height - v.height )) {
+                //scroll in bottom
+                layout_contents_edu_detail_toolbar_move.visibility = View.VISIBLE
+            }
+        })
+    }
+
+//    private val EnterTransitionCallback = object : SharedElementCallback() {
+//        @SuppressLint("NewApi")
+//        override fun onMapSharedElements(names: List<String>, sharedElements: MutableMap<String, View>) {
+//            sharedElements.put(names[0], img_contents_edu_detail)
 //        }
-    }
+//    }
 
-
-    private val EnterTransitionCallback = object : SharedElementCallback() {
-        @SuppressLint("NewApi")
-        override fun onMapSharedElements(names: List<String>, sharedElements: MutableMap<String, View>) {
-            sharedElements.put(names[0], img_contents_edu_detail)
-        }
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
-
-    }
-
-    override fun finish() {
-        super.finish()
-
-        // override transitions to skip the standard window animations
-        overridePendingTransition(0, 0)
-    }
 }
