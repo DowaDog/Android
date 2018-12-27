@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.community.CommunityFragment
 import com.takhyungmin.dowadog.contents.fragment.ContentsFragment
 import com.takhyungmin.dowadog.presenter.activity.HomeActivityPresenter
 import kotlinx.android.synthetic.main.activity_home.*
@@ -59,13 +60,17 @@ class HomeActivity : AppCompatActivity() {
         }
 
         btn_navi_contents.setOnClickListener {
-
-
             homeActivityPresenter.replaceFragment(ContentsFragment())
             tv_home_title.text = "컨텐츠"
             if (drawer_home.isDrawerOpen(Gravity.START))
                 drawer_home.closeDrawer(Gravity.START)
+        }
 
+        btn_navi_community.setOnClickListener {
+            homeActivityPresenter.replaceFragment(CommunityFragment())
+            tv_home_title.text = "커뮤니티"
+            if (drawer_home.isDrawerOpen(Gravity.START))
+                drawer_home.closeDrawer(Gravity.START)
         }
 
     }
