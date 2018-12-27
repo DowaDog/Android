@@ -9,6 +9,8 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import com.bumptech.glide.Glide
@@ -23,12 +25,17 @@ import org.jetbrains.anko.startActivity
 import java.io.ByteArrayOutputStream
 import java.io.FileNotFoundException
 import java.io.InputStream
+import java.util.*
 
 class SignIdSettingActivity : AppCompatActivity() {
 
     private val REQ_CODE_SELECT_IMAGE = 100
     lateinit var data: Uri
     private var image: MultipartBody.Part? = null
+
+    var et_id: Boolean = false
+    var et_pw: Boolean = false
+    var et_pw_check: Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,6 +56,106 @@ class SignIdSettingActivity : AppCompatActivity() {
             val imm: InputMethodManager = applicationContext!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(it.windowToken, 0)
         }
+
+        //et_id_sign_id_set_act--> editText에 값이 들어갔는지 판별해주는 것
+        et_id_sign_id_set_act.addTextChangedListener(object : TextWatcher {
+            //입력하기 전에
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                et_id = false
+            }
+
+            // 입력되는 텍스트에 변화가 있을 때
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                val text = et_id_sign_id_set_act.text.toString()
+
+                if (text.length >= 6) {
+                    et_id = true
+                } else {
+                    et_id = false
+                }
+
+                if (et_id) {
+                    if (et_pw) {
+                        if (et_pw_check) {
+                            rl_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#00dada"))
+                        }
+                    }
+                } else {
+                    rl_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#e2e2e2"))
+                }
+            }
+            //입력이 끝났을 때
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
+
+        //et_pw_sign_id_set_act--> editText에 값이 들어갔는지 판별해주는 것
+        et_pw_sign_id_set_act.addTextChangedListener(object : TextWatcher {
+            //입력하기 전에
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                //et_pw = false
+            }
+            // 입력되는 텍스트에 변화가 있을 때
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                val text = et_pw_sign_id_set_act.text.toString()
+                val pw_form = "((?=.*\\d)(?=.*[a-zA-Z])(?=.*[@#\$%!&]).{8,20})"
+
+                if (text.length >= 8 && text.matches(Regex(pw_form))) {
+                    et_pw = true
+                } else {
+                    et_pw = false
+                }
+
+                if (et_pw) {
+                    if (et_id) {
+                        if (et_pw_check) {
+                            rl_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#00dada"))
+                        }
+                    }
+                } else {
+                    rl_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#e2e2e2"))
+                }
+            }
+            //입력이 끝났을 때
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
+
+        //et_pw_check_sign_id_set_act --> editText에 값이 들어갔는지 판별해주는 것
+        et_pw_check_sign_id_set_act.addTextChangedListener(object : TextWatcher {
+            //입력하기 전에
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                et_pw_check = false
+            }
+
+            // 입력되는 텍스트에 변화가 있을 때
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                val text_pw = et_pw_sign_id_set_act.text.toString()
+                val text_check = et_pw_check_sign_id_set_act.text.toString()
+
+                if (text_check == text_pw) {
+                    et_pw_check = true
+                } else {
+                    et_pw_check = false
+                }
+
+                if (et_pw_check) {
+                    if (et_id) {
+                        if (et_pw) {
+                            rl_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#00dada"))
+                        }
+                    }
+                } else {
+                    rl_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#e2e2e2"))
+                }
+            }
+            //입력이 끝났을 때
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
     }
 
     fun changeImage() {
