@@ -4,13 +4,203 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CommunityWriteActivity"
     android:background="#FFFFFF"
-    >
+    tools:context=".communitywrite.CommunityWriteActivity">
+
+    <!--상단바-->
+    <RelativeLayout
+        android:id="@+id/rl_top_bar_community_write_act"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#FFFFFF"
+        android:elevation="3dp">
+
+        <!--취소-->
+        <RelativeLayout
+            android:id="@+id/btn_cancle_community_write_act"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginHorizontal="16dp"
+                android:fontFamily="@font/nanum_round"
+                android:text="취소"
+                android:textColor="#707070"
+                android:textSize="18dp" />
+        </RelativeLayout>
+
+        <!--글작성하기-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/nanum_bold"
+            android:text="글 작성하기"
+            android:textColor="#707070"
+            android:textSize="18dp" />
+
+        <!--확인-->
+        <RelativeLayout
+            android:id="@+id/btn_confirm_community_write_act"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginHorizontal="16dp"
+                android:fontFamily="@font/nanum_round"
+                android:text="확인"
+                android:textColor="#ffc233"
+                android:textSize="18dp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <!--제목-->
+    <RelativeLayout
+        android:id="@+id/rl_title_bar_community_write_act"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_below="@+id/rl_top_bar_community_write_act">
+
+        <EditText
+            android:id="@+id/et_title_community_write_act"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:background="@null"
+            android:fontFamily="@font/nanum_round"
+            android:hint="제목"
+            android:textColorHint="#c4c4c4"
+            android:textSize="16dp" />
+
+    </RelativeLayout>
+
+    <!--제목 밑 선-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/rl_title_bar_community_write_act"
+        android:background="#e0e0e0" />
+
+    <!--내용-->
 
     <RelativeLayout
+        android:id="@+id/rl_content_community_write_act"
+        android:layout_below="@+id/rl_title_bar_community_write_act"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/colorAccent"></RelativeLayout>
+        android:layout_height="match_parent"
+        android:layout_margin="16dp">
+
+        <EditText
+            android:id="@+id/et_content_community_write_act"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:fontFamily="@font/nanum_round"
+            android:hint="여기를 눌러서 글을 작성할 수 있습니다. \n기다릴개에서 당신의 동물의 이야기를 들려주세요 :)"
+            android:textColorHint="#c4c4c4"
+            android:textSize="16dp"
+            android:lineSpacingExtra="4dp"/>
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:id="@+id/ll_picture_box_coummunity_write_act"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:background="#f0f0f0"
+            >
+
+            <ImageView
+                android:id="@+id/iv_first_picture_box_community_write_act"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:layout_marginLeft="4dp"
+                android:src="@drawable/img_plus_1227"
+                android:layout_marginVertical="4dp"
+                android:layout_marginRight="4dp"
+                />
+
+            <ImageView
+                android:id="@+id/iv_second_picture_box_community_write_act"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_plus_1227"
+                android:layout_weight="1"
+                android:layout_marginVertical="4dp"
+                android:layout_marginRight="4dp"
+                />
+
+            <ImageView
+                android:id="@+id/iv_third_picture_box_community_write_act"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_plus_1227"
+                android:layout_weight="1"
+                android:layout_marginVertical="4dp"
+                android:layout_marginRight="4dp"/>
+
+            <ImageView
+                android:id="@+id/iv_fourth_picture_box_community_write_act"
+                android:layout_width="match_parent"
+                android:src="@drawable/img_plus_1227"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:layout_marginVertical="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/ll_picture_box_coummunity_write_act">
+
+
+            <View
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#c7c7c7"/>
+            <RelativeLayout
+                android:id="@+id/btn_camera_community_write_act"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/camera_icon"
+                    android:layout_centerInParent="true"
+                    android:layout_marginHorizontal="16dp"
+                    android:tint="#ffc233"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+    
 
 </RelativeLayout>
