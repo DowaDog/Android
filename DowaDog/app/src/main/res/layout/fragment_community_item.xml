@@ -27,6 +27,7 @@
             android:textSize="14sp"
             android:fontFamily="@font/nanum_bold"
             android:textColor="#434343"
+            android:includeFontPadding="false"
             android:layout_toRightOf="@+id/img_community_item_profile"
             android:layout_marginStart="9dp"
             />
@@ -45,6 +46,7 @@
             />
         <ImageView
             android:id="@+id/btn_community_item_more"
+            android:src="@drawable/back_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

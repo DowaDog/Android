@@ -1,5 +1,6 @@
 package com.takhyungmin.dowadog.contents.fragment
 
+import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
@@ -15,7 +16,6 @@ import kotlinx.android.synthetic.main.fragment_contents.*
 class ContentsFragment : Fragment(){
 
     lateinit var contentsFragmentPresenter: ContentsFragmentPresenter
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_contents, container, false)
     }
@@ -31,12 +31,14 @@ class ContentsFragment : Fragment(){
         if(!ContentsObject.isCreated) {
             tab_contents.addTab(tab_contents.newTab().setText("교육"))
             tab_contents.addTab(tab_contents.newTab().setText("상식"))
+            tab_contents.setTabTextColors(Color.parseColor("#707070"), Color.parseColor("#ffc233"))
 
             val tabAdapter = ContentsAdapter(activity!!.supportFragmentManager)
 
             vp_contents.adapter = tabAdapter
             vp_contents.currentItem = 0
             vp_contents.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tab_contents))
+
 
             tab_contents.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabReselected(tab: TabLayout.Tab?) {

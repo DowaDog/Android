@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
+import android.view.View
+import android.view.WindowManager
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.community.CommunityFragment
 import com.takhyungmin.dowadog.contents.fragment.ContentsFragment
@@ -13,11 +15,14 @@ import kotlinx.android.synthetic.main.navi_home.*
 
 class HomeActivity : AppCompatActivity() {
 
-    lateinit var homeActivityPresenter : HomeActivityPresenter
+    private lateinit var homeActivityPresenter : HomeActivityPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        //drawer_home.setStatusBarBackgroundColor(R.color.status2)
         initPresenter()
         setBinding()
 

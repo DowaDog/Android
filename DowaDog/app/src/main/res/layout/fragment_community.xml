@@ -3,12 +3,27 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_community_feeds"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:nestedScrollingEnabled="false"
         >
     </android.support.v7.widget.RecyclerView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:layout_below="@+id/rv_community_feeds"
+            />
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+
     <RelativeLayout
         android:id="@+id/btn_community_write"
         android:layout_width="93dp"
