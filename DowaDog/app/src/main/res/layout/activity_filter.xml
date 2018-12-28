@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".FilterActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:orientation="vertical">
+
+
+            <!--상단바-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="#FFFFFF"
+                android:elevation="3dp">
+
+                <!--백버튼-->
+                <RelativeLayout
+                    android:id="@+id/btn_back_filter_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginHorizontal="16dp"
+                        android:src="@drawable/back_arrow" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/nanum_bold"
+                    android:text="필터"
+                    android:textColor="#707070"
+                    android:textSize="18sp" />
+
+                <!--리턴버튼-->
+                <RelativeLayout
+                    android:id="@+id/btn_return_filter_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginHorizontal="16dp"
+                        android:src="@drawable/filter_refresh" />
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <!--종류-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp">
+
+                <!--종류-->
+                <TextView
+                    android:id="@+id/tv_jongryu_filter_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/nanum_extra_bold"
+                    android:text="종류"
+                    android:textColor="#434343"
+                    android:textSize="16sp" />
+
+                <!--강아지 + 고양이-->
+                <LinearLayout
+                    android:id="@+id/ll_jongryu_filter_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_jongryu_filter_act"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#FFFFFF"
+                    android:orientation="horizontal">
+
+                    <!--강아지-->
+                    <ImageView
+                        android:id="@+id/btn_dog_kinds_filter_act"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/filter_dog_gray_1227"></ImageView>
+
+                    <View
+                        android:layout_width="8dp"
+                        android:layout_height="match_parent" />
+
+
+                    <!--고양이-->
+                    <ImageView
+                        android:id="@+id/btn_cat_kinds_filter_act"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/filter_cat_gray_1227"></ImageView>
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:background="#f6f6f6" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF">
+
+                <TextView
+                    android:id="@+id/tv_term_filter_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/nanum_extra_bold"
+                    android:text="기간"
+                    android:textColor="#434343"
+                    android:textSize="16sp" />
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_term_filter_act">
+
+                    <!-- 시크바 -->
+                    <SeekBar
+                        android:id="@+id/sb_term_filter_act"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="21dp"
+                        android:max="15"
+                        android:progress="15"
+                        android:progressDrawable="@drawable/seekbar_seekbar1"
+                        android:thumb="@drawable/seekbar_seekbar1_thumb" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/sb_term_filter_act"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/nanum_bold"
+                        android:text="1일"
+                        android:textColor="#707070"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/tv_term_last_filter_act"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@id/sb_term_filter_act"
+                        android:layout_marginRight="32dp"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/nanum_bold"
+                        android:text="15일 이상"
+                        android:textColor="#ffc233"
+                        android:textSize="15dp" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:layout_marginTop="20dp"
+                android:background="#f6f6f6" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_rigion_filter_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/nanum_extra_bold"
+                    android:text="지역"
+                    android:textColor="#434343"
+                    android:textSize="16dp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/tv_rigion_filter_act"
+                    android:layout_marginBottom="40dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/btn_all_area_filter_act"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/filter_gray" />
+
+                        <ImageView
+                            android:id="@+id/btn_seoul_filter_act"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/seoul_gray" />
+
+                        <ImageView
+                            android:id="@+id/btn_gyeonggi_filter_act"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/gyeonggi_gray" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/btn_incheon_filter_act"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/incheon_gray" />
+
+                        <ImageView
+                            android:id="@+id/btn_gangwon_filter_act"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/gangwon_gray" />
+
+                        <ImageView
+                            android:id="@+id/btn_chungcheong_filter_act"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/chungcheong_gray" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/btn_jeonla_filter_act"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/jeonla_gray" />
+
+                        <ImageView
+                            android:id="@+id/btn_gyeongsang_filter_act"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/gyeongsang_gray" />
+
+                        <ImageView
+                            android:id="@+id/btn_jeju_filter_act"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/jeju_gray" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/btn_confirm_filter_act"
+                android:layout_width="163dp"
+                android:layout_height="41dp"
+                android:background="@drawable/filter_confirm_btn_box"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="45dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="확인"
+                    android:layout_centerInParent="true"
+                    android:textSize="17sp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="@font/nanum_bold"/>
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</RelativeLayout>

@@ -1,4 +1,4 @@
-package com.takhyungmin.dowadog.communitywrite
+package com.takhyungmin.dowadog.utils
 
 import android.app.Dialog
 import android.content.Context
