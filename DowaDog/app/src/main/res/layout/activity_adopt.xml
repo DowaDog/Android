@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".AdoptActivity">
+
+    <!--상단바-->
+    <RelativeLayout
+        android:id="@+id/rl_top_bar_adopt_act"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#FFFFFF"
+        android:elevation="3dp">
+
+        <!--백버튼-->
+        <RelativeLayout
+            android:id="@+id/btn_back_adopt_act"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginHorizontal="16dp"
+                android:src="@drawable/back_arrow" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_below="@+id/rl_top_bar_adopt_act"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#c7c7c7" />
+
+    <RelativeLayout
+        android:layout_below="@+id/rl_top_bar_adopt_act"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_next_adopt_act"
+        >
+
+        <LinearLayout
+            android:id="@+id/ll_first_text_box_adopt_act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="입양 방법"
+                android:textSize="26sp"
+                android:textColor="#ffc233"
+                android:fontFamily="@font/nanum_extra_bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="을"
+                android:textColor="#242424"
+                android:textSize="26sp"
+                android:fontFamily="@font/nanum_light"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_second_text_box_adopt_act"
+            android:layout_below="@+id/ll_first_text_box_adopt_act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:layout_marginLeft="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="선택해주세요"
+                android:textColor="#242424"
+                android:textSize="26sp"
+                android:fontFamily="@font/nanum_light"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_method_press_adopt_act"
+            android:layout_below="@+id/ll_second_text_box_adopt_act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="버튼을 눌러 방법을 선택하세요"
+            android:textSize="15sp"
+            android:textColor="#707070"
+            android:fontFamily="@font/nanum_light"/>
+
+        <ImageView
+            android:id="@+id/btn_real_visit_adopt_act"
+            android:layout_below="@+id/tv_method_press_adopt_act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/visit_gray_1227"
+            android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:id="@+id/btn_online_apply_adopt_act"
+            android:layout_below="@+id/btn_real_visit_adopt_act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:src="@drawable/online_apply_gray_1227"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/btn_next_adopt_act"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:background="#e2e2e2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="다음"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:fontFamily="@font/nanum_extra_bold"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
