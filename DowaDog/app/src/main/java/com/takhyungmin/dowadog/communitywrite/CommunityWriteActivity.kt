@@ -16,6 +16,7 @@ import android.view.WindowManager
 import com.bumptech.glide.Glide
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.utils.CustomDialog
 import kotlinx.android.synthetic.main.activity_community_write.*
 import org.jetbrains.anko.toast
 
@@ -413,7 +414,7 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
 
     fun openImgDeleteDialog(position: Int) {
         val content = "사진을 삭제하시겠습니까?"
-        customDialog = CustomDialog(CommunityWriteActivity@this, content, leftListener, View.OnClickListener {
+        customDialog = CustomDialog(CommunityWriteActivity@ this, content, leftListener, View.OnClickListener {
             // 삭제하는 로직
             deleteImgBox(position)
             presentImabeBoxNum--
