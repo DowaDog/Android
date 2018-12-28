@@ -177,7 +177,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginRight="16dp"
                             android:text="중복확인"
-                            android:textColor="#00dada"
+                            android:textColor="#ffc233"
                             android:textSize="12sp" />
 
                     </RelativeLayout>

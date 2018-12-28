@@ -78,7 +78,7 @@ class SignIdSettingActivity : AppCompatActivity() {
                 if (et_id) {
                     if (et_pw) {
                         if (et_pw_check) {
-                            rl_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#00dada"))
+                            rl_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#ffc233"))
                         }
                     }
                 } else {
@@ -111,7 +111,7 @@ class SignIdSettingActivity : AppCompatActivity() {
                 if (et_pw) {
                     if (et_id) {
                         if (et_pw_check) {
-                            rl_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#00dada"))
+                            rl_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#ffc233"))
                         }
                     }
                 } else {
@@ -145,7 +145,7 @@ class SignIdSettingActivity : AppCompatActivity() {
                 if (et_pw_check) {
                     if (et_id) {
                         if (et_pw) {
-                            rl_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#00dada"))
+                            rl_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#ffc233"))
                         }
                     }
                 } else {
