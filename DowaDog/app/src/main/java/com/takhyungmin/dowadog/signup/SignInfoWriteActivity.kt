@@ -81,7 +81,7 @@ class SignInfoWriteActivity : AppCompatActivity() {
                                     startActivity<SignIdSettingActivity>()
                                 }
 
-                                rl_next_btn_sign_info_wr_act.setBackgroundColor(Color.parseColor("#00dada"))
+                                rl_next_btn_sign_info_wr_act.setBackgroundColor(Color.parseColor("#ffc233"))
                             }
                         }
                     }
@@ -120,7 +120,7 @@ class SignInfoWriteActivity : AppCompatActivity() {
                                     startActivity<SignIdSettingActivity>()
                                 }
 
-                                rl_next_btn_sign_info_wr_act.setBackgroundColor(Color.parseColor("#00dada"))
+                                rl_next_btn_sign_info_wr_act.setBackgroundColor(Color.parseColor("#ffc233"))
                             }
                         }
                     }
@@ -158,7 +158,7 @@ class SignInfoWriteActivity : AppCompatActivity() {
                                     startActivity<SignIdSettingActivity>()
                                 }
 
-                                rl_next_btn_sign_info_wr_act.setBackgroundColor(Color.parseColor("#00dada"))
+                                rl_next_btn_sign_info_wr_act.setBackgroundColor(Color.parseColor("#ffc233"))
                             }
                         }
                     }
@@ -195,7 +195,7 @@ class SignInfoWriteActivity : AppCompatActivity() {
                                 rl_next_btn_sign_info_wr_act.setOnClickListener {
                                     startActivity<SignIdSettingActivity>()
                                 }
-                                rl_next_btn_sign_info_wr_act.setBackgroundColor(Color.parseColor("#00dada"))
+                                rl_next_btn_sign_info_wr_act.setBackgroundColor(Color.parseColor("#ffc233"))
                             }
                         }
                     }

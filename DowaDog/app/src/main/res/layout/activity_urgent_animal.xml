@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UrgentAnimalActivity">
+    tools:context=".Urgent.Activity.UrgentAnimalActivity">
 
     <RelativeLayout
         android:id="@+id/rl_set_bar_urgent_ani_act"
@@ -37,14 +37,28 @@
 
     </RelativeLayout>
 
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/rl_set_bar_mypage_set_act">
+        android:layout_below="@+id/rl_set_bar_urgent_ani_act">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="8dp"
+            >
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_urgent_ani_act"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
+            </android.support.v7.widget.RecyclerView>
 
+        </RelativeLayout>
 
     </ScrollView>
 
