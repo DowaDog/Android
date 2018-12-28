@@ -29,8 +29,9 @@ class ContentsEduRvAdapter(private var contentsEduItems : ArrayList<ContentsEduI
         holder.contentsTitle.text = contentsEduItems[position].contentsTitle
         holder.contentsSub.text = contentsEduItems[position].contentsSub
         requestManager.load(contentsEduItems[position].contentsFeed).into(holder.contentsFeed)
-        if (contentsEduItems[position].contentsRead)
-            holder.contentsRead.setBackgroundColor(R.drawable.drawer_btn)
+        if (!contentsEduItems[position].contentsRead)
+            holder.contentsRead.visibility = View.GONE
+
         holder.contentsFrame.setOnClickListener {
             contentsEduFragmentPresenter.toDetail(contentsEduItems[position].contentsTitle,
                     contentsEduItems[position].contentsSub)

@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import com.bumptech.glide.RequestManager
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.community.model.CommunityItem
+import com.takhyungmin.dowadog.communitywrite.CustomDialog
 import com.takhyungmin.dowadog.presenter.fragment.CommunityFragmentPresenter
-import com.takhyungmin.dowadog.utils.BaseDialog
 
 class CommunityAdapter(var communityItems : ArrayList<CommunityItem>, var requestManager: RequestManager, var communityFragmentPresenter: CommunityFragmentPresenter, var context : Context) : RecyclerView.Adapter<CommunityViewHolder>() {
 
-    lateinit var baseDialog : BaseDialog
+    lateinit var customDialog : CustomDialog
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): CommunityViewHolder {
         val mainView = LayoutInflater.from(parent.context).inflate(R.layout.fragment_community_item, parent,false)
@@ -82,15 +82,15 @@ class CommunityAdapter(var communityItems : ArrayList<CommunityItem>, var reques
 
     fun loadDialog() {
         val content = "신고"
-        baseDialog = BaseDialog(context, content, leftListener, rightListener)
-        baseDialog.show()
+        customDialog = CustomDialog(context, content, leftListener, rightListener, "취소", "확인")
+        customDialog.show()
     }
 
     private val leftListener = View.OnClickListener {
-        baseDialog.dismiss()
+        customDialog.dismiss()
     }
 
     private val rightListener = View.OnClickListener {
-        baseDialog.dismiss()
+        customDialog.dismiss()
     }
 }

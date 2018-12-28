@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="19.6dp">
+    android:layout_height="370dp">
     <RelativeLayout
         android:id="@+id/view_contents_sense_empty"
-        android:background="@null"
         android:layout_centerHorizontal="true"
         android:layout_width="300dp"
         android:layout_height="348dp"/>
 
     <LinearLayout
+        android:layout_marginTop="0.8dp"
         android:id="@+id/layout_contents_sense_frame"
         android:layout_centerHorizontal="true"
-        android:layout_width="300dp"
-        android:layout_height="348dp"
+        android:layout_width="299dp"
+        android:layout_height="347dp"
         android:background="@drawable/contents_background"
+        android:elevation="6dp"
         android:orientation="vertical"
         >
 

@@ -39,7 +39,16 @@
                 android:fontFamily="@font/nanum_bold"
                 android:textSize="18sp"
                 android:includeFontPadding="false"
-                android:text="홈"/>
+                android:text="기다릴개"/>
+
+            <ImageView
+                android:id="@+id/btn_home_mypage"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="16dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/login_profile_img"/>
         </RelativeLayout>
 
         <FrameLayout
