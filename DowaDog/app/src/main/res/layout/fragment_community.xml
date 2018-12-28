@@ -33,5 +33,28 @@
         android:layout_marginBottom="45dp"
         android:background="@drawable/community_main_btn_background">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/writing_btn"
+                />
+
+            <TextView
+                android:layout_marginStart="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#ffc233"
+                android:lineSpacingExtra="6sp"
+                android:text="글쓰기"
+                />
+
+        </LinearLayout>
+
     </RelativeLayout>
 </RelativeLayout>

@@ -64,8 +64,15 @@ class HomeActivity : AppCompatActivity() {
                 drawer_home.openDrawer(Gravity.START)
         }
 
+        btn_navi_home.setOnClickListener {
+            btn_home_mypage.visibility = View.VISIBLE
+            if (!drawer_home.isDrawerOpen(Gravity.START))
+                drawer_home.openDrawer(Gravity.START)
+        }
+
         btn_navi_contents.setOnClickListener {
             homeActivityPresenter.replaceFragment(ContentsFragment())
+            btn_home_mypage.visibility = View.GONE
             tv_home_title.text = "컨텐츠"
             if (drawer_home.isDrawerOpen(Gravity.START))
                 drawer_home.closeDrawer(Gravity.START)
@@ -73,6 +80,7 @@ class HomeActivity : AppCompatActivity() {
 
         btn_navi_community.setOnClickListener {
             homeActivityPresenter.replaceFragment(CommunityFragment())
+            btn_home_mypage.visibility = View.GONE
             tv_home_title.text = "커뮤니티"
             if (drawer_home.isDrawerOpen(Gravity.START))
                 drawer_home.closeDrawer(Gravity.START)
