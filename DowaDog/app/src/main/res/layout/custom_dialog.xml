@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="사진을 삭제하시겠습니까"
-                android:textSize="17dp"
+                android:textSize="17sp"
                 android:fontFamily="@font/nanum_bold"
                 android:textColor="#434343"
                 android:layout_centerInParent="true"
@@ -52,7 +52,7 @@
                     android:text="취소"
                     android:layout_centerInParent="true"
                     android:textColor="#FFFFFF"
-                    android:textSize="17dp"
+                    android:textSize="17sp"
                     android:fontFamily="@font/nanum_bold"/>
 
             </RelativeLayout>
@@ -75,7 +75,7 @@
                     android:text="확인"
                     android:layout_centerInParent="true"
                     android:textColor="#FFFFFF"
-                    android:textSize="17dp"
+                    android:textSize="17sp"
                     android:fontFamily="@font/nanum_bold"/>
 
             </RelativeLayout>

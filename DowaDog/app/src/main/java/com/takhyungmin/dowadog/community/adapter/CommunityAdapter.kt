@@ -1,5 +1,6 @@
 package com.takhyungmin.dowadog.community.adapter
 
+import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +9,12 @@ import com.bumptech.glide.RequestManager
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.community.model.CommunityItem
 import com.takhyungmin.dowadog.presenter.fragment.CommunityFragmentPresenter
+import com.takhyungmin.dowadog.utils.BaseDialog
 
-class CommunityAdapter(var communityItems : ArrayList<CommunityItem>, var requestManager: RequestManager, var communityFragmentPresenter: CommunityFragmentPresenter) : RecyclerView.Adapter<CommunityViewHolder>() {
+class CommunityAdapter(var communityItems : ArrayList<CommunityItem>, var requestManager: RequestManager, var communityFragmentPresenter: CommunityFragmentPresenter, var context : Context) : RecyclerView.Adapter<CommunityViewHolder>() {
+
+    lateinit var baseDialog : BaseDialog
+
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): CommunityViewHolder {
         val mainView = LayoutInflater.from(parent.context).inflate(R.layout.fragment_community_item, parent,false)
         //mainView.setOnClickListener(onItemClick)
@@ -22,6 +27,9 @@ class CommunityAdapter(var communityItems : ArrayList<CommunityItem>, var reques
         holder.communityName.text = communityItems[position].communityName
         requestManager.load(communityItems[position].communityProfile).into(holder.communityProfile)
         holder.communityTime.text = communityItems[position].communityTime
+        holder.communityMore.setOnClickListener {
+            loadDialog()
+        }
         when(communityItems[position].communityImage.size){
             1->{
                 holder.communityMain1.visibility = View.VISIBLE
@@ -70,5 +78,19 @@ class CommunityAdapter(var communityItems : ArrayList<CommunityItem>, var reques
                         .into(holder.communityMain33)
             }
         }
+    }
+
+    fun loadDialog() {
+        val content = "신고"
+        baseDialog = BaseDialog(context, content, leftListener, rightListener)
+        baseDialog.show()
+    }
+
+    private val leftListener = View.OnClickListener {
+        baseDialog.dismiss()
+    }
+
+    private val rightListener = View.OnClickListener {
+        baseDialog.dismiss()
     }
 }

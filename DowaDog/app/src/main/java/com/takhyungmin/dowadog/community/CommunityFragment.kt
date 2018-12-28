@@ -38,7 +38,7 @@ class CommunityFragment : Fragment() {
     }
 
     fun initView(communityItems : ArrayList<CommunityItem>){
-        communityAdapter = CommunityAdapter(communityItems, requestManager, communityFragmentPresenter)
+        communityAdapter = CommunityAdapter(communityItems, requestManager, communityFragmentPresenter, context!!)
         //contentsEduRvAdapter.setOnItemClickListener(this)
         rv_community_feeds.layoutManager = LinearLayoutManager(activity)
         rv_community_feeds.adapter = communityAdapter

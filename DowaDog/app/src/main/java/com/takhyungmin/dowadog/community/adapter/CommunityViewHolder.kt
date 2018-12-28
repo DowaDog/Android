@@ -12,6 +12,7 @@ class CommunityViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
     var communityProfile = itemView.findViewById(R.id.img_community_item_profile) as ImageView
     var communityName = itemView.findViewById(R.id.tv_community_item_name) as TextView
     var communityTime = itemView.findViewById(R.id.tv_community_item_time) as TextView
+    var communityMore = itemView.findViewById(R.id.btn_community_item_more) as ImageView
 
     var communityMain1 = itemView.findViewById(R.id.img_community_item_main1) as ImageView
     var communityMain2 = itemView.findViewById(R.id.img_community_item_main2) as LinearLayout
