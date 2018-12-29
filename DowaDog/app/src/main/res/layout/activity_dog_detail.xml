@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DogDetailActivity"
+    android:background="#FFFFFF"
+    >
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            >
+
+            <ImageView
+                android:id="@+id/iv_top_dog_dog_detail_act"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:background="#000000"
+                android:scaleType="fitXY"
+                />
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="24dp">
+
+                <RelativeLayout
+                    android:id="@+id/btn_back_dog_detail_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    >
+
+                    <ImageView
+                        android:layout_margin="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/back_arrow_white"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btn_share_dog_detail_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/btn_heart_dog_detail_act"
+                    android:layout_centerVertical="true"
+                    >
+
+                    <ImageView
+                        android:layout_margin="4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/share_btn"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btn_heart_dog_detail_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/iv_heart_dog_detail_act"
+                        android:layout_margin="4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/hearts_line_icon"
+                        />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+            
+        </RelativeLayout>
+
+        <!--강아지 정보 박스-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--디데이-->
+            <RelativeLayout
+                android:layout_width="54dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
+                android:background="#ffc233">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="D - 10"
+                    android:textSize="15sp"
+                    android:textColor="#ffffff"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/nanum_extra_bold"
+                    />
+
+            </RelativeLayout>
+
+            <!--현재 입양 진행 중-->
+            <TextView
+                android:id="@+id/tv_present_adopt_progress_dog_detail_act"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="현재 입양 진행 중"
+                android:textSize="12sp"
+                android:textColor="#525252"
+                android:fontFamily="@font/nanum_light"
+                android:layout_marginTop="23dp"
+                android:layout_centerHorizontal="true"
+                />
+
+            <RelativeLayout
+                android:id="@+id/rl_area_box_dog_detail_act"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_present_adopt_progress_dog_detail_act"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true">
+                <!--지역-->
+                <TextView
+                    android:id="@+id/tv_area_dog_detail_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="[경기]"
+                    android:textSize="18sp"
+                    android:textColor="#434343"
+                    android:fontFamily="@font/nanum_extra_bold"/>
+
+                <!--견종-->
+                <TextView
+                    android:id="@+id/tv_kind_dog_detail_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="보더콜리"
+                    android:layout_toRightOf="@id/tv_area_dog_detail_act"
+                    android:layout_marginLeft="4dp"
+                    android:textSize="18sp"
+                    android:textColor="#434343"
+                    android:fontFamily="@font/nanum_extra_bold"/>
+
+            </RelativeLayout>
+
+            <!--동물 설명-->
+            <TextView
+                android:id="@+id/tv_description_dog_detail_act"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#525252"
+                android:fontFamily="@font/nanum_bold"
+                android:layout_below="@+id/rl_area_box_dog_detail_act"
+                android:layout_marginTop="12dp"
+                android:layout_centerHorizontal="true"
+                android:text=" 사람을 좋아해서 활발하고 밝은 성격이에요! "
+                />
+
+            <!--성별, 개 Or 고양이, weight-->
+            <LinearLayout
+                android:layout_below="@id/tv_description_dog_detail_act"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="23dp">
+
+                <ImageView
+                    android:id="@+id/iv_sex_dog_detail_act"
+                    android:src="@drawable/findingdetail_man_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/tv_sex_dog_detail_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="남아"
+                    android:textSize="15sp"
+                    android:textColor="#434343"
+                    android:layout_marginLeft="6dp"
+                    android:fontFamily="@font/nanum_round"
+                    android:layout_gravity="center_vertical"/>
+
+                <ImageView
+                    android:id="@+id/iv_dog_or_cat_dog_detail_act"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/findingdetail_dog_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/tv_age_dog_detail_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3살"
+                    android:textSize="15sp"
+                    android:textColor="#434343"
+                    android:layout_marginLeft="6dp"
+                    android:fontFamily="@font/nanum_round"
+                    android:layout_gravity="center_vertical"/>
+
+                <ImageView
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/findingdetail_weight_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/tv_weight_dog_detail_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5kg"
+                    android:textSize="15sp"
+                    android:textColor="#434343"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="6dp"
+                    android:fontFamily="@font/nanum_round"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+        
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="12dp"
+            android:background="#fafafa"/>
+
+        <!--공고 번호-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="공고 번호"
+                android:textSize="14sp"
+                android:textColor="#707070"
+                android:fontFamily="@font/nanum_bold"/>
+
+            <TextView
+                android:id="@+id/tv_announcement_number_dog_detail_act"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0000-0000-0000"
+                android:textSize="14sp"
+                android:textColor="#434343"
+                android:fontFamily="@font/nanum_light"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+
+        <!--공고 기간-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="공고 기간"
+                android:textSize="14sp"
+                android:textColor="#707070"
+                android:fontFamily="@font/nanum_bold"/>
+
+            <TextView
+                android:id="@+id/tv_term_dog_detail_act"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2018.10.20 - 2018.11.05 "
+                android:textSize="14sp"
+                android:textColor="#434343"
+                android:fontFamily="@font/nanum_light"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+
+        <!--발견 장소-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="발견 장소"
+                android:textSize="14sp"
+                android:textColor="#707070"
+                android:fontFamily="@font/nanum_bold"/>
+
+            <TextView
+                android:id="@+id/tv_discovery_spot_dog_detail_act"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="서울대공원"
+                android:textSize="14sp"
+                android:textColor="#434343"
+                android:fontFamily="@font/nanum_light"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+
+        <!--보호 장소-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="보호 장소"
+                android:textSize="14sp"
+                android:textColor="#707070"
+                android:fontFamily="@font/nanum_bold"/>
+
+            <TextView
+                android:id="@+id/tv_protect_spot_dog_detail_act"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="강서구 보호소"
+                android:textSize="14sp"
+                android:textColor="#434343"
+                android:fontFamily="@font/nanum_light"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                android:id="@+id/tv_protect_spot_telephone_num_dog_detail_act"
+                android:layout_below="@+id/tv_protect_spot_dog_detail_act"
+                android:layout_marginTop="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="02) 000-0000"
+                android:textSize="14sp"
+                android:textColor="#434343"
+                android:fontFamily="@font/nanum_light"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/btn_adopt_dog_detail_act"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:background="#ffc233">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="입양 하기"
+            android:textSize="18sp"
+            android:textColor="#ffffff"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/nanum_extra_bold"
+            />
+
+
+    </RelativeLayout>
+
+    
+    
+    
+
+
+
+
+
+</RelativeLayout>

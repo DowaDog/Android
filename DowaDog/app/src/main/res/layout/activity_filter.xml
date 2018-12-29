@@ -196,7 +196,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tv_rigion_filter_act"
+                    android:id="@+id/tv_region_filter_act"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -210,7 +210,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@+id/tv_rigion_filter_act"
+                    android:layout_below="@+id/tv_region_filter_act"
                     android:layout_marginBottom="40dp"
                     android:layout_marginTop="20dp"
                     android:orientation="vertical">
