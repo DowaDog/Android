@@ -6,16 +6,93 @@
     android:layout_height="match_parent"
     xmlns:attrs="http://schemas.android.com/apk/res-auto"
     tools:context=".communitydetail.CommunityDetailActivity"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:id="@+id/linearLayout_focus"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="0px"
+        android:orientation="horizontal"
+        android:layout_height="0px"/>
 
     <ScrollView
+        android:id="@+id/sv_community_detail_act"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="55dp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:elevation="3dp"
+                android:background="#FFFFFF">
+                <!--백버튼-->
+                <RelativeLayout
+                    android:id="@+id/btn_back_community_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/back_arrow_btn"
+                        android:layout_margin="16dp"/>
+                </RelativeLayout>    
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_writter2_community_detail_act"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@color/colorPrimary"
+                    android:layout_marginLeft="16dp"
+                    android:layout_centerVertical="true"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_writter2_community_detail_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="작성자이름"
+                    android:fontFamily="@font/nanum_bold"
+                    android:textColor="#434343"
+                    android:textSize="14sp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/iv_writter2_community_detail_act"
+                    android:layout_marginLeft="8dp"
+                    />
+
+                <!--백버튼-->
+                <RelativeLayout
+                    android:id="@+id/btn_three_dot_community_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/view_more_icon_1226"
+                        android:layout_margin="16dp"/>
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+            
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -38,28 +115,12 @@
                     app:piv_animationType="drop"
                     app:piv_dynamicCount="true"
                     app:piv_interactiveAnimation="true"
-                    app:piv_selectedColor="#00dada"
+                    app:piv_selectedColor="#ffc233"
                     app:piv_unselectedColor="#FFFFFF"
                     app:piv_viewPager="@id/vp_community_detail_act"
                     attrs:piv_padding="12dp"
                     attrs:piv_radius="4dp"
                     />
-
-                <!--백버튼-->
-                <RelativeLayout
-                    android:id="@+id/btn_back_community_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    >
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/back_arrow_btn"
-                        android:layout_margin="16dp"/>
-                </RelativeLayout>
-
-                <!--인디케이터 들어가야함-->
 
             </RelativeLayout>
 
@@ -81,6 +142,7 @@
                     android:text="우리집에 처음 온 날,,"
                     android:textColor="#434343"
                     android:textSize="18dp"
+                    android:fontFamily="@font/nanum_extra_bold"
 
                     />
 
@@ -92,6 +154,7 @@
                     android:layout_below="@id/tv_title_community_detail_act"
                     android:layout_marginTop="5dp"
                     android:text="2019.01.09"
+                    android:fontFamily="@font/nanum_round"
                     android:textColor="#a6a6a6"
                     android:textSize="14dp"/>
 
@@ -104,10 +167,9 @@
                     android:textColor="#484848"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="abc"
+                    android:text="글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까"
+                    android:fontFamily="@font/nanum_round"
                     android:layout_marginBottom="24dp"/>
-
-
             </RelativeLayout>
 
             <View
@@ -115,7 +177,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:background="#c7c7c7"/>
-
+            
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_comment_community_detail_act"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+            </android.support.v7.widget.RecyclerView>
 
             <!--리사이클러뷰 들어가야함-->
         </LinearLayout>
@@ -135,7 +203,7 @@
 
         <!--서클이미지 뷰 들어가야함-->
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_writter_community_detail_act"
+            android:id="@+id/iv_writter_comment_community_detail_act"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginLeft="16dp"
@@ -147,9 +215,10 @@
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/iv_writter_community_detail_act"
+            android:layout_toRightOf="@+id/iv_writter_comment_community_detail_act"
             android:layout_marginHorizontal="16dp"
-            android:background="@drawable/community_detail_act_comment_box">
+            android:background="@drawable/community_detail_act_comment_box"
+            >
 
             <EditText
                 android:id="@+id/et_comment_write_community_detail_act"
@@ -177,11 +246,13 @@
                     android:layout_centerInParent="true"
                     android:layout_marginHorizontal="16dp"
                     android:textSize="15dp"
-                    android:textColor="#00dada"/>
+                    android:textColor="#ffc233"/>
             </RelativeLayout>
         </RelativeLayout>
 
     </RelativeLayout>
+
+
 
 
 
