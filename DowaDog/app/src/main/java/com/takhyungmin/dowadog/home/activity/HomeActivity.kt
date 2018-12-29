@@ -8,7 +8,7 @@ import android.view.Gravity
 import android.view.View
 import android.view.WindowManager
 import com.takhyungmin.dowadog.R
-import com.takhyungmin.dowadog.apply.online.ApplyOnlineFirstActivity
+import com.takhyungmin.dowadog.apply.online.ApplyOnlineMainActivity
 import com.takhyungmin.dowadog.community.CommunityFragment
 import com.takhyungmin.dowadog.contents.fragment.ContentsFragment
 import com.takhyungmin.dowadog.presenter.activity.HomeActivityPresenter
@@ -91,7 +91,7 @@ class HomeActivity : AppCompatActivity() {
         btn_navi_adopt.setOnClickListener {
             if (drawer_home.isDrawerOpen(Gravity.START))
                 drawer_home.closeDrawer(Gravity.START)
-            startActivity(Intent(this, ApplyOnlineFirstActivity::class.java))
+            startActivity(Intent(this, ApplyOnlineMainActivity::class.java))
         }
 
     }
