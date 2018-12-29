@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".apply.online.ApplyOnlineFirstActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -44,14 +46,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="7"
-        android:layout_marginStart="16dp"
+
         android:layout_marginTop="25dp"
         android:orientation="vertical">
 
         <LinearLayout
+            android:layout_marginStart="16dp"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
@@ -90,15 +92,248 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_height="69dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="69dp">
+            <RelativeLayout
+                android:id="@+id/layout_apply_first_frame"
+                android:layout_width="69dp"
+                android:layout_height="69dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_apply_first"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/pic1"
+                />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_toRightOf="@+id/layout_apply_first_frame"
+                android:layout_width="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_height="match_parent">
+
+                <View
+                    android:id="@+id/view_online_apply_first_baseline"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_centerVertical="true"
+                    />
+
+                <TextView
+                    android:text="피카츄"
+                    android:includeFontPadding="false"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/nanum_extra_bold"
+                    android:id="@+id/tv_online_apply_first_name"
+                    android:layout_above="@+id/view_online_apply_first_baseline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+                <TextView
+                    android:text="(남자, 23세)"
+                    android:layout_toRightOf="@+id/tv_online_apply_first_name"
+                    android:includeFontPadding="false"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/nanum_round"
+                    android:textSize="13sp"
+                    android:id="@+id/tv_online_apply_first_age"
+                    android:layout_above="@+id/view_online_apply_first_baseline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                
+                <RelativeLayout
+                    android:layout_width="78dp"
+                    android:layout_height="26dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/online_apply_first_edit">
+
+                    <TextView
+                        android:text="회원정보 수정"
+                        android:fontFamily="@font/nanum_round"
+                        android:textSize="11sp"
+                        android:textColor="#ffc233"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3">
+            android:layout_weight="6">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_marginStart="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#727272"
+                        android:text="연락처"
+                        android:fontFamily="@font/nanum_bold"
+                        android:layout_centerVertical="true"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_online_apply_first_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="010-3643-9714"
+                        android:textSize="14sp"
+                        android:textColor="#434343"
+                        android:fontFamily="@font/nanum_round"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginEnd="16dp"
+                        />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#727272"
+                        android:text="이메일"
+                        android:fontFamily="@font/nanum_bold"
+                        android:layout_centerVertical="true"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_online_apply_first_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="sket8993@naver.com"
+                        android:textSize="14sp"
+                        android:textColor="#434343"
+                        android:fontFamily="@font/nanum_round"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginEnd="16dp"
+                        />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#727272"
+                        android:text="주소"
+                        android:fontFamily="@font/nanum_bold"
+                        android:layout_centerVertical="true"
+                        />
+
+                    <EditText
+                        android:id="@+id/edit_online_apply_first_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="입력해주세요"
+                        android:background="@null"
+                        android:textSize="14sp"
+                        android:textColor="#434343"
+                        android:fontFamily="@font/nanum_round"
+                        android:layout_centerVertical="true"
+                        android:textDirection="rtl"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginEnd="16dp"
+                        />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#727272"
+                        android:text="직업"
+                        android:fontFamily="@font/nanum_bold"
+                        android:layout_centerVertical="true"
+                        />
+
+                    <EditText
+                        android:id="@+id/edit_online_apply_first_vocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="입력해주세요"
+                        android:textDirection="rtl"
+                        android:background="@null"
+                        android:textSize="14sp"
+                        android:textColor="#434343"
+                        android:fontFamily="@font/nanum_round"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginEnd="16dp"
+                        />
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
@@ -120,7 +355,78 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="14"></RelativeLayout>
+            android:layout_weight="14">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="가족 동의 여부"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/nanum_bold"
+                android:textSize="14sp"
+                />
+            
+            <LinearLayout
+                android:id="@+id/layout_online_apply_first_agree"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginEnd="10dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/layout_online_apply_first_disagree"
+                android:orientation="horizontal">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#707070"
+                    android:text="동의함"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/nanum_round"
+
+                    />
+
+                <ImageView
+                    android:id="@+id/btn_online_apply_agree_check"
+                    android:layout_width="24dp"
+                    android:layout_height="match_parent"
+                    android:src="#474747"
+                    android:layout_marginStart="5dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_online_apply_first_disagree"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+
+                android:layout_marginEnd="16dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#707070"
+                    android:text="동의하지 않음"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/nanum_round"
+
+                    />
+
+                <ImageView
+                    android:id="@+id/btn_online_apply_disagree_check"
+                    android:layout_width="24dp"
+                    android:layout_height="match_parent"
+                    android:src="#474747"
+                    android:layout_marginStart="5dp"
+                    />
+            </LinearLayout>
+
+        </RelativeLayout>
 
 
 
@@ -139,7 +445,7 @@
             android:includeFontPadding="false"
             android:layout_centerInParent="true"
             android:textColor="#ffffff"
-            android:text="작성하기"
+            android:text="다음"
             />
 
     </RelativeLayout>

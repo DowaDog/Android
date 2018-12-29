@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".apply.online.ApplyOnlineMainActivity">
+    tools:context=".apply.online.ApplyOnlineMainActivity"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -38,11 +39,57 @@
             android:textSize="18sp" />
 
     </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="103"
+            android:background="@drawable/adopt_background_img"
+            >
+
+            <View
+                android:id="@+id/view_online_apply_main_baseline"
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_centerInParent="true"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_online_apply_main_infotext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/view_online_apply_main_baseline"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="13dp"
+                android:textSize="24sp"
+                android:textColor="#707070"
+                android:includeFontPadding="false"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textColor="#707070"
+                android:fontFamily="@font/nanum_light"
+                android:text="다음과 같은 단계로"
+                android:layout_above="@+id/tv_online_apply_main_infotext"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="12dp"
+                />
+
+        </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/btn_apply_online_main_write"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="0dp"
+        android:layout_weight="11"
         android:layout_alignParentBottom="true"
         android:background="#ffc223">
         <TextView
@@ -58,4 +105,6 @@
 
     </RelativeLayout>
 
-</RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
