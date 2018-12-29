@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import com.bumptech.glide.RequestManager
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.community.model.CommunityItem
-import com.takhyungmin.dowadog.communitywrite.CustomDialog
 import com.takhyungmin.dowadog.presenter.fragment.CommunityFragmentPresenter
+import com.takhyungmin.dowadog.utils.CustomDialog
 
 class CommunityAdapter(var communityItems : ArrayList<CommunityItem>, var requestManager: RequestManager, var communityFragmentPresenter: CommunityFragmentPresenter, var context : Context) : RecyclerView.Adapter<CommunityViewHolder>() {
 
