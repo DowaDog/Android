@@ -5,5 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="status1">#707070</color>
     <color name="status2">#ffffff</color>
+    <color name="mainCarrotColor">#ffc233</color>
+    <color name="mainGrayColor">#f0f0f0</color>
 
 </resources>

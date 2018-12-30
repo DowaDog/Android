@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:attrs="http://schemas.android.com/apk/res-auto"
+    tools:context=".ApplyOnlineThirdSelectAdoptActivity"
+    android:background="#FFFFFF"
+    >
+
+    <!--상단바-->
+    <RelativeLayout
+        android:id="@+id/rl_top_bar_apply_online_third_select_adopt_act"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingBottom="4dp"
+        android:elevation="1dp"
+        android:background="#FFFFFF"
+        >
+        <RelativeLayout
+            android:id="@+id/btn_back_apply_online_third_select_adopt_act"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="16dp"
+                android:src="@drawable/back_arrow_btn" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/nanum_bold"
+            android:text="온라인 신청서"
+            android:textColor="#707070"
+            android:textSize="18dp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/rl_top_bar_apply_online_third_select_adopt_act"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_next_apply_online_third_select_adopt_act"
+        android:orientation="vertical"
+        android:layout_marginLeft="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="26dp"
+            android:textColor="#ffc233"
+            android:fontFamily="@font/nanum_extra_bold"
+            android:text="3단계,"
+            android:layout_marginTop="25dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="26sp"
+            android:textColor="#242424"
+            android:fontFamily="@font/nanum_light"
+            android:text="읽고 동의를 선택해주세요."
+            android:layout_marginTop="8dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textSize="18sp"
+                android:textColor="#ffc233"
+                android:fontFamily="@font/nanum_bold"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="#707070"
+                android:layout_marginLeft="5dp"
+                android:text="표시는 필수항목 입니다."
+                android:fontFamily="@font/nanum_light"
+                android:layout_gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="140dp"
+            >
+
+            <TextView
+                android:id="@+id/tv_star_second_apply_online_third_select_adopt_act"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textSize="18sp"
+                android:textColor="#ffc233"
+                android:fontFamily="@font/nanum_bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tv_star_second_apply_online_third_select_adopt_act"
+                android:textSize="16sp"
+                android:textColor="#434343"
+                android:layout_marginLeft="5dp"
+                android:text="입양 후 한 달에 한 번 정도"
+                android:fontFamily="@font/nanum_round"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+
+            <TextView
+                android:id="@+id/tv_second_question_apply_online_third_select_adopt_act"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="#434343"
+                android:layout_marginLeft="14dp"
+                android:layout_centerVertical="true"
+                android:text="입양일기를 작성하는 것에 동의하십니까?"
+                android:fontFamily="@font/nanum_round"
+                />
+
+            <RelativeLayout
+                android:id="@+id/btn_check_box_apply_online_third_select_adopt_act"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tv_second_question_apply_online_third_select_adopt_act"
+                android:layout_marginLeft="4dp">
+
+                <ImageView
+                    android:id="@+id/iv_check_box_apply_online_third_select_adopt_act"
+                    android:layout_margin="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/adopt_3step_check_gray"
+                    android:layout_centerVertical="true"
+                    />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <!--다음 버튼-->
+    <RelativeLayout
+        android:id="@+id/btn_next_apply_online_third_select_adopt_act"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#e2e2e2"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="다음"
+            android:fontFamily="@font/nanum_extra_bold"
+            android:textSize="18dp"
+            android:textColor="#ffffff"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

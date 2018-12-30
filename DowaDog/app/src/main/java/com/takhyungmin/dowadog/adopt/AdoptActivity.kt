@@ -1,8 +1,10 @@
-package com.takhyungmin.dowadog
+package com.takhyungmin.dowadog.adopt
 
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import com.takhyungmin.dowadog.BaseActivity
+import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.utils.CustomSingleResDialog
 import kotlinx.android.synthetic.main.activity_adopt.*
 

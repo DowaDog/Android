@@ -2,65 +2,74 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#47000000">
+    >
 
     <RelativeLayout
-        android:layout_width="275dp"
-        android:layout_height="134dp"
-        android:background="@drawable/custom_dialog_box"
-        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         >
 
-
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/ll_bottom_box_single_response_custom_dialog">
-
-            <TextView
-                android:id="@+id/tv_description_single_response_custom_dialog"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="사진을 삭제하시겠습니까"
-                android:textSize="17sp"
-                android:fontFamily="@font/nanum_bold"
-                android:textColor="#434343"
-                android:layout_centerInParent="true"
-                />
-
-        </RelativeLayout>
-
-
-        <LinearLayout
-            android:id="@+id/ll_bottom_box_single_response_custom_dialog"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:orientation="horizontal"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/custom_dialog_bottom_box">
+            android:layout_width="275dp"
+            android:layout_height="134dp"
+            android:background="@drawable/custom_dialog_box"
+            android:layout_centerInParent="true"
+            >
 
 
             <RelativeLayout
-                android:id="@+id/btn_response_single_response_custom_dialog"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_above="@+id/ll_bottom_box_single_response_custom_dialog">
 
                 <TextView
-                    android:id="@+id/tv_right_single_response_custom_dialog"
+                    android:id="@+id/tv_description_single_response_custom_dialog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="확인"
-                    android:layout_centerInParent="true"
-                    android:textColor="#FFFFFF"
+                    android:text="사진을 삭제하시겠습니까"
                     android:textSize="17sp"
-                    android:fontFamily="@font/nanum_bold"/>
+                    android:fontFamily="@font/nanum_bold"
+                    android:textColor="#434343"
+                    android:layout_centerInParent="true"
+                    />
 
             </RelativeLayout>
 
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_bottom_box_single_response_custom_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/custom_dialog_bottom_box">
+
+
+                <RelativeLayout
+                    android:id="@+id/btn_response_single_response_custom_dialog"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_right_single_response_custom_dialog"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="확인"
+                        android:layout_centerInParent="true"
+                        android:textColor="#FFFFFF"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/nanum_bold"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
 
     </RelativeLayout>
+
+
 
 </RelativeLayout>
