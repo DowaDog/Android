@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="160dp"
-    android:layout_height="186dp"
-    android:layout_marginHorizontal="4dp">
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="4dp"
+    android:orientation="vertical"
+    android:background="@drawable/rv_item_urgent_animal_act_full_box"
+    >
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:id="@+id/rl_aaa"
+        android:layout_width="match_parent"
+        android:layout_height="132dp"
+        >
 
         <ImageView
+            android:id="@+id/img_item_urgent_ani_act"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FF02"/>
+            android:scaleType="fitXY"
+            android:cropToPadding="true"
+            android:background="@drawable/abc"
+            android:src="@drawable/man_icon_1227"
+            />
 
         <RelativeLayout
             android:layout_width="36dp"
@@ -22,6 +31,7 @@
             android:background="@drawable/urgent_ani_act_day_box">
 
             <TextView
+                android:id="@+id/tv_day_rv_item_urgent_ani_act"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -31,45 +41,69 @@
 
         </RelativeLayout>
 
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/urgent_ani_act_round_box"
+        android:layout_below="@+id/rl_aaa"
+        >
+
         <RelativeLayout
+            android:id="@+id/rl_image_rv_item_urgent_ani_act"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_alignParentBottom="true"
-            android:background="#FFFFFF">
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp">
 
             <RelativeLayout
-                android:id="@+id/rl_image_urgent_ani_act"
-                android:layout_width="match_parent"
+                android:id="@+id/rl_heart_touch_rv_item_urgent_ani_act"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp">
+                android:layout_marginStart="2dp">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:id="@+id/img_heart_rv_item_urgent_ani_act"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/urgent_ani_act_heart_color"
+                    />
 
             </RelativeLayout>
 
-            <TextView
+            <ImageView
+                android:id="@+id/img_kind_rv_item_urgent_ani_act"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/img_gender_rv_item_urgent_ani_act"
+                android:src="@drawable/dog_icon_1227" />
+
+            <ImageView
+                android:id="@+id/img_gender_rv_item_urgent_ani_act"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_alignParentRight="true"
-                android:layout_below="@+id/rl_image_urgent_ani_act"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="16dp"
-                android:fontFamily="@font/nanum_round"
-                android:text="[경기] 믹스견"
-                android:textColor="#434343"
-                android:textSize="14sp" />
+                android:src="@drawable/man_icon_1227" />
+
         </RelativeLayout>
 
+        <TextView
+            android:id="@+id/tv_region_rv_item_urgent_ani_act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/rl_image_rv_item_urgent_ani_act"
+            android:fontFamily="@font/nanum_round"
+            android:text="[경기] 믹스견"
+            android:textColor="#434343"
+            android:textSize="14sp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="8dp"/>
     </RelativeLayout>
 
 </RelativeLayout>
