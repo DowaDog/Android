@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/rl_all_box_scrap_act"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="85dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginVertical="16dp">
+
+        <TextView
+            android:id="@+id/tv_title_scrap_act"
+            android:layout_marginHorizontal="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="반려동물과 교감하는 방법"
+            android:textSize="16sp"
+            android:textColor="#484848"
+            android:fontFamily="@font/nanum_bold"
+            android:layout_centerInParent="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_date_scrap_act"
+            android:layout_marginHorizontal="16dp"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_height="wrap_content"
+            android:text="반려동물과 교감하는 방법"
+            android:textSize="14sp"
+            android:textColor="#a6a6a6"
+            android:fontFamily="@font/nanum_round"
+            android:layout_below="@+id/tv_title_scrap_act"
+            />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
