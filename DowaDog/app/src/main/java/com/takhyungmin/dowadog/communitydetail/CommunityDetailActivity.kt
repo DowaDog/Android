@@ -160,8 +160,8 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
     private fun setRVAdapter() {
 
         var a: ArrayList<CommunityCommentData> = ArrayList()
-        a.add(CommunityCommentData("https://s3.ap-northeast-2.amazonaws.com/liivlive/kb_login_profile_img.png", "김숙자", "이바보야진짜아니야아직도나를ㄹ그렇게몰라", "6시간전"))
-        a.add(CommunityCommentData("https://s3.ap-northeast-2.amazonaws.com/liivlive/kb_login_profile_img.png", "김2숙자", "이바보야진짜아니야아직도나를ㄹ그렇게몰라", "6시간전"))
+        a.add(CommunityCommentData("https://s3.ap-northeast-2.amazonaws.com/liivlive/kb_login_profile_img.png", "김숙자", "이바보야진", "6시간전"))
+        a.add(CommunityCommentData("https://s3.ap-northeast-2.amazonaws.com/liivlive/kb_login_profile_img.png", "김2숙자", "이바보야진짜아니야아직도나를ㄹ그렇게몰라 이바보야진짜아니야아직도나를ㄹ그렇게몰라 이바보야진짜아니야아직도나를ㄹ그렇게몰라", "6시간전"))
         a.add(CommunityCommentData("https://s3.ap-northeast-2.amazonaws.com/liivlive/kb_login_profile_img.png", "김2숙자", "이바보야진짜아니야아직도나를ㄹ그렇게몰라", "6시간전"))
         a.add(CommunityCommentData("https://s3.ap-northeast-2.amazonaws.com/liivlive/kb_login_profile_img.png", "김2숙자", "이바보야진짜아니야아직도나를ㄹ그렇게몰라", "6시간전"))
         a.add(CommunityCommentData("https://s3.ap-northeast-2.amazonaws.com/liivlive/kb_login_profile_img.png", "김2숙자", "이바보야진짜아니야아직도나를ㄹ그렇게몰라", "6시간전"))
@@ -169,6 +169,7 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
         communityDetailRecyclerViewAdapter = CommunityDetailRecyclerViewAdapter(this@CommunityDetailActivity, a)
         rv_comment_community_detail_act.adapter = communityDetailRecyclerViewAdapter
         rv_comment_community_detail_act.layoutManager = LinearLayoutManager(applicationContext, LinearLayout.VERTICAL, false)
+
     }
 
 }

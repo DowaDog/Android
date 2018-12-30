@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    android:id="@+id/rl_root_view_rv_item_urgent_anmal_act_box"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="160dp"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="4dp"
     android:orientation="vertical"
     android:background="@drawable/rv_item_urgent_animal_act_full_box"
+    android:elevation="1dp"
+    android:layout_marginBottom="16dp"
     >
 
     <RelativeLayout
@@ -54,21 +58,22 @@
             android:id="@+id/rl_image_rv_item_urgent_ani_act"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="8dp">
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="3dp">
 
             <RelativeLayout
                 android:id="@+id/rl_heart_touch_rv_item_urgent_ani_act"
-                android:layout_width="30dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp">
 
                 <ImageView
                     android:id="@+id/img_heart_rv_item_urgent_ani_act"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
                     android:background="@drawable/urgent_ani_act_heart_color"
                     />
 
@@ -79,7 +84,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@+id/img_gender_rv_item_urgent_ani_act"
-                android:src="@drawable/dog_icon_1227" />
+                android:src="@drawable/dog_icon_1227"
+                android:layout_centerVertical="true"/>
 
             <ImageView
                 android:id="@+id/img_gender_rv_item_urgent_ani_act"
@@ -87,7 +93,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/man_icon_1227" />
+                android:src="@drawable/man_icon_1227"
+                android:layout_centerVertical="true"/>
 
         </RelativeLayout>
 
@@ -95,15 +102,28 @@
             android:id="@+id/tv_region_rv_item_urgent_ani_act"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_below="@+id/rl_image_rv_item_urgent_ani_act"
             android:fontFamily="@font/nanum_round"
-            android:text="[경기] 믹스견"
+            android:layout_toLeftOf="@+id/tv_kind_dog_rv_item_urgent_ani_act"
+            android:text="[경기]"
             android:textColor="#434343"
             android:textSize="14sp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/tv_kind_dog_rv_item_urgent_ani_act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/rl_image_rv_item_urgent_ani_act"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="0dp"
+            android:fontFamily="@font/nanum_round"
+            android:text="믹스견"
+
+            android:textColor="#434343"
+            android:textSize="14sp" />
     </RelativeLayout>
 
 </RelativeLayout>

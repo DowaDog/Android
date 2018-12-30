@@ -1,7 +1,10 @@
 package com.takhyungmin.dowadog.communitydetail
 
 import android.content.Context
+import android.graphics.Typeface
 import android.support.v7.widget.RecyclerView
+import android.text.SpannableStringBuilder
+import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.utils.CustomTypeSpan
 
 
 class CommunityDetailRecyclerViewAdapter(var ctx: Context, var dataList: ArrayList<CommunityCommentData>) : RecyclerView.Adapter<CommunityDetailRecyclerViewAdapter.CommunityDetailRecyclerViewHolder>() {
@@ -25,6 +29,17 @@ class CommunityDetailRecyclerViewAdapter(var ctx: Context, var dataList: ArrayLi
 
         Glide.with(ctx).load(dataList[position].img).into(holder.writerIV)
 
+
+
+        val font1 = Typeface.createFromAsset(ctx.assets, "nanum_square_bold.ttf")
+        val font2 = Typeface.createFromAsset(ctx.assets, "nanum_square_round_r.ttf")
+
+        val ssb = SpannableStringBuilder(dataList[position].writter + "  " + dataList[position].description)
+
+        ssb.setSpan(CustomTypeSpan("", font1), 0, dataList[position].writter.length , Spanned.SPAN_EXCLUSIVE_INCLUSIVE)
+        ssb.setSpan(CustomTypeSpan("", font2), dataList[position].writter.length, (dataList[position].writter + dataList[position].description).length + 2, Spanned.SPAN_EXCLUSIVE_INCLUSIVE)
+
+        holder.contentTV.text = ssb
         holder.dataTV.text = dataList[position].date
 
     }

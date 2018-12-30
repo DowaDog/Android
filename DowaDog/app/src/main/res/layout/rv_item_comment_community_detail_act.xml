@@ -28,6 +28,7 @@
             android:textSize="15sp"
             android:textColor="#484848"
             android:fontFamily="@font/nanum_bold"
+            android:lineSpacingExtra="4dp"
             />
 
         <TextView
