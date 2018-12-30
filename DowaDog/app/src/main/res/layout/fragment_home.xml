@@ -1,7 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/adopt_background_img"
+        >
+
+        <LinearLayout
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_light"
+                android:textColor="#242424"
+                android:textSize="25sp"
+                android:includeFontPadding="false"
+                android:text="오늘"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"                android:layout_marginTop="9dp"
+                android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="250"
+                android:fontFamily="@font/nanum_extra_bold"
+                android:textColor="#ffc233"
+                android:includeFontPadding="false"
+                android:textSize="35sp"
+                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="마리"
+                    android:fontFamily="@font/nanum_extra_bold"
+                    android:textColor="#ffc233"
+                    android:includeFontPadding="false"
+                    android:textSize="25sp"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="가"
+                    android:fontFamily="@font/nanum_light"
+                    android:textColor="#242424"
+                    android:includeFontPadding="false"
+                    android:textSize="25sp"
+                    android:gravity="center"
+                    />
 
 
-</LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_light"
+                android:layout_marginTop="9dp"
+                android:textColor="#242424"
+                android:includeFontPadding="false"
+                android:textSize="25sp"
+                android:text="구조되었어요!"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_light"
+                android:layout_marginTop="9dp"
+                android:textColor="#707070"
+                android:includeFontPadding="false"
+                android:textSize="15sp"
+                android:text="유기 동물의 새로운 가족이 되어주세요!"
+                />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="204dp"
+            android:layout_height="43dp"
+            android:background="@drawable/fragment_home_btn_background"
+            android:elevation="3dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="95dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:textColor="#ffffff"
+                android:lineSpacingExtra="2sp"
+                android:fontFamily="@font/nanum_bold"
+                android:layout_centerInParent="true"
+                android:text="새 가족 되기"
+                />
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:alpha="0"
+        android:id="@+id/layout_home_fragment_dim"
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#78262626"
+        />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+
+        <RelativeLayout
+            android:id="@+id/btn_home_fragment_slide"
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/fragment_home_slide_background"
+            android:elevation="6dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/drawer_btn"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:id="@+id/view_home_fragment_baseline"
+                android:layout_above="@+id/tv_home_fragment_slide_content"
+                />
+
+            <TextView
+                android:id="@+id/tv_home_fragment_slide_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#838383"
+                android:lineSpacingExtra="2sp"
+                android:fontFamily="@font/nanum_light"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="18dp"
+                android:includeFontPadding="false"
+                android:text="슬라이더 내용을 확인해주세요!"
+                />
+            
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="7dp"
+                android:layout_height="7dp"
+                android:background="#ffc233"
+                android:layout_toLeftOf="@+id/tv_home_fragment_slide_content"
+                android:layout_below="@+id/view_home_fragment_baseline"
+                android:layout_marginEnd="7dp"
+                />
+        </RelativeLayout>
+
+        <include
+
+            layout="@layout/fragment_home_slide_up"/>
+
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>
