@@ -21,7 +21,7 @@ class CustomCommunityDetailDialog (context: Context,
 
         val lpWindow = WindowManager.LayoutParams()
         lpWindow.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND
-        lpWindow.dimAmount = 0.8f
+        lpWindow.dimAmount = 0.55f
         window!!.attributes = lpWindow
 
         setContentView(R.layout.custom_dialog_community_detail)

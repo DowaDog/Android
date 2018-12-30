@@ -1,8 +1,10 @@
-package com.takhyungmin.dowadog
+package com.takhyungmin.dowadog.filter
 
 import android.os.Bundle
 import android.view.View
 import android.widget.SeekBar
+import com.takhyungmin.dowadog.BaseActivity
+import com.takhyungmin.dowadog.R
 import kotlinx.android.synthetic.main.activity_filter.*
 
 class FilterActivity : BaseActivity(), View.OnClickListener {

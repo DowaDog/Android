@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:attrs="http://schemas.android.com/apk/res-auto"
+    tools:context=".communitydetail.CommunityDetailActivity"
+    android:background="#FFFFFF"
+    >
+
+    <RelativeLayout
+        android:layout_below="@+id/rl_top_bar_apply_online_third_temp_or_adopt_act"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_next_apply_online_third_temp_or_adopt_act"
+        android:background="@drawable/adopt_background_img"></RelativeLayout>
+
+    <!--상단바-->
+    <RelativeLayout
+        android:id="@+id/rl_top_bar_apply_online_third_temp_or_adopt_act"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingBottom="4dp"
+        android:elevation="1dp"
+        android:background="#FFFFFF"
+        >
+        <RelativeLayout
+            android:id="@+id/btn_back_apply_online_third_temp_or_adopt_act"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="16dp"
+                android:src="@drawable/back_arrow_btn" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/nanum_bold"
+            android:text="온라인 신청서"
+            android:textColor="#707070"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="25dp">
+
+                <TextView
+                    android:id="@+id/tv_first_text_apply_online_third_temp_or_adopt_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_bold"
+                    android:text="임보 또는 입양"
+                    android:textColor="#707070"
+                    android:textSize="26sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tv_first_text_apply_online_third_temp_or_adopt_act"
+                    android:fontFamily="@font/nanum_light"
+                    android:text="을"
+                    android:textColor="#707070"
+                    android:textSize="26sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_first_text_apply_online_third_temp_or_adopt_act"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/nanum_light"
+                    android:text="선택해주세요."
+                    android:textColor="#707070"
+                    android:textSize="26sp" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/btn_temp_protect_apply_online_third_temp_ro_adopt_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/iv_temp_protect_apply_online_third_temp_ro_adopt_act"
+                        android:layout_width="94dp"
+                        android:layout_height="94dp"
+                        android:src="#f0f0f0" />
+
+                    <TextView
+                        android:id="@+id/tv_temp_protect_apply_online_third_temp_ro_adopt_act"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/nanum_bold"
+                        android:lineSpacingExtra="2sp"
+                        android:text="임시보호"
+                        android:textColor="#707070"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btn_adopt_apply_online_third_temp_or_adopt_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12sp"
+                    android:layout_toRightOf="@+id/btn_temp_protect_apply_online_third_temp_ro_adopt_act">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/iv_adopt_apply_online_third_temp_or_adopt_act"
+                        android:layout_width="94dp"
+                        android:layout_height="94dp"
+                        android:src="#f0f0f0" />
+
+                    <TextView
+                        android:id="@+id/tv_adopt_apply_online_third_temp_or_adopt_act"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/nanum_bold"
+                        android:lineSpacingExtra="2sp"
+                        android:text="입양"
+                        android:textColor="#707070"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/btn_next_apply_online_third_temp_or_adopt_act"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#e2e2e2"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="다음"
+            android:fontFamily="@font/nanum_extra_bold"
+            android:textSize="18sp"
+            android:textColor="#ffffff"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
