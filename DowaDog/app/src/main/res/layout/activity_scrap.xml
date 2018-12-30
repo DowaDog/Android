@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".scrap.ScrapActivity"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:elevation="1dp">
+
+        <RelativeLayout
+            android:id="@+id/btn_back_scrap_act"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/back_arrow"
+                android:layout_centerInParent="true"
+                android:layout_margin="16dp"
+                />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_scrap_act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="스크랩"
+            android:textSize="18sp"
+            android:textColor="#707070"
+            android:fontFamily="@font/nanum_bold"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_scrap_act"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#e0e0e0"/>
+
+</LinearLayout>
