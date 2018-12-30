@@ -31,6 +31,10 @@ class ApplyOnlineMainActivity : AppCompatActivity() {
         ssb.setSpan(CustomTypeSpan("", font2), 7, "온라인 신청서를 작성해주세요.".length, Spanned.SPAN_EXCLUSIVE_INCLUSIVE)
 
         tv_online_apply_main_infotext.text = ssb
+//
+//        val params = layout_online_apply_main_process.layoutParams
+//        params.width = tv_online_apply_main_infotext.width
+//        layout_online_apply_main_process.layoutParams = params
     }
 
     fun setBinding(){

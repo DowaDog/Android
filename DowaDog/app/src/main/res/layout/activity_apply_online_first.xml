@@ -281,6 +281,7 @@
                         android:hint="입력해주세요"
                         android:background="@null"
                         android:textSize="14sp"
+                        android:textCursorDrawable="@null"
                         android:textColor="#434343"
                         android:fontFamily="@font/nanum_round"
                         android:layout_centerVertical="true"
@@ -319,6 +320,7 @@
                         android:layout_height="wrap_content"
                         android:hint="입력해주세요"
                         android:textDirection="rtl"
+                        android:textCursorDrawable="@null"
                         android:background="@null"
                         android:textSize="14sp"
                         android:textColor="#434343"
@@ -388,10 +390,10 @@
                     />
 
                 <ImageView
-                    android:id="@+id/btn_online_apply_agree_check"
+                    android:id="@+id/btn_online_apply_first_agree_check"
                     android:layout_width="24dp"
                     android:layout_height="match_parent"
-                    android:src="#474747"
+                    android:src="@drawable/adopt_1step_check_grey"
                     android:layout_marginStart="5dp"
                     />
             </LinearLayout>
@@ -418,10 +420,10 @@
                     />
 
                 <ImageView
-                    android:id="@+id/btn_online_apply_disagree_check"
+                    android:id="@+id/btn_online_apply_first_disagree_check"
                     android:layout_width="24dp"
+                    android:src="@drawable/adopt_1step_check_grey"
                     android:layout_height="match_parent"
-                    android:src="#474747"
                     android:layout_marginStart="5dp"
                     />
             </LinearLayout>
