@@ -20,7 +20,6 @@ import org.jetbrains.anko.ctx
 
 class UrgentAnimalActivity : AppCompatActivity() {
 
-
     lateinit var urgentAnimalAdapter: UrgentAnimalAdapter
     lateinit var requestManager: RequestManager
 
@@ -39,7 +38,6 @@ class UrgentAnimalActivity : AppCompatActivity() {
 
         requestManager = Glide.with(this)
 
-        //실행했을때 왜 똑같은 값으로 두개가 있지...? 이해가 안가넹, 이미지는 그렇다고 쳐도!(이미지도 안들어가는 것 같은데..!)
         animalItem.add(UrgentAnimalData("D-1","http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG","[충청] 믹스견"))
         animalItem.add(UrgentAnimalData("D-2","http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG","[전라도] 페르시안"))
         //animalItem.add(UrgentAnimalData("D-3","", "","","[인천] 러시안 블루" ))
@@ -50,4 +48,3 @@ class UrgentAnimalActivity : AppCompatActivity() {
         rv_urgent_ani_act.layoutManager = GridLayoutManager(this, 2)
     }
 }
-

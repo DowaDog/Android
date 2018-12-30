@@ -2,10 +2,10 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:state_selected="false"
-        android:drawable="@drawable/apply_online_fourth_circle_gray"/>
+        android:drawable="@drawable/adopt_4step_check_gray"/>
 
     <item android:state_selected="true"
 
-        android:drawable="@drawable/apply_online_fourth_circle_orange"/>
+        android:drawable="@drawable/adopt_4step_check_orange"/>
 
 </selector>
