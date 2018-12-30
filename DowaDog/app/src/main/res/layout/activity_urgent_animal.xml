@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Urgent.Activity.UrgentAnimalActivity">
+    tools:context=".urgent.Activity.UrgentAnimalActivity">
 
     <RelativeLayout
         android:id="@+id/rl_set_bar_urgent_ani_act"
@@ -45,7 +45,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginHorizontal="12dp"
             android:layout_marginTop="8dp"
             >

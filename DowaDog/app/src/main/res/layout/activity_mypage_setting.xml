@@ -11,29 +11,37 @@
         android:id="@+id/rl_set_bar_mypage_set_act"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:paddingBottom="4dp"
-        android:elevation="4dp"
+        android:layout_marginHorizontal="16dp"
         android:background="#FFFFFF"
-        >
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+        android:elevation="4dp"
+        android:paddingBottom="4dp">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginHorizontal="16dp"
-                android:src="@drawable/back_arrow_btn" />
-        </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/nanum_round"
+            android:text="취소"
+            android:textColor="#707070"
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/nanum_bold"
-            android:text="설정"
+            android:text="개인정보 수정"
             android:textColor="#707070"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:fontFamily="@font/nanum_round"
+            android:text="확인"
+            android:textColor="#ffc233"
             android:textSize="18sp" />
 
     </RelativeLayout>
@@ -131,10 +139,44 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/rl_phone_mypage_set_act"
+                android:id="@+id/rl_birth_mypage_set_act"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_below="@+id/rl_name_mypage_set_act">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/nanum_bold"
+                    android:text="생년월일"
+                    android:textColor="#707070"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/nanum_light"
+                    android:text="1997.08.16" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="#c7c7c7" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_phone_mypage_set_act"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_below="@+id/rl_birth_mypage_set_act">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -187,158 +229,6 @@
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/nanum_light"
                     android:text="jimin0004@naver.com" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_alignParentBottom="true"
-                    android:background="#c7c7c7" />
-
-            </RelativeLayout>
-
-            <!--반려동물 정보-->
-
-            <RelativeLayout
-                android:id="@+id/rl_animal_info_mypage_set_act"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/rl_email_mypage_set_act"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="18dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:fontFamily="@font/nanum_round"
-                    android:text="반려동물 정보"
-                    android:textColor="#a8a8a8"
-                    android:textSize="15sp" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rl_ani_name_mypage_set_act"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_below="@+id/rl_animal_info_mypage_set_act">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="16dp"
-                    android:fontFamily="@font/nanum_bold"
-                    android:text="이름"
-                    android:textColor="#707070"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/nanum_light"
-                    android:text="망망이" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_alignParentBottom="true"
-                    android:background="#c7c7c7" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rl_kind_mypage_set_act"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_below="@+id/rl_ani_name_mypage_set_act">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="16dp"
-                    android:fontFamily="@font/nanum_bold"
-                    android:text="종류"
-                    android:textColor="#707070"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/nanum_light"
-                    android:text="치와와" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_alignParentBottom="true"
-                    android:background="#c7c7c7" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rl_ani_weight_mypage_set_act"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_below="@+id/rl_kind_mypage_set_act">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="16dp"
-                    android:fontFamily="@font/nanum_bold"
-                    android:text="몸무게"
-                    android:textColor="#707070"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/nanum_light"
-                    android:text="5kg" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_alignParentBottom="true"
-                    android:background="#c7c7c7" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_below="@+id/rl_ani_weight_mypage_set_act">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="16dp"
-                    android:fontFamily="@font/nanum_bold"
-                    android:text="나이"
-                    android:textColor="#707070"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/nanum_light"
-                    android:text="3세" />
 
                 <View
                     android:layout_width="match_parent"

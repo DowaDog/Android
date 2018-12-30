@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_selected="true"
+        android:drawable="@drawable/heart_red_1227"/>
+    <item android:state_selected="false"
+        android:drawable="@drawable/heart_gray_1227" />
+
+</selector>
+
