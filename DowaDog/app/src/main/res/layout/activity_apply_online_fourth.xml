@@ -145,10 +145,6 @@
                         android:layout_centerVertical="true"
                         android:background="@drawable/apply_online_fourth_circle_check">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true" />
 
                     </RelativeLayout>
 
@@ -493,27 +489,29 @@
                 <RelativeLayout
                     android:id="@+id/rl_all_agree_apply_online_fourth_act"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="32dp">
+                    android:layout_marginTop="32dp"
+                    android:layout_gravity="right"
+                    >
 
                     <TextView
+                        android:id="@+id/abc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_toLeftOf="@+id/img_all_agree_apply_online_fourth_act"
                         android:fontFamily="@font/nanum_round"
                         android:text="모두 동의"
                         android:textColor="#434343"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:layout_marginRight="14dp"/>
 
                     <ImageView
                         android:id="@+id/img_all_agree_apply_online_fourth_act"
                         android:layout_width="26dp"
+                        android:layout_toRightOf="@+id/abc"
                         android:layout_height="26dp"
-                        android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="16dp"
                         android:background="@drawable/apply_online_fourth_circle_check">
 
                     </ImageView>
