@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".searchresult.SearchResultActivity"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <!--상단바-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:elevation="1dp"
+        android:background="#FFFFFF">
+
+        <!--백버튼-->
+        <RelativeLayout
+            android:id="@+id/btn_back_search_result_act"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/back_arrow"
+                android:layout_marginHorizontal="16dp"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <!--키워드-->
+            <TextView
+                android:id="@+id/tv_keyword_search_act"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_round"
+                android:textSize="16sp"
+                android:textColor="#484848"
+                android:text="'유기견'"
+                android:layout_centerVertical="true"
+                />
+
+            <TextView
+                android:layout_toRightOf="@+id/tv_keyword_search_act"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_round"
+                android:textSize="16sp"
+                android:textColor="#484848"
+                android:text="에 대한 검색 결과"
+                android:layout_centerVertical="true"
+                />
+
+
+
+
+        </RelativeLayout>
+
+
+
+
+
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_search_result_act"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="11dp"
+        android:layout_below="@+id/top_bar"
+        android:layout_marginBottom="4dp"
+        ></android.support.v7.widget.RecyclerView>
+
+
+
+</LinearLayout>
