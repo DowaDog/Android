@@ -20,7 +20,9 @@ class CustomDialog(context: Context,
 
         val lpWindow = WindowManager.LayoutParams()
         lpWindow.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND
+        // 투명도
         lpWindow.dimAmount = 0.55f
+        // window에 환경적용
         window!!.attributes = lpWindow
 
         setContentView(R.layout.custom_dialog)
