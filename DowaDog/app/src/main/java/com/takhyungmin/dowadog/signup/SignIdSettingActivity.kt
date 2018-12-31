@@ -14,6 +14,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import com.bumptech.glide.Glide
+import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
 import kotlinx.android.synthetic.main.activity_mypage_setting.*
 import kotlinx.android.synthetic.main.activity_sign_id_setting.*
@@ -27,7 +28,7 @@ import java.io.FileNotFoundException
 import java.io.InputStream
 import java.util.*
 
-class SignIdSettingActivity : AppCompatActivity() {
+class SignIdSettingActivity : BaseActivity() {
 
     private val REQ_CODE_SELECT_IMAGE = 100
     lateinit var data: Uri

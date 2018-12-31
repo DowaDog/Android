@@ -3,23 +3,27 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_mypage_setting_act"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mypage.MypageSettingActivity">
+    tools:context=".mypage.MypageSettingActivity"
+    android:background="#ffffff"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    >
 
     <RelativeLayout
         android:id="@+id/rl_set_bar_mypage_set_act"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginHorizontal="16dp"
         android:background="#FFFFFF"
-        android:elevation="4dp"
-        android:paddingBottom="4dp">
+        android:elevation="3dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
             android:fontFamily="@font/nanum_round"
             android:text="취소"
             android:textColor="#707070"
@@ -40,6 +44,7 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:fontFamily="@font/nanum_round"
+            android:layout_marginEnd="16dp"
             android:text="확인"
             android:textColor="#ffc233"
             android:textSize="18sp" />
@@ -121,14 +126,18 @@
                     android:textColor="#707070"
                     android:textSize="15sp" />
 
-                <TextView
+                <EditText
+                    android:id="@+id/et_name_mod_mypage_setting_act"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="16dp"
+                    android:hint="임지은"
+                    android:textColor="#707070"
                     android:fontFamily="@font/nanum_light"
-                    android:text="임지은" />
+                    android:textSize="14sp"
+                    android:background="@null"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -154,14 +163,17 @@
                     android:textColor="#707070"
                     android:textSize="15sp" />
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
+                    android:textSize="14sp"
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/nanum_light"
-                    android:text="1997.08.16" />
+                    android:textColor="#707070"
+                    android:hint="1997.08.16"
+                    android:background="@null" />
 
                 <View
                     android:layout_width="match_parent"
@@ -188,14 +200,17 @@
                     android:textColor="#707070"
                     android:textSize="15sp" />
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/nanum_light"
-                    android:text="010-2065-9675" />
+                    android:textColor="#707070"
+                    android:textSize="14sp"
+                    android:hint="010-2065-9675"
+                    android:background="@null"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -221,14 +236,17 @@
                     android:textColor="#707070"
                     android:textSize="15sp" />
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/nanum_light"
-                    android:text="jimin0004@naver.com" />
+                    android:textColor="#707070"
+                    android:textSize="14sp"
+                    android:hint="jimin0004@naver.com"
+                    android:background="@null"/>
 
                 <View
                     android:layout_width="match_parent"

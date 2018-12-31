@@ -32,7 +32,6 @@ class ApplyOnlineFourthActivity : BaseActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when(v) {
-
             // 전체뷰
             rl_full_apply_online_fourth_act -> {
                 downKeyboard(rl_full_apply_online_fourth_act)
@@ -114,7 +113,6 @@ class ApplyOnlineFourthActivity : BaseActivity(), View.OnClickListener {
                 }
 
             }
-
             rl_check2_apply_online_fourth_act -> {
                 // 회색일 때
                 if(checkTwoFlag== 0){
@@ -223,24 +221,19 @@ class ApplyOnlineFourthActivity : BaseActivity(), View.OnClickListener {
             }
 
             rl_complete_apply_online_fourth_act -> {
-
                 if(completeBtnFlag == false){
                     // 다이얼로그 띄우기
                     applyFourthCustomSingleResDialog.show()
                 }else {
                     // ## 다음뷰로 넘어가기 위한 통신하기
                 }
-
-
             }
         }
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_apply_online_fourth)
-
 
         // 클릭리스너 달아주기
         init()
@@ -270,7 +263,6 @@ class ApplyOnlineFourthActivity : BaseActivity(), View.OnClickListener {
         rl_check4_apply_online_fourth_act.setOnClickListener(this)
         rl_check5_apply_online_fourth_act.setOnClickListener(this)
         rl_complete_apply_online_fourth_act.setOnClickListener(this)
-
     }
 
     private fun setEditTextChangedListener(){
