@@ -36,7 +36,7 @@ class HomeFragmentLargeSecondSlide : Fragment(){
 
 
     fun init(){
-        val slideAdapter = HomeFragmentPageAdpater(activity!!.supportFragmentManager)
+        val slideAdapter = HomeFragmentPageAdpater(childFragmentManager)
 
         vp_home_fragment_second_slide_contents.adapter = slideAdapter
         vp_home_fragment_second_slide_contents.currentItem = 0

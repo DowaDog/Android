@@ -110,6 +110,14 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/pic1"
                 />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/btn_applpy_first_upload"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/adopt_camera_icon"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    />
             </RelativeLayout>
 
             <RelativeLayout

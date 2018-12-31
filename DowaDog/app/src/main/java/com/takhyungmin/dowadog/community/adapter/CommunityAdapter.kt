@@ -87,10 +87,12 @@ class CommunityAdapter(var communityItems : ArrayList<CommunityItem>, var reques
     }
 
     private val leftListener = View.OnClickListener {
+
         customDialog.dismiss()
     }
 
     private val rightListener = View.OnClickListener {
+        //데이터 저장, 통신, 뷰 변경..
         customDialog.dismiss()
     }
 }

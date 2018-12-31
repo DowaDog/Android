@@ -24,23 +24,17 @@ class HomeActivity : AppCompatActivity() {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        //drawer_home.setStatusBarBackgroundColor(R.color.status2)
         initPresenter()
+        homeActivityPresenter.initView()
         setBinding()
 
     }
 
-    override fun onStart() {
-        super.onStart()
-        homeActivityPresenter.initView()
-    }
 
     fun initPresenter(){
         homeActivityPresenter = HomeActivityPresenter()
         homeActivityPresenter.view = this
     }
-
-
 
     fun addFragment(fragment : Fragment){
         val fm = supportFragmentManager

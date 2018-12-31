@@ -1,9 +1,297 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".apply.online.ApplyOnlineSecondActivity">
+    tools:context=".apply.online.ApplyOnlineSecondActivity"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingBottom="4dp"
+        android:elevation="1dp"
+        android:background="#FFFFFF"
+        >
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/btn_apply_second_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="16dp"
+                android:src="@drawable/back_arrow_btn" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/nanum_bold"
+            android:text="온라인 신청서"
+            android:textColor="#707070"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="25dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        >
+
+        <LinearLayout
+            android:id="@+id/second_layout_temp"
+            android:layout_marginStart="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2단계,"
+                android:fontFamily="@font/nanum_extra_bold"
+                android:textColor="#ffc233"
+                android:includeFontPadding="false"
+                android:textSize="26sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_light"
+                android:textColor="#242424"
+                android:textSize="26sp"
+                android:layout_marginTop="9dp"
+                android:includeFontPadding="false"
+                android:text="반려동물 정보를 입력해주세요"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_light"
+                android:textColor="#707070"
+                android:textSize="15sp"
+                android:layout_marginTop="9dp"
+                android:includeFontPadding="false"
+                android:text="체크박스는 중복 선택이 불가능 합니다"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_below="@+id/second_layout_temp"
+            android:id="@+id/second_layout_temp2"
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="69dp">
+                <RelativeLayout
+                    android:id="@+id/layout_apply_second_frame"
+                    android:layout_width="69dp"
+                    android:layout_height="69dp">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img_apply_first"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/pic1"
+                        />
+                    
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:id="@+id/btn_applpy_second_upload"
+                        android:src="@drawable/adopt_camera_icon"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        />
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/second_layout_temp3"
+            android:layout_below="@+id/second_layout_temp2"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#727272"
+                android:text="현재 반려동물을 키우고 계신가요?"
+                android:fontFamily="@font/nanum_bold"
+                android:layout_centerVertical="true"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/second_layout_temp4"
+            android:layout_below="@+id/second_layout_temp3">
+
+            <LinearLayout
+                android:id="@+id/layout_online_apply_second_agree"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#707070"
+                    android:text="예"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/nanum_round"
+
+                    />
+
+                <ImageView
+                    android:id="@+id/btn_online_apply_second_agree_check"
+                    android:layout_width="24dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/adopt_1step_check_grey"
+                    android:layout_marginStart="5dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_online_apply_second_disagree"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginStart="12dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/layout_online_apply_second_agree"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#707070"
+                    android:text="아니오"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/nanum_round"
+
+                    />
+
+                <ImageView
+                    android:id="@+id/btn_online_apply_second_disagree_check"
+                    android:layout_width="24dp"
+                    android:src="@drawable/adopt_1step_check_grey"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_apply_second_input"
+            android:layout_marginTop="21dp"
+            android:layout_below="@+id/second_layout_temp4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#727272"
+                android:fontFamily="@font/nanum_bold"
+                android:text="현재 신청자가 키우고 계신 경우,"
+                android:includeFontPadding="false"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#727272"
+                android:fontFamily="@font/nanum_bold"
+                android:text="반려동물의 정보를 입력해 주세요."
+                android:includeFontPadding="false"
+                android:layout_marginTop="7dp"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/apply_online_fourth_et_box"
+                android:hint="@string/apply_second_hing"
+                android:textColorHint="#c7c7c7"
+                android:paddingTop="13dp"
+                android:textSize="13sp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textCursorDrawable="@null"
+                android:layout_marginTop="16dp"
+                android:gravity="top|left"
+                android:layout_marginBottom="29dp"
+                />
+
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/btn_apply_online_second_next"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#e2e2e2">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanum_extra_bold"
+            android:textSize="18sp"
+            android:includeFontPadding="false"
+            android:layout_centerInParent="true"
+            android:textColor="#ffffff"
+            android:text="다음"
+            />
+    </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
