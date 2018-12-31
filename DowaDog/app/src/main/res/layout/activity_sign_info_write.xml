@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!--개인 정보입력 bar-->
         <RelativeLayout
             android:id="@+id/rl_set_bar_sign_info_wr_act"
             android:layout_width="match_parent"
@@ -38,6 +39,7 @@
 
         </RelativeLayout>
 
+        <!--회원가입 순서 이미지-->
         <RelativeLayout
             android:id="@+id/rl_page_num_sign_info_wr_act"
             android:layout_width="match_parent"
@@ -90,6 +92,7 @@
 
         </RelativeLayout>
 
+        <!--프로필 이미지-->
         <RelativeLayout
             android:id="@+id/rl_profile_img_sign_info_wr_act"
             android:layout_width="match_parent"
@@ -122,6 +125,7 @@
 
         </RelativeLayout>
 
+
         <RelativeLayout
             android:id="@+id/rl_img_text_sign_info_wr_act"
             android:layout_width="match_parent"
@@ -140,6 +144,7 @@
 
         </RelativeLayout>
 
+        <!--회원가입 정보 입력 창-->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -213,26 +218,54 @@
 
                 </RelativeLayout>
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="42dp"
                     android:layout_marginTop="12dp"
                     android:background="@drawable/sign_info_write_act_signup_box">
 
-                    <EditText
-                        android:id="@+id/et_email_sign_info_wr_act"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="16dp"
-                        android:background="@null"
-                        android:fontFamily="@font/nanum_round"
-                        android:inputType="textEmailAddress"
-                        android:hint="이메일"
-                        android:textColorHint="#cecece"
-                        android:textSize="14sp" />
+                        android:layout_weight="1"
+                        >
 
-                </RelativeLayout>
+                        <EditText
+                            android:id="@+id/et_email_sign_info_wr_act"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="16dp"
+                            android:background="@null"
+                            android:fontFamily="@font/nanum_round"
+                            android:hint="이메일"
+                            android:inputType="textShortMessage"
+                            android:textColorHint="#cecece"
+                            android:textSize="13sp" />
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        >
+
+                        <TextView
+                            android:id="@+id/btn_email_check_sign_info_wr_act"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="16dp"
+                            android:text="중복확인"
+                            android:textColor="#ffc233"
+                            android:textSize="12sp" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
 
             </LinearLayout>
 

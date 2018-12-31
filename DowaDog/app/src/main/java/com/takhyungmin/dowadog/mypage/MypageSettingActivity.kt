@@ -11,9 +11,13 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import com.bumptech.glide.Glide
+import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
 import kotlinx.android.synthetic.main.activity_mypage_setting.*
+import kotlinx.android.synthetic.main.activity_sign_info_write.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -22,7 +26,22 @@ import java.io.File
 import java.io.FileNotFoundException
 import java.io.InputStream
 
-class MypageSettingActivity : AppCompatActivity() {
+class MypageSettingActivity : BaseActivity(), View.OnClickListener {
+
+    override fun onClick(v: View?) {
+        when (v) {
+            img_profile_mypage_set_act -> {
+                changeImage()
+            }
+            img_camera_mypage_set_act -> {
+                changeImage()
+            }
+            rl_mypage_setting_act -> {
+                downKeyboard()
+            }
+        }
+    }
+
 
     private val REQ_CODE_SELECT_IMAGE = 100
     lateinit var data: Uri
@@ -32,13 +51,19 @@ class MypageSettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mypage_setting)
 
-        img_profile_mypage_set_act.setOnClickListener {
-            changeImage()
-        }
+        init()
+    }
 
-        img_camera_mypage_set_act.setOnClickListener {
-            changeImage()
-        }
+    fun init() {
+        img_profile_mypage_set_act.setOnClickListener(this)
+        img_camera_mypage_set_act.setOnClickListener(this)
+
+        et_name_mod_mypage_setting_act.setOnClickListener(this)
+
+        //키보드 내려가게 하는 함수
+        rl_mypage_setting_act.setOnClickListener(this)
+
+
     }
 
     fun changeImage() {
@@ -71,7 +96,7 @@ class MypageSettingActivity : AppCompatActivity() {
                     val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
                     //val img = File(getRealPathFromURI(this!!, this.data).toString()) // 가져온 파일의 이름을 알아내려고 사용합니다
 
-                   // Log.v("TAG", "이미지 이름 = " + img)
+                    // Log.v("TAG", "이미지 이름 = " + img)
                     Log.v("TAG", "이미지 바디 = " + photoBody.toString())
 
 
@@ -90,6 +115,11 @@ class MypageSettingActivity : AppCompatActivity() {
 
             }
         }
+    }
+
+    private fun downKeyboard(view : View) {
+        val imm: InputMethodManager = applicationContext!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }
 
