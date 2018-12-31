@@ -29,24 +29,74 @@
                 android:layout_marginTop="16dp"
                 />
 
-            <android.support.v4.view.ViewPager
+            <com.takhyungmin.dowadog.utils.CustomViewPager
                 android:id="@+id/vp_home_fragment_slide_contents"
                 android:layout_below="@+id/btn_slide"
                 android:layout_above="@+id/layout_slide_indicator"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-            </android.support.v4.view.ViewPager>
+            </com.takhyungmin.dowadog.utils.CustomViewPager>
 
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/layout_slide_indicator"
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
                 android:orientation="horizontal"
                 android:layout_alignParentBottom="true"
                 android:background="#42ffc233">
+                
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal">
+                    
+                    <ImageView
+                        android:id="@+id/indicator_slide_first"
+                        android:layout_width="7dp"
+                        android:layout_height="7dp"
+                        android:layout_marginEnd="12.1dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/dot_indicator_blue"
+                        />
 
-            </LinearLayout>
+                    <ImageView
+                        android:id="@+id/indicator_slide_second"
+                        android:layout_width="7dp"
+                        android:layout_height="7dp"
+                        android:layout_marginEnd="12.1dp"
+                        android:src="@drawable/dot_indicator_white"
+                        />
+
+                    <ImageView
+                        android:id="@+id/indicator_slide_third"
+                        android:layout_width="7dp"
+                        android:layout_height="7dp"
+                        android:layout_marginEnd="12.1dp"
+                        android:src="@drawable/dot_indicator_white"
+                        />
+
+                    <ImageView
+                        android:id="@+id/indicator_slide_fourth"
+                        android:layout_width="7dp"
+                        android:layout_height="7dp"
+                        android:layout_marginEnd="12.1dp"
+                        android:src="@drawable/dot_indicator_white"
+                        />
+
+                    <ImageView
+                        android:id="@+id/indicator_slide_fifth"
+                        android:layout_width="7dp"
+                        android:layout_height="7dp"
+                        android:layout_marginEnd="12.1dp"
+                        android:src="@drawable/dot_indicator_white"
+                        />
+                    
+                    
+                </LinearLayout>
+
+            </RelativeLayout>
 
         </RelativeLayout>
 

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:orientation="vertical"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_centerVertical="true">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="#ffc233"
+                    android:layout_gravity="center"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#ffc233"
+                    android:lineSpacingExtra="26sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="9dp"
+                    android:fontFamily="@font/nanum_bold"
+                    android:includeFontPadding="false"
+                    android:text="입양 신청"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="#ffc233"
+                    android:layout_gravity="center"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#ffc233"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="9dp"
+                    android:includeFontPadding="false"
+                    android:fontFamily="@font/nanum_bold"
+                    android:text="입양 신청"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="#ffc233"
+                    android:layout_gravity="center"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#ffc233"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="9dp"
+                    android:includeFontPadding="false"
+                    android:fontFamily="@font/nanum_bold"
+                    android:text="직접 방문"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="#ffc233"
+                    android:layout_gravity="center"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#ffc233"
+                    android:fontFamily="@font/nanum_bold"
+                    android:layout_gravity="center"
+                    android:includeFontPadding="false"
+                    android:layout_marginTop="9dp"
+                    android:text="입양 완료"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textColor="#707070"
+            android:lineSpacingExtra="13sp"
+            android:layout_gravity="center"
+            android:includeFontPadding="false"
+            android:textAlignment="center"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/nanum_light"
+            android:text="단계별로
+필요한 정보를 확인하세요"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#838383"
+            android:lineSpacingExtra="10sp"
+            android:layout_gravity="center_horizontal"
+            android:includeFontPadding="false"
+            android:textAlignment="center"
+            android:fontFamily="@font/nanum_light"
+            android:layout_marginTop="20dp"
+            android:text="*보호소마다 입양 절차가 다르니
+            자세한 사항은 각 보호소에 문의해주세요."
+            />
+
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>
