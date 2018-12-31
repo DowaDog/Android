@@ -32,15 +32,20 @@ class HomeFragment : Fragment() {
         HomeObject.homeFragmentPresenter = homeFragmentPresneter
     }
 
-
-    override fun onStart() {
-        super.onStart()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         homeFragmentPresneter.init()
         setBinding()
     }
 
+
+    override fun onStart() {
+        super.onStart()
+
+    }
+
     fun init(){
-        val slideAdapter = HomeFragmentLargePadeAdapter(activity!!.supportFragmentManager)
+        val slideAdapter = HomeFragmentLargePadeAdapter(childFragmentManager)
 
         vp_home_fragment_slide_contents.adapter = slideAdapter
         vp_home_fragment_slide_contents.currentItem = 0
@@ -80,7 +85,6 @@ class HomeFragment : Fragment() {
                         }
                     }
                 })
-                .withLoggingEnabled(true)
                 .withGesturesEnabled(true)
                 .withStartState(SlideUp.State.HIDDEN)
                 .withSlideFromOtherView(btn_home_fragment_slide)

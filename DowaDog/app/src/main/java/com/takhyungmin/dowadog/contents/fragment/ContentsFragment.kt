@@ -32,8 +32,9 @@ class ContentsFragment : Fragment(){
             tab_contents.addTab(tab_contents.newTab().setText("교육"))
             tab_contents.addTab(tab_contents.newTab().setText("상식"))
             tab_contents.setTabTextColors(Color.parseColor("#707070"), Color.parseColor("#ffc233"))
-
-            val tabAdapter = ContentsAdapter(activity!!.supportFragmentManager)
+        }
+        ContentsObject.isCreated = true
+            val tabAdapter = ContentsAdapter(childFragmentManager)
 
             vp_contents.adapter = tabAdapter
             vp_contents.currentItem = 0
@@ -51,7 +52,5 @@ class ContentsFragment : Fragment(){
                     vp_contents.currentItem = tab!!.position
                 }
             })
-        }
-        ContentsObject.isCreated = true
     }
 }
