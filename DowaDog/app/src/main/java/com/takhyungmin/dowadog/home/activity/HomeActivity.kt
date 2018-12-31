@@ -11,6 +11,7 @@ import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.apply.online.ApplyOnlineMainActivity
 import com.takhyungmin.dowadog.community.CommunityFragment
 import com.takhyungmin.dowadog.contents.fragment.ContentsFragment
+import com.takhyungmin.dowadog.home.HomeObject
 import com.takhyungmin.dowadog.presenter.activity.HomeActivityPresenter
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.navi_home.*
@@ -34,6 +35,7 @@ class HomeActivity : AppCompatActivity() {
     fun initPresenter(){
         homeActivityPresenter = HomeActivityPresenter()
         homeActivityPresenter.view = this
+        HomeObject.homeActivityPresenter = homeActivityPresenter
     }
 
     fun addFragment(fragment : Fragment){
@@ -88,5 +90,9 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, ApplyOnlineMainActivity::class.java))
         }
 
+    }
+
+    fun adjustDim(percent : Float){
+        layout_home_dim.alpha = percent
     }
 }

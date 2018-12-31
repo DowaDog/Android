@@ -63,7 +63,6 @@
                     android:gravity="center"
                     />
 
-
             </LinearLayout>
 
             <TextView
@@ -116,15 +115,6 @@
 
 
     </RelativeLayout>
-
-    <FrameLayout
-        android:alpha="0"
-        android:id="@+id/layout_home_fragment_dim"
-        android:fitsSystemWindows="true"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#78262626"
-        />
 
 
     <RelativeLayout

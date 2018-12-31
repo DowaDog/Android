@@ -130,18 +130,17 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tv_home_slide_first_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="22sp"
             android:textColor="#707070"
             android:lineSpacingExtra="13sp"
             android:layout_gravity="center"
+            android:fontFamily="@font/nanum_light"
             android:includeFontPadding="false"
             android:textAlignment="center"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/nanum_light"
-            android:text="단계별로
-필요한 정보를 확인하세요"
             />
 
         <TextView
@@ -155,8 +154,7 @@
             android:textAlignment="center"
             android:fontFamily="@font/nanum_light"
             android:layout_marginTop="20dp"
-            android:text="*보호소마다 입양 절차가 다르니
-            자세한 사항은 각 보호소에 문의해주세요."
+            android:text="@string/home_slide_second"
             />
 
 

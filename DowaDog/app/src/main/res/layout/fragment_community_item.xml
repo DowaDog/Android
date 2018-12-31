@@ -37,11 +37,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="6시간 전"
-            android:layout_toRightOf="@+id/tv_community_item_name"
             android:layout_centerVertical="true"
-            android:layout_marginStart="9dp"
             android:textColor="#a6a6a6"
             android:textSize="11sp"
+            android:layout_alignParentRight="true"
             android:fontFamily="@font/nanum_round"
             />
         <ImageView
@@ -50,6 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:visibility="gone"
             />
     </RelativeLayout>
 
