@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.activity_apply_online_fourth.*
 
 class ApplyOnlineFourthActivity : BaseActivity(), View.OnClickListener {
 
-
     var check: Boolean = false
     var allCheck : Boolean = false
     var etFlag : Boolean = false
@@ -302,6 +301,5 @@ class ApplyOnlineFourthActivity : BaseActivity(), View.OnClickListener {
     }
 
     private val reponseListener = View.OnClickListener { applyFourthCustomSingleResDialog!!.dismiss() }
-
 
 }
