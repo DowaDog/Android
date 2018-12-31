@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp">
+
+    <LinearLayout
+        android:id="@+id/layout_home_fragment_large_second_process"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/indicator_second_slide_first"
+                android:src="@drawable/adopt_1step_check_orange"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/indicator_second_slide_first_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#ffc233"
+                android:lineSpacingExtra="26sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="12.2dp"
+                android:fontFamily="@font/nanum_bold"
+                android:includeFontPadding="false"
+                android:text="입양 신청"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/indicator_second_slide_second"
+                android:src="@drawable/adopt_1step_check_grey"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/indicator_second_slide_second_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#c7c7c7"
+                android:lineSpacingExtra="26sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="12.2dp"
+                android:fontFamily="@font/nanum_bold"
+                android:includeFontPadding="false"
+                android:text="전화 상담"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/indicator_second_slide_third"
+                android:src="@drawable/adopt_1step_check_grey"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/indicator_second_slide_third_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#c7c7c7"
+                android:lineSpacingExtra="26sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="12.2dp"
+                android:fontFamily="@font/nanum_bold"
+                android:includeFontPadding="false"
+                android:text="직접 방문"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/indicator_second_slide_fourth"
+                android:src="@drawable/adopt_1step_check_grey"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/indicator_second_slide_fourth_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#c7c7c7"
+                android:lineSpacingExtra="26sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="12.2dp"
+                android:fontFamily="@font/nanum_bold"
+                android:includeFontPadding="false"
+                android:text="입양 완료"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_home_fragment_second_slide_contents"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginEnd="13dp"
+            android:layout_below="@+id/layout_home_fragment_large_second_process"
+            android:layout_above="@+id/layout_fragment_home_large_second_description"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+        <RelativeLayout
+            android:id="@+id/layout_fragment_home_large_second_description"
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:layout_alignParentBottom="true"
+            android:elevation="6dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginEnd="13dp"
+            android:background="@drawable/fragment_home_slide_description"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#1f1f1f"
+                android:lineSpacingExtra="9sp"
+                android:includeFontPadding="false"
+                android:fontFamily="@font/nanum_bold"
+                android:layout_centerInParent="true"
+                android:text="입양하기 카테고리에서 제공된
+전화를 통해 입양 신청을 합니다."
+                />
+
+
+        </RelativeLayout>
+
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
