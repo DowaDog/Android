@@ -9,13 +9,19 @@
     android:background="#ffffff"
     android:orientation="vertical">
 
-    <LinearLayout
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="#ffffff"
         android:layout_marginTop="24dp">
         <RelativeLayout
+            android:id="@+id/layout_home_base"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="#ffffff"
@@ -52,14 +58,28 @@
                 android:src="@drawable/login_profile_img"/>
         </RelativeLayout>
 
+    </RelativeLayout>
+
+        <RelativeLayout
+            android:alpha="0"
+            android:id="@+id/layout_home_dim"
+            android:fitsSystemWindows="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#78262626"
+            />
+
         <FrameLayout
+            android:layout_marginTop="72dp"
             android:id="@+id/frame_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
         </FrameLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
+
+
 
     <include
         android:id="@+id/navi_home"
@@ -68,5 +88,7 @@
         layout="@layout/navi_home"
         android:layout_gravity = "start"
         />
+
+
 
 </android.support.v4.widget.DrawerLayout>

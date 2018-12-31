@@ -31,11 +31,14 @@ class HomeFragmentLargeSecondSlide : Fragment(){
     override fun onStart() {
         super.onStart()
         homeFragmentLargeSecondSlidePresenter.init()
+        tv_fragment_home_large_second_description.setText(R.string.home_slide_description1)
 
     }
 
 
     fun init(){
+
+
         val slideAdapter = HomeFragmentPageAdpater(childFragmentManager)
 
         vp_home_fragment_second_slide_contents.adapter = slideAdapter
@@ -54,11 +57,12 @@ class HomeFragmentLargeSecondSlide : Fragment(){
                 HomeObject.homeFragmentPresenter.swipeEnable(p0)
 
                 homeFragmentLargeSecondSlidePresenter.changeIndicator(p0)
+
             }
-
         })
-
     }
+
+
 
     fun changeIndicator(position : Int){
         when(position){
@@ -71,6 +75,8 @@ class HomeFragmentLargeSecondSlide : Fragment(){
                 indicator_second_slide_first_text.setTextColor(Color.parseColor("#ffc233"))
                 indicator_second_slide_second_text.setTextColor(Color.parseColor("#c7c7c7"))
 
+                tv_fragment_home_large_second_description.setText(R.string.home_slide_description1)
+
             }
             1->{
                 indicator_second_slide_first.setImageResource(R.drawable.adopt_1step_check_grey)
@@ -81,6 +87,9 @@ class HomeFragmentLargeSecondSlide : Fragment(){
                 indicator_second_slide_first_text.setTextColor(Color.parseColor("#c7c7c7"))
                 indicator_second_slide_second_text.setTextColor(Color.parseColor("#ffc233"))
                 indicator_second_slide_third_text.setTextColor(Color.parseColor("#c7c7c7"))
+
+                tv_fragment_home_large_second_description.setText(R.string.home_slide_description2)
+
             }
             2->{
                 indicator_second_slide_first.setImageResource(R.drawable.adopt_1step_check_grey)
@@ -91,6 +100,9 @@ class HomeFragmentLargeSecondSlide : Fragment(){
                 indicator_second_slide_second_text.setTextColor(Color.parseColor("#c7c7c7"))
                 indicator_second_slide_third_text.setTextColor(Color.parseColor("#ffc233"))
                 indicator_second_slide_fourth_text.setTextColor(Color.parseColor("#c7c7c7"))
+
+                tv_fragment_home_large_second_description.setText(R.string.home_slide_description3)
+
             }
             3->{
                 indicator_second_slide_first.setImageResource(R.drawable.adopt_1step_check_grey)
@@ -100,6 +112,8 @@ class HomeFragmentLargeSecondSlide : Fragment(){
 
                 indicator_second_slide_third_text.setTextColor(Color.parseColor("#c7c7c7"))
                 indicator_second_slide_fourth_text.setTextColor(Color.parseColor("#ffc233"))
+                tv_fragment_home_large_second_description.setText(R.string.home_slide_description4)
+
             }
         }
     }

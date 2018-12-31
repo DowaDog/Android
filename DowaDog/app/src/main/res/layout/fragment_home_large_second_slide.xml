@@ -160,16 +160,18 @@
             >
 
             <TextView
+                android:id="@+id/tv_fragment_home_large_second_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:textColor="#1f1f1f"
                 android:lineSpacingExtra="9sp"
                 android:includeFontPadding="false"
+                android:gravity="center"
+                android:textAlignment="center"
                 android:fontFamily="@font/nanum_bold"
                 android:layout_centerInParent="true"
-                android:text="입양하기 카테고리에서 제공된
-전화를 통해 입양 신청을 합니다."
+
                 />
 
 

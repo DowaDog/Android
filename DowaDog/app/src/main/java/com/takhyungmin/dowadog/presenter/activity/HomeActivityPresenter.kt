@@ -14,4 +14,9 @@ class HomeActivityPresenter : BasePresenter<HomeActivity>() {
     fun replaceFragment(fragment : Fragment){
         view!!.replaceFragment(fragment)
     }
+
+    fun adjustDim(percent : Float){
+        view!!.adjustDim(percent)
+    }
+
 }

@@ -13,6 +13,7 @@ import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.home.HomeObject
 import com.takhyungmin.dowadog.home.adapter.HomeFragmentLargePadeAdapter
 import com.takhyungmin.dowadog.presenter.fragment.HomeFragmentPresenter
+import kotlinx.android.synthetic.main.activity_apply_online_first.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home_slide_up.*
 
@@ -72,7 +73,8 @@ class HomeFragment : Fragment() {
         slideUp = SlideUpBuilder(layout_home_fragment_slide_pannel)
                 .withListeners(object : SlideUp.Listener.Events {
                     override fun onSlide(percent: Float) {
-                        layout_home_fragment_dim.alpha = 1 - percent / 100
+                        //layout_home_fragment_dim.alpha = 1 - percent / 100
+                        HomeObject.homeActivityPresenter.adjustDim((1 - percent/100))
                         content_slide_up_view.alpha = 1 - percent/100
                         if (btn_home_fragment_slide.isShown && percent < 100) {
                             btn_home_fragment_slide.visibility = View.GONE
