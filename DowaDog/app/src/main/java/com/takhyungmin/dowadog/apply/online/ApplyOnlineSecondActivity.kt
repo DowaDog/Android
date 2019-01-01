@@ -1,10 +1,12 @@
 package com.takhyungmin.dowadog.apply.online
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.jakewharton.rxbinding2.view.clicks
+import com.takhyungmin.dowadog.ApplyOnlineThirdSelectTempActivity
 import com.takhyungmin.dowadog.R
 import kotlinx.android.synthetic.main.activity_apply_online_second.*
 
@@ -30,5 +32,10 @@ class ApplyOnlineSecondActivity : AppCompatActivity() {
             layout_apply_second_input.visibility = View.INVISIBLE
             btn_apply_online_second_next.setBackgroundColor(Color.parseColor("#ffc233"))
         }
+
+        btn_apply_online_second_next.clicks().subscribe{
+            startActivity(Intent(this, ApplyOnlineThirdSelectTempActivity::class.java))
+        }
+
     }
 }

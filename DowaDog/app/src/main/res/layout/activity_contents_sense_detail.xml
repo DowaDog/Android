@@ -98,7 +98,7 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginEnd="16dp"
-            android:src="@drawable/mypage_scrab" />
+            android:src="@drawable/contents_unscrap_btn"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -122,7 +122,8 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginEnd="16dp"
-            android:src="@drawable/mypage_scrab" />
+            android:tint="#707070"
+            android:src="@drawable/contents_unscrap_btn" />
     </RelativeLayout>
 
 

@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp">
 
     <RelativeLayout
+        android:id="@+id/layout_community_comment_frame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/view_comment_baseline"
+            android:layout_width="match_parent"
+            android:layout_height="8.5dp"
+
+            />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_writter_rv_item_comment_community_detail_act"
@@ -13,21 +22,22 @@
             android:layout_height="35dp"
             android:layout_marginLeft="16dp"
             android:src="@color/colorPrimary"
-            android:layout_marginBottom="8dp"
             />
-        
+
         <TextView
             android:id="@+id/tv_content_rv_item_comment_community_detail_act1"
             android:layout_toRightOf="@+id/iv_writter_rv_item_comment_community_detail_act"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/iv_writter_rv_item_comment_community_detail_act"
             android:text="댓글쓴사람과 그내용dkfasldjflksjfakljf "
             android:layout_marginLeft="8dp"
             android:layout_marginRight="16dp"
+            android:layoutDirection="ltr"
+            android:textDirection="ltr"
             android:textSize="15sp"
             android:textColor="#484848"
-            android:fontFamily="@font/nanum_bold"
+            android:layout_below="@+id/view_comment_baseline"
+            android:includeFontPadding="false"
             android:lineSpacingExtra="4dp"
             />
 
@@ -37,12 +47,17 @@
             android:layout_height="wrap_content"
             android:text="6시간"
             android:layout_below="@+id/tv_content_rv_item_comment_community_detail_act1"
-            android:layout_alignLeft="@+id/tv_content_rv_item_comment_community_detail_act1"
-            android:layout_marginBottom="8dp"
             android:textSize="12sp"
+            android:includeFontPadding="false"
+            android:layout_marginStart="59dp"
             android:textColor="#a6a6a6"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="9dp"
             android:fontFamily="@font/nanum_light"/>
-        
+
+
     </RelativeLayout>
+
+
+
+
 </RelativeLayout>

@@ -84,6 +84,8 @@ class ContentsSenseDetailActivity : AppCompatActivity() {
 
             if (scrollY == ( v.getChildAt(0).height - v.height )) {
                 //scroll in bottom
+                window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+                window.statusBarColor = this.resources.getColor(R.color.status2)
                 layout_contents_sense_detail_toolbar_move.visibility = View.VISIBLE
             }
         })
