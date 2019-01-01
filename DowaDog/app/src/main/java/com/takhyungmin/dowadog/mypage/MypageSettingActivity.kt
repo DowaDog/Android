@@ -37,11 +37,18 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
                 changeImage()
             }
             rl_mypage_setting_act -> {
-                downKeyboard()
+                downKeyboard(rl_mypage_setting_act)
+            }
+            btn_cancle_mypage_setting_act -> {
+                //기존의 정보로 저장하고
+                finish()
+            }
+            btn_confirm_mypage_setting_act -> {
+                //editText로 작성된 것들을 저장한 후에
+                finish()
             }
         }
     }
-
 
     private val REQ_CODE_SELECT_IMAGE = 100
     lateinit var data: Uri
@@ -60,10 +67,11 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
 
         et_name_mod_mypage_setting_act.setOnClickListener(this)
 
+        btn_cancle_mypage_setting_act.setOnClickListener(this)
+        btn_confirm_mypage_setting_act.setOnClickListener(this)
+
         //키보드 내려가게 하는 함수
         rl_mypage_setting_act.setOnClickListener(this)
-
-
     }
 
     fun changeImage() {

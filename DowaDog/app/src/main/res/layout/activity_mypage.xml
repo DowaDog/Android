@@ -5,17 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".mypage.MypageActivity"
-    android:background="#ffffff">
+    android:clipToPadding="false">
 
     <RelativeLayout
         android:id="@+id/rl_tab_bar_mypage_act"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:background="#ffffff"
         android:elevation="1dp">
 
         <RelativeLayout
+            android:id="@+id/btn_back_mypage_act"
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
@@ -76,30 +77,38 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanum_extra_bold"
+                android:layout_marginTop="4dp"
                 android:text="최형윤님"
                 android:textColor="#434343"
                 android:textSize="18sp" />
 
         </LinearLayout>
 
-        <TextView
+        <RelativeLayout
+            android:id="@+id/btn_next_setting_mypage_act"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/btn_user_profile_mypage_act"
-            android:fontFamily="@font/nanum_light"
-            android:text="설정"
-            android:textColor="#434343"
-            android:textSize="12sp" />
-
-
-        <ImageView
-            android:id="@+id/btn_user_profile_mypage_act"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="18dp"
-            android:layout_marginStart="8dp" />
+            android:layout_marginEnd="16dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_light"
+                android:text="설정"
+                android:textColor="#434343"
+                android:textSize="12sp" />
+
+
+            <ImageView
+                android:id="@+id/btn_user_profile_mypage_act"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="18dp"
+                android:layout_marginStart="8dp" />
+        </RelativeLayout>
 
     </RelativeLayout>
 
@@ -108,7 +117,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_below="@+id/rl_profile_modify_mypage_act"
-        android:layout_marginHorizontal="32dp"
+        android:layout_marginHorizontal="24dp"
         android:layout_marginTop="28dp"
         android:orientation="horizontal">
 
@@ -126,11 +135,14 @@
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/mypage_heart" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
                     android:fontFamily="@font/nanum_extra_bold"
                     android:text="관심 동물"
                     android:textColor="#434343"
@@ -141,9 +153,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/nanum_round"
-                android:layout_marginTop="12dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/nanum_round"
                 android:text="6"
                 android:textColor="#434343"
                 android:textSize="16sp" />
@@ -158,7 +170,7 @@
         <!--스크랩-->
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="56dp"
+            android:layout_height="match_parent"
             android:layout_weight="1.8"
             android:orientation="vertical">
 
@@ -169,11 +181,14 @@
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/mypage_scrab" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
                     android:fontFamily="@font/nanum_extra_bold"
                     android:text="스크랩"
                     android:textColor="#434343"
@@ -184,9 +199,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/nanum_round"
-                android:layout_marginTop="12dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/nanum_round"
                 android:text="3"
                 android:textColor="#434343"
                 android:textSize="16sp" />
@@ -212,11 +227,14 @@
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/mypage_write" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
                     android:fontFamily="@font/nanum_extra_bold"
                     android:text="내가 쓴글"
                     android:textColor="#434343"
@@ -227,9 +245,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/nanum_round"
-                android:layout_marginTop="12dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/nanum_round"
                 android:text="12"
                 android:textColor="#434343"
                 android:textSize="16sp" />
@@ -239,49 +257,47 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/rl_mailbox_mypage_act"
+        android:id="@+id/ll_mailbox_mypage_act"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_marginTop="26dp"
+        android:layout_height="90dp"
         android:layout_below="@+id/ll_ani_scrap_box_mypage_act"
-        android:background="#fafafa">
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/mypage_act_postbox_round"
+        android:elevation="6dp"
+        android:paddingLeft="16dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="12dp"
-            android:paddingLeft="16dp"
-            android:background="#ffffff"
-            android:elevation="6dp"
-            android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_wait_mypage_act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/nanum_light"
+            android:text="기다릴개에서"
+            android:textColor="#434343"
+            android:textSize="20sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textColor="#434343"
-                android:fontFamily="@font/nanum_light"
-                android:layout_marginTop="18dp"
-                android:text="기다릴개에서"
-                />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_wait_mypage_act"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/nanum_bold"
+            android:text="보내는 따뜻한편지"
+            android:textColor="#434343"
+            android:textSize="20sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textColor="#434343"
-                android:fontFamily="@font/nanum_bold"
-                android:layout_marginTop="8dp"
-                android:text="보내는 따뜻한편지"
-                />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-
-        </LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="26dp"
+            android:src="@drawable/mypage_post_img" />
 
     </RelativeLayout>
 
@@ -289,7 +305,8 @@
         android:id="@+id/rl_setting_my_page_act"
         android:layout_width="match_parent"
         android:layout_height="44dp"
-        android:layout_below="@+id/rl_mailbox_mypage_act">
+        android:layout_below="@+id/ll_mailbox_mypage_act"
+        android:layout_marginTop="12dp">
 
         <TextView
             android:layout_width="wrap_content"
