@@ -118,9 +118,9 @@
             android:layout_height="0dp"
             android:layout_weight="1">
     <TextView
+        android:id="@+id/tv_navi_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/nanum_extra_bold"
         android:text="홈"
         android:layout_marginStart="30dp"
         android:layout_centerVertical="true"
@@ -142,6 +142,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/tv_navi_waiting"
         android:text="기다릴개 란?"
         android:layout_marginStart="30dp"
         android:layout_centerVertical="true"
@@ -166,6 +167,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
+        android:id="@+id/tv_navi_adopt"
         android:layout_marginStart="30dp"
         android:layout_centerVertical="true"
         android:fontFamily="@font/nanum_round"
@@ -188,6 +190,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/tv_navi_contents"
         android:fontFamily="@font/nanum_round"
         android:layout_marginStart="30dp"
         android:layout_centerVertical="true"
@@ -214,6 +217,7 @@
         android:fontFamily="@font/nanum_round"
         android:layout_marginStart="30dp"
         android:layout_centerVertical="true"
+        android:id="@+id/tv_navi_community"
         android:textSize="16sp"
         android:includeFontPadding="false"
         android:text="커뮤니티"
@@ -236,6 +240,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/nanum_round"
             android:layout_marginStart="30dp"
+            android:id="@+id/tv_navi_mypage"
             android:layout_centerVertical="true"
             android:textSize="16sp"
             android:includeFontPadding="false"
@@ -262,6 +267,7 @@
             android:layout_marginStart="30dp"
             android:layout_centerVertical="true"
             android:textSize="16sp"
+            android:id="@+id/tv_navi_adopt_info"
             android:includeFontPadding="false"
             android:text="입양 안내"
             android:layout_weight="1"

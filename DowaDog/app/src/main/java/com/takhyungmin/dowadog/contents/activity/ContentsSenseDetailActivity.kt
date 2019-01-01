@@ -8,6 +8,7 @@ import android.view.View
 import android.view.WindowManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.contents.adapter.ContentsSenseDetailItem
 import com.takhyungmin.dowadog.contents.adapter.ContentsSenseDetailRvAdapter
@@ -32,6 +33,7 @@ class ContentsSenseDetailActivity : AppCompatActivity() {
         rv_contents_sense_detail_content.setFocusable(false)
         layout_sense_detail.requestFocus()
         init()
+        setOnBinding()
     }
 
     private fun init(){
@@ -85,5 +87,14 @@ class ContentsSenseDetailActivity : AppCompatActivity() {
                 layout_contents_sense_detail_toolbar_move.visibility = View.VISIBLE
             }
         })
+    }
+
+    fun setOnBinding(){
+        btn_contents_sense_detail_back1.clicks().subscribe {
+            finish()
+        }
+        btn_contents_sense_detail_back2.clicks().subscribe {
+            finish()
+        }
     }
 }
