@@ -1,5 +1,7 @@
 package com.takhyungmin.dowadog.mypage
 
+import android.content.Intent
+import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.takhyungmin.dowadog.BaseActivity

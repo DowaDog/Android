@@ -5,8 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".mypage.MypageActivity"
-    android:clipToPadding="false">
+    android:clipToPadding="false"
+    android:background="#ffffff">
 
+    <!--상단바-->
     <RelativeLayout
         android:id="@+id/rl_tab_bar_mypage_act"
         android:layout_width="match_parent"
@@ -41,6 +43,7 @@
 
     </RelativeLayout>
 
+    <!--프로필 이미지-->
     <RelativeLayout
         android:id="@+id/rl_profile_modify_mypage_act"
         android:layout_width="match_parent"
@@ -256,6 +259,7 @@
 
     </LinearLayout>
 
+    <!--우체통-->
     <RelativeLayout
         android:id="@+id/ll_mailbox_mypage_act"
         android:layout_width="match_parent"
@@ -265,7 +269,7 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/mypage_act_postbox_round"
         android:elevation="6dp"
-        android:paddingLeft="16dp">
+        android:clipToPadding="false">
 
         <TextView
             android:id="@+id/tv_wait_mypage_act"
@@ -274,6 +278,7 @@
             android:layout_marginTop="18dp"
             android:fontFamily="@font/nanum_light"
             android:text="기다릴개에서"
+            android:layout_marginStart="16dp"
             android:textColor="#434343"
             android:textSize="20sp" />
 
@@ -284,6 +289,7 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/nanum_bold"
             android:text="보내는 따뜻한편지"
+            android:layout_marginStart="16dp"
             android:textColor="#434343"
             android:textSize="20sp" />
 
@@ -301,6 +307,7 @@
 
     </RelativeLayout>
 
+    <!--설정-->
     <RelativeLayout
         android:id="@+id/rl_setting_my_page_act"
         android:layout_width="match_parent"
@@ -326,6 +333,8 @@
 
     </RelativeLayout>
 
+
+    <!--자주 묻는 질문-->
     <RelativeLayout
         android:id="@+id/rl_question_my_page_act"
         android:layout_width="match_parent"
@@ -350,6 +359,7 @@
 
     </RelativeLayout>
 
+    <!--로그아웃-->
     <RelativeLayout
         android:id="@+id/btn_logout_setting_my_page_act"
         android:layout_width="match_parent"

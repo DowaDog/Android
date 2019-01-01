@@ -3,13 +3,10 @@ package com.takhyungmin.dowadog.mypage
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -17,12 +14,10 @@ import com.bumptech.glide.Glide
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
 import kotlinx.android.synthetic.main.activity_mypage_setting.*
-import kotlinx.android.synthetic.main.activity_sign_info_write.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.ByteArrayOutputStream
-import java.io.File
 import java.io.FileNotFoundException
 import java.io.InputStream
 
@@ -128,6 +123,10 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
     private fun downKeyboard(view : View) {
         val imm: InputMethodManager = applicationContext!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    private fun etHintDisappear() {
+
     }
 }
 
