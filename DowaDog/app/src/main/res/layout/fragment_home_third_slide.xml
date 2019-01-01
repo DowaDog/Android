@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/home_slide_third_text_frame">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ㄷ번"/>
+        android:textSize="16sp"
+        android:textColor="#434343"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/nanum_extra_bold"
+        android:text="준비물"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginStart="18dp"
+        android:layout_marginBottom="16.4dp"
+        android:layout_alignParentBottom="true"
+        android:textColor="#838383"
+        android:gravity="end"
+        android:fontFamily="@font/nanum_round"
+        android:layout_centerHorizontal="true"
+        android:text="*제출 서류 : 유기동물 분양 신청서, 소유주 변경신청서"
+        />
+
+
+
+
 
 </RelativeLayout>
