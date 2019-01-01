@@ -1,5 +1,6 @@
 package com.takhyungmin.dowadog.community
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -11,6 +12,7 @@ import com.bumptech.glide.RequestManager
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.community.adapter.CommunityAdapter
 import com.takhyungmin.dowadog.community.model.CommunityItem
+import com.takhyungmin.dowadog.communitydetail.CommunityDetailActivity
 import com.takhyungmin.dowadog.presenter.fragment.CommunityFragmentPresenter
 import kotlinx.android.synthetic.main.fragment_community.*
 
@@ -42,6 +44,10 @@ class CommunityFragment : Fragment() {
         //contentsEduRvAdapter.setOnItemClickListener(this)
         rv_community_feeds.layoutManager = LinearLayoutManager(activity)
         rv_community_feeds.adapter = communityAdapter
+    }
+
+    fun toDetail(){
+        startActivity(Intent(activity, CommunityDetailActivity::class.java))
     }
 
 }

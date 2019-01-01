@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.RequestManager
+import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.community.model.CommunityItem
 import com.takhyungmin.dowadog.presenter.fragment.CommunityFragmentPresenter
@@ -77,6 +78,10 @@ class CommunityAdapter(var communityItems : ArrayList<CommunityItem>, var reques
                 requestManager.load(communityItems[position].communityImage[2])
                         .into(holder.communityMain33)
             }
+        }
+
+        holder.communityFrame.clicks().subscribe{
+            communityFragmentPresenter.toDetail()
         }
     }
 

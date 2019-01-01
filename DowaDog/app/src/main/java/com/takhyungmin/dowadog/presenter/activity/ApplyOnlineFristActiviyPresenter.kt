@@ -10,4 +10,6 @@ class ApplyOnlineFristActiviyPresenter : BasePresenter<ApplyOnlineFirstActivity>
 
         view!!.initView()
     }
+
+
 }
