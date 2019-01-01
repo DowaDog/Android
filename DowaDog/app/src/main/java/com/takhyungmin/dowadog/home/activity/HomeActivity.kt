@@ -67,31 +67,17 @@ class HomeActivity : AppCompatActivity() {
 
     fun setBinding(){
 
-//        btn_home_drawer.clicks().subscribe {
-//            homeActivityPresenter.replaceFragment(HomeFragment())
-//            btn_home_mypage.visibility = View.VISIBLE
-//            tv_home_title.text = "기다릴개"
-//            btn_home_search.visibility = View.GONE
-//            if (drawer_home.isDrawerOpen(Gravity.START))
-//                drawer_home.closeDrawer(Gravity.START)
-//        }
-
         btn_home_drawer.clicks().subscribe {
             if (!drawer_home.isDrawerOpen(Gravity.START))
                 drawer_home.openDrawer(Gravity.START)
         }
-//        btn_home_drawer.setOnClickListener {
-//
-//
-//            if (!drawer_home.isDrawerOpen(Gravity.START))
-//                drawer_home.openDrawer(Gravity.START)
-//        }
 
         btn_navi_home.clicks().subscribe {
             btn_home_mypage.visibility = View.VISIBLE
             homeActivityPresenter.replaceFragment(HomeFragment())
             textSize(tv_navi_home)
             clickedText = tv_navi_home
+            tv_home_title.text = "기다릴개"
             if (drawer_home.isDrawerOpen(Gravity.START))
                 drawer_home.closeDrawer(Gravity.START)
         }
@@ -99,6 +85,8 @@ class HomeActivity : AppCompatActivity() {
         btn_navi_contents.setOnClickListener {
             homeActivityPresenter.replaceFragment(ContentsFragment())
             btn_home_mypage.visibility = View.GONE
+            btn_home_search.visibility = View.GONE
+
             tv_home_title.text = "컨텐츠"
             textSize(tv_navi_contents)
             clickedText = tv_navi_contents
@@ -109,6 +97,7 @@ class HomeActivity : AppCompatActivity() {
         btn_navi_community.setOnClickListener {
             homeActivityPresenter.replaceFragment(CommunityFragment())
             btn_home_mypage.visibility = View.GONE
+            btn_home_search.visibility = View.GONE
             tv_home_title.text = "커뮤니티"
             textSize(tv_navi_community)
             clickedText = tv_navi_community
@@ -129,17 +118,26 @@ class HomeActivity : AppCompatActivity() {
             btn_home_mypage.visibility = View.GONE
             tv_home_title.text = "입양 하기"
             btn_home_search.visibility = View.VISIBLE
-            textSize(tv_navi_adopt_info)
-            clickedText = tv_navi_adopt_info
+            textSize(tv_navi_adopt)
+            clickedText = tv_navi_adopt
             if (drawer_home.isDrawerOpen(Gravity.START))
                 drawer_home.closeDrawer(Gravity.START)
         }
 
         btn_home_mypage.clicks().subscribe {
+            if (drawer_home.isDrawerOpen(Gravity.START))
+                drawer_home.closeDrawer(Gravity.START)
+            startActivity(Intent(this, MypageActivity::class.java))
+        }
+
+        btn_navi_mypage.clicks().subscribe{
+            if (drawer_home.isDrawerOpen(Gravity.START))
+                drawer_home.closeDrawer(Gravity.START)
             startActivity(Intent(this, MypageActivity::class.java))
         }
 
         btn_home_search.clicks().subscribe {
+
             startActivity(Intent(this, SearchActivity::class.java))
         }
 
@@ -147,6 +145,16 @@ class HomeActivity : AppCompatActivity() {
 
     fun adjustDim(percent : Float){
         layout_home_dim.alpha = percent
+    }
+
+    fun textChange(){
+        btn_home_mypage.visibility = View.GONE
+        tv_home_title.text = "입양 하기"
+        btn_home_search.visibility = View.VISIBLE
+        textSize(tv_navi_adopt)
+        clickedText = tv_navi_adopt
+        if (drawer_home.isDrawerOpen(Gravity.START))
+            drawer_home.closeDrawer(Gravity.START)
     }
 
     fun textSize(nowClickText : TextView){

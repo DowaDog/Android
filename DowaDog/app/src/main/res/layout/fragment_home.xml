@@ -94,6 +94,7 @@
             android:layout_height="43dp"
             android:background="@drawable/fragment_home_btn_background"
             android:elevation="3dp"
+            android:id="@+id/btn_home_fragment_adopt"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="95dp"
