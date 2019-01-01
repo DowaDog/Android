@@ -22,15 +22,23 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="25dp">
-            <ImageView
-                android:id="@+id/img_contents_edu_item_read"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+            android:layout_height="27dp">
+
+            <RelativeLayout
+                android:id="@+id/layout_contents_edu_item_frame"
+                android:layout_width="27dp"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="15dp"
                 android:background="#ffc233"
+                android:layout_height="27dp">
+            <ImageView
+                android:id="@+id/img_contents_edu_item_read"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/check_white"
                 />
+            </RelativeLayout>
         </RelativeLayout>
 
         <TextView

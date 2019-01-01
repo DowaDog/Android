@@ -85,6 +85,8 @@ class ContentsEduDetailActivity : AppCompatActivity() {
 
             if (scrollY == ( v.getChildAt(0).height - v.height )) {
                 //scroll in bottom
+                window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+                window.statusBarColor = this.resources.getColor(R.color.status2)
                 layout_contents_edu_detail_toolbar_move.visibility = View.VISIBLE
             }
         })
@@ -104,6 +106,10 @@ class ContentsEduDetailActivity : AppCompatActivity() {
 
         btn_contents_edu_detail_back2.clicks().subscribe {
             finish()
+        }
+
+        btn_contents_edu_detail_scrap1.clicks().subscribe {
+
         }
     }
 

@@ -37,7 +37,7 @@ class CommunityDetailRecyclerViewAdapter(var ctx: Context, var dataList: ArrayLi
         val ssb = SpannableStringBuilder(dataList[position].writter + "  " + dataList[position].description)
 
         ssb.setSpan(CustomTypeSpan("", font1), 0, dataList[position].writter.length , Spanned.SPAN_EXCLUSIVE_INCLUSIVE)
-        ssb.setSpan(CustomTypeSpan("", font2), dataList[position].writter.length, (dataList[position].writter + dataList[position].description).length + 2, Spanned.SPAN_EXCLUSIVE_INCLUSIVE)
+        ssb.setSpan(CustomTypeSpan("", font2), dataList[position].writter.length+1, (dataList[position].writter + dataList[position].description).length + 2, Spanned.SPAN_EXCLUSIVE_INCLUSIVE)
 
         holder.contentTV.text = ssb
         holder.dataTV.text = dataList[position].date
