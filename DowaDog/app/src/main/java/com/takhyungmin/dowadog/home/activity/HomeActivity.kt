@@ -7,10 +7,12 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
 import android.view.View
 import android.view.WindowManager
+import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.apply.online.ApplyOnlineMainActivity
 import com.takhyungmin.dowadog.community.CommunityFragment
 import com.takhyungmin.dowadog.contents.fragment.ContentsFragment
+import com.takhyungmin.dowadog.find.fragment.AnimalFindFragment
 import com.takhyungmin.dowadog.home.HomeObject
 import com.takhyungmin.dowadog.presenter.activity.HomeActivityPresenter
 import kotlinx.android.synthetic.main.activity_home.*
@@ -88,6 +90,17 @@ class HomeActivity : AppCompatActivity() {
             if (drawer_home.isDrawerOpen(Gravity.START))
                 drawer_home.closeDrawer(Gravity.START)
             startActivity(Intent(this, ApplyOnlineMainActivity::class.java))
+        }
+
+
+
+        btn_navi_adopt_info.clicks().subscribe {
+            homeActivityPresenter.replaceFragment(AnimalFindFragment())
+            btn_home_mypage.visibility = View.GONE
+            tv_home_title.text = "동물 찾기"
+            btn_home_search.visibility = View.VISIBLE
+            if (drawer_home.isDrawerOpen(Gravity.START))
+                drawer_home.closeDrawer(Gravity.START)
         }
 
     }
