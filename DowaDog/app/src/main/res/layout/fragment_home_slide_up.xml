@@ -24,7 +24,7 @@
                 android:id="@+id/btn_slide"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/drawer_btn"
+                android:src="@drawable/main_drag_btn"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="16dp"
                 />
@@ -43,8 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
                 android:orientation="horizontal"
-                android:layout_alignParentBottom="true"
-                android:background="#42ffc233">
+                android:layout_alignParentBottom="true">
                 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -55,42 +54,46 @@
                     <ImageView
                         android:id="@+id/indicator_slide_first"
                         android:layout_width="7dp"
+                        android:scaleType="fitXY"
                         android:layout_height="7dp"
                         android:layout_marginEnd="12.1dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/dot_indicator_blue"
+                        android:src="@drawable/dot_indicator_orange"
                         />
 
                     <ImageView
                         android:id="@+id/indicator_slide_second"
                         android:layout_width="7dp"
                         android:layout_height="7dp"
+                        android:scaleType="fitXY"
                         android:layout_marginEnd="12.1dp"
-                        android:src="@drawable/dot_indicator_white"
+                        android:src="@drawable/dot_indicator_gray"
                         />
 
                     <ImageView
                         android:id="@+id/indicator_slide_third"
                         android:layout_width="7dp"
                         android:layout_height="7dp"
+                        android:scaleType="fitXY"
                         android:layout_marginEnd="12.1dp"
-                        android:src="@drawable/dot_indicator_white"
+                        android:src="@drawable/dot_indicator_gray"
                         />
 
                     <ImageView
                         android:id="@+id/indicator_slide_fourth"
                         android:layout_width="7dp"
                         android:layout_height="7dp"
+                        android:scaleType="fitXY"
                         android:layout_marginEnd="12.1dp"
-                        android:src="@drawable/dot_indicator_white"
+                        android:src="@drawable/dot_indicator_gray"
                         />
 
                     <ImageView
                         android:id="@+id/indicator_slide_fifth"
                         android:layout_width="7dp"
                         android:layout_height="7dp"
+                        android:scaleType="fitXY"
                         android:layout_marginEnd="12.1dp"
-                        android:src="@drawable/dot_indicator_white"
+                        android:src="@drawable/dot_indicator_gray"
                         />
                     
                     

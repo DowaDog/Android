@@ -17,5 +17,7 @@
     <string name="home_slide_description3">직접 보호소로 방문하여\n입양할 아이를 만나고 서류를 작성합니다.</string>
     <string name="home_slide_description4">보호소에 따라 중성화 수술과 동물 등록을\n마치게 되면 입양이 완료됩니다.</string>
 
+    <string name="home_slide_third_description1">1. 강아지 목줄\n2. 신분증 사본\n3. 강아지 집</string>
+    <string name="home_slide_third_description2">1. 서류 작성\n2. 동물 등록\n3. 중성화 수술</string>
 
 </resources>

@@ -73,6 +73,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         btn_navi_home.clicks().subscribe {
+            btn_home_search.visibility = View.GONE
             btn_home_mypage.visibility = View.VISIBLE
             homeActivityPresenter.replaceFragment(HomeFragment())
             textSize(tv_navi_home)
