@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.urgent.Adapter.UrgentAnimalAdapter
 import com.takhyungmin.dowadog.urgent.UrgentAnimalData
@@ -21,7 +22,7 @@ class UrgentAnimalActivity : AppCompatActivity() {
 
         //RecyclerView
         recycler_animal()
-
+        setOnBinding()
     }
 
     fun recycler_animal() {
@@ -49,5 +50,11 @@ class UrgentAnimalActivity : AppCompatActivity() {
 
         rv_urgent_ani_act.adapter = urgentAnimalAdapter
         rv_urgent_ani_act.layoutManager = GridLayoutManager(this, 2)
+    }
+
+    fun setOnBinding(){
+        btn_urgent_back.clicks().subscribe {
+            finish()
+        }
     }
 }

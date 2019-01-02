@@ -1,16 +1,13 @@
 package com.takhyungmin.dowadog.interest
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
-import com.bumptech.glide.RequestManager
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.interest.adapter.InterestAnimalAdapter
 import com.takhyungmin.dowadog.urgent.UrgentAnimalData
 import kotlinx.android.synthetic.main.activity_interest_animal.*
-import kotlinx.android.synthetic.main.activity_search_result.*
 
 class InterestAnimalActivity : BaseActivity(), View.OnClickListener {
 
@@ -18,6 +15,7 @@ class InterestAnimalActivity : BaseActivity(), View.OnClickListener {
         when (v) {
             btn_back_interest_animal_act-> {
                 //back버튼 누르면
+                finish()
             }
         }
     }
@@ -31,6 +29,7 @@ class InterestAnimalActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun init(){
+        rv_interest_ani_act.setFocusable(false)
         btn_back_interest_animal_act.setOnClickListener(this)
     }
 
