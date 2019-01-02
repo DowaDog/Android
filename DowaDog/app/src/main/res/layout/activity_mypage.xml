@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".mypage.MypageActivity"
-    android:clipToPadding="false">
+    android:clipToPadding="false"
+    android:background="#ffffff">
 
+    <!--상단바-->
     <RelativeLayout
         android:id="@+id/rl_tab_bar_mypage_act"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_alignParentTop="true"
         android:background="#ffffff"
         android:elevation="1dp">
 
@@ -37,10 +38,11 @@
             android:fontFamily="@font/nanum_bold"
             android:text="마이페이지"
             android:textColor="#707070"
-            android:textSize="18sp" />
+            android:textSize="19sp" />
 
     </RelativeLayout>
 
+    <!--프로필 이미지-->
     <RelativeLayout
         android:id="@+id/rl_profile_modify_mypage_act"
         android:layout_width="match_parent"
@@ -90,24 +92,30 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginEnd="16dp"
             >
 
             <TextView
+                android:id="@+id/tv_setting_mypage_act"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanum_light"
                 android:text="설정"
+                android:layout_marginStart="8dp"
+                android:layout_centerVertical="true"
                 android:textColor="#434343"
                 android:textSize="12sp" />
 
 
             <ImageView
-                android:id="@+id/btn_user_profile_mypage_act"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="18dp"
-                android:layout_marginStart="8dp" />
+                android:layout_marginStart="8dp"
+                android:layout_centerVertical="true"
+                android:layout_marginVertical="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_toRightOf="@+id/tv_setting_mypage_act"
+                android:src="@drawable/mypage_setting_arrow"/>
         </RelativeLayout>
 
     </RelativeLayout>
@@ -259,6 +267,7 @@
 
     </LinearLayout>
 
+    <!--우체통-->
     <RelativeLayout
         android:id="@+id/ll_mailbox_mypage_act"
         android:layout_width="match_parent"
@@ -268,7 +277,7 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/mypage_act_postbox_round"
         android:elevation="6dp"
-        android:paddingLeft="16dp">
+        android:clipToPadding="false">
 
         <TextView
             android:id="@+id/tv_wait_mypage_act"
@@ -277,22 +286,35 @@
             android:layout_marginTop="18dp"
             android:fontFamily="@font/nanum_light"
             android:text="기다릴개에서"
+            android:layout_marginStart="16dp"
             android:textColor="#434343"
             android:textSize="20sp" />
 
-        <TextView
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_wait_mypage_act"
             android:layout_marginTop="8dp"
+            android:layout_below="@+id/tv_wait_mypage_act">
+
+        <TextView
+            android:id="@+id/tv_letter_mypage_act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/nanum_bold"
             android:text="보내는 따뜻한편지"
+            android:layout_marginStart="16dp"
             android:textColor="#434343"
             android:textSize="20sp" />
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_letter_mypage_act"
+            android:layout_marginStart="4dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/mypage_new_icon"/>
+
+        </RelativeLayout>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -304,6 +326,7 @@
 
     </RelativeLayout>
 
+    <!--설정-->
     <RelativeLayout
         android:id="@+id/rl_setting_my_page_act"
         android:layout_width="match_parent"
@@ -329,6 +352,7 @@
 
     </RelativeLayout>
 
+    <!--자주 묻는 질문-->
     <RelativeLayout
         android:id="@+id/rl_question_my_page_act"
         android:layout_width="match_parent"
@@ -353,6 +377,7 @@
 
     </RelativeLayout>
 
+    <!--로그아웃-->
     <RelativeLayout
         android:id="@+id/btn_logout_setting_my_page_act"
         android:layout_width="match_parent"

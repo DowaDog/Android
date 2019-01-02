@@ -1,13 +1,17 @@
 package com.takhyungmin.dowadog.mypage
 
 import android.content.Intent
-import android.os.Bundle
+import android.support.v4.content.ContextCompat.startActivity
 import android.view.View
+import com.takhyungmin.dowadog.R.id.*
+import com.takhyungmin.dowadog.scrap.ScrapActivity
+import android.support.v7.app.AppCompatActivity
+import android.os.Bundle
 import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.interest.InterestAnimalActivity
-import com.takhyungmin.dowadog.scrap.ScrapActivity
+import com.takhyungmin.dowadog.letter.LetterActivity
 import com.takhyungmin.dowadog.utils.CustomDialog
 import kotlinx.android.synthetic.main.activity_mypage.*
 import org.jetbrains.anko.startActivity
@@ -27,6 +31,9 @@ class MypageActivity : BaseActivity(), View.OnClickListener {
             btn_back_mypage_act -> {
                 finish()
             }
+            ll_mailbox_mypage_act -> {
+                startActivity<LetterActivity>()
+            }
         }
     }
 
@@ -40,8 +47,9 @@ class MypageActivity : BaseActivity(), View.OnClickListener {
 
         init()
         setOnBinding()
-    }
 
+    }
+    //JAX-RS문법..?
     fun setOnBinding(){
         btn_mypage_interest.clicks().subscribe {
             startActivity(Intent(this, InterestAnimalActivity::class.java))
@@ -60,6 +68,7 @@ class MypageActivity : BaseActivity(), View.OnClickListener {
         btn_logout_setting_my_page_act.setOnClickListener(this)
         btn_next_setting_mypage_act.setOnClickListener(this)
         btn_back_mypage_act.setOnClickListener(this)
+        ll_mailbox_mypage_act.setOnClickListener(this)
     }
 
     private val responseRight = View.OnClickListener { logoutCustomDialog!!.dismiss() }

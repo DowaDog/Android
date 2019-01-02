@@ -29,7 +29,6 @@
                 android:layout_marginHorizontal="16dp"
                 />
 
-
         </RelativeLayout>
 
         <TextView

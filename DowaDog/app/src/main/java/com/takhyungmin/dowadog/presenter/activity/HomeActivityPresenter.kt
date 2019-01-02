@@ -19,8 +19,4 @@ class HomeActivityPresenter : BasePresenter<HomeActivity>() {
         view!!.adjustDim(percent)
     }
 
-    fun changeText(){
-        view!!.textChange()
-    }
-
 }

@@ -1,19 +1,19 @@
 package com.takhyungmin.dowadog.dogdetail
 
-import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.WindowManager
-import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
+
 import com.takhyungmin.dowadog.adopt.AdoptActivity
 import com.takhyungmin.dowadog.utils.CustomCompleteDogDialog
 import com.takhyungmin.dowadog.utils.CustomDialog
 import com.takhyungmin.dowadog.utils.CustomShareDogDialog
 import com.takhyungmin.dowadog.utils.CustomThanksDogDialog
+
 import kotlinx.android.synthetic.main.activity_dog_detail.*
 import kotlinx.android.synthetic.main.custom_dialog_share.*
 
@@ -68,7 +68,6 @@ class DogDetailActivity : AppCompatActivity(), View.OnClickListener {
             }
 
 
-
         }
     }
 
@@ -85,9 +84,6 @@ class DogDetailActivity : AppCompatActivity(), View.OnClickListener {
         btn_back_dog_detail_act.setOnClickListener(this)
         btn_share_dog_detail_act.setOnClickListener(this)
         btn_heart_dog_detail_act.setOnClickListener(this)
-        btn_adopt_dog_detail_act.clicks().subscribe {
-            startActivity(Intent(this, AdoptActivity::class.java))
-        }
     }
 
     // 상태바 투명하게 하는 함수

@@ -6,8 +6,10 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
+
 import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.BaseActivity
+
 import com.takhyungmin.dowadog.R
 import kotlinx.android.synthetic.main.activity_search.*
 import org.jetbrains.anko.sdk25.coroutines.textChangedListener
@@ -56,13 +58,7 @@ class SearchActivity : BaseActivity(), View.OnClickListener {
             Log.v("TAG","눌림")
         }
 
-        setOnBinding()
-    }
 
-    fun setOnBinding(){
-        btn_back_search_act.clicks().subscribe {
-            finish()
-        }
     }
 
     fun setSearchBtnTextChangeListener() {

@@ -3,30 +3,31 @@ package com.takhyungmin.dowadog.mypage
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
+import android.view.Gravity
 import android.view.View
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import com.bumptech.glide.Glide
+import com.bumptech.glide.Glide.get
+import com.bumptech.glide.Glide.init
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
 import kotlinx.android.synthetic.main.activity_mypage_setting.*
-import kotlinx.android.synthetic.main.activity_sign_info_write.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import org.jetbrains.anko.sdk25.coroutines.onFocusChange
 import java.io.ByteArrayOutputStream
-import java.io.File
 import java.io.FileNotFoundException
 import java.io.InputStream
 
 class MypageSettingActivity : BaseActivity(), View.OnClickListener {
+
 
     override fun onClick(v: View?) {
         when (v) {
@@ -47,6 +48,11 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
                 //editText로 작성된 것들을 저장한 후에
                 finish()
             }
+
+            et_name_mod_mypage_setting_act -> {
+                gravityRightNameHint()
+//                disappearNameHint()
+            }
         }
     }
 
@@ -59,15 +65,20 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
         setContentView(R.layout.activity_mypage_setting)
 
         init()
+
     }
 
     fun init() {
         img_profile_mypage_set_act.setOnClickListener(this)
         img_camera_mypage_set_act.setOnClickListener(this)
 
+        //et_name 수정
         et_name_mod_mypage_setting_act.setOnClickListener(this)
 
+        //취소 버튼
         btn_cancle_mypage_setting_act.setOnClickListener(this)
+
+        //확인버튼
         btn_confirm_mypage_setting_act.setOnClickListener(this)
 
         //키보드 내려가게 하는 함수
@@ -80,6 +91,8 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
         intent.data = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
         startActivityForResult(intent, REQ_CODE_SELECT_IMAGE)
     }
+
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQ_CODE_SELECT_IMAGE) {
@@ -129,6 +142,26 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
         val imm: InputMethodManager = applicationContext!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
+
+    private fun upKeyboard(view : View) {
+//        val imm : InputMethodManager =applicationContext!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+//        imm.showSoftInput(view, 0)
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
+    }
+
+    private fun gravityRightNameHint(){
+        et_name_mod_mypage_setting_act.setOnFocusChangeListener(object : View.OnFocusChangeListener {
+            override fun onFocusChange(v: View?, hasFocus: Boolean) {
+                    if(hasFocus){
+                    et_name_mod_mypage_setting_act.gravity = Gravity.LEFT
+                }
+                else{
+                    et_name_mod_mypage_setting_act.gravity = Gravity.RIGHT
+                }
+            }
+        })
+    }
+
 }
 
 /*

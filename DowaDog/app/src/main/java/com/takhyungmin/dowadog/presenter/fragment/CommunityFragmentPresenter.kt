@@ -24,8 +24,4 @@ class CommunityFragmentPresenter : BasePresenter<CommunityFragment>() {
         view!!.initView(communityItems)
     }
 
-    fun toDetail(){
-        view!!.toDetail()
-    }
-
 }

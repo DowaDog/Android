@@ -79,8 +79,7 @@
             android:layout_width="163dp"
             android:layout_height="41dp"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/fragment_home_btn_background"
-            android:elevation="3dp">
+            android:background="@drawable/contents_detail_btn_background">
 
             <TextView
                 android:text="이수 완료"
@@ -109,13 +108,11 @@
         android:layout_height="48dp">
 
         <ImageView
-            android:id="@+id/btn_contents_edu_detail_back1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
-            android:src="@drawable/back_arrow_white"
-            />
+            android:src="@drawable/back_arrow" />
 
         <ImageView
             android:id="@+id/btn_contents_edu_detail_scrap1"
@@ -124,8 +121,10 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginEnd="16dp"
+
             android:scaleType="fitXY"
             android:src="@drawable/contents_unscrap_btn"/>
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -136,7 +135,6 @@
         android:visibility="gone">
 
         <ImageView
-            android:id="@+id/btn_contents_edu_detail_back2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -150,8 +148,10 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginEnd="16dp"
+
             android:tint="#707070"
             android:src="@drawable/contents_unscrap_btn"/>
+
     </RelativeLayout>
 
 

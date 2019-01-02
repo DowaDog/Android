@@ -7,7 +7,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.KeyEvent
 import android.view.View
 import android.widget.LinearLayout
-import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.utils.CustomCommunityDetailDialog
@@ -55,7 +54,6 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
         init()
 
         setRVAdapter()
-        setOnBinding()
     }
 
     override fun onClick(v: View?) {
@@ -172,12 +170,6 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
         rv_comment_community_detail_act.adapter = communityDetailRecyclerViewAdapter
         rv_comment_community_detail_act.layoutManager = LinearLayoutManager(applicationContext, LinearLayout.VERTICAL, false)
 
-    }
-
-    fun setOnBinding(){
-        btn_back_community_detail.clicks().subscribe {
-            finish()
-        }
     }
 
 }
