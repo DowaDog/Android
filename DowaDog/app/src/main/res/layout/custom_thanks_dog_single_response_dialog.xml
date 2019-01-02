@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="311dp"
+        android:layout_centerInParent="true">
+
+        <RelativeLayout
+            android:id="@+id/rl_root_box_thanks_dog_single_response_custom_dialog"
+            android:layout_width="275dp"
+            android:layout_height="129dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/custom_dialog_box">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/ll_bottom_box_thanks_dog_single_response_custom_dialog">
+
+                <TextView
+                    android:id="@+id/tv_description_thanks_dog_single_response_custom_dialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/nanum_bold"
+                    android:text="사진을 삭제하시겠습니까"
+                    android:textColor="#434343"
+                    android:textSize="17sp"
+                    android:layout_centerInParent="true"
+                    />
+
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_bottom_box_thanks_dog_single_response_custom_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/custom_dialog_bottom_box"
+                android:orientation="horizontal">
+
+
+                <RelativeLayout
+                    android:id="@+id/btn_response_thanks_dog_single_response_custom_dialog"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_right_thanks_dog_single_response_custom_dialog"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/nanum_bold"
+                        android:text="확인"
+                        android:textColor="#FFFFFF"
+                        android:textSize="17sp" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_marginRight="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/rl_root_box_thanks_dog_single_response_custom_dialog"
+            android:src="@drawable/dogdetail_share_finish_popup_img" />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

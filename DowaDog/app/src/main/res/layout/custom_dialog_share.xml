@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="382dp"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:id="@+id/ll_root_box_share_custom_dialog_community_detail"
+            android:layout_width="275dp"
+            android:layout_height="196dp"
+            android:background="@drawable/custom_dialog_box"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/ll_bottom_box_share_custom_dialog_community_detail"
+                android:orientation="vertical"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="공유하기"
+                        android:textSize="14sp"
+                        android:textColor="#434343"
+                        android:fontFamily="@font/nanum_bold"
+                        android:layout_centerInParent="true"
+                        />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#e0e0e0"/>
+
+
+                <RelativeLayout
+                    android:id="@+id/btn_kakao_share_custom_dialog_community_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_kakao_share_custom_dialog_community_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="카카오톡으로 링크 보내기"
+                        android:textSize="14sp"
+                        android:textColor="#434343"
+                        android:fontFamily="@font/nanum_round"
+                        android:layout_centerInParent="true"
+                        />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#e0e0e0"/>
+
+                <RelativeLayout
+                    android:id="@+id/btn_link_share_custom_dialog_community_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        android:id="@+id/tv_link_share_custom_dialog_community_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="링크 복사하기"
+                        android:textSize="14sp"
+                        android:textColor="#434343"
+                        android:fontFamily="@font/nanum_round"
+                        android:layout_centerInParent="true"
+                        />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_bottom_box_share_custom_dialog_community_detail"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:background="@drawable/custom_dialog_bottom_box">
+
+                <RelativeLayout
+                    android:id="@+id/btn_left_share_custom_dialog_community_detail"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_left_share_custom_dialog_community_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="취소"
+                        android:layout_centerInParent="true"
+                        android:textColor="#FFFFFF"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/nanum_bold"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="#FFFFFF"/>
+
+                <RelativeLayout
+                    android:id="@+id/btn_right_share_custom_dialog_community_detail"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_right_share_custom_dialog_community_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="확인"
+                        android:layout_centerInParent="true"
+                        android:textColor="#FFFFFF"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/nanum_bold"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/dogdetail_share_popup_img"
+            android:layout_alignRight="@+id/ll_root_box_share_custom_dialog_community_detail"
+            android:layout_marginRight="18dp"/>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
