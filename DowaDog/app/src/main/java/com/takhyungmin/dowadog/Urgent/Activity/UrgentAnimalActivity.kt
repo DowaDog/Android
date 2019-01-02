@@ -3,6 +3,7 @@ package com.takhyungmin.dowadog.urgent.Activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
+import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.jakewharton.rxbinding2.view.clicks
@@ -17,6 +18,7 @@ class UrgentAnimalActivity : AppCompatActivity() {
     lateinit var requestManager: RequestManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_urgent_animal)
 
@@ -47,7 +49,7 @@ class UrgentAnimalActivity : AppCompatActivity() {
         //animalItem.add(UrgentAnimalData("D-3","", "","","[인천] 러시안 블루" ))
 
         urgentAnimalAdapter = UrgentAnimalAdapter(this, animalItem, requestManager)
-
+        rv_urgent_ani_act.setFocusable(false)
         rv_urgent_ani_act.adapter = urgentAnimalAdapter
         rv_urgent_ani_act.layoutManager = GridLayoutManager(this, 2)
     }

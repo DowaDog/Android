@@ -26,10 +26,11 @@ object PermissionHelper {
                 activity, arrayOf(CAMERA_PERMISSION), CAMERA_PERMISSION_CODE)
     }
 
-    //처음에 denied 했을 때 다시 퍼미션 걸게끔 유도하는 함수.
     fun shouldShowRequestPermissionRationaleCamera(activity : Activity) : Boolean =
             ActivityCompat.shouldShowRequestPermissionRationale(activity, CAMERA_PERMISSION)
 
+
+    //처음에 denied 했을 때 다시 퍼미션 걸게끔 유도하는 함수.
     fun launchPermissionSettings(activity : Activity){
         val intent = Intent()
         intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
