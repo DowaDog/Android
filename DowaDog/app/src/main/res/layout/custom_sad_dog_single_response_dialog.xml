@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="368dp"
+        android:layout_centerInParent="true">
+
+        <RelativeLayout
+            android:id="@+id/rl_root_box_sad_dog_single_response_custom_dialog"
+            android:layout_width="275dp"
+            android:layout_height="186dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/custom_dialog_box">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/ll_bottom_box_sad_dog_single_response_custom_dialog">
+
+                <TextView
+                    android:id="@+id/tv_description_sad_dog_single_response_custom_dialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/nanum_bold"
+                    android:layout_marginTop="37dp"
+                    android:text="사진을 삭제하시겠습니까"
+                    android:textColor="#434343"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_marginTop="17dp"
+                    android:layout_below="@+id/tv_description_sad_dog_single_response_custom_dialog"
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#434343"
+                    android:fontFamily="@font/nanum_light"
+                    android:text="자세한 사항은 직접 보호소에\n연락하여 확인해주세요."
+                    android:gravity="center"/>
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_bottom_box_sad_dog_single_response_custom_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/custom_dialog_bottom_box"
+                android:orientation="horizontal">
+
+
+                <RelativeLayout
+                    android:id="@+id/btn_response_sad_dog_single_response_custom_dialog"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_right_sad_dog_single_response_custom_dialog"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/nanum_bold"
+                        android:text="확인"
+                        android:textColor="#FFFFFF"
+                        android:textSize="17sp" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_marginRight="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/rl_root_box_sad_dog_single_response_custom_dialog"
+            android:src="@drawable/ab_like_animal_popup_img" />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

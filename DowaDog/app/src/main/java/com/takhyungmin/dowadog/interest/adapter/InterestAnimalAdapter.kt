@@ -1,25 +1,24 @@
 package com.takhyungmin.dowadog.interest.adapter
 
 import android.content.Context
-import android.support.v7.view.menu.ActionMenuItemView
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.takhyungmin.dowadog.R
-import com.takhyungmin.dowadog.contents.ContentsObject.position
-import com.takhyungmin.dowadog.searchresult.adapter.SearchResultAdapter
 import com.takhyungmin.dowadog.urgent.UrgentAnimalData
 
 class InterestAnimalAdapter(val ctx : Context, val dataList : ArrayList<UrgentAnimalData> ) : RecyclerView.Adapter<InterestAnimalAdapter.Holder>()  {
+    var height = 0
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): Holder {
         val view: View = LayoutInflater.from(ctx).inflate(R.layout.rv_item_urgent_animal_act_box, p0, false)
+        height = ((p0.measuredWidth / 2) * 1.16).toInt()
         return Holder(view)
     }
 
@@ -51,12 +50,17 @@ class InterestAnimalAdapter(val ctx : Context, val dataList : ArrayList<UrgentAn
         Glide.with(ctx).load(dataList[position].ani_img).into(holder.ani_img)
         holder.ani_img.setClipToOutline(true)
         holder.tv_ani_kind.text = dataList[position].ani_kind
+
+        val params = holder.newFrame.layoutParams
+        params.height = height
+        holder.newFrame.layoutParams = params
     }
 
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var newFrame : LinearLayout = itemView.findViewById(R.id.rl_root_view_rv_item_urgent_anmal_act_box)
 
-        var rootView: RelativeLayout = itemView.findViewById(R.id.rl_root_view_rv_item_urgent_anmal_act_box) as RelativeLayout
+        //var rootView: RelativeLayout = itemView.findViewById(R.id.rl_root_view_rv_item_urgent_anmal_act_box) as RelativeLayout
         var heart_touch: RelativeLayout = itemView.findViewById(R.id.rl_heart_touch_rv_item_urgent_ani_act)
         var heart: ImageView = itemView.findViewById(R.id.img_heart_rv_item_urgent_ani_act)
         val tv_ani_kind: TextView = itemView.findViewById(R.id.tv_kind_dog_rv_item_urgent_ani_act) as TextView

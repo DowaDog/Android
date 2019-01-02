@@ -37,5 +37,11 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp"
+        android:background="#e0e0e0"
+        android:layout_alignParentBottom="true"/>
+
 
 </RelativeLayout>

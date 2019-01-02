@@ -26,7 +26,7 @@
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="#ffc233"
+                    android:src="@drawable/slider_write_orange"
                     android:layout_gravity="center"
                     />
 
@@ -54,7 +54,7 @@
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="#ffc233"
+                    android:src="@drawable/slider_call_orange"
                     android:layout_gravity="center"
                     />
 
@@ -67,7 +67,7 @@
                     android:layout_marginTop="9dp"
                     android:includeFontPadding="false"
                     android:fontFamily="@font/nanum_bold"
-                    android:text="입양 신청"
+                    android:text="전화 상담"
                     />
 
             </LinearLayout>
@@ -81,7 +81,7 @@
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="#ffc233"
+                    android:src="@drawable/slider_adopt_orange"
                     android:layout_gravity="center"
                     />
 
@@ -108,7 +108,7 @@
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="#ffc233"
+                    android:src="@drawable/slider_finish_orange"
                     android:layout_gravity="center"
                     />
 

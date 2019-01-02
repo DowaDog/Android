@@ -16,7 +16,10 @@ import kotlinx.android.synthetic.main.fragment_home_large_second_slide.*
 class HomeFragmentLargeSecondSlide : Fragment(){
 
     lateinit var homeFragmentLargeSecondSlidePresenter: HomeFragmentLargeSecondSlidePresenter
+    var currentPage = 0
 
+    val DELAY_MS: Long = 500//delay in milliseconds before task is to be executed
+    val PERIOD_MS: Long = 3000
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_home_large_second_slide, container, false)
     }
@@ -60,6 +63,22 @@ class HomeFragmentLargeSecondSlide : Fragment(){
 
             }
         })
+
+//        val handler = Handler()
+//        val Update = Runnable {
+//            if (currentPage == 4) {
+//                currentPage = 0
+//            }
+//            vp_home_fragment_second_slide_contents.setCurrentItem(currentPage++, true)
+//        }
+//
+//        val timer = Timer() // This will create a new Thread
+//        timer.schedule(object : TimerTask() { // task to be scheduled
+//
+//            override fun run() {
+//                handler.post(Update)
+//            }
+//        }, DELAY_MS, PERIOD_MS)
     }
 
 
@@ -67,10 +86,10 @@ class HomeFragmentLargeSecondSlide : Fragment(){
     fun changeIndicator(position : Int){
         when(position){
             0->{
-                indicator_second_slide_first.setImageResource(R.drawable.adopt_1step_check_orange)
-                indicator_second_slide_second.setImageResource(R.drawable.adopt_1step_check_grey)
-                indicator_second_slide_third.setImageResource(R.drawable.adopt_1step_check_grey)
-                indicator_second_slide_fourth.setImageResource(R.drawable.adopt_1step_check_grey)
+                indicator_second_slide_first.setImageResource(R.drawable.slider_write_orange)
+                indicator_second_slide_second.setImageResource(R.drawable.slider_call_gray)
+                indicator_second_slide_third.setImageResource(R.drawable.slider_adopt_gray)
+                indicator_second_slide_fourth.setImageResource(R.drawable.slider_finish_gray)
 
                 indicator_second_slide_first_text.setTextColor(Color.parseColor("#ffc233"))
                 indicator_second_slide_second_text.setTextColor(Color.parseColor("#c7c7c7"))
@@ -79,10 +98,10 @@ class HomeFragmentLargeSecondSlide : Fragment(){
 
             }
             1->{
-                indicator_second_slide_first.setImageResource(R.drawable.adopt_1step_check_grey)
-                indicator_second_slide_second.setImageResource(R.drawable.adopt_1step_check_orange)
-                indicator_second_slide_third.setImageResource(R.drawable.adopt_1step_check_grey)
-                indicator_second_slide_fourth.setImageResource(R.drawable.adopt_1step_check_grey)
+                indicator_second_slide_first.setImageResource(R.drawable.slider_write_gray)
+                indicator_second_slide_second.setImageResource(R.drawable.slider_call_orange)
+                indicator_second_slide_third.setImageResource(R.drawable.slider_adopt_gray)
+                indicator_second_slide_fourth.setImageResource(R.drawable.slider_finish_gray)
 
                 indicator_second_slide_first_text.setTextColor(Color.parseColor("#c7c7c7"))
                 indicator_second_slide_second_text.setTextColor(Color.parseColor("#ffc233"))
@@ -92,10 +111,10 @@ class HomeFragmentLargeSecondSlide : Fragment(){
 
             }
             2->{
-                indicator_second_slide_first.setImageResource(R.drawable.adopt_1step_check_grey)
-                indicator_second_slide_second.setImageResource(R.drawable.adopt_1step_check_grey)
-                indicator_second_slide_third.setImageResource(R.drawable.adopt_1step_check_orange)
-                indicator_second_slide_fourth.setImageResource(R.drawable.adopt_1step_check_grey)
+                indicator_second_slide_first.setImageResource(R.drawable.slider_write_gray)
+                indicator_second_slide_second.setImageResource(R.drawable.slider_call_gray)
+                indicator_second_slide_third.setImageResource(R.drawable.slider_adopt_orange)
+                indicator_second_slide_fourth.setImageResource(R.drawable.slider_finish_gray)
 
                 indicator_second_slide_second_text.setTextColor(Color.parseColor("#c7c7c7"))
                 indicator_second_slide_third_text.setTextColor(Color.parseColor("#ffc233"))
@@ -105,10 +124,10 @@ class HomeFragmentLargeSecondSlide : Fragment(){
 
             }
             3->{
-                indicator_second_slide_first.setImageResource(R.drawable.adopt_1step_check_grey)
-                indicator_second_slide_second.setImageResource(R.drawable.adopt_1step_check_grey)
-                indicator_second_slide_third.setImageResource(R.drawable.adopt_1step_check_grey)
-                indicator_second_slide_fourth.setImageResource(R.drawable.adopt_1step_check_orange)
+                indicator_second_slide_first.setImageResource(R.drawable.slider_write_gray)
+                indicator_second_slide_second.setImageResource(R.drawable.slider_call_gray)
+                indicator_second_slide_third.setImageResource(R.drawable.slider_adopt_gray)
+                indicator_second_slide_fourth.setImageResource(R.drawable.slider_finish_orange)
 
                 indicator_second_slide_third_text.setTextColor(Color.parseColor("#c7c7c7"))
                 indicator_second_slide_fourth_text.setTextColor(Color.parseColor("#ffc233"))

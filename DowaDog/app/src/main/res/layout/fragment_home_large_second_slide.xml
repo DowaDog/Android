@@ -24,7 +24,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:id="@+id/indicator_second_slide_first"
-                android:src="@drawable/adopt_1step_check_orange"
+                android:src="@drawable/slider_write_orange"
                 android:layout_gravity="center"
                 />
 
@@ -54,7 +54,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:id="@+id/indicator_second_slide_second"
-                android:src="@drawable/adopt_1step_check_grey"
+                android:src="@drawable/slider_call_gray"
                 android:layout_gravity="center"
                 />
 
@@ -84,7 +84,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:id="@+id/indicator_second_slide_third"
-                android:src="@drawable/adopt_1step_check_grey"
+                android:src="@drawable/slider_adopt_gray"
                 android:layout_gravity="center"
                 />
 
@@ -114,7 +114,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:id="@+id/indicator_second_slide_fourth"
-                android:src="@drawable/adopt_1step_check_grey"
+                android:src="@drawable/slider_finish_gray"
                 android:layout_gravity="center"
                 />
 
@@ -152,11 +152,11 @@
             android:layout_width="match_parent"
             android:layout_height="82dp"
             android:layout_alignParentBottom="true"
-            android:elevation="6dp"
+            android:elevation="3dp"
             android:layout_marginStart="13dp"
             android:layout_marginEnd="13dp"
             android:background="@drawable/fragment_home_slide_description"
-
+            android:layout_marginBottom="6dp"
             >
 
             <TextView

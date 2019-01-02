@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
@@ -71,7 +72,7 @@ class SearchResultAdapter(val ctx: Context, val dataList: ArrayList<UrgentAnimal
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var rootView: RelativeLayout = itemView.findViewById(R.id.rl_root_view_rv_item_urgent_anmal_act_box) as RelativeLayout
+        var rootView: LinearLayout = itemView.findViewById(R.id.rl_root_view_rv_item_urgent_anmal_act_box) as LinearLayout
         var heart_touch: RelativeLayout = itemView.findViewById(R.id.rl_heart_touch_rv_item_urgent_ani_act)
         var heart: ImageView = itemView.findViewById(R.id.img_heart_rv_item_urgent_ani_act)
         val tv_ani_kind: TextView = itemView.findViewById(R.id.tv_kind_dog_rv_item_urgent_ani_act) as TextView

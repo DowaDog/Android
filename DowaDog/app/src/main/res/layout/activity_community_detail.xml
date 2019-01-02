@@ -17,7 +17,30 @@
         android:orientation="horizontal"
         android:layout_height="0px"/>
 
+    <RelativeLayout
+        android:id="@+id/layout_community_detail_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:elevation="3dp"
+        android:background="#FFFFFF">
+        <!--백버튼-->
+        <RelativeLayout
+            android:id="@+id/btn_back_community_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/back_arrow_btn"
+                android:layout_margin="16dp"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+
     <ScrollView
+        android:layout_below="@+id/layout_community_detail_toolbar"
         android:id="@+id/sv_community_detail_act"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,26 +53,7 @@
             android:orientation="vertical"
             >
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:elevation="3dp"
-                android:background="#FFFFFF">
-                <!--백버튼-->
-                <RelativeLayout
-                    android:id="@+id/btn_back_community_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
 
-                    >
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/back_arrow_btn"
-                        android:layout_margin="16dp"/>
-                </RelativeLayout>    
-            </RelativeLayout>
-            
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
@@ -71,6 +75,7 @@
                     android:fontFamily="@font/nanum_bold"
                     android:textColor="#434343"
                     android:textSize="14sp"
+                    android:includeFontPadding="false"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/iv_writter2_community_detail_act"
                     android:layout_marginLeft="8dp"
@@ -96,13 +101,14 @@
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="260dp">
 
                 <!--뷰페이저-->
                 <android.support.v4.view.ViewPager
                     android:id="@+id/vp_community_detail_act"
                     android:layout_width="match_parent"
-                    android:layout_height="260dp"
+                    android:layout_height="match_parent"
+                    android:background="#343434"
                     >
                 </android.support.v4.view.ViewPager>
 
@@ -120,6 +126,7 @@
                     app:piv_viewPager="@id/vp_community_detail_act"
                     attrs:piv_padding="12dp"
                     attrs:piv_radius="4dp"
+                    android:layout_marginBottom="16.6dp"
                     />
 
             </RelativeLayout>
@@ -141,7 +148,8 @@
                     android:layout_height="wrap_content"
                     android:text="우리집에 처음 온 날,,"
                     android:textColor="#434343"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
+                    android:includeFontPadding="false"
                     android:fontFamily="@font/nanum_extra_bold"
 
                     />
@@ -156,14 +164,16 @@
                     android:text="2019.01.09"
                     android:fontFamily="@font/nanum_round"
                     android:textColor="#a6a6a6"
-                    android:textSize="14dp"/>
+                    android:textSize="14sp"/>
 
                 <!--글 내용-->
                 <TextView
                     android:id="@+id/tv_content_community_detail_act"
                     android:layout_below="@id/tv_date_community_detail_act"
-                    android:layout_marginTop="20dp"
-                    android:textSize="16dp"
+                    android:layout_marginTop="14dp"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="8sp"
+                    android:textSize="16sp"
                     android:textColor="#484848"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

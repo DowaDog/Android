@@ -114,39 +114,39 @@ class HomeFragment : Fragment() {
     fun changeIndicator(position : Int){
         when(position){
             0->{
-                indicator_slide_first.setImageResource(R.drawable.dot_indicator_blue)
-                indicator_slide_second.setImageResource(R.drawable.dot_indicator_white)
-                indicator_slide_third.setImageResource(R.drawable.dot_indicator_white)
-                indicator_slide_fourth.setImageResource(R.drawable.dot_indicator_white)
-                indicator_slide_fifth.setImageResource(R.drawable.dot_indicator_white)
+                indicator_slide_first.setImageResource(R.drawable.dot_indicator_orange)
+                indicator_slide_second.setImageResource(R.drawable.dot_indicator_gray)
+                indicator_slide_third.setImageResource(R.drawable.dot_indicator_gray)
+                indicator_slide_fourth.setImageResource(R.drawable.dot_indicator_gray)
+                indicator_slide_fifth.setImageResource(R.drawable.dot_indicator_gray)
             }
             1->{
-                indicator_slide_first.setImageResource(R.drawable.dot_indicator_white)
-                indicator_slide_second.setImageResource(R.drawable.dot_indicator_blue)
-                indicator_slide_third.setImageResource(R.drawable.dot_indicator_white)
-                indicator_slide_fourth.setImageResource(R.drawable.dot_indicator_white)
-                indicator_slide_fifth.setImageResource(R.drawable.dot_indicator_white)
+                indicator_slide_first.setImageResource(R.drawable.dot_indicator_gray)
+                indicator_slide_second.setImageResource(R.drawable.dot_indicator_orange)
+                indicator_slide_third.setImageResource(R.drawable.dot_indicator_gray)
+                indicator_slide_fourth.setImageResource(R.drawable.dot_indicator_gray)
+                indicator_slide_fifth.setImageResource(R.drawable.dot_indicator_gray)
             }
             2->{
-                indicator_slide_first.setImageResource(R.drawable.dot_indicator_white)
-                indicator_slide_second.setImageResource(R.drawable.dot_indicator_white)
-                indicator_slide_third.setImageResource(R.drawable.dot_indicator_blue)
-                indicator_slide_fourth.setImageResource(R.drawable.dot_indicator_white)
-                indicator_slide_fifth.setImageResource(R.drawable.dot_indicator_white)
+                indicator_slide_first.setImageResource(R.drawable.dot_indicator_gray)
+                indicator_slide_second.setImageResource(R.drawable.dot_indicator_gray)
+                indicator_slide_third.setImageResource(R.drawable.dot_indicator_orange)
+                indicator_slide_fourth.setImageResource(R.drawable.dot_indicator_gray)
+                indicator_slide_fifth.setImageResource(R.drawable.dot_indicator_gray)
             }
             3->{
-                indicator_slide_first.setImageResource(R.drawable.dot_indicator_white)
-                indicator_slide_second.setImageResource(R.drawable.dot_indicator_white)
-                indicator_slide_third.setImageResource(R.drawable.dot_indicator_white)
-                indicator_slide_fourth.setImageResource(R.drawable.dot_indicator_blue)
-                indicator_slide_fifth.setImageResource(R.drawable.dot_indicator_white)
+                indicator_slide_first.setImageResource(R.drawable.dot_indicator_gray)
+                indicator_slide_second.setImageResource(R.drawable.dot_indicator_gray)
+                indicator_slide_third.setImageResource(R.drawable.dot_indicator_gray)
+                indicator_slide_fourth.setImageResource(R.drawable.dot_indicator_orange)
+                indicator_slide_fifth.setImageResource(R.drawable.dot_indicator_gray)
             }
             4->{
-                indicator_slide_first.setImageResource(R.drawable.dot_indicator_white)
-                indicator_slide_second.setImageResource(R.drawable.dot_indicator_white)
-                indicator_slide_third.setImageResource(R.drawable.dot_indicator_white)
-                indicator_slide_fourth.setImageResource(R.drawable.dot_indicator_white)
-                indicator_slide_fifth.setImageResource(R.drawable.dot_indicator_blue)
+                indicator_slide_first.setImageResource(R.drawable.dot_indicator_gray)
+                indicator_slide_second.setImageResource(R.drawable.dot_indicator_gray)
+                indicator_slide_third.setImageResource(R.drawable.dot_indicator_gray)
+                indicator_slide_fourth.setImageResource(R.drawable.dot_indicator_gray)
+                indicator_slide_fifth.setImageResource(R.drawable.dot_indicator_orange)
             }
         }
     }

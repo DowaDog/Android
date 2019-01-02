@@ -11,8 +11,14 @@ import com.takhyungmin.dowadog.urgent.UrgentAnimalData
 
 class AnimalFindUrgentAdapter(var urgentItems : ArrayList<UrgentAnimalData>,
                               var urgentRequestManager : RequestManager, var animalFindFragmentPresenter: AnimalFindFragmentPresenter) : RecyclerView.Adapter<AnimalFindUrgentViewHolder>() {
+
+    var width = 0
+    var height = 0
+
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): AnimalFindUrgentViewHolder {
         val view : View = LayoutInflater.from(parent.context).inflate(R.layout.rv_item_urgent_animal_act_box, parent, false)
+        height = ((parent.measuredWidth / 2) * 1.16).toInt()
+
         return AnimalFindUrgentViewHolder(view)
     }
 
@@ -22,5 +28,16 @@ class AnimalFindUrgentAdapter(var urgentItems : ArrayList<UrgentAnimalData>,
         urgentRequestManager.load(urgentItems[position].ani_img).into(holder.ani_img)
         holder.ani_region.text = urgentItems[position].ani_region
         holder.tv_ani_kind.text = urgentItems[position].ani_kind
+
+        holder.ani_img.clicks().subscribe {
+            animalFindFragmentPresenter.toApply()
+        }
+
+        holder.ani_img.setClipToOutline(true)
+
+        val params = holder.newFrame.layoutParams
+        params.height = height
+        holder.newFrame.layoutParams = params
+
     }
 }

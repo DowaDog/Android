@@ -135,7 +135,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/drawer_btn"
+                android:src="@drawable/main_drag_btn"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="16dp"
                 />
@@ -165,7 +165,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="7dp"
                 android:layout_height="7dp"
-                android:background="#ffc233"
+                android:src="#ffc233"
                 android:layout_toLeftOf="@+id/tv_home_fragment_slide_content"
                 android:layout_below="@+id/view_home_fragment_baseline"
                 android:layout_marginEnd="7dp"

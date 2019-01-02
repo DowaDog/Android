@@ -115,12 +115,16 @@
             android:src="@drawable/back_arrow" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/btn_contents_edu_detail_scrap1"
+            android:layout_width="14dp"
+            android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginEnd="16dp"
-            android:src="@drawable/back_arrow_btn" />
+
+            android:scaleType="fitXY"
+            android:src="@drawable/contents_unscrap_btn"/>
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -138,12 +142,16 @@
             android:src="@drawable/back_arrow" />
 
         <ImageView
+            android:id="@+id/btn_contents_edu_detail_scrap2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginEnd="16dp"
-            android:src="@drawable/back_arrow_btn" />
+
+            android:tint="#707070"
+            android:src="@drawable/contents_unscrap_btn"/>
+
     </RelativeLayout>
 
 

@@ -64,7 +64,10 @@ class HomeActivity : AppCompatActivity() {
                 drawer_home.openDrawer(Gravity.START)
         }
 
-        btn_navi_home.setOnClickListener {
+
+        btn_navi_home.clicks().subscribe {
+            btn_home_search.visibility = View.GONE
+
             btn_home_mypage.visibility = View.VISIBLE
             if (!drawer_home.isDrawerOpen(Gravity.START))
                 drawer_home.openDrawer(Gravity.START)

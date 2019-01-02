@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.support.v4.widget.NestedScrollView
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.community.model.CommunityItem
 import com.takhyungmin.dowadog.contents.adapter.ContentsSenseDetailItem
 import com.takhyungmin.dowadog.contents.adapter.ContentsSenseDetailRvAdapter
 import com.takhyungmin.dowadog.presenter.activity.ContentsSenseDetailActivityPresenter
@@ -60,6 +62,7 @@ class ContentsSenseDetailActivity : AppCompatActivity() {
                 }
 
             }
+
             if (scrollY < oldScrollY - 30) {
                 //scroll up
                 window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
@@ -74,6 +77,7 @@ class ContentsSenseDetailActivity : AppCompatActivity() {
             }
 
             if (scrollY == 0) {
+
                 //scroll in top
 //                window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
 //                layout_contents_edu_detail_toolbar_basic.visibility = View.VISIBLE
@@ -82,6 +86,8 @@ class ContentsSenseDetailActivity : AppCompatActivity() {
 
             if (scrollY == ( v.getChildAt(0).height - v.height )) {
                 //scroll in bottom
+                window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+                window.statusBarColor = this.resources.getColor(R.color.status2)
                 layout_contents_sense_detail_toolbar_move.visibility = View.VISIBLE
             }
         })
