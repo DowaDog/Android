@@ -36,15 +36,16 @@
                 <RelativeLayout
                     android:id="@+id/btn_back_dog_detail_act"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_centerVertical="true"
                     >
 
                     <ImageView
-                        android:layout_margin="16dp"
+                        android:layout_marginHorizontal="16dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/back_arrow_white"/>
+                        android:src="@drawable/back_arrow_white"
+                        android:layout_centerInParent="true"/>
 
                 </RelativeLayout>
 
