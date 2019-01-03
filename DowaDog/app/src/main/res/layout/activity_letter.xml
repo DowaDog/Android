@@ -55,7 +55,7 @@
                 android:id="@+id/rl_main_background_letter_act"
                 android:layout_width="match_parent"
                 android:layout_height="240dp"
-                android:background="@drawable/adopt_background_img">
+                android:background="@drawable/post_main_img">
 
                 <TextView
                     android:id="@+id/tv_wait_letter_act"

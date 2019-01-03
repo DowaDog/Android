@@ -3,11 +3,16 @@ package com.takhyungmin.dowadog.signup
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.ACTION_PICK
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
+import android.support.v4.app.ActivityCompat.startActivityForResult
+import android.support.v4.content.ContextCompat
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -17,6 +22,7 @@ import com.bumptech.glide.Glide
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.utils.CustomSingleResDialog
+import kotlinx.android.synthetic.main.activity_mypage_setting.*
 import kotlinx.android.synthetic.main.activity_sign_info_write.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -26,13 +32,17 @@ import java.io.ByteArrayOutputStream
 import java.io.FileNotFoundException
 import java.io.InputStream
 import java.util.*
+import java.util.jar.Manifest
 
 class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
 
     private val REQ_CODE_SELECT_IMAGE = 100
+    val My_READ_STORAGE_REQUEST_CODE = 88
     lateinit var data: Uri
-    private var image: MultipartBody.Part? = null
-    private var NextBtnFlag =0
+
+    private var NextBtnFlag = 0
+
+    var imageURI : String? = null
 
     //edittext 다음 값 활성화
     var et_name: Boolean = false
@@ -50,15 +60,14 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
         when (v) {
             //프로필 이미지 -> 사집첩
             rl_camera_img_sign_info_wr_act -> {
-                changeImage()
+                requestReadExternalStoragePermission()
             }
 
             rl_next_btn_sign_info_wr_act -> {
                 //플래그 확인
-                if(NextBtnFlag==0){
+                if (NextBtnFlag == 0) {
                     SignInfoWrCustomSingleResDialog!!.show()
-                }
-                else{
+                } else {
                     //다음으로 넘어가기
                 }
             }
@@ -77,51 +86,56 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
 
     }
 
+    private fun requestReadExternalStoragePermission() {
+
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                //사용자에게 권한을 왜 허용해야되는지에 메시지를 주기 위한 대한 로직을 추가하려면 이 블락에서 하면됩니다!! //하지만 우리는 그냥 비워놓습니다!! 딱히 줄말 없으면 비워놔도 무관해요!!! 굳이 뭐 안넣어도됩니다!
+            } else {
+                //아래 코드는 권한을 요청하는 메시지를 띄우는 기능을 합니다! 요청에 대한 결과는 callback으로 onRequestPermissionsResult 메소드에서 받습니다!!!
+                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), My_READ_STORAGE_REQUEST_CODE)
+            }
+        } else {
+            //첫번째 if 문의 else 로써, 기존에 이미 권한 메시지를 통해 권한을 허용했다면 아래와 같은 곧바로 앨범을 여는 메소드를 호출 해주면됩니다!!
+            showAlbum()
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if(requestCode == My_READ_STORAGE_REQUEST_CODE) {
+            if(grantResults.size > 0 && grantResults[0] == PackageManager. PERMISSION_GRANTED){
+                showAlbum()
+            }else{
+                finish()
+            }
+        }
+    }
+
     //사진첩으로 가는 함수
-    fun changeImage() {
+    private fun showAlbum() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
         intent.data = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
         startActivityForResult(intent, REQ_CODE_SELECT_IMAGE)
     }
 
+    //사진첩으로 간 후 다음 동작을 설정
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQ_CODE_SELECT_IMAGE) {
             if (resultCode == Activity.RESULT_OK) {
-                try {
-                    //if(ApplicationController.getInstance().is)
-                    this.data = data!!.data
-                    Log.v("이미지", this.data.toString())
+                //data.data에는 앨범에서 선택한 사진의 Uri가 들어있습니다!! 그러니까 제대로 선택됐는지 null인지 아닌지를 체크!!!
+                if (data != null) {
 
-                    val options = BitmapFactory.Options()
+                    val selectedImageUri: Uri = data.data
+                    //Uri를 getRealPathFromURI라는 메소드를 통해 절대 경로를 알아내고, 인스턴스 변수 imageURI에 넣어줍니다!
+                    //imageURI = getRealPathFromURI(selectedImageUri)
 
-                    var input: InputStream? = null // here, you need to get your context.
-                    try {
-                        input = contentResolver.openInputStream(this.data)
-                    } catch (e: FileNotFoundException) {
-                        e.printStackTrace()
-                    }
-
-                    val bitmap = BitmapFactory.decodeStream(input, null, options) // InputStream 으로부터 Bitmap 을 만들어 준다.
-                    val baos = ByteArrayOutputStream()
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos)
-                    val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
-                    //val img = File(getRealPathFromURI(this!!, this.data).toString()) // 가져온 파일의 이름을 알아내려고 사용합니다
-
-                    // Log.v("TAG", "이미지 이름 = " + img)
-                    Log.v("TAG", "이미지 바디 = " + photoBody.toString())
-
-
-                    image = MultipartBody.Part.createFormData("image", "image", photoBody)
-
-                    //body = MultipartBody.Part.createFormData("image", photo.getName(), profile_pic);
-
-                    Glide.with(this)
-                            .load(this.data.toString())
+                    Glide.with(this@SignInfoWriteActivity)
+                            .load(selectedImageUri)
+                            .thumbnail(0.1f)
                             .into(img_profile_sign_info_wr_act)
 
-                } catch (e: Exception) {
-                    e.printStackTrace()
                 }
             }
         }
@@ -179,6 +193,7 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
                 }
 
             }
+
             //입력이 끝났을 때
             override fun afterTextChanged(s: Editable?) {
             }
@@ -257,7 +272,7 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
                                 }
 
                                 rl_next_btn_sign_info_wr_act.setBackgroundColor(Color.parseColor("#ffc233"))
-                                NextBtnFlag =1
+                                NextBtnFlag = 1
                             }
                         }
                     }

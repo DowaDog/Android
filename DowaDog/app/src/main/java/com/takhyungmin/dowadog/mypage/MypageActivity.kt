@@ -31,7 +31,7 @@ class MypageActivity : BaseActivity(), View.OnClickListener {
             btn_back_mypage_act -> {
                 finish()
             }
-            ll_mailbox_mypage_act -> {
+            rl_mailbox_mypage_act -> {
                 startActivity<LetterActivity>()
             }
         }
@@ -68,7 +68,7 @@ class MypageActivity : BaseActivity(), View.OnClickListener {
         btn_logout_setting_my_page_act.setOnClickListener(this)
         btn_next_setting_mypage_act.setOnClickListener(this)
         btn_back_mypage_act.setOnClickListener(this)
-        ll_mailbox_mypage_act.setOnClickListener(this)
+        rl_mailbox_mypage_act.setOnClickListener(this)
     }
 
     private val responseRight = View.OnClickListener { logoutCustomDialog!!.dismiss() }

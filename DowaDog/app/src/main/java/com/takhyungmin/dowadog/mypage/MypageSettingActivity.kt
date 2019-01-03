@@ -72,8 +72,6 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
 
     var imageURI : String? = null
 
-    private var image: MultipartBody.Part? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mypage_setting)
@@ -154,7 +152,6 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
                             .load(selectedImageUri)
                             .thumbnail(0.1f)
                             .into(img_profile_mypage_set_act)
-
                 }
             }
         }
