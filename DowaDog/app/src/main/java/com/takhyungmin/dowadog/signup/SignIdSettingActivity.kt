@@ -1,13 +1,17 @@
 package com.takhyungmin.dowadog.signup
 
+import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
@@ -35,13 +39,15 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
 
-        when(v) {
+        when (v) {
 
             btn_id_check_sign_id_set_act -> {
-                idCheckDialog!!.show()            }
+                idCheckDialog!!.show()
+            }
+
             //갤러리 접근
             rl_camera_img_sign_id_set_act -> {
-                changeImage()
+                requestReadExternalStoragePermission()
             }
 
             img_back_btn_sign_id_set_act -> {
@@ -54,10 +60,11 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
 
     }
 
-    val idCheckDialog : CustomSingleResDialog by lazy {
+    val idCheckDialog: CustomSingleResDialog by lazy {
         CustomSingleResDialog(this@SignIdSettingActivity, "사용가능한 아이디입니다.", mResponseClickListener, "확인")
     }
 
+    val My_READ_STORAGE_REQUEST_CODE = 88
     private val REQ_CODE_SELECT_IMAGE = 100
     lateinit var data: Uri
     private var image: MultipartBody.Part? = null
@@ -101,6 +108,7 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
                     rl_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#e2e2e2"))
                 }
             }
+
             //입력이 끝났을 때
             override fun afterTextChanged(s: Editable?) {
             }
@@ -112,6 +120,7 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 //et_pw = false
             }
+
             // 입력되는 텍스트에 변화가 있을 때
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
@@ -134,6 +143,7 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
                     rl_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#e2e2e2"))
                 }
             }
+
             //입력이 끝났을 때
             override fun afterTextChanged(s: Editable?) {
             }
@@ -168,13 +178,14 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
                     rl_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#e2e2e2"))
                 }
             }
+
             //입력이 끝났을 때
             override fun afterTextChanged(s: Editable?) {
             }
         })
     }
 
-    private fun keyboardDown(view : View) {
+    private fun keyboardDown(view: View) {
 
         val imm: InputMethodManager = applicationContext!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)
@@ -189,7 +200,34 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
         btn_id_check_sign_id_set_act.setOnClickListener(this)
     }
 
-    fun changeImage() {
+    //저장소 권한 확인
+    private fun requestReadExternalStoragePermission() {
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                //사용자에게 권한을 왜 허용해야되는지에 메세지를 주기 위한 대한 로직을 추가하면 이 블락에서 하면됩니다!
+            } else {
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), My_READ_STORAGE_REQUEST_CODE)
+            }
+        } else {
+            showAlbum()
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if (requestCode == My_READ_STORAGE_REQUEST_CODE) {
+            //결과에 대해 허용을 눌렀는지 체크하는 조건문이구요!
+            if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                //이곳은 외부저장소 접근을 허용했을 때에 대한 로직을 쓰시면됩니다. 우리는 앨범을 여는 메소드를 호출해주면되겠죠?
+                showAlbum()
+            } else {
+                //이곳은 외부저장소 접근 거부를 했을때에 대한 로직을 넣어주시면 됩니다.
+                finish()
+            }
+        }
+    }
+
+    fun showAlbum() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
         intent.data = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
@@ -197,42 +235,20 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQ_CODE_SELECT_IMAGE) {
             if (resultCode == Activity.RESULT_OK) {
-                try {
-                    //if(ApplicationController.getInstance().is)
-                    this.data = data!!.data
-                    Log.v("이미지", this.data.toString())
+                if (data != null) {
 
-                    val options = BitmapFactory.Options()
+                    val selectedImageUrl: Uri = data.data
 
-                    var input: InputStream? = null // here, you need to get your context.
-                    try {
-                        input = contentResolver.openInputStream(this.data)
-                    } catch (e: FileNotFoundException) {
-                        e.printStackTrace()
-                    }
+                    //imgaURI = getRealPathFromURI(selectedImageUri)
 
-                    val bitmap = BitmapFactory.decodeStream(input, null, options) // InputStream 으로부터 Bitmap 을 만들어 준다.
-                    val baos = ByteArrayOutputStream()
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos)
-                    val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
-                    //val img = File(getRealPathFromURI(this!!, this.data).toString()) // 가져온 파일의 이름을 알아내려고 사용합니다
-
-                    // Log.v("TAG", "이미지 이름 = " + img)
-                    Log.v("TAG", "이미지 바디 = " + photoBody.toString())
-
-
-                    image = MultipartBody.Part.createFormData("image", "image", photoBody)
-
-                    //body = MultipartBody.Part.createFormData("image", photo.getName(), profile_pic);
-
-                    Glide.with(this)
-                            .load(this.data.toString())
+                    Glide.with(this@SignIdSettingActivity)
+                            .load(selectedImageUrl)
+                            //썸네일
+                            .thumbnail(0.1f)
                             .into(img_profile_sign_id_set_act)
-
-                } catch (e: Exception) {
-                    e.printStackTrace()
                 }
             }
         }
