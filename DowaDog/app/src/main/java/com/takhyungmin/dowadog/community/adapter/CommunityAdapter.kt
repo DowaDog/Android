@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.RequestManager
+import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.community.model.CommunityItem
 import com.takhyungmin.dowadog.presenter.fragment.CommunityFragmentPresenter
@@ -30,6 +31,9 @@ class CommunityAdapter(var communityItems : ArrayList<CommunityItem>, var reques
         holder.communityTime.text = communityItems[position].communityTime
         holder.communityMore.setOnClickListener {
             loadDialog()
+        }
+        holder.communityFrame.clicks().subscribe {
+            communityFragmentPresenter.toDetail()
         }
         when(communityItems[position].communityImage.size){
             1->{

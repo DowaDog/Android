@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.KeyEvent
 import android.view.View
 import android.widget.LinearLayout
+import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.utils.CustomCommunityDetailDialog
@@ -84,6 +85,9 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
 
     fun init() {
         btn_three_dot_community_detail.setOnClickListener(this)
+        btn_back_community_detail.clicks().subscribe {
+            finish()
+        }
     }
 
     fun setViewPagerAdapter(viewPagerItemData: ArrayList<String>) {

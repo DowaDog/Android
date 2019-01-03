@@ -28,11 +28,11 @@ class ContentsFragment : Fragment(){
 
     override fun onStart() {
         super.onStart()
-        if(!ContentsObject.isCreated) {
+            tab_contents.removeAllTabs()
             tab_contents.addTab(tab_contents.newTab().setText("교육"))
             tab_contents.addTab(tab_contents.newTab().setText("상식"))
             tab_contents.setTabTextColors(Color.parseColor("#707070"), Color.parseColor("#ffc233"))
-        }
+
         ContentsObject.isCreated = true
             val tabAdapter = ContentsAdapter(childFragmentManager)
 
