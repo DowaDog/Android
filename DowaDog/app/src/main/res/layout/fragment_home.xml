@@ -12,6 +12,7 @@
         >
 
         <LinearLayout
+            android:id="@+id/ll_home_fragment_text_box"
             android:layout_marginTop="25dp"
             android:layout_marginStart="30dp"
             android:layout_width="match_parent"
@@ -88,6 +89,14 @@
                 />
 
         </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="23dp"
+            android:src="@drawable/main_img"
+            android:layout_below="@+id/ll_home_fragment_text_box"
+            />
 
         <RelativeLayout
             android:layout_width="204dp"

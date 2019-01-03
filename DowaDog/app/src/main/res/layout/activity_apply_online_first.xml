@@ -7,7 +7,8 @@
     tools:context=".apply.online.ApplyOnlineFirstActivity"
     android:orientation="vertical"
     android:focusable="true"
-    android:focusableInTouchMode="true">
+    android:focusableInTouchMode="true"
+    android:background="#FFFFFF">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -273,6 +274,7 @@
                     android:layout_weight="1">
 
                     <TextView
+                        android:id="@+id/text_online_apply_first_address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
@@ -284,7 +286,8 @@
 
                     <EditText
                         android:id="@+id/edit_online_apply_first_address"
-                        android:layout_width="wrap_content"
+                        android:layout_toRightOf="@+id/text_online_apply_first_address"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="입력해주세요"
                         android:background="@null"
@@ -294,7 +297,7 @@
                         android:fontFamily="@font/nanum_round"
                         android:layout_centerVertical="true"
                         android:textDirection="rtl"
-                        android:layout_alignParentRight="true"
+                        android:layout_marginStart="30dp"
                         android:layout_marginEnd="16dp"
                         />
 
@@ -313,6 +316,7 @@
                     android:layout_weight="1">
 
                     <TextView
+                        android:id="@+id/text_online_apply_first_vocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
@@ -324,7 +328,8 @@
 
                     <EditText
                         android:id="@+id/edit_online_apply_first_vocation"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_toRightOf="@+id/text_online_apply_first_vocation"
                         android:layout_height="wrap_content"
                         android:hint="입력해주세요"
                         android:textDirection="rtl"
@@ -336,6 +341,7 @@
                         android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
                         android:layout_marginEnd="16dp"
+                        android:layout_marginStart="30dp"
                         />
 
 
