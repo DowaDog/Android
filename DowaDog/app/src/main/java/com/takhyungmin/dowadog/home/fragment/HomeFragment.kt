@@ -10,10 +10,10 @@ import com.jakewharton.rxbinding2.view.clicks
 import com.mancj.slideup.SlideUp
 import com.mancj.slideup.SlideUpBuilder
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.find.fragment.AnimalFindFragment
 import com.takhyungmin.dowadog.home.HomeObject
 import com.takhyungmin.dowadog.home.adapter.HomeFragmentLargePadeAdapter
 import com.takhyungmin.dowadog.presenter.fragment.HomeFragmentPresenter
-import kotlinx.android.synthetic.main.activity_apply_online_first.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home_slide_up.*
 
@@ -96,6 +96,11 @@ class HomeFragment : Fragment() {
     fun setBinding(){
         btn_home_fragment_slide.clicks().subscribe {
             slideUp.show()
+        }
+
+        btn_home_fragment_new.clicks().subscribe {
+            HomeObject.homeActivityPresenter.replaceFragment(AnimalFindFragment())
+            HomeObject.homeActivityPresenter.toNew()
         }
     }
 
