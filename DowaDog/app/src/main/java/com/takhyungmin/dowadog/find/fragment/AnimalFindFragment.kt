@@ -1,5 +1,6 @@
 package com.takhyungmin.dowadog.find.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.dogdetail.DogDetailActivity
 import com.takhyungmin.dowadog.find.adapter.AnimalFindNewAdapter
 import com.takhyungmin.dowadog.find.adapter.AnimalFindUrgentAdapter
 import com.takhyungmin.dowadog.presenter.fragment.AnimalFindFragmentPresenter
@@ -48,5 +50,9 @@ class AnimalFindFragment : Fragment() {
         rv_find_fragment_new.adapter = animalFindNewAdapter
         rv_find_fragment_urgent.adapter = animlaFindUrgnetAdapter
 
+    }
+
+    fun toApply(){
+        activity!!.startActivity(Intent(activity, DogDetailActivity::class.java))
     }
 }

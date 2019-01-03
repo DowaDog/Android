@@ -8,6 +8,7 @@ import android.view.View
 import android.view.WindowManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.contents.adapter.ContentsEduDetailItem
 import com.takhyungmin.dowadog.contents.adapter.ContentsEduDetailRvAdapter
@@ -40,6 +41,7 @@ class ContentsEduDetailActivity : AppCompatActivity() {
         contentsEduDetailActivityPresenter.view = this
         contentsEduDetailActivityPresenter.initView()
         setScrollListener()
+        setOnBinding()
     }
 
     fun initView(contentsEduDetailItems : ArrayList<ContentsEduDetailItem>){
