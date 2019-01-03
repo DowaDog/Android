@@ -26,16 +26,22 @@
             android:layout_height="48dp"
             android:background="#ffffff"
             android:focusable="true"
-            android:elevation="3dp"
+            android:elevation="1dp"
             android:focusableInTouchMode="true">
 
-            <ImageView
+            <RelativeLayout
                 android:id="@+id/btn_home_drawer"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="16dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/drawer_btn"/>
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/drawer_btn"/>
+            </RelativeLayout>
+
 
             <TextView
                 android:id="@+id/tv_home_title"
@@ -48,14 +54,21 @@
                 android:includeFontPadding="false"
                 android:text="기다릴개"/>
 
-            <ImageView
+            <RelativeLayout
                 android:id="@+id/btn_home_mypage"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginEnd="16dp"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/login_profile_img"/>
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginHorizontal="16dp"
+                    android:src="@drawable/main_mypage_icon" />
+            </RelativeLayout>
+
+
 
             <ImageView
                 android:id="@+id/btn_home_search"

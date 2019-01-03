@@ -1,229 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="#ffffff"
     android:focusable="true"
-    android:background="#ffffff">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
         android:layout_marginStart="30dp"
+        android:layout_weight="2"
         android:orientation="vertical">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <RelativeLayout
-            android:layout_marginTop="24dp"
-        android:layout_width="match_parent"
-        android:layout_height="18dp">
-    <ImageView
-        android:layout_alignParentRight="true"
 
-        android:layout_marginEnd="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:src="@drawable/x_btn"
-        />
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true">
-
-        <LinearLayout
-            android:id="@+id/layout_navi_not_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="#707070"
-                android:includeFontPadding="false"
-                android:fontFamily="@font/nanum_light"
-                android:text="아직 로그인이 되지 않았어요"
-                />
-
-            <TextView
-                android:layout_marginTop="6dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:includeFontPadding="false"
-                android:textColor="#707070"
-                android:text="로그인 하기"
-                />
-        </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/layout_navi_after_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            >
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/tv_navi_name"
+                android:layout_centerVertical="true">
+
+                <LinearLayout
+                    android:id="@+id/layout_navi_not_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nanum_light"
+                        android:includeFontPadding="false"
+                        android:text="아직 로그인이 되지 않았어요"
+                        android:textColor="#707070"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:includeFontPadding="false"
+                        android:text="로그인 하기"
+                        android:textColor="#707070"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layout_navi_after_login"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="#707070"
-                    android:includeFontPadding="false"
-                    android:fontFamily="@font/nanum_light"
-                    android:text="09님,"
-                    />
+                    android:visibility="gone">
 
-                <TextView
-                    android:layout_marginTop="6dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:includeFontPadding="false"
-                    android:textColor="#707070"
-                    android:text="기다릴개요 :)"
-                    />
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img_navi_profile"
-                android:layout_width="44.2dp"
-                android:layout_height="44.2dp"
-                android:src="@drawable/pic1"
-                android:layout_alignParentRight="true"
-                />
+                        <TextView
+                            android:id="@+id/tv_navi_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nanum_light"
+                            android:includeFontPadding="false"
+                            android:text="09님,"
+                            android:textColor="#707070"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:includeFontPadding="false"
+                            android:text="기다릴개요 :)"
+                            android:textColor="#707070"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img_navi_profile"
+                        android:layout_width="44.2dp"
+                        android:layout_height="44.2dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/pic1" />
+                </RelativeLayout>
+            </RelativeLayout>
+
         </RelativeLayout>
-    </RelativeLayout>
-
-    </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:layout_weight="5">
+        android:layout_weight="5"
+        android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/btn_navi_home"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/nanum_extra_bold"
-        android:text="홈"
-        android:layout_marginStart="30dp"
-        android:layout_centerVertical="true"
-        android:includeFontPadding="false"
-        android:textSize="18sp"
-        android:layout_weight="1"
-        />
+
+            <TextView
+                android:id="@+id/text_navi_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="30dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nanum_extra_bold"
+                android:includeFontPadding="false"
+                android:text="홈"
+                android:textSize="18sp" />
         </RelativeLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="#c7c7c7"/>
+            android:background="#c7c7c7" />
 
         <RelativeLayout
             android:id="@+id/btn_navi_introduce"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="기다릴개 란?"
-        android:layout_marginStart="30dp"
-        android:layout_centerVertical="true"
-        android:includeFontPadding="false"
-        android:fontFamily="@font/nanum_round"
-        android:textSize="16sp"
-        android:layout_weight="1"
-        />
+
+            <TextView
+                android:id="@+id/text_navi_introduce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="30dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nanum_round"
+                android:includeFontPadding="false"
+                android:text="기다릴개 란?"
+                android:textSize="16sp" />
         </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="#c7c7c7"/>
+            android:background="#c7c7c7" />
 
         <RelativeLayout
             android:id="@+id/btn_navi_adopt"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:layout_marginStart="30dp"
-        android:layout_centerVertical="true"
-        android:fontFamily="@font/nanum"
-        android:includeFontPadding="false"
-        android:text="입양하기"
-        android:layout_weight="1"
-        />
+
+            <TextView
+                android:id="@+id/text_navi_adopt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="30dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nanum_round"
+                android:includeFontPadding="false"
+                android:text="입양하기"
+                android:textSize="16sp" />
         </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="#c7c7c7"/>
+            android:background="#c7c7c7" />
 
         <RelativeLayout
             android:id="@+id/btn_navi_contents"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/nanum_round"
-        android:layout_marginStart="30dp"
-        android:layout_centerVertical="true"
-        android:includeFontPadding="false"
-        android:textSize="16sp"
-        android:text="컨텐츠"
-        android:layout_weight="1"
-        />
+
+            <TextView
+                android:id="@+id/text_navi_contents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="30dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nanum_round"
+                android:includeFontPadding="false"
+                android:text="컨텐츠"
+                android:textSize="16sp" />
 
         </RelativeLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="#c7c7c7"/>
+            android:background="#c7c7c7" />
+
         <RelativeLayout
             android:id="@+id/btn_navi_community"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/nanum_round"
-        android:layout_marginStart="30dp"
-        android:layout_centerVertical="true"
-        android:textSize="16sp"
-        android:includeFontPadding="false"
-        android:text="커뮤니티"
-        android:layout_weight="1"
-        />
+            <TextView
+                android:id="@+id/text_navi_community"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="30dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nanum_round"
+                android:includeFontPadding="false"
+                android:text="커뮤니티"
+                android:textSize="16sp" />
         </RelativeLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="#c7c7c7"/>
+            android:background="#c7c7c7" />
 
         <RelativeLayout
             android:id="@+id/btn_navi_mypage"
@@ -231,61 +223,61 @@
             android:layout_height="0dp"
             android:layout_weight="1">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nanum_round"
-            android:layout_marginStart="30dp"
-            android:layout_centerVertical="true"
-            android:textSize="16sp"
-            android:includeFontPadding="false"
-            android:text="마이페이지"
-            android:layout_weight="1"
-            />
+            <TextView
+                android:id="@+id/text_navi_mypage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="30dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nanum_round"
+                android:includeFontPadding="false"
+                android:text="마이페이지"
+                android:textSize="16sp" />
 
         </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="#c7c7c7"/>
+            android:background="#c7c7c7" />
 
         <RelativeLayout
             android:id="@+id/btn_navi_adopt_info"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nanum_round"
-            android:layout_marginStart="30dp"
-            android:layout_centerVertical="true"
-            android:textSize="16sp"
-            android:includeFontPadding="false"
-            android:text="입양 안내"
-            android:layout_weight="1"
-            />
+
+            <TextView
+                android:id="@+id/text_navi_adopt_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="30dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nanum_round"
+                android:includeFontPadding="false"
+                android:text="입양 안내"
+                android:textSize="16sp" />
 
         </RelativeLayout>
 
         <TextView
             android:id="@+id/btn_navi_contact"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:fontFamily="@font/nanum_light"
-            android:textSize="12sp"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/nanum_light"
             android:paddingTop="6dp"
             android:text="문의번호 : 010-3643-9714"
-            android:layout_weight="1"
-            />
+            android:textSize="14sp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"/>
+            android:layout_weight="2" />
 
     </LinearLayout>
 
