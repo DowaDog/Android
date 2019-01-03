@@ -1,5 +1,6 @@
 package com.takhyungmin.dowadog.community
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.Fragment
@@ -11,12 +12,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.community.adapter.CommunityAdapter
 import com.takhyungmin.dowadog.community.model.CommunityItem
+import com.takhyungmin.dowadog.communitydetail.CommunityDetailActivity
+import com.takhyungmin.dowadog.communitywrite.CommunityWriteActivity
 import com.takhyungmin.dowadog.presenter.fragment.CommunityFragmentPresenter
 import kotlinx.android.synthetic.main.fragment_community.*
-
 
 
 class CommunityFragment : Fragment() {
@@ -32,6 +35,7 @@ class CommunityFragment : Fragment() {
     var currentPage = 0
     var startPage = 0
     val itemCount = 5
+    var isFinish = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_community, container, false)
@@ -60,11 +64,6 @@ class CommunityFragment : Fragment() {
         rv_community_feeds.addOnScrollListener(object : RecyclerView.OnScrollListener(){
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
-
-            }
-
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
                 Log.v("isLoading", isLoading.toString())
                 Log.v("isLast", isLast.toString())
                 Log.v("currentPage", currentPage.toString())
@@ -75,7 +74,7 @@ class CommunityFragment : Fragment() {
                 }
                 if(!rv_community_feeds.canScrollVertically(1)) {
                     // 맨 아래
-                    if (!isLoading and !isLast) {
+                    if (!isLoading and isLast and !isFinish) {
                         Log.v("continue", "continue")
                         isLoading = true
                         currentPage += 1
@@ -83,9 +82,23 @@ class CommunityFragment : Fragment() {
 
                         Handler().postDelayed(Runnable {
                             communityFragmentPresenter.nextPage(currentPage, itemCount)
+                            isLast = false
                         }, 2000)
                     }
                 }
+
+                Log.v("last", rv_community_feeds.canScrollVertically(1).toString())
+
+                if(rv_community_feeds.canScrollVertically(1)){
+                    //맨 아래 왔을 때
+                    isLast = true
+                }
+            }
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+
             }
 
         })
@@ -105,7 +118,7 @@ class CommunityFragment : Fragment() {
         communityAdapter.addAll(results)
         isLoading = false
         if (currentPage > TOTAL_PAGE)
-            isLast = true
+            isFinish = true
     }
 
     fun loadFristPage(results : ArrayList<CommunityItem>){
