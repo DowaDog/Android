@@ -112,6 +112,8 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
+            android:id="@+id/btn_contents_edu_detail_back1"
+
             android:src="@drawable/back_arrow" />
 
         <ImageView
@@ -139,6 +141,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
+            android:id="@+id/btn_contents_edu_detail_back2"
             android:src="@drawable/back_arrow" />
 
         <ImageView
