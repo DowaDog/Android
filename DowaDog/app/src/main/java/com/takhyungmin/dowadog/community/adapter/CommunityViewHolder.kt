@@ -9,8 +9,6 @@ import android.widget.TextView
 import com.takhyungmin.dowadog.R
 
 class CommunityViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
-    var communityFrame = itemView.findViewById(R.id.layout_community_item_frame) as RelativeLayout
-
     var communityProfile = itemView.findViewById(R.id.img_community_item_profile) as ImageView
     var communityName = itemView.findViewById(R.id.tv_community_item_name) as TextView
     var communityTime = itemView.findViewById(R.id.tv_community_item_time) as TextView

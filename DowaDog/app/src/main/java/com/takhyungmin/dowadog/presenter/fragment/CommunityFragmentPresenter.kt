@@ -58,4 +58,5 @@ class CommunityFragmentPresenter : BasePresenter<CommunityFragment>() {
 
         view!!.loadNextPage(communityItems)
     }
+
 }

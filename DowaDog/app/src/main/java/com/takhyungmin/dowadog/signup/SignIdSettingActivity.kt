@@ -12,10 +12,13 @@ import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.bumptech.glide.Glide
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.utils.CustomDialog
+import com.takhyungmin.dowadog.utils.CustomSingleResDialog
 import kotlinx.android.synthetic.main.activity_mypage_setting.*
 import kotlinx.android.synthetic.main.activity_sign_id_setting.*
 import kotlinx.android.synthetic.main.activity_sign_info_write.*
@@ -28,7 +31,32 @@ import java.io.FileNotFoundException
 import java.io.InputStream
 import java.util.*
 
-class SignIdSettingActivity : BaseActivity() {
+class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
+
+    override fun onClick(v: View?) {
+
+        when(v) {
+
+            btn_id_check_sign_id_set_act -> {
+                idCheckDialog!!.show()            }
+            //갤러리 접근
+            rl_camera_img_sign_id_set_act -> {
+                changeImage()
+            }
+
+            img_back_btn_sign_id_set_act -> {
+                startActivity<SignInfoWriteActivity>()
+            }
+            rl_sign_id_set_act -> {
+                keyboardDown(rl_sign_id_set_act)
+            }
+        }
+
+    }
+
+    val idCheckDialog : CustomSingleResDialog by lazy {
+        CustomSingleResDialog(this@SignIdSettingActivity, "사용가능한 아이디입니다.", mResponseClickListener, "확인")
+    }
 
     private val REQ_CODE_SELECT_IMAGE = 100
     lateinit var data: Uri
@@ -43,20 +71,7 @@ class SignIdSettingActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_id_setting)
 
-        //갤러리 접근
-        rl_camera_img_sign_id_set_act.setOnClickListener {
-            changeImage()
-        }
-
-        img_back_btn_sign_id_set_act.setOnClickListener {
-            startActivity<SignInfoWriteActivity>()
-        }
-
-        //키보드 내려가게 하는 함수
-        rl_sign_id_set_act.setOnClickListener {
-            val imm: InputMethodManager = applicationContext!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(it.windowToken, 0)
-        }
+        init()
 
         //et_id_sign_id_set_act--> editText에 값이 들어갔는지 판별해주는 것
         et_id_sign_id_set_act.addTextChangedListener(object : TextWatcher {
@@ -159,6 +174,21 @@ class SignIdSettingActivity : BaseActivity() {
         })
     }
 
+    private fun keyboardDown(view : View) {
+
+        val imm: InputMethodManager = applicationContext!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    private fun init() {
+        rl_camera_img_sign_id_set_act.setOnClickListener(this)
+        img_back_btn_sign_id_set_act.setOnClickListener(this)
+
+        rl_sign_id_set_act.setOnClickListener(this)
+
+        btn_id_check_sign_id_set_act.setOnClickListener(this)
+    }
+
     fun changeImage() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
@@ -207,4 +237,7 @@ class SignIdSettingActivity : BaseActivity() {
             }
         }
     }
+
+    private val mResponseClickListener = View.OnClickListener { idCheckDialog!!.dismiss() }
+
 }

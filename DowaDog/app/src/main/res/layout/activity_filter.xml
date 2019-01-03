@@ -1,62 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".filter.FilterActivity"
-    android:orientation="vertical">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="#FFFFFF"
-        android:elevation="3dp">
-
-        <!--백버튼-->
-        <RelativeLayout
-            android:id="@+id/btn_back_filter_act"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginHorizontal="16dp"
-                android:src="@drawable/back_arrow" />
-
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:fontFamily="@font/nanum_bold"
-            android:text="필터"
-            android:textColor="#707070"
-            android:textSize="18sp" />
-
-        <!--리턴버튼-->
-        <RelativeLayout
-            android:id="@+id/btn_return_filter_act"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginHorizontal="16dp"
-                android:src="@drawable/filter_refresh" />
-
-        </RelativeLayout>
-    </RelativeLayout>
-
-
-
+    tools:context=".filter.FilterActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -70,6 +19,52 @@
 
 
             <!--상단바-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="#FFFFFF"
+                android:elevation="3dp">
+
+                <!--백버튼-->
+                <RelativeLayout
+                    android:id="@+id/btn_back_filter_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginHorizontal="16dp"
+                        android:src="@drawable/back_arrow" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/nanum_bold"
+                    android:text="필터"
+                    android:textColor="#707070"
+                    android:textSize="18sp" />
+
+                <!--리턴버튼-->
+                <RelativeLayout
+                    android:id="@+id/btn_return_filter_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginHorizontal="16dp"
+                        android:src="@drawable/filter_refresh" />
+
+                </RelativeLayout>
+            </RelativeLayout>
 
             <!--종류-->
             <RelativeLayout
@@ -106,9 +101,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:scaleType="fitXY"
-                        android:src="@drawable/filter_dog_gray_1227">
-
-                    </ImageView>
+                        android:src="@drawable/filter_dog_gray_1227"></ImageView>
 
                     <View
                         android:layout_width="8dp"
@@ -121,9 +114,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:scaleType="fitXY"
-                        android:src="@drawable/filter_cat_gray_1227">
-
-                    </ImageView>
+                        android:src="@drawable/filter_cat_gray_1227"></ImageView>
 
                 </LinearLayout>
             </RelativeLayout>
@@ -309,7 +300,6 @@
                 android:layout_width="163dp"
                 android:layout_height="41dp"
                 android:background="@drawable/filter_confirm_btn_box"
-                android:elevation="3dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="45dp">
 
@@ -331,4 +321,4 @@
     </ScrollView>
 
 
-</LinearLayout>
+</RelativeLayout>

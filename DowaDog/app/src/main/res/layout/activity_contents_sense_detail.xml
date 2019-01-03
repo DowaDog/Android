@@ -85,31 +85,6 @@
         android:layout_height="48dp">
 
         <ImageView
-            android:id="@+id/btn_contents_sense_detail_back1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"
-            android:src="@drawable/back_arrow_white" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/contents_unscrap_btn"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/layout_contents_sense_detail_toolbar_move"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="#ffffff"
-        android:visibility="gone">
-
-        <ImageView
-            android:id="@+id/btn_contents_sense_detail_back2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -122,8 +97,35 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginEnd="16dp"
+
+            android:src="@drawable/contents_unscrap_btn"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_contents_sense_detail_toolbar_move"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#ffffff"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/back_arrow" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="16dp"
+
             android:tint="#707070"
             android:src="@drawable/contents_unscrap_btn" />
+
     </RelativeLayout>
 
 

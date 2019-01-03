@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.RequestManager
-import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.presenter.fragment.AnimalFindFragmentPresenter
 import com.takhyungmin.dowadog.urgent.UrgentAnimalData
@@ -29,6 +28,7 @@ class AnimalFindUrgentAdapter(var urgentItems : ArrayList<UrgentAnimalData>,
         urgentRequestManager.load(urgentItems[position].ani_img).into(holder.ani_img)
         holder.ani_region.text = urgentItems[position].ani_region
         holder.tv_ani_kind.text = urgentItems[position].ani_kind
+
         holder.ani_img.clicks().subscribe {
             animalFindFragmentPresenter.toApply()
         }
@@ -38,5 +38,6 @@ class AnimalFindUrgentAdapter(var urgentItems : ArrayList<UrgentAnimalData>,
         val params = holder.newFrame.layoutParams
         params.height = height
         holder.newFrame.layoutParams = params
+
     }
 }

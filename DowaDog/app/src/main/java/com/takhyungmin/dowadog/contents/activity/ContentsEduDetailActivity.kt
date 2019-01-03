@@ -8,7 +8,6 @@ import android.view.View
 import android.view.WindowManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
-import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.contents.adapter.ContentsEduDetailItem
 import com.takhyungmin.dowadog.contents.adapter.ContentsEduDetailRvAdapter
@@ -34,7 +33,6 @@ class ContentsEduDetailActivity : AppCompatActivity() {
         rv_contents_edu_detail_content.setFocusable(false)
         layout_edu_detail.requestFocus()
         init()
-        setOnBinding()
     }
 
     private fun init(){
@@ -98,6 +96,7 @@ class ContentsEduDetailActivity : AppCompatActivity() {
 //            sharedElements.put(names[0], img_contents_edu_detail)
 //        }
 //    }
+
 
     fun setOnBinding(){
         btn_contents_edu_detail_back1.clicks().subscribe {

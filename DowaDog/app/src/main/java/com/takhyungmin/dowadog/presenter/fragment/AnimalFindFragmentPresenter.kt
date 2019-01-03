@@ -27,8 +27,4 @@ class AnimalFindFragmentPresenter : BasePresenter<AnimalFindFragment>() {
 
         view!!.init(urgentItems, newItems)
     }
-
-    fun toApply(){
-        view!!.toApply()
-    }
 }

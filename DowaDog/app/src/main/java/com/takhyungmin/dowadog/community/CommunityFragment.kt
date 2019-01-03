@@ -1,6 +1,5 @@
 package com.takhyungmin.dowadog.community
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.Fragment
@@ -12,12 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
-import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.community.adapter.CommunityAdapter
 import com.takhyungmin.dowadog.community.model.CommunityItem
-import com.takhyungmin.dowadog.communitydetail.CommunityDetailActivity
-import com.takhyungmin.dowadog.communitywrite.CommunityWriteActivity
 import com.takhyungmin.dowadog.presenter.fragment.CommunityFragmentPresenter
 import kotlinx.android.synthetic.main.fragment_community.*
 
@@ -52,7 +48,6 @@ class CommunityFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         communityFragmentPresenter.initView()
-        setOnBinding()
     }
 
     fun initView(communityItems : ArrayList<CommunityItem>){
@@ -119,5 +114,4 @@ class CommunityFragment : Fragment() {
 
 
     }
-
 }
