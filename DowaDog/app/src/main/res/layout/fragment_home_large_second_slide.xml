@@ -6,7 +6,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="40dp">
 
     <LinearLayout
         android:id="@+id/layout_home_fragment_large_second_process"
@@ -21,8 +21,8 @@
             android:layout_weight="1">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:id="@+id/indicator_second_slide_first"
                 android:src="@drawable/slider_write_orange"
                 android:layout_gravity="center"
@@ -51,8 +51,8 @@
             android:layout_weight="1">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:id="@+id/indicator_second_slide_second"
                 android:src="@drawable/slider_call_gray"
                 android:layout_gravity="center"
@@ -81,8 +81,8 @@
             android:layout_weight="1">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:id="@+id/indicator_second_slide_third"
                 android:src="@drawable/slider_adopt_gray"
                 android:layout_gravity="center"
@@ -111,8 +111,8 @@
             android:layout_weight="1">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:id="@+id/indicator_second_slide_fourth"
                 android:src="@drawable/slider_finish_gray"
                 android:layout_gravity="center"
@@ -144,7 +144,7 @@
             android:layout_below="@+id/layout_home_fragment_large_second_process"
             android:layout_above="@+id/layout_fragment_home_large_second_description"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             />
 
         <RelativeLayout
@@ -152,7 +152,6 @@
             android:layout_width="match_parent"
             android:layout_height="82dp"
             android:layout_alignParentBottom="true"
-            android:elevation="3dp"
             android:layout_marginStart="13dp"
             android:layout_marginEnd="13dp"
             android:background="@drawable/fragment_home_slide_description"
