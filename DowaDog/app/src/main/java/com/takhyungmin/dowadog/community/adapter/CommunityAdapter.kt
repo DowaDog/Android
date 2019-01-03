@@ -2,6 +2,7 @@ package com.takhyungmin.dowadog.community.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -94,5 +95,26 @@ class CommunityAdapter(var communityItems : ArrayList<CommunityItem>, var reques
     private val rightListener = View.OnClickListener {
         //데이터 저장, 통신, 뷰 변경..
         customDialog.dismiss()
+    }
+
+//    fun add(r: CommunityItem) {
+//        communityItems.add(r)
+//        notifyItemInserted(communityItems.size - 1)
+//    }
+//
+//    fun addAll(communityItems: ArrayList<CommunityItem>) {
+//        for (item in communityItems) {
+//            add(item)
+//        }
+//    }
+
+    fun addAll(result : ArrayList<CommunityItem>){
+        communityItems.addAll(result)
+        notifyItemRangeInserted(communityItems.size,
+                result.size-1)
+
+        Log.v("position1", communityItems.size.toString())
+        Log.v("position2", result.size.toString())
+
     }
 }

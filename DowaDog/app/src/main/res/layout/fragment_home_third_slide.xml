@@ -2,19 +2,21 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/home_slide_third_text_frame"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginTop="19dp"
-    android:layout_marginBottom="19dp"
     android:orientation="vertical"
-    android:paddingTop="19dp"
-    android:paddingBottom="16.4dp"
     >
+    
+    <RelativeLayout
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="19dp"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:background="@drawable/home_slide_third_text_frame"
+        android:layout_height="240dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_centerVertical="true">
 
@@ -26,22 +28,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
+        android:layout_marginTop="19dp"
         android:textColor="#434343"
         android:layout_marginStart="28dp"
         android:includeFontPadding="false"
+        android:id="@+id/tv_online_apply_third_preapre"
         android:fontFamily="@font/nanum_extra_bold"
         android:text="준비물"
         />
     <TextView
+
         android:layout_width="wrap_content"
+        android:layout_marginTop="19dp"
         android:layout_height="wrap_content"
         android:text="@string/home_slide_third_description1"
         android:fontFamily="@font/nanum_round"
         android:textSize="16sp"
         android:textColor="#1f1f1f"
+        android:layout_toRightOf="@+id/tv_online_apply_third_preapre"
         android:lineSpacingExtra="10sp"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="90dp"
+        android:includeFontPadding="false"
+        android:layout_marginStart="42dp"
         />
     </RelativeLayout>
 
@@ -58,6 +65,7 @@
             android:layout_marginStart="28dp"
             android:includeFontPadding="false"
             android:fontFamily="@font/nanum_extra_bold"
+            android:id="@+id/tv_online_apply_third_condition"
             android:text="입양조건"
             />
         <TextView
@@ -68,8 +76,9 @@
             android:textSize="16sp"
             android:textColor="#1f1f1f"
             android:lineSpacingExtra="10sp"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="90dp"
+            android:includeFontPadding="false"
+            android:layout_marginStart="28dp"
+            android:layout_toRightOf="@+id/tv_online_apply_third_condition"
             />
     </RelativeLayout>
 
@@ -77,18 +86,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12sp"
-        android:layout_marginStart="18dp"
-        android:layout_marginBottom="16.4dp"
-        android:layout_alignParentBottom="true"
         android:textColor="#838383"
-        android:gravity="end"
-        android:layout_marginTop="12.1dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="19.1dp"
         android:fontFamily="@font/nanum_round"
-        android:layout_centerHorizontal="true"
+        android:includeFontPadding="false"
         android:text="*제출 서류 : 유기동물 분양 신청서, 소유주 변경신청서"
         />
 
     </LinearLayout>
+
+    </RelativeLayout>
 
 
 
