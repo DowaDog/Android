@@ -1,9 +1,15 @@
 package com.takhyungmin.dowadog.presenter.activity
 
 import com.takhyungmin.dowadog.communitydetail.CommunityDetailActivity
+import com.takhyungmin.dowadog.communitydetail.model.CommunityDetailModel
+import com.takhyungmin.dowadog.communitydetail.model.get.GetCommunityPostDetailResponse
 import com.takhyungmin.dowadog.presenter.BasePresenter
 
 class CommunityDetailActivityPresenter : BasePresenter<CommunityDetailActivity>() {
+
+    private val communityDetailModel : CommunityDetailModel by lazy {
+        CommunityDetailModel()
+    }
 
 
     fun initView(){
@@ -14,9 +20,13 @@ class CommunityDetailActivityPresenter : BasePresenter<CommunityDetailActivity>(
         viewPagerItemData.add("https://s3.ap-northeast-2.amazonaws.com/liivlive/kb_login_profile_img.png")
         viewPagerItemData.add("https://s3.ap-northeast-2.amazonaws.com/liivlive/kb_login_profile_img.png")
         viewPagerItemData.add("https://s3.ap-northeast-2.amazonaws.com/liivlive/kb_login_profile_img.png")
-
-
-
         view!!.setViewPagerAdapter(viewPagerItemData)
+    }
+    fun requestData(){
+        communityDetailModel.getCommunityPostDetailData()
+    }
+
+    fun responseData(data : GetCommunityPostDetailResponse){
+        view!!.responseData(data)
     }
 }

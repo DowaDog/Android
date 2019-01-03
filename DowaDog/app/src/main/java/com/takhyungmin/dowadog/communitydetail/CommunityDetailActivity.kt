@@ -10,6 +10,9 @@ import android.widget.LinearLayout
 import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.communitydetail.model.get.GetCommunityPostDetailData
+import com.takhyungmin.dowadog.communitydetail.model.get.GetCommunityPostDetailResponse
+import com.takhyungmin.dowadog.presenter.activity.CommunityDetailActivityPresenter
 import com.takhyungmin.dowadog.utils.CustomCommunityDetailDialog
 import com.takhyungmin.dowadog.utils.CustomDialog
 import kotlinx.android.synthetic.main.activity_community_detail.*
@@ -18,6 +21,11 @@ import kotlinx.android.synthetic.main.custom_dialog_community_detail.*
 class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
 
     lateinit var communityDetailRecyclerViewAdapter: CommunityDetailRecyclerViewAdapter
+
+    lateinit var communityPostDetailDataList : GetCommunityPostDetailData
+
+
+    private lateinit var communityDetailActivityPresenter: CommunityDetailActivityPresenter
 
     // 0일 경우 글 수정
     // 1일 경우 글 삭제
@@ -39,6 +47,10 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_community_detail)
+
+        initPresenter()
+        communityDetailActivityPresenter.initView()
+        communityDetailActivityPresenter.requestData()
 
 
         // ## 댓글이 없으면 로직처리 확실하게 해야한다.
@@ -173,8 +185,21 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
         communityDetailRecyclerViewAdapter = CommunityDetailRecyclerViewAdapter(this@CommunityDetailActivity, a)
         rv_comment_community_detail_act.adapter = communityDetailRecyclerViewAdapter
         rv_comment_community_detail_act.layoutManager = LinearLayoutManager(applicationContext, LinearLayout.VERTICAL, false)
-
     }
+
+    private fun initPresenter(){
+        communityDetailActivityPresenter = CommunityDetailActivityPresenter()
+        // 뷰 붙여주는 작엄
+        communityDetailActivityPresenter.view = this
+        CommunityDetailObject.communityDetailActivityPresenter= communityDetailActivityPresenter
+    }
+
+    fun responseData(data : GetCommunityPostDetailResponse){
+        data?.let {
+            communityPostDetailDataList = data.data
+        }
+    }
+
 
 }
 
