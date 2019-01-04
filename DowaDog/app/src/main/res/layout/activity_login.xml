@@ -8,165 +8,170 @@
     tools:context=".login.LoginActivity">
 
     <RelativeLayout
-        android:id="@+id/rl_wait_for_login_act"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="128dp">
-
-        <TextView
-            android:id="@+id/tv_we_login_act"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nanum_light"
-            android:text="우리가,"
-            android:textColor="#707070"
-            android:textSize="25sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_toRightOf="@+id/tv_we_login_act"
-            android:fontFamily="@font/nanum_extra_bold"
-            android:text="기다릴개"
-            android:textColor="#707070"
-            android:textSize="25sp" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_input_login_act"
+        android:id="@+id/rl_login_act"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rl_wait_for_login_act"
-        android:layout_marginHorizontal="48dp"
-        android:layout_marginTop="56dp">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/rl_wait_for_login_act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="128dp">
+
+            <TextView
+                android:id="@+id/tv_we_login_act"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_light"
+                android:text="우리가,"
+                android:textColor="#707070"
+                android:textSize="25sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_toRightOf="@+id/tv_we_login_act"
+                android:fontFamily="@font/nanum_extra_bold"
+                android:text="기다릴개"
+                android:textColor="#707070"
+                android:textSize="25sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_input_login_act"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_below="@+id/rl_wait_for_login_act"
+            android:layout_marginHorizontal="48dp"
+            android:layout_marginTop="56dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:background="@drawable/sign_info_write_act_signup_box">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:background="@drawable/sign_info_write_act_signup_box">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/et_id_login_act"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="16dp"
+                            android:background="@null"
+                            android:fontFamily="@font/nanum_round"
+                            android:hint="아이디"
+                            android:inputType="textShortMessage"
+                            android:textColorHint="#cecece"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+                </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_height="42dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/sign_info_write_act_signup_box">
 
                     <EditText
-                        android:id="@+id/et_id_login_act"
+                        android:id="@+id/et_pw_login_act"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="16dp"
                         android:background="@null"
                         android:fontFamily="@font/nanum_round"
-                        android:hint="아이디"
-                        android:inputType="textShortMessage"
+                        android:hint="패스워드"
+                        android:inputType="textPassword"
                         android:textColorHint="#cecece"
                         android:textSize="14sp" />
                 </RelativeLayout>
 
+                <RelativeLayout
+                    android:id="@+id/btn_login_act"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/fragment_home_btn_background">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/nanum_bold"
+                        android:text="로그인"
+                        android:textColor="#ffffff"
+                        android:textSize="17sp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/login_act_look_around_box">
+
+                    <TextView
+                        android:id="@+id/btn_look_login_act"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/nanum_bold"
+                        android:text="둘러보기"
+                        android:textColor="#ffffff"
+                        android:textSize="17sp" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_question_login_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/nanum_round"
+                    android:text="기다릴개와 함께하시겠어요?"
+                    android:textColor="#c7c7c7"
+                    android:textSize="13sp" />
+
             </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/sign_info_write_act_signup_box">
 
-                <EditText
-                    android:id="@+id/et_pw_login_act"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="16dp"
-                    android:background="@null"
-                    android:fontFamily="@font/nanum_round"
-                    android:hint="패스워드"
-                    android:inputType="textPassword"
-                    android:textColorHint="#cecece"
-                    android:textSize="14sp" />
-            </RelativeLayout>
+        </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/fragment_home_btn_background">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="156dp"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/rl_input_login_act"
+            android:background="@drawable/login_img">
 
-                <TextView
-                    android:id="@+id/btn_login_act"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:fontFamily="@font/nanum_bold"
-                    android:text="로그인"
-                    android:textColor="#ffffff"
-                    android:textSize="17sp" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/login_act_look_around_box">
-
-                <TextView
-                    android:id="@+id/btn_look_login_act"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:fontFamily="@font/nanum_bold"
-                    android:text="둘러보기"
-                    android:textColor="#ffffff"
-                    android:textSize="17sp" />
-
-            </RelativeLayout>
 
             <TextView
-                android:id="@+id/tv_question_login_act"
+                android:id="@+id/btn_signup_login_act"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center_horizontal"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/nanum_round"
-                android:text="기다릴개와 함께하시겠어요?"
-                android:textColor="#c7c7c7"
-                android:textSize="13sp" />
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="1sp"
+                android:text="회원가입"
+                android:textColor="#707070"
+                android:textSize="15sp" />
 
-        </LinearLayout>
-
-
-
+        </RelativeLayout>
     </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="156dp"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/rl_input_login_act"
-        android:background="#000000">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/nanum_round"
-            android:gravity="center_horizontal"
-            android:lineSpacingExtra="1sp"
-            android:text="회원가입"
-            android:textColor="#707070"
-            android:textSize="15sp" />
-
-    </RelativeLayout>
-
 
 </RelativeLayout>
