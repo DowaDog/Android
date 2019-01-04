@@ -109,7 +109,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="30dp"
                 android:layout_weight="1"
-                android:fontFamily="@font/nanum_extra_bold"
                 android:includeFontPadding="false"
                 android:text="홈"
                 android:textSize="18sp" />

@@ -4,6 +4,7 @@ import android.util.Log
 import com.takhyungmin.dowadog.home.HomeObject
 import com.takhyungmin.dowadog.home.model.get.GetDuplicateResponse
 import com.takhyungmin.dowadog.utils.ApplicationData
+import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -31,7 +32,8 @@ class HomeModel {
 
             override fun onResponse(call: Call<GetDuplicateResponse>, response: Response<GetDuplicateResponse>) {
                 if(response.isSuccessful){
-                    HomeObject.homeActivityPresenter.responseData(response.body()!!)
+                    Observable.just(response.body())
+                            .subscribe { s-> HomeObject.homeActivityPresenter.responseData(s!!)}
                 }
             }
         })

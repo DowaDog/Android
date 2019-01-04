@@ -121,7 +121,7 @@ class CommunityAdapter(var communityItems : ArrayList<GetCommunityContents>, var
     fun addAll(result : ArrayList<GetCommunityContents>){
         communityItems.addAll(result)
         notifyItemRangeInserted(communityItems.size,
-                result.size-1)
+                result.size)
 
         Log.v("position1", communityItems.size.toString())
         Log.v("position2", result.size.toString())
