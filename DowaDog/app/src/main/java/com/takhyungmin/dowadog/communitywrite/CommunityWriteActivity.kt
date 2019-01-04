@@ -3,6 +3,8 @@ package com.takhyungmin.dowadog.communitywrite
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
@@ -11,14 +13,24 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import com.bumptech.glide.Glide
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.communitywrite.model.CommunityWriteObject
+import com.takhyungmin.dowadog.communitywrite.model.post.PostCommunityPostWriteResponse
+import com.takhyungmin.dowadog.presenter.activity.CommunityWriteActivityPreseneter
 import com.takhyungmin.dowadog.utils.CustomDialog
 import kotlinx.android.synthetic.main.activity_community_write.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import org.jetbrains.anko.toast
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.InputStream
 
 
 class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
@@ -36,6 +48,10 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
     var secondPicAlbumFlag = 0
     var thirdPicAlbumFlag = 0
     var fourthPicAlbumFlag = 0
+
+    private lateinit var communityWriteActivityPresenter: CommunityWriteActivityPreseneter
+
+    lateinit var communityWriteDataList : PostCommunityPostWriteResponse
 
 
     val imagesEncodedList: ArrayList<Uri> by lazy {
@@ -59,7 +75,8 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
             // 확인하기 버튼
             btn_confirm_community_write_act -> {
                 // 통신 코드
-
+                Log.v("잘돼","눌림")
+                selectData()
             }
 
             // 사진 첫번째 박스
@@ -138,6 +155,12 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
         setContentView(R.layout.activity_community_write)
         // 리스너 달기
         init()
+        // 프레젠터 붙이기
+        initPresenter()
+
+        // 데이터 선별
+
+
 
         // 이미지 박스를 정사각형 네 개로 계산
         setPictureBoxSquare()
@@ -424,6 +447,57 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
     }
 
     private val leftListener = View.OnClickListener { customDialog!!.dismiss() }
+
+
+    private fun initPresenter(){
+        communityWriteActivityPresenter = CommunityWriteActivityPreseneter()
+        // 뷰 붙여주는 작엄
+        communityWriteActivityPresenter.view = this
+        CommunityWriteObject.communityWriteActivityPreseneter= communityWriteActivityPresenter
+    }
+
+    fun responseData(data : PostCommunityPostWriteResponse){
+        data?.let {
+            communityWriteDataList = data
+            Log.v("잘돼?",data.data.toString()
+            )
+        }
+    }
+
+    fun selectData(){
+        // 제목이 없을 때 분기
+        Log.v("잘돼","눌림1")
+        if(et_title_community_write_act.text.toString().isNotEmpty()){
+            // 내용이 없을 때 분기
+            Log.v("잘돼","눌림2")
+            if(et_content_community_write_act.text.toString().isNotEmpty()){
+                Log.v("잘돼","눌3")
+                communityWriteActivityPresenter.requestData(et_title_community_write_act.text.toString(), et_content_community_write_act.text.toString(), exchangeImgUrlToMultipart(imagesEncodedList))
+            }else {
+                Log.v("잘돼","눌림4")
+                toast("제목을 입력해주세요")
+            }
+
+        }else {
+            Log.v("잘돼","눌림5")
+            toast("제목을 입력해주세요")
+        }
+    }
+
+    fun exchangeImgUrlToMultipart(imagesEncodedList: ArrayList<Uri>): ArrayList<MultipartBody.Part> {
+        var a : ArrayList<MultipartBody.Part> = ArrayList()
+        for ( i in 0 until imagesEncodedList.size){
+            var seletedPictureUri = imagesEncodedList[i]
+            val options = BitmapFactory.Options()
+            val inputStream: InputStream = contentResolver.openInputStream(seletedPictureUri)
+            val bitmap = BitmapFactory.decodeStream(inputStream, null, options)
+            val byteArrayOutputStream = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 20, byteArrayOutputStream)
+            val photoBody = RequestBody.create(MediaType.parse("image/jpg"), byteArrayOutputStream.toByteArray()) //첫번째 매개변수 String을 꼭! 꼭! 서버 API에 명시된 이름으로 넣어주세요!!!
+            a!!.add(MultipartBody.Part.createFormData("photo", File(seletedPictureUri.toString()).name, photoBody))
+        }
+        return a
+    }
 
 
 

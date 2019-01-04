@@ -4,25 +4,35 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.widget.LinearLayout
 import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.communitydetail.model.delete.DeleteCommunityCommentResponse
+import com.takhyungmin.dowadog.communitydetail.model.delete.DeleteCommunityDetailPostResponse
+import com.takhyungmin.dowadog.communitydetail.model.get.CommunityCommentData
+import com.takhyungmin.dowadog.communitydetail.model.get.GetCommunityCommentResponse
 import com.takhyungmin.dowadog.communitydetail.model.get.GetCommunityPostDetailData
 import com.takhyungmin.dowadog.communitydetail.model.get.GetCommunityPostDetailResponse
+import com.takhyungmin.dowadog.communitydetail.model.post.PostCommunityCommentWriteResponse
 import com.takhyungmin.dowadog.presenter.activity.CommunityDetailActivityPresenter
 import com.takhyungmin.dowadog.utils.CustomCommunityDetailDialog
 import com.takhyungmin.dowadog.utils.CustomDialog
 import kotlinx.android.synthetic.main.activity_community_detail.*
 import kotlinx.android.synthetic.main.custom_dialog_community_detail.*
+import org.jetbrains.anko.toast
+import java.util.*
 
 class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
 
     lateinit var communityDetailRecyclerViewAdapter: CommunityDetailRecyclerViewAdapter
 
     lateinit var communityPostDetailDataList : GetCommunityPostDetailData
+    lateinit var communityCommentData : GetCommunityCommentResponse
+    lateinit var communityCommentWriteData : PostCommunityCommentWriteResponse
 
 
     private lateinit var communityDetailActivityPresenter: CommunityDetailActivityPresenter
@@ -51,7 +61,7 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
         initPresenter()
         communityDetailActivityPresenter.initView()
         communityDetailActivityPresenter.requestData()
-
+        communityDetailActivityPresenter.requestCommnetData(62)
 
         // ## 댓글이 없으면 로직처리 확실하게 해야한다.
         val viewPagerItemData: ArrayList<String> = ArrayList()
@@ -61,12 +71,8 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
         viewPagerItemData.add("https://s3.ap-northeast-2.amazonaws.com/liivlive/kb_login_profile_img.png")
 
         setViewPagerAdapter(viewPagerItemData)
-
-
         setEnterListener()
         init()
-
-        setRVAdapter()
     }
 
     override fun onClick(v: View?) {
@@ -76,10 +82,10 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
             btn_three_dot_community_detail -> {
 
                 // 내 게시물일 경우 글 수정, 글 삭제
-                // modifyDeleteDialog.show()
+                modifyDeleteDialog.show()
 
                 // 남의 게시물일 경우 신고하기
-                reportDialog.show()
+                // reportDialog.show()
             }
 
             // 댓글쓰기 버튼
@@ -100,6 +106,13 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
         btn_back_community_detail.clicks().subscribe {
             finish()
         }
+        btn_comment_write_community_detail_act.clicks().subscribe{
+            Log.v("tagg",et_comment_write_community_detail_act.toString())
+            communityDetailActivityPresenter.requestCommentWriteData(62, et_comment_write_community_detail_act.text.toString())
+            et_comment_write_community_detail_act.text.clear()
+
+        }
+
     }
 
     fun setViewPagerAdapter(viewPagerItemData: ArrayList<String>) {
@@ -149,7 +162,7 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
     private val rightListener = View.OnClickListener {
         // 글 수정 또는 글 삭제뷰로 이동
         if(isModify == 0){
-
+            communityDetailActivityPresenter.requestDeleteData(41)
         }else {
 
         }
@@ -173,16 +186,8 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
 //        imm.showSoftInput(et_comment_write_community_detail_act, InputMethodManager.SHOW_IMPLICIT)
 //    }
 
-    private fun setRVAdapter() {
-
-        var a: ArrayList<CommunityCommentData> = ArrayList()
-        a.add(CommunityCommentData("https://s3.ap-northeast-2.amazonaws.com/liivlive/kb_login_profile_img.png", "김숙자", "이바보야진", "6시간전"))
-        a.add(CommunityCommentData("https://s3.ap-northeast-2.amazonaws.com/liivlive/kb_login_profile_img.png", "김2숙자", "이바보야진짜아니야아직도나를ㄹ그렇게몰라 이바보야진짜아니야아직도나를ㄹ그렇게몰라 이바보야진짜아니야아직도나를ㄹ그렇게몰라", "6시간전"))
-        a.add(CommunityCommentData("https://s3.ap-northeast-2.amazonaws.com/liivlive/kb_login_profile_img.png", "김2숙자", "이바보야진짜아니야아직도나를ㄹ그렇게몰라", "6시간전"))
-        a.add(CommunityCommentData("https://s3.ap-northeast-2.amazonaws.com/liivlive/kb_login_profile_img.png", "김2숙자", "이바보야진짜아니야아직도나를ㄹ그렇게몰라", "6시간전"))
-        a.add(CommunityCommentData("https://s3.ap-northeast-2.amazonaws.com/liivlive/kb_login_profile_img.png", "김2숙자", "이바보야진짜아니야아직도나를ㄹ그렇게몰라", "6시간전"))
-
-        communityDetailRecyclerViewAdapter = CommunityDetailRecyclerViewAdapter(this@CommunityDetailActivity, a)
+    fun setRVAdapter(dataList: ArrayList<CommunityCommentData>) {
+        communityDetailRecyclerViewAdapter = CommunityDetailRecyclerViewAdapter(this@CommunityDetailActivity, dataList)
         rv_comment_community_detail_act.adapter = communityDetailRecyclerViewAdapter
         rv_comment_community_detail_act.layoutManager = LinearLayoutManager(applicationContext, LinearLayout.VERTICAL, false)
     }
@@ -200,6 +205,52 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
+
+    fun deleteResponseData(data: DeleteCommunityDetailPostResponse){
+        data?.let {
+            Log.v("TAGG", data.toString())
+            if(data.message=="커뮤니티 정보 삭제 성공"){
+                toast("커뮤니티 정보 삭제 성공")
+            }else {
+                toast("커뮤니티 정보 삭제 실패")
+            }
+        }
+    }
+
+    fun responseCommentData(data : GetCommunityCommentResponse){
+        data?.let {
+            communityCommentData = data
+            Log.v("TAGGGGGG", communityCommentData.toString())
+
+            // 어뎁터 만들기
+            setRVAdapter(data.data)
+        }
+    }
+
+    fun reponseCommentWriteData(data: PostCommunityCommentWriteResponse){
+        data?.let {
+            communityCommentWriteData = data
+            // 리사이클러뷰 통신 다시하기 ## 비효율 ==> add로 해결 ? 고민 중
+            communityDetailActivityPresenter.requestCommnetData(62)
+        }
+    }
+
+    fun deleteComment(commentId : Int){
+        communityDetailActivityPresenter.requestCommentDeleteData(commentId)
+    }
+
+    fun responseCommentDelelteData(data: DeleteCommunityCommentResponse){
+        data?.let {
+            // 리사이클러뷰 통신 다시하기 ## 비효율 ==> add로 해결 ? 고민 중
+            if(data.message == "댓글 정보 삭제 성공"){
+                toast("댓글 삭제 성공")
+                communityDetailActivityPresenter.requestCommnetData(62)
+            }else {
+                toast("댓글 삭제 실패")
+            }
+
+        }
+    }
 
 }
 
