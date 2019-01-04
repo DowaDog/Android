@@ -31,11 +31,14 @@ class CommunityModel {
 
             override fun onResponse(call: Call<GetCommunityResponse>, response: Response<GetCommunityResponse>) {
                 if(response.isSuccessful){
+                    Log.v("community_mode", page.toString())
                     when(page){
                         0 -> CommunityObject.communityFragmentPresenter.responseCommunityFirstList(response.body()!!.data.content)
                         else -> CommunityObject.communityFragmentPresenter.responseCommunityList(response.body()!!.data.content)
                     }
                     //CommunityObject.communityFragmentPresenter()
+                }else{
+                    Log.v("community_mode", "fail")
                 }
             }
         })
