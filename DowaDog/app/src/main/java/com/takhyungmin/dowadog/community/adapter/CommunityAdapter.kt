@@ -9,11 +9,11 @@ import android.view.ViewGroup
 import com.bumptech.glide.RequestManager
 import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
-import com.takhyungmin.dowadog.community.model.CommunityItem
+import com.takhyungmin.dowadog.community.model.get.GetCommunityContents
 import com.takhyungmin.dowadog.presenter.fragment.CommunityFragmentPresenter
 import com.takhyungmin.dowadog.utils.CustomDialog
 
-class CommunityAdapter(var communityItems : ArrayList<CommunityItem>, var requestManager: RequestManager, var communityFragmentPresenter: CommunityFragmentPresenter, var context : Context) : RecyclerView.Adapter<CommunityViewHolder>() {
+class CommunityAdapter(var communityItems : ArrayList<GetCommunityContents>, var requestManager: RequestManager, var communityFragmentPresenter: CommunityFragmentPresenter, var context : Context) : RecyclerView.Adapter<CommunityViewHolder>() {
 
     lateinit var customDialog : CustomDialog
 
@@ -26,23 +26,23 @@ class CommunityAdapter(var communityItems : ArrayList<CommunityItem>, var reques
     override fun getItemCount(): Int = communityItems.size
 
     override fun onBindViewHolder(holder: CommunityViewHolder, position: Int) {
-        holder.communityName.text = communityItems[position].communityName
-        requestManager.load(communityItems[position].communityProfile).into(holder.communityProfile)
-        holder.communityTime.text = communityItems[position].communityTime
+        holder.communityName.text = communityItems[position].userId
+        requestManager.load(communityItems[position].userProfileImg).into(holder.communityProfile)
+        holder.communityTime.text = communityItems[position].createdAt
         holder.communityMore.setOnClickListener {
             loadDialog()
         }
         holder.communityFrame.clicks().subscribe {
             communityFragmentPresenter.toDetail()
         }
-        when(communityItems[position].communityImage.size){
+        when(communityItems[position].communityImgList.size){
             1->{
                 holder.communityMain1.visibility = View.VISIBLE
                 holder.communityMain2.visibility = View.GONE
                 holder.communityMain3.visibility = View.GONE
                 holder.communityMain4.visibility = View.GONE
 
-                requestManager.load(communityItems[position].communityImage[0])
+                requestManager.load(communityItems[position].communityImgList[0].filePath)
                         .into(holder.communityMain1)
             }
             2->{
@@ -51,9 +51,9 @@ class CommunityAdapter(var communityItems : ArrayList<CommunityItem>, var reques
                 holder.communityMain3.visibility = View.GONE
                 holder.communityMain4.visibility = View.GONE
 
-                requestManager.load(communityItems[position].communityImage[0])
+                requestManager.load(communityItems[position].communityImgList[0].filePath)
                         .into(holder.communityMain21)
-                requestManager.load(communityItems[position].communityImage[1])
+                requestManager.load(communityItems[position].communityImgList[1].filePath)
                         .into(holder.communityMain22)
             }
             3->{
@@ -62,11 +62,11 @@ class CommunityAdapter(var communityItems : ArrayList<CommunityItem>, var reques
                 holder.communityMain3.visibility = View.VISIBLE
                 holder.communityMain4.visibility = View.GONE
 
-                requestManager.load(communityItems[position].communityImage[0])
+                requestManager.load(communityItems[position].communityImgList[0].filePath)
                         .into(holder.communityMain31)
-                requestManager.load(communityItems[position].communityImage[1])
+                requestManager.load(communityItems[position].communityImgList[1].filePath)
                         .into(holder.communityMain32)
-                requestManager.load(communityItems[position].communityImage[2])
+                requestManager.load(communityItems[position].communityImgList[2].filePath)
                         .into(holder.communityMain33)
             }
             4->{
@@ -75,12 +75,18 @@ class CommunityAdapter(var communityItems : ArrayList<CommunityItem>, var reques
                 holder.communityMain3.visibility = View.VISIBLE
                 holder.communityMain4.visibility = View.VISIBLE
 
-                requestManager.load(communityItems[position].communityImage[0])
+                requestManager.load(communityItems[position].communityImgList[0].filePath)
                         .into(holder.communityMain31)
-                requestManager.load(communityItems[position].communityImage[1])
+                requestManager.load(communityItems[position].communityImgList[1].filePath)
                         .into(holder.communityMain32)
-                requestManager.load(communityItems[position].communityImage[2])
+                requestManager.load(communityItems[position].communityImgList[2].filePath)
                         .into(holder.communityMain33)
+            }
+            else->{
+                holder.communityMain1.visibility = View.GONE
+                holder.communityMain2.visibility = View.GONE
+                holder.communityMain3.visibility = View.GONE
+                holder.communityMain4.visibility = View.GONE
             }
         }
     }
@@ -112,7 +118,7 @@ class CommunityAdapter(var communityItems : ArrayList<CommunityItem>, var reques
 //        }
 //    }
 
-    fun addAll(result : ArrayList<CommunityItem>){
+    fun addAll(result : ArrayList<GetCommunityContents>){
         communityItems.addAll(result)
         notifyItemRangeInserted(communityItems.size,
                 result.size-1)
