@@ -8,7 +8,7 @@ import retrofit2.http.Query
 
 interface CommunityNetworkService {
     //커뮤니티 메인 리스트
-    @GET("normal/community")
+    @GET("api/normal/community")
     fun getCommunityList(@Header("Authorization") Authorization : String,
                          @Query("page") page : Int,
                          @Query("limit") limit : Int): Call<GetCommunityResponse>

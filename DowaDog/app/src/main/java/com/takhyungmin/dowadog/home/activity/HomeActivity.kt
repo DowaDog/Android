@@ -14,9 +14,9 @@ import android.view.WindowManager
 import android.widget.TextView
 import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.adopt.fragment.AdoptAnimalFindFragment
 import com.takhyungmin.dowadog.community.CommunityFragment
 import com.takhyungmin.dowadog.contents.fragment.ContentsFragment
-import com.takhyungmin.dowadog.find.fragment.AnimalFindFragment
 import com.takhyungmin.dowadog.home.HomeObject
 import com.takhyungmin.dowadog.home.fragment.HomeFragment
 import com.takhyungmin.dowadog.home.model.get.GetDuplicateResponse
@@ -117,7 +117,7 @@ class HomeActivity : AppCompatActivity() {
             layout_home_base.elevation = 1f
             btn_home_mypage.visibility = View.GONE
             btn_home_search.visibility = View.GONE
-            homeActivityPresenter.replaceFragment(AnimalFindFragment())
+            homeActivityPresenter.replaceFragment(AdoptAnimalFindFragment())
             textSizeChange(text_navi_adopt)
             tv_home_title.text = "입양 하기"
             btn_home_search.visibility = View.VISIBLE
@@ -164,6 +164,10 @@ class HomeActivity : AppCompatActivity() {
 
         textView.text = ssb1
         clickedText = textView
+    }
+
+    fun clickedAdoptBtn(){
+        textSizeChange(text_navi_adopt)
     }
 
     fun adjustDim(percent : Float){

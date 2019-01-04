@@ -37,4 +37,7 @@ class HomeActivityPresenter : BasePresenter<HomeActivity>() {
         view!!.toNew()
     }
 
+    fun homeBtnClick(){
+        view!!.clickedAdoptBtn()
+    }
 }

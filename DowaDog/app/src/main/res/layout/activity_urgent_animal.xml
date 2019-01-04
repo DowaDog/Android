@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".urgent.Activity.UrgentAnimalActivity"
-    android:background="#FFFFFF">
+    tools:context=".adopt.activity.AdoptUrgentAnimalActivity"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/rl_set_bar_urgent_ani_act"
@@ -39,28 +40,30 @@
     </RelativeLayout>
 
 
-    <ScrollView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_urgent_ani_act"
+        android:layout_marginTop="16dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/rl_set_bar_urgent_ani_act">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="12dp"
-            android:layout_marginTop="8dp"
-            >
+    </android.support.v7.widget.RecyclerView>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_urgent_ani_act"
-                android:layout_marginTop="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@+id/rl_set_bar_urgent_ani_act">-->
 
-            </android.support.v7.widget.RecyclerView>
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginHorizontal="12dp"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--&gt;-->
 
-        </RelativeLayout>
 
-    </ScrollView>
 
-</RelativeLayout>
+        <!--</RelativeLayout>-->
+
+    <!--</ScrollView>-->
+
+</LinearLayout>
