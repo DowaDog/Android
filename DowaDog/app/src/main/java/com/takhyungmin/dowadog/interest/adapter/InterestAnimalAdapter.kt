@@ -10,9 +10,8 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestManager
 import com.takhyungmin.dowadog.R
-import com.takhyungmin.dowadog.urgent.UrgentAnimalData
+import com.takhyungmin.dowadog.adopt.model.get.UrgentAnimalData
 
 class InterestAnimalAdapter(val ctx : Context, val dataList : ArrayList<UrgentAnimalData> ) : RecyclerView.Adapter<InterestAnimalAdapter.Holder>()  {
     var height = 0

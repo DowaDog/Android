@@ -1,4 +1,4 @@
-package com.takhyungmin.dowadog.find.fragment
+package com.takhyungmin.dowadog.adopt.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,16 +9,18 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.adopt.activity.AdoptUrgentAnimalActivity
+import com.takhyungmin.dowadog.adopt.adapter.AnimalFindNewAdapter
+import com.takhyungmin.dowadog.adopt.adapter.AnimalFindUrgentAdapter
+import com.takhyungmin.dowadog.adopt.model.get.UrgentAnimalData
 import com.takhyungmin.dowadog.dogdetail.DogDetailActivity
-import com.takhyungmin.dowadog.find.adapter.AnimalFindNewAdapter
-import com.takhyungmin.dowadog.find.adapter.AnimalFindUrgentAdapter
-import com.takhyungmin.dowadog.presenter.fragment.AnimalFindFragmentPresenter
-import com.takhyungmin.dowadog.urgent.UrgentAnimalData
+import com.takhyungmin.dowadog.presenter.fragment.AdoptAnimalFindFragmentPresenter
 import kotlinx.android.synthetic.main.fragment_find.*
 
-class AnimalFindFragment : Fragment() {
-    lateinit var animalFindFragmentPresenter : AnimalFindFragmentPresenter
+class AdoptAnimalFindFragment : Fragment() {
+    lateinit var adoptAnimalFindFragmentPresenter : AdoptAnimalFindFragmentPresenter
     lateinit var animalFindNewAdapter : AnimalFindNewAdapter
     lateinit var animlaFindUrgnetAdapter : AnimalFindUrgentAdapter
     lateinit var urgentRequestManager : RequestManager
@@ -31,17 +33,18 @@ class AnimalFindFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        animalFindFragmentPresenter = AnimalFindFragmentPresenter()
-        animalFindFragmentPresenter.view = this
-        animalFindFragmentPresenter.init()
+        adoptAnimalFindFragmentPresenter = AdoptAnimalFindFragmentPresenter()
+        adoptAnimalFindFragmentPresenter.view = this
+        adoptAnimalFindFragmentPresenter.init()
+        setOnBinding()
     }
 
     fun init(urgentItems : ArrayList<UrgentAnimalData>, newItems : ArrayList<UrgentAnimalData>){
         urgentRequestManager = Glide.with(this)
         newRequestManager = Glide.with(this)
 
-        animalFindNewAdapter = AnimalFindNewAdapter(newItems, newRequestManager, animalFindFragmentPresenter)
-        animlaFindUrgnetAdapter = AnimalFindUrgentAdapter(urgentItems, urgentRequestManager, animalFindFragmentPresenter)
+        animalFindNewAdapter = AnimalFindNewAdapter(newItems, newRequestManager, adoptAnimalFindFragmentPresenter)
+        animlaFindUrgnetAdapter = AnimalFindUrgentAdapter(urgentItems, urgentRequestManager, adoptAnimalFindFragmentPresenter)
 
 
         rv_find_fragment_new.layoutManager = GridLayoutManager(context, 2)
@@ -50,6 +53,12 @@ class AnimalFindFragment : Fragment() {
         rv_find_fragment_new.adapter = animalFindNewAdapter
         rv_find_fragment_urgent.adapter = animlaFindUrgnetAdapter
 
+    }
+
+    fun setOnBinding(){
+        btn_find_fragment_more.clicks().subscribe {
+            activity!!.startActivity(Intent(activity!!, AdoptUrgentAnimalActivity::class.java))
+        }
     }
 
     fun toApply(){
