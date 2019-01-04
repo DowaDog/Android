@@ -15,7 +15,7 @@ import com.bumptech.glide.RequestManager
 import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.community.adapter.CommunityAdapter
-import com.takhyungmin.dowadog.community.model.CommunityItem
+import com.takhyungmin.dowadog.community.model.get.GetCommunityContents
 import com.takhyungmin.dowadog.communitydetail.CommunityDetailActivity
 import com.takhyungmin.dowadog.communitywrite.CommunityWriteActivity
 import com.takhyungmin.dowadog.presenter.fragment.CommunityFragmentPresenter
@@ -27,7 +27,7 @@ class CommunityFragment : Fragment() {
     lateinit var communityFragmentPresenter : CommunityFragmentPresenter
     lateinit var requestManager: RequestManager
     lateinit var communityAdapter : CommunityAdapter
-    lateinit var communityItems : ArrayList<CommunityItem>
+    lateinit var communityItems : ArrayList<GetCommunityContents>
     var TOTAL_PAGE = 10
     //서버에서 받아올 수 있나..?
     var isLoading = false
@@ -35,7 +35,6 @@ class CommunityFragment : Fragment() {
     var currentPage = 0
     var startPage = 0
     val itemCount = 5
-    var isFinish = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_community, container, false)
@@ -46,18 +45,18 @@ class CommunityFragment : Fragment() {
         super.onCreate(savedInstanceState)
         communityFragmentPresenter = CommunityFragmentPresenter()
         communityFragmentPresenter.view = this
+        CommunityObject.communityFragmentPresenter = communityFragmentPresenter
         requestManager = Glide.with(this)
     }
 
     override fun onStart() {
         super.onStart()
-        communityFragmentPresenter.initView()
+        communityFragmentPresenter.initView(0, 5)
     }
 
-    fun initView(communityItems : ArrayList<CommunityItem>){
+    fun initView(communityItems : ArrayList<GetCommunityContents>){
         this.communityItems = communityItems
         communityAdapter = CommunityAdapter(communityItems, requestManager, communityFragmentPresenter, context!!)
-        //contentsEduRvAdapter.setOnItemClickListener(this)
         rv_community_feeds.layoutManager = LinearLayoutManager(activity)
         rv_community_feeds.adapter = communityAdapter
 
@@ -74,33 +73,28 @@ class CommunityFragment : Fragment() {
                 }
                 if(!rv_community_feeds.canScrollVertically(1)) {
                     // 맨 아래
-                    if (!isLoading and isLast and !isFinish) {
-                        Log.v("continue", "continue")
+                    if (!isLoading and !isLast) {
                         isLoading = true
                         currentPage += 1
-                        Log.v("currentPage", currentPage.toString())
 
                         Handler().postDelayed(Runnable {
-                            communityFragmentPresenter.nextPage(currentPage, itemCount)
-                            isLast = false
+                            //communityFragmentPresenter.nextPage(currentPage, itemCount)
+                            communityFragmentPresenter.requestCommunityList(currentPage, 5)
                         }, 2000)
                     }
                 }
+                Log.v("scroll", rv_community_feeds.canScrollVertically(1).toString())
 
-                Log.v("last", rv_community_feeds.canScrollVertically(1).toString())
-
-                if(rv_community_feeds.canScrollVertically(1)){
-                    //맨 아래 왔을 때
-                    isLast = true
-                }
             }
+
+
 
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-
+                //super.onScrolled(recyclerView, dx, dy)
+                Log.v("scroll", "scroll")
+                Log.v("scroll2", rv_community_feeds.canScrollVertically(1).toString())
 
             }
-
         })
     }
 
@@ -114,17 +108,10 @@ class CommunityFragment : Fragment() {
         }
     }
 
-    fun loadNextPage(results : ArrayList<CommunityItem>){
+    fun loadNextPage(results : ArrayList<GetCommunityContents>){
         communityAdapter.addAll(results)
         isLoading = false
-        if (currentPage > TOTAL_PAGE)
-            isFinish = true
-    }
-
-    fun loadFristPage(results : ArrayList<CommunityItem>){
-
-        communityAdapter.addAll(results)
-
-
+        if (currentPage >= TOTAL_PAGE)
+            isLast = true
     }
 }
