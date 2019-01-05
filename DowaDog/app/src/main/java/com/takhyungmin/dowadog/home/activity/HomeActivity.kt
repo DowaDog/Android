@@ -14,16 +14,15 @@ import android.view.WindowManager
 import android.widget.TextView
 import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.adopt.fragment.AdoptAnimalFindFragment
 import com.takhyungmin.dowadog.community.CommunityFragment
 import com.takhyungmin.dowadog.contents.fragment.ContentsFragment
-import com.takhyungmin.dowadog.find.fragment.AnimalFindFragment
 import com.takhyungmin.dowadog.home.HomeObject
 import com.takhyungmin.dowadog.home.fragment.HomeFragment
 import com.takhyungmin.dowadog.home.model.get.GetDuplicateResponse
 import com.takhyungmin.dowadog.mypage.MypageActivity
 import com.takhyungmin.dowadog.presenter.activity.HomeActivityPresenter
 import com.takhyungmin.dowadog.utils.CustomTypeSpan
-import kotlinx.android.synthetic.main.activity_apply_online_main.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.navi_home.*
 
@@ -41,6 +40,8 @@ class HomeActivity : AppCompatActivity() {
         homeActivityPresenter.initView()
         homeActivityPresenter.requestData()
         setBinding()
+        textSizeChange(text_navi_home)
+
     }
 
     fun responseData(data : GetDuplicateResponse){
@@ -85,6 +86,7 @@ class HomeActivity : AppCompatActivity() {
             btn_home_search.visibility = View.GONE
             btn_home_mypage.visibility = View.VISIBLE
             tv_home_title.text = "기다릴개"
+            textSizeChange(text_navi_home)
             if (drawer_home.isDrawerOpen(Gravity.START))
                 drawer_home.closeDrawer(Gravity.START)
         }
@@ -94,6 +96,7 @@ class HomeActivity : AppCompatActivity() {
             layout_home_base.elevation = 0f
             btn_home_mypage.visibility = View.GONE
             btn_home_search.visibility = View.GONE
+            textSizeChange(text_navi_contents)
             tv_home_title.text = "컨텐츠"
             if (drawer_home.isDrawerOpen(Gravity.START))
                 drawer_home.closeDrawer(Gravity.START)
@@ -104,6 +107,7 @@ class HomeActivity : AppCompatActivity() {
             layout_home_base.elevation = 0f
             btn_home_mypage.visibility = View.GONE
             btn_home_search.visibility = View.GONE
+            textSizeChange(text_navi_community)
             tv_home_title.text = "커뮤니티"
             if (drawer_home.isDrawerOpen(Gravity.START))
                 drawer_home.closeDrawer(Gravity.START)
@@ -113,7 +117,8 @@ class HomeActivity : AppCompatActivity() {
             layout_home_base.elevation = 1f
             btn_home_mypage.visibility = View.GONE
             btn_home_search.visibility = View.GONE
-            homeActivityPresenter.replaceFragment(AnimalFindFragment())
+            homeActivityPresenter.replaceFragment(AdoptAnimalFindFragment())
+            textSizeChange(text_navi_adopt)
             tv_home_title.text = "입양 하기"
             btn_home_search.visibility = View.VISIBLE
 
@@ -147,15 +152,22 @@ class HomeActivity : AppCompatActivity() {
         val font1 = Typeface.createFromAsset(assets, "nanum_square_extra_bold.ttf")
         val font2 = Typeface.createFromAsset(assets, "nanum_square_light.ttf")
 
+        if(clickedText != null){
+            val ssb2 = SpannableStringBuilder(clickedText!!.text.toString())
+            ssb2.setSpan(CustomTypeSpan("", font2), 0, clickedText!!.text.length, Spanned.SPAN_EXCLUSIVE_INCLUSIVE)
+            clickedText!!.text = ssb2
 
+        }
         val ssb1 = SpannableStringBuilder(textView.text.toString())
-        val ssb2 = SpannableStringBuilder(clickedText!!.text.toString())
 
         ssb1.setSpan(CustomTypeSpan("", font1), 0, textView.text.length, Spanned.SPAN_EXCLUSIVE_INCLUSIVE)
-        ssb2.setSpan(CustomTypeSpan("", font2), 0, clickedText!!.text.length, Spanned.SPAN_EXCLUSIVE_INCLUSIVE)
 
-        tv_online_apply_main_infotext.text = ssb1
-        clickedText!!.text = ssb2
+        textView.text = ssb1
+        clickedText = textView
+    }
+
+    fun clickedAdoptBtn(){
+        textSizeChange(text_navi_adopt)
     }
 
     fun adjustDim(percent : Float){

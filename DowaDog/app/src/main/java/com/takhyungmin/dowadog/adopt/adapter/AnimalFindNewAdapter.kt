@@ -1,4 +1,4 @@
-package com.takhyungmin.dowadog.find.adapter
+package com.takhyungmin.dowadog.adopt.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import com.bumptech.glide.RequestManager
 import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
-import com.takhyungmin.dowadog.presenter.fragment.AnimalFindFragmentPresenter
-import com.takhyungmin.dowadog.urgent.UrgentAnimalData
+import com.takhyungmin.dowadog.adopt.model.get.UrgentAnimalData
+import com.takhyungmin.dowadog.presenter.fragment.AdoptAnimalFindFragmentPresenter
 
-class AnimalFindNewAdapter(var newItems : ArrayList<UrgentAnimalData>, var newRequestManager : RequestManager, var animalFindFragmentPresenter: AnimalFindFragmentPresenter) : RecyclerView.Adapter<AnimalFindNewViewHolder>() {
+class AnimalFindNewAdapter(var newItems : ArrayList<UrgentAnimalData>, var newRequestManager : RequestManager, var adoptAnimalFindFragmentPresenter: AdoptAnimalFindFragmentPresenter) : RecyclerView.Adapter<AnimalFindNewViewHolder>() {
     var width = 0
     var height = 0
     var imgHeight = 0
@@ -30,7 +30,7 @@ class AnimalFindNewAdapter(var newItems : ArrayList<UrgentAnimalData>, var newRe
         holder.tv_ani_kind.text = newItems[position].ani_kind
 
         holder.ani_img.clicks().subscribe {
-            animalFindFragmentPresenter.toApply()
+            adoptAnimalFindFragmentPresenter.toApply()
         }
 
         holder.ani_img.setClipToOutline(true)

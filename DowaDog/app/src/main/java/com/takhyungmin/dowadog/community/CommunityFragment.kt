@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.Fragment
+import android.support.v4.widget.NestedScrollView
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -51,7 +51,7 @@ class CommunityFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        communityFragmentPresenter.initView(0, 5)
+        communityFragmentPresenter.initView(0, 3)
     }
 
     fun initView(communityItems : ArrayList<GetCommunityContents>){
@@ -60,41 +60,26 @@ class CommunityFragment : Fragment() {
         rv_community_feeds.layoutManager = LinearLayoutManager(activity)
         rv_community_feeds.adapter = communityAdapter
 
-        rv_community_feeds.addOnScrollListener(object : RecyclerView.OnScrollListener(){
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-                Log.v("isLoading", isLoading.toString())
-                Log.v("isLast", isLast.toString())
-                Log.v("currentPage", currentPage.toString())
-                Log.v("TOTAL_PAGE", TOTAL_PAGE.toString())
 
-                if(!rv_community_feeds.canScrollVertically(-1)) {
-                    // 맨 위
+        scroll_comunity_frame.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, _, scrollY, _, _ ->
+            Log.v("scroll", "scroll")
+            if (scrollY == ( v.getChildAt(0).height - v.height )) {
+                //scroll in bottom
+                Log.v("scroll", "bottom")
+
+                if (!isLoading and !isLast) {
+                    //isLast = 스크롤의 마지막이 아니라 전체 아이템 중 마지
+                    isLoading = true
+                    Log.v("scroll", currentPage.toString())
+                    currentPage++
+                    Handler().postDelayed(Runnable {
+                        //communityFragmentPresenter.nextPage(currentPage, itemCount)
+                        Log.v("scroll", "more")
+                        communityFragmentPresenter.requestCommunityList(currentPage, 3)
+                    }, 2000)
                 }
-                if(!rv_community_feeds.canScrollVertically(1)) {
-                    // 맨 아래
-                    if (!isLoading and !isLast) {
-                        isLoading = true
-                        currentPage += 1
-
-                        Handler().postDelayed(Runnable {
-                            //communityFragmentPresenter.nextPage(currentPage, itemCount)
-                            communityFragmentPresenter.requestCommunityList(currentPage, 5)
-                        }, 2000)
-                    }
-                }
-                Log.v("scroll", rv_community_feeds.canScrollVertically(1).toString())
-
             }
 
-
-
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                //super.onScrolled(recyclerView, dx, dy)
-                Log.v("scroll", "scroll")
-                Log.v("scroll2", rv_community_feeds.canScrollVertically(1).toString())
-
-            }
         })
     }
 
@@ -109,7 +94,9 @@ class CommunityFragment : Fragment() {
     }
 
     fun loadNextPage(results : ArrayList<GetCommunityContents>){
+        Log.v("scroll", "add")
         communityAdapter.addAll(results)
+        //currentPage += 1
         isLoading = false
         if (currentPage >= TOTAL_PAGE)
             isLast = true

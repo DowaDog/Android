@@ -12,7 +12,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.takhyungmin.dowadog.R
-import com.takhyungmin.dowadog.urgent.UrgentAnimalData
+import com.takhyungmin.dowadog.adopt.model.get.UrgentAnimalData
 
 
 
