@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.takhyungmin.dowadog.R
-import com.takhyungmin.dowadog.searchresult.SearchResultActivity
+import com.takhyungmin.dowadog.searchkeywordresult.SearchKeywordResultActivity
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.textColor
 
@@ -35,7 +35,7 @@ class SearchRecyclerViewAdapter(var ctx: Context, var recommendKeyword: ArrayLis
                     holder.sharp.textColor = Color.parseColor("#FFFFFF")
                     holder.btnRootView.isSelected = true
                     Log.v("TAGG", holder.recommendKeyword.text.toString())
-                    ctx.startActivity<SearchResultActivity>("keyword" to holder.recommendKeyword.text.toString())
+                    ctx.startActivity<SearchKeywordResultActivity>("keyword" to holder.recommendKeyword.text.toString())
                 }
 
                 MotionEvent.ACTION_UP -> {
@@ -44,7 +44,6 @@ class SearchRecyclerViewAdapter(var ctx: Context, var recommendKeyword: ArrayLis
                     holder.btnRootView.isSelected = false
                 }
             }
-
             true
         }
         )
