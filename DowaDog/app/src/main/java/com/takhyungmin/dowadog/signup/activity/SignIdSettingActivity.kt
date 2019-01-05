@@ -28,6 +28,7 @@ import com.takhyungmin.dowadog.login.model.get.GetLoginData
 import com.takhyungmin.dowadog.login.model.post.PostLoginDTO
 import com.takhyungmin.dowadog.presenter.activity.SignIdSettingActivityPresenter
 import com.takhyungmin.dowadog.signup.SignObject
+import com.takhyungmin.dowadog.utils.ApplicationData
 import com.takhyungmin.dowadog.utils.CustomSingleResDialog
 import com.takhyungmin.dowadog.utils.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_sign_id_setting.*
@@ -380,6 +381,8 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
         SharedPreferenceController.setPwd(this, this.pwd)
 
         startActivity(Intent(this, HomeActivity::class.java))
+        ApplicationData.loginState = true
+        ApplicationData.auth = getLoginData.accessToken.data
         finish()
     }
 
