@@ -157,19 +157,6 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
-//    fun getRealPathFromURI(content : Uri) : String {
-//        val proj = arrayOf (MediaStore.Images.Media. DATA )
-//        val loader : CursorLoader = CursorLoader(this, content, proj, null, null, null)
-//        val cursor : Cursor = loader.loadInBackground()
-//        val column_idx = cursor.getColumnIndexOrThrow(MediaStore.Images.Media. DATA )
-//        cursor.moveToFirst()
-//        val result = cursor.getString(column_idx)
-//        cursor.close()
-//        return result
-//
-//    }
-
-
 
     private fun downKeyboard(view : View) {
         val imm: InputMethodManager = applicationContext!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
