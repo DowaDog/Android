@@ -17,6 +17,8 @@ import com.takhyungmin.dowadog.utils.ApplicationData
 import com.takhyungmin.dowadog.utils.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
+import java.text.SimpleDateFormat
+import java.util.*
 
 class LoginActivity : BaseActivity(), View.OnClickListener {
 
@@ -59,8 +61,12 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         loginActivityPresenter = LoginActivityPresenter()
         loginActivityPresenter.view = this
         LoginObject.loginActivityPresenter = loginActivityPresenter
+
+        if(checkRefresh())
+            loginActivityPresenter.requestRefresh(SharedPreferenceController.getRefreshToken(this))
+
+
         Log.v("access", SharedPreferenceController.getAccessToken(this))
-        loginActivityPresenter.requestRefresh(SharedPreferenceController.getRefreshToken(this))
     }
 
     private fun downKeyboard(view : View) {
@@ -75,7 +81,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         SharedPreferenceController.setAccessTokenExpired(this, data.accessToken.expiredAt)
         SharedPreferenceController.setId(this, et_id_login_act.text.toString())
         SharedPreferenceController.setPwd(this, et_pw_login_act.text.toString())
-
+        ApplicationData.auth = data.accessToken.data
         ApplicationData.loginState = true
         startActivity<HomeActivity>()
     }
@@ -83,8 +89,24 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     fun responseRefresh(data : PostRefreshData){
         SharedPreferenceController.setAccessToken(this, data.data)
         SharedPreferenceController.setAccessTokenExpired(this, data.expiredAt)
+        ApplicationData.auth = data.data
         Log.v("access", SharedPreferenceController.getAccessToken(this))
 
+    }
+
+    //이 아래는 사실상 스플래쉬에서.
+
+    fun checkRefresh() : Boolean{
+        val now = System.currentTimeMillis()
+        val nowDate = Date(now)
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
+        val beginDate = sdf.format(nowDate)
+        val today = sdf.parse(beginDate)
+        val diff = SharedPreferenceController.getAccessTokenExpired(this) - today.time
+        val dDay = diff / (24 * 60 * 60 * 1000)
+        if(dDay < 0)
+            return true
+        return false
     }
 
 

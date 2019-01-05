@@ -2,6 +2,7 @@ package com.takhyungmin.dowadog.adopt.model
 
 import android.util.Log
 import com.takhyungmin.dowadog.adopt.AdoptObject
+import com.takhyungmin.dowadog.adopt.model.get.GetAdoptPublicDetailResponse
 import com.takhyungmin.dowadog.adopt.model.get.GetAdoptPublicUrgentContents
 import com.takhyungmin.dowadog.adopt.model.get.GetAdoptPublicUrgentResponse
 import com.takhyungmin.dowadog.adopt.model.get.UrgentAnimalData
@@ -73,6 +74,25 @@ class AdoptAnimalModel {
                     } else{
                         AdoptObject.adoptUrgentAnimalActivityPresenter.responseUrgentList(it)
                     }}
+    }
+
+    fun getAdoptDetail(id : Int){
+        adoptNetworkService.getAdoptDetail(id).enqueue(object : Callback<GetAdoptPublicDetailResponse>{
+            override fun onFailure(call: Call<GetAdoptPublicDetailResponse>, t: Throwable) {
+                Log.v("AdoptUrgent", t.toString())
+            }
+
+            override fun onResponse(call: Call<GetAdoptPublicDetailResponse>, response: Response<GetAdoptPublicDetailResponse>) {
+                if(response.isSuccessful){
+                    Log.v("AdoptUrgent", "success")
+                    Observable.just(response.body()!!.data)
+                            .subscribe { detail -> AdoptObject.adoptUrgentAnimalActivityPresenter.toDetail(detail) }
+                }else{
+                    Log.v("AdoptUrgent", "fail")
+                }
+            }
+
+        })
     }
 
 }
