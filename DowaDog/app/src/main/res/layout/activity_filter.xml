@@ -225,7 +225,7 @@
                             android:id="@+id/btn_all_area_filter_act"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/filter_gray" />
+                            android:src="@drawable/filter_orange" />
 
                         <ImageView
                             android:id="@+id/btn_seoul_filter_act"
