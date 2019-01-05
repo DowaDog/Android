@@ -1,8 +1,7 @@
 package com.takhyungmin.dowadog.presenter.activity
 
-import com.takhyungmin.dowadog.communitydetail.model.CommunityDetailModel
 import com.takhyungmin.dowadog.presenter.BasePresenter
-import com.takhyungmin.dowadog.signup.SignInfoWriteActivity
+import com.takhyungmin.dowadog.signup.activity.SignInfoWriteActivity
 import com.takhyungmin.dowadog.signup.model.get.GetSignInfoEmailResponse
 import com.takhyungmin.dowadog.signup.model.get.SignInfoEmailModel
 

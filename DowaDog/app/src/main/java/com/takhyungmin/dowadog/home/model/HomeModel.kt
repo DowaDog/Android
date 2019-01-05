@@ -24,8 +24,8 @@ class HomeModel {
     }
 
 
-    fun getDuplicateData(){
-        homeNetworkSerVice.checkDuplicate("aaa").enqueue(object : Callback<GetDuplicateResponse> {
+    fun getDuplicateData(id : String){
+        homeNetworkSerVice.checkDuplicate(id).enqueue(object : Callback<GetDuplicateResponse> {
             override fun onFailure(call: Call<GetDuplicateResponse>, t: Throwable) {
                 Log.v("fail", t.toString())
             }

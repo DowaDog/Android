@@ -1,4 +1,4 @@
-package com.takhyungmin.dowadog.signup
+package com.takhyungmin.dowadog.signup.activity
 
 import android.Manifest
 import android.app.Activity
@@ -14,7 +14,6 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -23,34 +22,32 @@ import android.view.inputmethod.InputMethodManager
 import com.bumptech.glide.Glide
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.home.activity.HomeActivity
+import com.takhyungmin.dowadog.home.model.get.GetDuplicateResponse
+import com.takhyungmin.dowadog.login.model.get.GetLoginData
+import com.takhyungmin.dowadog.login.model.post.PostLoginDTO
 import com.takhyungmin.dowadog.presenter.activity.SignIdSettingActivityPresenter
-import com.takhyungmin.dowadog.presenter.activity.SignInfoWriteActivityPresenter
-import com.takhyungmin.dowadog.signup.model.get.GetSignInfoEmailResponse
-import com.takhyungmin.dowadog.signup.model.post.PostSignIdSettingResponse
-import com.takhyungmin.dowadog.utils.CustomDialog
+import com.takhyungmin.dowadog.signup.SignObject
 import com.takhyungmin.dowadog.utils.CustomSingleResDialog
-import kotlinx.android.synthetic.main.activity_mypage_setting.*
+import com.takhyungmin.dowadog.utils.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_sign_id_setting.*
-import kotlinx.android.synthetic.main.activity_sign_info_write.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.toast
 import java.io.ByteArrayOutputStream
-import java.io.File
 import java.io.FileNotFoundException
 import java.io.InputStream
-import java.util.*
 
 class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
 
+    var id = ""
+    var pwd = ""
     override fun onClick(v: View?) {
 
         when (v) {
             //중복확인 버튼
             btn_id_check_sign_id_set_act -> {
-                idCheckDialog!!.show()
+                signIdSettingPresenter.requestDuplicateData(et_id_sign_id_set_act.text.toString())
             }
 
             //갤러리 접근
@@ -60,26 +57,44 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
 
             //back버튼을 눌렀을때, ##생각해야하는 건 그 전에 입력해논 데이터가 그대로 존재해야한다는 점
             img_back_btn_sign_id_set_act -> {
-                startActivity<SignInfoWriteActivity>()
+                //startActivity<SignInfoWriteActivity>()
+                finish()
             }
             rl_sign_id_set_act -> {
                 keyboardDown(rl_sign_id_set_act)
             }
 
             btn_agree_sign_id_set_act -> {
-                signIdSettingPresenter.requestData(mimage)
+
+                val username = intent.getStringExtra("username")
+                val birth = intent.getStringExtra("birth")
+                val phone = intent.getStringExtra("phone")
+                val email = intent.getStringExtra("email")
+
+                val id = et_id_sign_id_set_act.text.toString()
+                val gender = "M"
+                val password = et_pw_check_sign_id_set_act.text.toString()
+                val deviceToken = "token"
+                val type = "type"
+                val pushAllow = "true"
+
+                this.id = id
+                this.pwd = pwd
+
+                signIdSettingPresenter.requestData(id, password, username, birth,
+                        phone, email, gender, deviceToken, type, mimage, pushAllow)
 
             }
 
         }
     }
 
-    val idCheckDialog: CustomSingleResDialog by lazy {
-        CustomSingleResDialog(this@SignIdSettingActivity, "사용가능한 아이디입니다.", mResponseClickListener, "확인")
-    }
+    lateinit var idCheckDialog : CustomSingleResDialog
+
 
 
     private lateinit var signIdSettingPresenter: SignIdSettingActivityPresenter
+
 
     val My_READ_STORAGE_REQUEST_CODE = 88
     private val REQ_CODE_SELECT_IMAGE = 100
@@ -89,6 +104,7 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
     var et_id: Boolean = false
     var et_pw: Boolean = false
     var et_pw_check: Boolean = false
+    var idCheck = true
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -98,13 +114,13 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
         init()
         initPresenter()
 
-        signIdSettingPresenter.initView()
+        //signIdSettingPresenter.initView()
 
         //et_id_sign_id_set_act--> editText에 값이 들어갔는지 판별해주는 것
         et_id_sign_id_set_act.addTextChangedListener(object : TextWatcher {
             //입력하기 전에
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                et_id = false
+                //et_id = false
             }
 
             // 입력되는 텍스트에 변화가 있을 때
@@ -121,7 +137,8 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
                 if (et_id) {
                     if (et_pw) {
                         if (et_pw_check) {
-                            btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#ffc233"))
+                            if(!idCheck)
+                                btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#ffc233"))
                         }
                     }
                 } else {
@@ -156,7 +173,8 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
                 if (et_pw) {
                     if (et_id) {
                         if (et_pw_check) {
-                            btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#ffc233"))
+                            if(!idCheck)
+                                btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#ffc233"))
                         }
                     }
                 } else {
@@ -173,7 +191,7 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
         et_pw_check_sign_id_set_act.addTextChangedListener(object : TextWatcher {
             //입력하기 전에
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                et_pw_check = false
+                //et_pw_check = false
             }
 
             // 입력되는 텍스트에 변화가 있을 때
@@ -191,7 +209,8 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
                 if (et_pw_check) {
                     if (et_id) {
                         if (et_pw) {
-                            btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#ffc233"))
+                            if(!idCheck)
+                                btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#ffc233"))
                         }
                     }
                 } else {
@@ -203,6 +222,9 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
             override fun afterTextChanged(s: Editable?) {
             }
         })
+
+//        cId, cPassword, cName, cBirth,
+//        cPhone, cEmail, cGender, cDeviceToken, cType, mimg, cPushAllow
 
 //        //signInfoWriteAct에서 EditText에 넣은 값들을 intent로 가져옴
 //        var name: String = intent.getStringExtra("username")
@@ -219,12 +241,34 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun init() {
+
         rl_camera_img_sign_id_set_act.setOnClickListener(this)
         img_back_btn_sign_id_set_act.setOnClickListener(this)
 
         rl_sign_id_set_act.setOnClickListener(this)
 
         btn_id_check_sign_id_set_act.setOnClickListener(this)
+        btn_agree_sign_id_set_act.setOnClickListener(this)
+
+        if(intent.getStringExtra("image") != ""){
+            Log.v("uri", intent.getStringExtra("image"))
+            val selectedPictureUri = Uri.parse(intent.getStringExtra("image"))
+            val options = BitmapFactory.Options()
+
+            var input: InputStream? = null // here, you need to get your context.
+            try {
+                input = contentResolver.openInputStream(selectedPictureUri)
+            } catch (e: FileNotFoundException) {
+                e.printStackTrace()
+            }
+
+            val bitmap = BitmapFactory.decodeStream(input, null, options) // InputStream 으로부터 Bitmap 을 만들어 준다.
+            val baos = ByteArrayOutputStream()
+            bitmap!!.compress(Bitmap.CompressFormat.JPEG, 20, baos)
+            val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
+            mimage = MultipartBody.Part.createFormData("profileImgFile", "", photoBody)
+            Glide.with(this).load(selectedPictureUri).thumbnail(0.1f).thumbnail(0.1f).into(img_profile_sign_id_set_act)
+        }
     }
 
     //저장소 권한 확인
@@ -268,16 +312,24 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
                 data?.let {
 
                     this.data = data!!.data
+                    Log.v("이미지", this.data.toString())
 
-                    var selectedPictureUri = it.data
                     val options = BitmapFactory.Options()
-                    var inputstream: InputStream? = contentResolver.openInputStream(selectedPictureUri)  // here, you need to get your context.
-                    val bitmap = BitmapFactory.decodeStream(inputstream, null, options)
-                    val byteArrayOutputStream = ByteArrayOutputStream()
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 20, byteArrayOutputStream)
-                    val photoBody = RequestBody.create(MediaType.parse("image/jpg"), byteArrayOutputStream.toByteArray())
 
-                    mimage = MultipartBody.Part.createFormData("profileImgFile", File(selectedPictureUri.toString()).name, photoBody)
+                    var input: InputStream? = null // here, you need to get your context.
+                    try {
+                        input = contentResolver.openInputStream(this.data)
+                    } catch (e: FileNotFoundException) {
+                        e.printStackTrace()
+                    }
+
+                    val bitmap = BitmapFactory.decodeStream(input, null, options) // InputStream 으로부터 Bitmap 을 만들어 준다.
+                    val baos = ByteArrayOutputStream()
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos)
+
+                    val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
+
+                    mimage = MultipartBody.Part.createFormData("profileImgFile", "", photoBody)
 
                     Glide.with(this@SignIdSettingActivity)
                             .load(data.data)
@@ -309,16 +361,50 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
         signIdSettingPresenter = SignIdSettingActivityPresenter()
         // 뷰 붙여주는 작업
         signIdSettingPresenter.view = this
-        SignIdSettingObject.signIdSettingActivityPresenter = signIdSettingPresenter
+        SignObject.signIdSettingActivityPresenter = signIdSettingPresenter
     }
 
-    fun responseData(data: PostSignIdSettingResponse) {
+    fun responseData(id : String, pwd : String) {
 
-        data?.let {
+        SignObject.signIdSettingActivityPresenter.requestLoginFromSign(PostLoginDTO(
+                id, pwd
+        ))
+    }
 
-            Log.v("바보", data!!.message)
+    fun successGetToken(getLoginData: GetLoginData){
+        SharedPreferenceController.setAccessToken(this, getLoginData.accessToken.data)
+        SharedPreferenceController.setRefreshToken(this, getLoginData.refreshToken.data)
+        SharedPreferenceController.setRefreshTokenExpired(this, getLoginData.refreshToken.expiredAt)
+        SharedPreferenceController.setAccessTokenExpired(this, getLoginData.accessToken.expiredAt)
+        SharedPreferenceController.setId(this, this.id)
+        SharedPreferenceController.setPwd(this, this.pwd)
 
+        startActivity(Intent(this, HomeActivity::class.java))
+        finish()
+    }
+
+    fun responseDuplicateData(data : GetDuplicateResponse){
+        idCheck = data.data
+
+        if(!data.data){
+            idCheckDialog = CustomSingleResDialog(this@SignIdSettingActivity, "사용가능한 아이디입니다.", mResponseClickListener, "확인")
+            idCheckDialog.show()
+            if (et_id) {
+                if (et_pw) {
+                    if (et_pw_check) {
+                        if(!idCheck)
+                            btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#ffc233"))
+                    }
+                }
+            } else {
+                btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#e2e2e2"))
+            }
+
+        }else{
+            idCheckDialog = CustomSingleResDialog(this@SignIdSettingActivity, "사용할 수 없는 아이디입니다.", mResponseClickListener, "확인")
+            idCheckDialog.show()
         }
+
     }
 
     private val mResponseClickListener = View.OnClickListener { idCheckDialog!!.dismiss() }
