@@ -25,8 +25,8 @@ class HomeActivityPresenter : BasePresenter<HomeActivity>() {
         view!!.adjustDim(percent)
     }
 
-    fun requestData(){
-        homeModel.getDuplicateData()
+    fun requestData(id : String){
+        homeModel.getDuplicateData(id)
     }
 
     fun responseData(data : GetDuplicateResponse){

@@ -38,7 +38,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         initPresenter()
         homeActivityPresenter.initView()
-        homeActivityPresenter.requestData()
+        //homeActivityPresenter.requestData()
         setBinding()
         textSizeChange(text_navi_home)
 

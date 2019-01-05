@@ -1,7 +1,6 @@
 package com.takhyungmin.dowadog.signup.model.post
 
 import android.util.Log
-import com.takhyungmin.dowadog.signup.SignIdSettingObject
 import com.takhyungmin.dowadog.signup.model.SignIdSettingNetworkService
 import com.takhyungmin.dowadog.utils.ApplicationData
 import okhttp3.MediaType
@@ -50,7 +49,7 @@ class SignIdSettingModel {
                         response?.takeIf { it.isSuccessful }
                                 ?.body()
                                 ?.let {
-                                    SignIdSettingObject.signIdSettingActivityPresenter.responseData(it)
+                                    //SignIdSettingObject.signIdSettingActivityPresenter.responseData(id, password)
                                     Log.v("ad", "회원가입 통신 성공, 메시지 = " + response.body()!!.message)
                                 }
                     }
