@@ -5,11 +5,13 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
@@ -21,6 +23,10 @@ import android.view.inputmethod.InputMethodManager
 import com.bumptech.glide.Glide
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.presenter.activity.SignIdSettingActivityPresenter
+import com.takhyungmin.dowadog.presenter.activity.SignInfoWriteActivityPresenter
+import com.takhyungmin.dowadog.signup.model.get.GetSignInfoEmailResponse
+import com.takhyungmin.dowadog.signup.model.post.PostSignIdSettingResponse
 import com.takhyungmin.dowadog.utils.CustomDialog
 import com.takhyungmin.dowadog.utils.CustomSingleResDialog
 import kotlinx.android.synthetic.main.activity_mypage_setting.*
@@ -30,7 +36,9 @@ import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 import java.io.ByteArrayOutputStream
+import java.io.File
 import java.io.FileNotFoundException
 import java.io.InputStream
 import java.util.*
@@ -40,7 +48,7 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
 
         when (v) {
-
+            //중복확인 버튼
             btn_id_check_sign_id_set_act -> {
                 idCheckDialog!!.show()
             }
@@ -50,24 +58,33 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
                 requestReadExternalStoragePermission()
             }
 
+            //back버튼을 눌렀을때, ##생각해야하는 건 그 전에 입력해논 데이터가 그대로 존재해야한다는 점
             img_back_btn_sign_id_set_act -> {
                 startActivity<SignInfoWriteActivity>()
             }
             rl_sign_id_set_act -> {
                 keyboardDown(rl_sign_id_set_act)
             }
-        }
 
+            btn_agree_sign_id_set_act -> {
+                signIdSettingPresenter.requestData(mimage)
+
+            }
+
+        }
     }
 
     val idCheckDialog: CustomSingleResDialog by lazy {
         CustomSingleResDialog(this@SignIdSettingActivity, "사용가능한 아이디입니다.", mResponseClickListener, "확인")
     }
 
+
+    private lateinit var signIdSettingPresenter: SignIdSettingActivityPresenter
+
     val My_READ_STORAGE_REQUEST_CODE = 88
     private val REQ_CODE_SELECT_IMAGE = 100
     lateinit var data: Uri
-    private var image: MultipartBody.Part? = null
+    private var mimage: MultipartBody.Part? = null
 
     var et_id: Boolean = false
     var et_pw: Boolean = false
@@ -79,6 +96,9 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
         setContentView(R.layout.activity_sign_id_setting)
 
         init()
+        initPresenter()
+
+        signIdSettingPresenter.initView()
 
         //et_id_sign_id_set_act--> editText에 값이 들어갔는지 판별해주는 것
         et_id_sign_id_set_act.addTextChangedListener(object : TextWatcher {
@@ -101,11 +121,11 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
                 if (et_id) {
                     if (et_pw) {
                         if (et_pw_check) {
-                            rl_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#ffc233"))
+                            btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#ffc233"))
                         }
                     }
                 } else {
-                    rl_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#e2e2e2"))
+                    btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#e2e2e2"))
                 }
             }
 
@@ -136,11 +156,11 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
                 if (et_pw) {
                     if (et_id) {
                         if (et_pw_check) {
-                            rl_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#ffc233"))
+                            btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#ffc233"))
                         }
                     }
                 } else {
-                    rl_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#e2e2e2"))
+                    btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#e2e2e2"))
                 }
             }
 
@@ -171,11 +191,11 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
                 if (et_pw_check) {
                     if (et_id) {
                         if (et_pw) {
-                            rl_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#ffc233"))
+                            btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#ffc233"))
                         }
                     }
                 } else {
-                    rl_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#e2e2e2"))
+                    btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#e2e2e2"))
                 }
             }
 
@@ -183,6 +203,13 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
             override fun afterTextChanged(s: Editable?) {
             }
         })
+
+//        //signInfoWriteAct에서 EditText에 넣은 값들을 intent로 가져옴
+//        var name: String = intent.getStringExtra("username")
+//        var birth: String = intent.getStringExtra("birth")
+//        var phone: String = intent.getStringExtra("phone")
+//        var email: String = intent.getStringExtra("email")
+
     }
 
     private fun keyboardDown(view: View) {
@@ -238,19 +265,59 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQ_CODE_SELECT_IMAGE) {
             if (resultCode == Activity.RESULT_OK) {
-                if (data != null) {
+                data?.let {
 
-                    val selectedImageUrl: Uri = data.data
+                    this.data = data!!.data
 
-                    //imgaURI = getRealPathFromURI(selectedImageUri)
+                    var selectedPictureUri = it.data
+                    val options = BitmapFactory.Options()
+                    var inputstream: InputStream? = contentResolver.openInputStream(selectedPictureUri)  // here, you need to get your context.
+                    val bitmap = BitmapFactory.decodeStream(inputstream, null, options)
+                    val byteArrayOutputStream = ByteArrayOutputStream()
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 20, byteArrayOutputStream)
+                    val photoBody = RequestBody.create(MediaType.parse("image/jpg"), byteArrayOutputStream.toByteArray())
+
+                    mimage = MultipartBody.Part.createFormData("profileImgFile", File(selectedPictureUri.toString()).name, photoBody)
 
                     Glide.with(this@SignIdSettingActivity)
-                            .load(selectedImageUrl)
+                            .load(data.data)
                             //썸네일
                             .thumbnail(0.1f)
                             .into(img_profile_sign_id_set_act)
                 }
             }
+        }
+    }
+
+    // 이미지 파일을 확장자까지 표시해주는 메소드
+    fun getRealPathFromURI(context: Context, contentUri: Uri): String {
+        var cursor: Cursor? = null
+        try {
+            val proj = arrayOf(MediaStore.Images.Media.DATA)
+            cursor = context.contentResolver.query(contentUri, proj, null, null, null)
+            val column_index = cursor!!.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+            cursor.moveToFirst()
+            return cursor.getString(column_index)
+        } finally {
+            cursor?.close()
+        }
+    }
+
+    //view에 presenter 붙여주기
+    private fun initPresenter() {
+
+        signIdSettingPresenter = SignIdSettingActivityPresenter()
+        // 뷰 붙여주는 작업
+        signIdSettingPresenter.view = this
+        SignIdSettingObject.signIdSettingActivityPresenter = signIdSettingPresenter
+    }
+
+    fun responseData(data: PostSignIdSettingResponse) {
+
+        data?.let {
+
+            Log.v("바보", data!!.message)
+
         }
     }
 

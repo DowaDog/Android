@@ -19,8 +19,16 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.bumptech.glide.Glide
+import com.jakewharton.rxbinding2.widget.text
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.communitydetail.CommunityDetailObject
+import com.takhyungmin.dowadog.communitydetail.CommunityDetailRecyclerViewAdapter
+import com.takhyungmin.dowadog.communitydetail.model.get.GetCommunityPostDetailData
+import com.takhyungmin.dowadog.presenter.activity.CommunityDetailActivityPresenter
+import com.takhyungmin.dowadog.presenter.activity.SignInfoWriteActivityPresenter
+import com.takhyungmin.dowadog.signup.model.get.GetSignInfoEmailResponse
+import com.takhyungmin.dowadog.signup.model.get.SignInfoEmailModel
 import com.takhyungmin.dowadog.utils.CustomSingleResDialog
 import kotlinx.android.synthetic.main.activity_mypage_setting.*
 import kotlinx.android.synthetic.main.activity_sign_info_write.*
@@ -36,13 +44,17 @@ import java.util.jar.Manifest
 
 class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
 
+    private lateinit var signInfoWriteActivityPresenter: SignInfoWriteActivityPresenter
+
+    var signInfoEmaildataBoolean: Boolean = false
+
     private val REQ_CODE_SELECT_IMAGE = 100
     val My_READ_STORAGE_REQUEST_CODE = 88
     lateinit var data: Uri
 
     private var NextBtnFlag = 0
 
-    var imageURI : String? = null
+    var imageURI: String? = null
 
     //edittext 다음 값 활성화
     var et_name: Boolean = false
@@ -52,23 +64,64 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
 
     //lateinit var SignInfoWrCustomSingleResDialog : CustomSingleResDialog
 
+    // 필수항목들을 입력해주세요.
     val SignInfoWrCustomSingleResDialog: CustomSingleResDialog by lazy {
         CustomSingleResDialog(this@SignInfoWriteActivity, "##워딩##항목들을 입력해주세요.", reponseListener, "확인")
     }
+    //이메일 형식에 맞지 않을 때???????이거 왜 만든거지?
+    val emailCheckDialog: CustomSingleResDialog by lazy {
+        CustomSingleResDialog(this@SignInfoWriteActivity, "이메일 형식에 맞지 않습니다.", mResponseClickListener, "확인")
+    }
+    //사용 가능한 이메일
+    val enableEmailDialog: CustomSingleResDialog by lazy {
+        CustomSingleResDialog(this@SignInfoWriteActivity, "사용가능한 이메일입니다.", enableResponseClickListener, "확인")
+    }
+    //중복된 이메일
+    val duplicateEmailCheckDialog: CustomSingleResDialog by lazy {
+        CustomSingleResDialog(this@SignInfoWriteActivity, "중복된 이메일입니다.", duplicateResponseClickListener, "확인")
+    }
 
     override fun onClick(v: View?) {
+
         when (v) {
             //프로필 이미지 -> 사집첩
             rl_camera_img_sign_info_wr_act -> {
                 requestReadExternalStoragePermission()
             }
 
+            //다음 회원가입창으로 넘어가기
             rl_next_btn_sign_info_wr_act -> {
                 //플래그 확인
                 if (NextBtnFlag == 0) {
                     SignInfoWrCustomSingleResDialog!!.show()
                 } else {
-                    //다음으로 넘어가기
+                    Log.v("TAG", "intent1")
+                    startActivity<SignIdSettingActivity>("username" to et_name_sign_info_wr_act.text.toString(), "birth" to et_birth_sign_info_wr_act.text.toString(), "phone" to et_phonenum_sign_info_wr_act.text.toString(), "email" to et_email_sign_info_wr_act.text.toString())
+
+                }
+            }
+
+            //이메일 중복확인
+            btn_email_check_sign_info_wr_act -> {
+                //이메일 형식이 맞으면
+                if (et_email == true) {
+                    //통신
+                    initPresenter()
+                    signInfoWriteActivityPresenter.initView()
+                    signInfoWriteActivityPresenter.requestData()
+
+                    //여기서 확인을 해야하나?
+                    if (signInfoEmaildataBoolean == true) {
+                        //editText초기화
+                        et_email_sign_info_wr_act.setText(null)
+                        //중복된 이메일입니다
+                        duplicateEmailCheckDialog!!.show()
+                    } else {
+                        //사용가능한 이메일
+                        enableEmailDialog!!.show()
+                    }
+                } else {
+                    emailCheckDialog!!.show()
                 }
             }
         }
@@ -102,10 +155,10 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        if(requestCode == My_READ_STORAGE_REQUEST_CODE) {
-            if(grantResults.size > 0 && grantResults[0] == PackageManager. PERMISSION_GRANTED){
+        if (requestCode == My_READ_STORAGE_REQUEST_CODE) {
+            if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 showAlbum()
-            }else{
+            } else {
                 finish()
             }
         }
@@ -154,6 +207,9 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
 
         rl_camera_img_sign_info_wr_act.setOnClickListener(this)
 
+        //이메일 중복 확인 버튼
+        btn_email_check_sign_info_wr_act.setOnClickListener(this)
+
     }
 
     //이름 editText확인 name_sign_info_wr_act--> editText에 값이 들어갔는지 판별해주는 것
@@ -179,9 +235,6 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
                     if (et_birth) {
                         if (et_phone) {
                             if (et_email) {
-                                rl_next_btn_sign_info_wr_act.setOnClickListener {
-                                    startActivity<SignIdSettingActivity>()
-                                }
                                 rl_next_btn_sign_info_wr_act.setBackgroundColor(Color.parseColor("#ffc233"))
                                 NextBtnFlag = 1
                             }
@@ -224,10 +277,7 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
                     if (et_name) {
                         if (et_phone) {
                             if (et_email) {
-                                rl_next_btn_sign_info_wr_act.setOnClickListener {
-                                    startActivity<SignIdSettingActivity>()
-                                }
-
+                                Log.v("TAG", "intent3")
                                 rl_next_btn_sign_info_wr_act.setBackgroundColor(Color.parseColor("#ffc233"))
                                 NextBtnFlag = 1
                             }
@@ -267,10 +317,6 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
                     if (et_name) {
                         if (et_birth) {
                             if (et_email) {
-                                rl_next_btn_sign_info_wr_act.setOnClickListener {
-                                    startActivity<SignIdSettingActivity>()
-                                }
-
                                 rl_next_btn_sign_info_wr_act.setBackgroundColor(Color.parseColor("#ffc233"))
                                 NextBtnFlag = 1
                             }
@@ -310,9 +356,6 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
                     if (et_name) {
                         if (et_phone) {
                             if (et_birth) {
-                                rl_next_btn_sign_info_wr_act.setOnClickListener {
-                                    startActivity<SignIdSettingActivity>()
-                                }
                                 rl_next_btn_sign_info_wr_act.setBackgroundColor(Color.parseColor("#ffc233"))
                                 NextBtnFlag = 1
                             }
@@ -326,4 +369,41 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
         })
     }
 
+    //email 중복시
+    private val mResponseClickListener = View.OnClickListener {
+        //이메일 EditText 초기화
+        et_email_sign_info_wr_act.setText(null)
+        emailCheckDialog!!.dismiss()
+    }
+
+    //사용가능한 이메일
+    private val enableResponseClickListener = View.OnClickListener {
+        enableEmailDialog!!.dismiss()
+    }
+
+    //중복된 이메일
+    private val duplicateResponseClickListener = View.OnClickListener {
+        //이메일 EditText 초기화
+        et_email_sign_info_wr_act.setText(null)
+        duplicateEmailCheckDialog!!.dismiss()
+    }
+
+    //view에 presenter 붙여주기
+    private fun initPresenter() {
+
+        signInfoWriteActivityPresenter = SignInfoWriteActivityPresenter()
+        // 뷰 붙여주는 작업
+        signInfoWriteActivityPresenter.view = this
+        SignInfoEmailObject.SignInfoWriteActivityPresenter = signInfoWriteActivityPresenter
+    }
+
+    fun responseData(data: GetSignInfoEmailResponse) {
+
+        data?.let {
+
+            signInfoEmaildataBoolean = data.data
+            Log.v("TAGG", signInfoEmaildataBoolean.toString())
+
+        }
+    }
 }

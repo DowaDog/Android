@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanum_round"
                 android:lineSpacingExtra="8sp"
-                android:text="미키와 함께하는"
+                android:text="안녕하세요,"
                 android:textColor="#434343"
                 android:textSize="18sp" />
 
