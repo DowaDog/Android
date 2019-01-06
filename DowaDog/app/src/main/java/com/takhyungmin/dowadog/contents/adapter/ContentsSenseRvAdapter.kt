@@ -5,9 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.RequestManager
 import com.takhyungmin.dowadog.R
-import com.takhyungmin.dowadog.presenter.fragment.ContentsSenseFragmentPresenter
+import com.takhyungmin.dowadog.contents.ContentsObject
+import com.takhyungmin.dowadog.contents.model.get.GetEduContentsContents
 
-class ContentsSenseRvAdapter(var contentsSenseItems : ArrayList<ContentsSenseItem>, var requestManager: RequestManager, var contentsSenseFragmentPresenter: ContentsSenseFragmentPresenter) : RecyclerView.Adapter<ContentsSenseViewHolder>() {
+class ContentsSenseRvAdapter(var contentsSenseItems : ArrayList<GetEduContentsContents>, var requestManager: RequestManager) : RecyclerView.Adapter<ContentsSenseViewHolder>() {
 
     override fun onCreateViewHolder(parnet: ViewGroup, p1: Int): ContentsSenseViewHolder {
         val mainView = LayoutInflater.from(parnet.context).inflate(R.layout.fragment_contents_sense_item, parnet,false)
@@ -18,12 +19,11 @@ class ContentsSenseRvAdapter(var contentsSenseItems : ArrayList<ContentsSenseIte
     override fun getItemCount(): Int = contentsSenseItems.size
 
     override fun onBindViewHolder(holder: ContentsSenseViewHolder, position: Int) {
-        holder.senseTitle.text = contentsSenseItems[position].contentsSenseTitle
-        holder.senseSub.text = contentsSenseItems[position].contentsSenseSub
-        requestManager.load(contentsSenseItems[position].contentsSenseFeed).into(holder.senseFeed)
+        holder.senseTitle.text = contentsSenseItems[position].title
+        holder.senseSub.text = contentsSenseItems[position].subtitle
+        requestManager.load(contentsSenseItems[position].imgPath).into(holder.senseFeed)
         holder.senseFrame.setOnClickListener {
-            contentsSenseFragmentPresenter.toDetail(contentsSenseItems[position].contentsSenseTitle,
-                    contentsSenseItems[position].contentsSenseSub)
+            ContentsObject.contentsSenseFragmentPresenter.toDetail(contentsSenseItems[position].id)
         }
     }
 }
