@@ -1,11 +1,9 @@
 package com.takhyungmin.dowadog.contents.model
 
 import com.takhyungmin.dowadog.contents.model.get.GETContentsEduDetailResponse
+import com.takhyungmin.dowadog.contents.model.post.PostScrapResponse
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ContentsEduDetailNetworkService {
 
@@ -18,5 +16,18 @@ fun getContentsEduDetailList(
             @Query("limit") limit : Int
 
     ): Call<GETContentsEduDetailResponse>
+
+    @POST("api/normal/cardnews/{cardnewsId}/scrap")
+    fun postScrapEduContents(
+            @Header("Authorization") authorization: String,
+            @Path("cardnewsId") cardnewsId : Int) : Call<PostScrapResponse>
+
+
+    @POST("api/normal/cardnews/{cardnewsId}/complete")
+    fun postCompleteEduContents(
+            @Header("Authorization") authorization: String,
+            @Path("cardnewsId") cardnewsId : Int) : Call<Unit>
+
+
 
 }

@@ -30,13 +30,20 @@ class ContentsEduRvAdapter(private var contentsEduItems : ArrayList<GetEduConten
         holder.contentsTitle.text = contentsEduItems[position].title
         holder.contentsSub.text = contentsEduItems[position].subtitle
         requestManager.load(contentsEduItems[position].imgPath).into(holder.contentsFeed)
-        if (!contentsEduItems[position].educated)
+        if (contentsEduItems[position].educated)
             holder.contentsCheck.setBackgroundColor(Color.parseColor("#ffc233"))
         else
             holder.contentsCheck.setBackgroundColor(Color.parseColor("#f0f0f0"))
         holder.contentsFrame.setOnClickListener {
-            ContentsObject.contentsEduFragmentPresenter.toDetail(contentsEduItems[position].id)
+            var num = 0
+            contentsEduItems.forEach { it->
+                if(it.educated)
+                    num++
+            }
+            ContentsObject.contentsEduFragmentPresenter.toDetail(contentsEduItems[position].id, num)
         }
+
+        holder.contentsFeed.setClipToOutline(true)
     }
 
     fun setOnItemClickListener(l:View.OnClickListener){

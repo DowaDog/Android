@@ -122,7 +122,7 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginEnd="16dp"
-
+            android:tint="#ffffff"
             android:scaleType="fitXY"
             android:src="@drawable/contents_unscrap_btn"/>
 

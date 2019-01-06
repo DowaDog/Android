@@ -1,23 +1,31 @@
 <resources>
-    <string name="app_name">DowaDog</string>
-    <string name="edu_detail_title">새로운 가족을 맞이할 준비, 어렵지 않아요</string>
-    <string name="edu_detail_subtitle">낯선 첫만남, 애정과 신뢰를 나누는 법</string>
-    <string name="long_text">긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열
+<string name="app_name">DowaDog</string>
+<string name="edu_detail_title">새로운 가족을 맞이할 준비, 어렵지 않아요</string>
+<string name="edu_detail_subtitle">낯선 첫만남, 애정과 신뢰를 나누는 법</string>
+<string name="long_text">긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열
         긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열
         긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열
         긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열
         긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 긴긴 문자열 </string>
 
-    <string name="apply_second_hing">"예시) 현재 3마리를 키우고 있으며 모두 대형견입니다. 하지만 성격이 온순하여 괴롭히거나 문제가 될 만한 일은 없습니다."</string>
-    <string name="home_slide_first">단계별로\n필요한 정보를 확인하세요</string>
-    <string name="home_slide_second">*보호소마다 입양 절차가 다르니\n자세한 사항은 각 보호소에 문의해주세요.</string>
+<string name="apply_second_hing">"예시) 현재 3마리를 키우고 있으며 모두 대형견입니다. 하지만 성격이 온순하여 괴롭히거나 문제가 될 만한 일은 없습니다."</string>
+<string name="home_slide_first">단계별로\n필요한 정보를 확인하세요</string>
+<string name="home_slide_second">*보호소마다 입양 절차가 다르니\n자세한 사항은 각 보호소에 문의해주세요.</string>
 
-    <string name="home_slide_description1">입양하기 카테고리에서 제공된\n전화를 통해 입양 신청을 합니다.</string>
-    <string name="home_slide_description2">전화를 통해\n입양자로 적합하지 심사를 하게 됩니다.</string>
-    <string name="home_slide_description3">직접 보호소로 방문하여\n입양할 아이를 만나고 서류를 작성합니다.</string>
-    <string name="home_slide_description4">보호소에 따라 중성화 수술과 동물 등록을\n마치게 되면 입양이 완료됩니다.</string>
+<string name="home_slide_description1">입양하기 카테고리에서 제공된\n전화를 통해 입양 신청을 합니다.</string>
+<string name="home_slide_description2">전화를 통해\n입양자로 적합하지 심사를 하게 됩니다.</string>
+<string name="home_slide_description3">직접 보호소로 방문하여\n입양할 아이를 만나고 서류를 작성합니다.</string>
+<string name="home_slide_description4">보호소에 따라 중성화 수술과 동물 등록을\n마치게 되면 입양이 완료됩니다.</string>
 
-    <string name="home_slide_third_description1">1. 강아지 목줄\n2. 신분증 사본\n3. 강아지 집</string>
-    <string name="home_slide_third_description2">1. 서류 작성\n2. 동물 등록\n3. 중성화 수술</string>
-
+<string name="home_slide_third_description1">1. 강아지 목줄\n2. 신분증 사본\n3. 강아지 집</string>
+<string name="home_slide_third_description2">1. 서류 작성\n2. 동물 등록\n3. 중성화 수술</string>
+<string name="introdue_first">\‘기다릴개\'는 유기동물 입양/매칭 서비스입니다.\n저희는 사람에 의해 만들어지고, 사람의 이기심으로\n인해 버려지는 동물들에게 새로운 삶과 가족을 만들어\n주고 싶었습니다.</string>
+<string name="introdue_second">- \'입양하기\'에서는 유기동물들의 정보들을 어플리케이션을\n\t통해 한 눈에 볼 수 있습니다.\n
+- 유기동물의 정보는 단순한 나열이 아닌, 스토리 형식으로\n\t제공하여 더 감성적으로 접근하고자 하였습니다.\n
+- 책임감 있는 입양을 위해 교육 컨텐츠 5개를 모두 이수해야\n\t입양절차가 가능합니다.\n
+- 입양하기는 직접 방문하기(문의)와 온라인 신청서 작성을\n\t통해 가능합니다.\n\t(온라인 신청은 이후 기능 추가 예정)</string>
+<string name="introdue_third">- \'컨텐츠\'에서는 교육과 상식에 관련된 다양한 컨텐츠를\n\t제공 합니다.\n- \'커뮤니티\'에서는 반려동물의 사진을 올리고 글을 쓸 수 \n\t있습니다.</string>
+<string name="introdue_fourth">- 입양하기를 시작하면, 홈의 하단 슬라이드를 통해 각 입양\n\t절차에 대한 안내를 도와줍니다.</string>
+<string name="introdue_fifth">- 마이페이지의 \'기다릴개에서 보내는 편지\'에서  다양한 알림\n\t서비스를 받아볼 수 있습니다.\n- 의료 및 사진 게시, 업데이트 된 컨텐츠에 관련된 푸시 알림을\n\t통해 제공합니다.</string>
+<string name="introdue_sixth">동물을 살 때, 그 다른 이면에는 고통스럽게\n죽어가는 아이들이 있음을 기억해주세요!\n</string>
 </resources>

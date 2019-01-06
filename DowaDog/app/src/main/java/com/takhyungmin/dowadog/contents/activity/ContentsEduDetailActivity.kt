@@ -11,18 +11,13 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
-import com.takhyungmin.dowadog.contents.ContentsObject
 import com.takhyungmin.dowadog.contents.adapter.ContentsEduDetailItem
 import com.takhyungmin.dowadog.contents.adapter.ContentsEduDetailRvAdapter
 import com.takhyungmin.dowadog.contents.model.ContentEduDetailObject
 import com.takhyungmin.dowadog.contents.model.get.GETContentsEduDetailResponse
-import com.takhyungmin.dowadog.letter.LetterAdapter
-import com.takhyungmin.dowadog.letter.model.LetterObject
-import com.takhyungmin.dowadog.letter.model.get.GETLetterActivityResponse
 import com.takhyungmin.dowadog.presenter.activity.ContentsEduDetailActivityPresenter
-import com.takhyungmin.dowadog.presenter.activity.LetterActivityPresenter
+import com.takhyungmin.dowadog.utils.CustomPartlyCompleteDogDialog
 import kotlinx.android.synthetic.main.activity_contents_edu_detail.*
-import kotlinx.android.synthetic.main.activity_letter.*
 
 
 class ContentsEduDetailActivity : AppCompatActivity() {
@@ -30,6 +25,8 @@ class ContentsEduDetailActivity : AppCompatActivity() {
     private lateinit var contentsEduDetailActivityPresenter: ContentsEduDetailActivityPresenter
     private lateinit var contentsEduDetailRvAdapter: ContentsEduDetailRvAdapter
     private lateinit var requestManager : RequestManager
+    private lateinit var eduCompleteCustomDialog : CustomPartlyCompleteDogDialog
+    var id = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         //ActivityCompat.setEnterSharedElementCallback(this, EnterTransitionCallback)
 //        requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -49,8 +46,8 @@ class ContentsEduDetailActivity : AppCompatActivity() {
     private fun init(){
         contentsEduDetailActivityPresenter = ContentsEduDetailActivityPresenter()
         contentsEduDetailActivityPresenter.view = this
-        val id = intent.getIntExtra("id", 19)
-        contentsEduDetailActivityPresenter.requestData(19)
+        id = intent.getIntExtra("id", 19)
+        contentsEduDetailActivityPresenter.requestData(id)
         //contentsEduDetailActivityPresenter.initView()
         initPresenter()
         setScrollListener()
@@ -124,9 +121,21 @@ class ContentsEduDetailActivity : AppCompatActivity() {
         }
 
         btn_contents_edu_detail_scrap1.clicks().subscribe {
+            contentsEduDetailActivityPresenter.requestScrap(id)
+        }
 
+        btn_contents_edu_detail_scrap2.clicks().subscribe {
+            contentsEduDetailActivityPresenter.requestScrap(id)
+        }
+
+        btn_contents_edu_detail_complete.clicks().subscribe {
+            contentsEduDetailActivityPresenter.requestComplete(id)
         }
     }
+
+
+
+
 
     fun responseData(data: GETContentsEduDetailResponse) {
 
@@ -159,5 +168,23 @@ class ContentsEduDetailActivity : AppCompatActivity() {
 
     }
 
+    fun responseScrap(clear : Boolean){
+        if(clear){
+            btn_contents_edu_detail_scrap1.setImageResource(R.drawable.contents_scrap_btn)
+            btn_contents_edu_detail_scrap2.setImageResource(R.drawable.contents_scrap_btn)
+        }else{
+            btn_contents_edu_detail_scrap1.setImageResource(R.drawable.contents_unscrap_btn)
+            btn_contents_edu_detail_scrap2.setImageResource(R.drawable.contents_unscrap_btn)
+        }
+    }
 
+    fun responseComplete(clear : Boolean){
+        if(clear){
+            val num = intent.getIntExtra("num", 0) + 1
+            eduCompleteCustomDialog = CustomPartlyCompleteDogDialog(this, num.toString(), responseListener, "확인")
+            eduCompleteCustomDialog.show()
+        }
+    }
+
+    private val responseListener = View.OnClickListener { eduCompleteCustomDialog.dismiss() }
 }

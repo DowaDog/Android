@@ -20,6 +20,7 @@ import com.takhyungmin.dowadog.contents.fragment.ContentsFragment
 import com.takhyungmin.dowadog.home.HomeObject
 import com.takhyungmin.dowadog.home.fragment.HomeFragment
 import com.takhyungmin.dowadog.home.model.get.GetDuplicateResponse
+import com.takhyungmin.dowadog.introduce.IntroduceActivity
 import com.takhyungmin.dowadog.login.LoginActivity
 import com.takhyungmin.dowadog.mypage.MypageActivity
 import com.takhyungmin.dowadog.presenter.activity.HomeActivityPresenter
@@ -151,18 +152,14 @@ class HomeActivity : AppCompatActivity() {
         }
 
         btn_home_mypage.clicks().subscribe {
-
             startActivity(Intent(this, MypageActivity::class.java))
         }
 
-//        btn_navi_adopt_info.clicks().subscribe {
-//            homeActivityPresenter.replaceFragment(AnimalFindFragment())
-//            btn_home_mypage.visibility = View.GONE
-//            tv_home_title.text = "동물 찾기"
-//            btn_home_search.visibility = View.VISIBLE
-//            if (drawer_home.isDrawerOpen(Gravity.START))
-//                drawer_home.closeDrawer(Gravity.START)
-//        }
+        btn_navi_introduce.clicks().subscribe {
+            if (drawer_home.isDrawerOpen(Gravity.START))
+                drawer_home.closeDrawer(Gravity.START)
+            startActivity(Intent(this, IntroduceActivity::class.java))
+        }
 
     }
 

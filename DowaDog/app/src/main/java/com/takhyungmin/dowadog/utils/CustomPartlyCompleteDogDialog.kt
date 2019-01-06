@@ -25,7 +25,7 @@ class CustomPartlyCompleteDogDialog (context: Context,
         setContentView(R.layout.custom_partly_complete_dog_single_response_dialog)
 
         // 몇개인지 (뒤에 "개의" 필요)
-        tv_complete_num_partly_complete_single_response_custom_dialog.text = mCompleteContentNum
+        tv_complete_num_partly_complete_single_response_custom_dialog.text = (mCompleteContentNum + "개의")
         tv_right_partly_complete_single_response_custom_dialog.text = responseText
 
         if(mResponseClickListener != null){

@@ -6,8 +6,6 @@ import com.takhyungmin.dowadog.contents.activity.ContentsEduDetailActivity
 import com.takhyungmin.dowadog.contents.adapter.ContentsEduDetailItem
 import com.takhyungmin.dowadog.contents.model.get.ContentsEduDetailModel
 import com.takhyungmin.dowadog.contents.model.get.GETContentsEduDetailResponse
-import com.takhyungmin.dowadog.letter.model.get.GETLetterActivityResponse
-import com.takhyungmin.dowadog.letter.model.get.LetterModel
 import com.takhyungmin.dowadog.presenter.BasePresenter
 
 class ContentsEduDetailActivityPresenter : BasePresenter<ContentsEduDetailActivity>() {
@@ -44,5 +42,21 @@ class ContentsEduDetailActivityPresenter : BasePresenter<ContentsEduDetailActivi
     fun responseData(data : GETContentsEduDetailResponse){
         Log.v("TAGG", "Edu Detail 프레젠터 리스폰스데이터")
         view!!.responseData(data)
+    }
+
+    fun requestScrap(id : Int){
+        contentsEduDetailModel.postEduContentsScrap(id)
+    }
+
+    fun responseScrap(clear : Boolean){
+        view!!.responseScrap(clear)
+    }
+
+    fun requestComplete(id : Int){
+        contentsEduDetailModel.postEduContentsComplete(id)
+    }
+
+    fun responseComplete(clear : Boolean){
+        view!!.responseComplete(clear)
     }
 }

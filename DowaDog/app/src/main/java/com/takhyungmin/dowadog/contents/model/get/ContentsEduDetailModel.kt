@@ -3,9 +3,7 @@ package com.takhyungmin.dowadog.contents.model.get
 import android.util.Log
 import com.takhyungmin.dowadog.contents.model.ContentEduDetailObject
 import com.takhyungmin.dowadog.contents.model.ContentsEduDetailNetworkService
-import com.takhyungmin.dowadog.letter.model.LetterNetworkService
-import com.takhyungmin.dowadog.letter.model.LetterObject
-import com.takhyungmin.dowadog.letter.model.get.GETLetterActivityResponse
+import com.takhyungmin.dowadog.contents.model.post.PostScrapResponse
 import com.takhyungmin.dowadog.utils.ApplicationData
 import retrofit2.Call
 import retrofit2.Callback
@@ -48,6 +46,40 @@ class ContentsEduDetailModel {
                                 }
                     }
                 })
+    }
+
+    fun postEduContentsScrap(id : Int){
+        contentsEduDetailNetworkService.postScrapEduContents(ApplicationData.auth, id).enqueue(object : Callback<PostScrapResponse>{
+            override fun onFailure(call: Call<PostScrapResponse>, t: Throwable) {
+                Log.v("EduContents", t.toString())
+            }
+
+            override fun onResponse(call: Call<PostScrapResponse>, response: Response<PostScrapResponse>) {
+                if(response.isSuccessful){
+                    Log.v("EduContents", response.message())
+                    if(response.body()!!.message.contains("추가"))
+                        ContentEduDetailObject.contentsEduDetailActivityPresenter.responseScrap(true)
+                    else
+                        ContentEduDetailObject.contentsEduDetailActivityPresenter.responseScrap(false)
+                }else{
+                    Log.v("EduContents", "fail")
+                }
+            }
+        })
+    }
+
+    fun postEduContentsComplete(id : Int){
+        contentsEduDetailNetworkService.postCompleteEduContents(ApplicationData.auth, id).enqueue(object : Callback<Unit>{
+            override fun onFailure(call: Call<Unit>, t: Throwable) {
+                Log.v("EduContents", t.toString())
+            }
+
+            override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                if(response.isSuccessful){
+                    ContentEduDetailObject.contentsEduDetailActivityPresenter.responseComplete(true)
+                }
+            }
+        })
     }
 
 }

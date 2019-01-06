@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".introduce.IntroduceActivity"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layout_home_base"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#ffffff"
+        android:focusable="true"
+        android:elevation="1dp"
+        android:focusableInTouchMode="true">
+
+        <RelativeLayout
+            android:id="@+id/btn_introduce_close"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/x_btn"/>
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="#707070"
+            android:fontFamily="@font/nanum_bold"
+            android:textSize="18sp"
+            android:includeFontPadding="false"
+            android:text="기다릴 개란?"/>
+
+    </RelativeLayout>
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="#434343"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/nanum_light"
+        android:lineSpacingExtra="3sp"
+        android:includeFontPadding="false"
+        android:text="당신이 새로운 가족이"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="#434343"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/nanum_light"
+        android:lineSpacingExtra="3sp"
+        android:includeFontPadding="false"
+        android:text="될 날을 "
+        android:layout_marginTop="14dp"
+        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textColor="#ffc233"
+            android:fontFamily="@font/nanum_bold"
+            android:lineSpacingExtra="3sp"
+            android:text="'기다릴개'"
+            android:layout_marginTop="14dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textColor="#434343"
+            android:fontFamily="@font/nanum_light"
+            android:lineSpacingExtra="3sp"
+            android:text="요!"
+            android:layout_marginTop="14dp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="26dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/dog_foot_icon"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="'기다릴개란?'"
+            android:textSize="16sp"
+            android:textColor="#242424"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="7dp"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="11sp"
+        android:text="@string/introdue_first"
+        android:fontFamily="@font/nanum_light"
+        android:textSize="13sp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="26dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/dog_foot_icon"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="입양하기"
+            android:textSize="16sp"
+            android:textColor="#242424"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="7dp"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="11sp"
+        android:text="@string/introdue_second"
+        android:fontFamily="@font/nanum_light"
+        android:textSize="13sp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="26dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/dog_foot_icon"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="컨텐츠/커뮤니티"
+                    android:textSize="16sp"
+
+                    android:textColor="#242424"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="7dp"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="11sp"
+                android:text="@string/introdue_third"
+                android:fontFamily="@font/nanum_light"
+                android:textSize="13sp"
+                android:layout_marginEnd="16dp"
+
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#bdbdbd"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="30dp"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2차 출시 예정"
+                android:textSize="16sp"
+                android:layout_marginStart="16dp"
+                android:textColor="#ffc233"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/nanum_bold"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="26dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/dog_foot_icon"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="입양 절차 안내 서비스"
+                    android:textSize="16sp"
+                    android:textColor="#242424"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="7dp"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="11sp"
+                android:text="@string/introdue_fourth"
+                android:fontFamily="@font/nanum_light"
+                android:textSize="13sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="26dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/dog_foot_icon"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="'기다릴개'에서 보내는 편지"
+                    android:textSize="16sp"
+                    android:textColor="#242424"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="7dp"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="11sp"
+                android:text="@string/introdue_fifth"
+                android:fontFamily="@font/nanum_light"
+                android:textSize="13sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/nanum_light"
+                android:textColor="#242424"
+                android:includeFontPadding="false"
+                android:lineSpacingExtra="16sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="30dp"
+                android:text="@string/introdue_sixth"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:includeFontPadding="false"
+                android:fontFamily="@font/nanum_light"
+                android:textColor="#242424"
+                android:text="당신이 새로운 가족이 될 날을 "/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/nanum_bold"
+                    android:textColor="#242424"
+                    android:includeFontPadding="false"
+                    android:text="'기다릴개'"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/nanum_light"
+                    android:textColor="#242424"
+                    android:includeFontPadding="false"
+                    android:text="요:)"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+</LinearLayout>
