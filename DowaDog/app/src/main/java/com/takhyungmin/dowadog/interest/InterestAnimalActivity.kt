@@ -1,12 +1,11 @@
 package com.takhyungmin.dowadog.interest
 
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
-import com.takhyungmin.dowadog.interest.adapter.InterestAnimalAdapter
 import com.takhyungmin.dowadog.adopt.model.get.UrgentAnimalData
+import com.takhyungmin.dowadog.interest.adapter.InterestAnimalAdapter
 import kotlinx.android.synthetic.main.activity_interest_animal.*
 
 class InterestAnimalActivity : BaseActivity(), View.OnClickListener {
@@ -37,23 +36,23 @@ class InterestAnimalActivity : BaseActivity(), View.OnClickListener {
 
         var animalItem: ArrayList<UrgentAnimalData> = ArrayList()
 
-        animalItem.add(UrgentAnimalData("D-1", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "믹스견", "[충청]"))
-        animalItem.add(UrgentAnimalData("D-2", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "페르시안", "[전라도] "))
-        animalItem.add(UrgentAnimalData("D-1", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "믹스견", "[충청]"))
-        animalItem.add(UrgentAnimalData("D-2", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "페르시안", "[전라도] "))
-        animalItem.add(UrgentAnimalData("D-1", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "믹스견", "[충청]"))
-        animalItem.add(UrgentAnimalData("D-2", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "페르시안", "[전라도] "))
-        animalItem.add(UrgentAnimalData("D-1", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "믹스견", "[충청]"))
-        animalItem.add(UrgentAnimalData("D-2", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "페르시안", "[전라도] "))
-        animalItem.add(UrgentAnimalData("D-1", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "믹스견", "[충청]"))
-        animalItem.add(UrgentAnimalData("D-2", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "페르시안", "[전라도] "))
-        animalItem.add(UrgentAnimalData("D-1", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "믹스견", "[충청]"))
+//        animalItem.add(UrgentAnimalData("D-1", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "믹스견", "[충청]"))
+//        animalItem.add(UrgentAnimalData("D-2", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "페르시안", "[전라도] "))
+//        animalItem.add(UrgentAnimalData("D-1", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "믹스견", "[충청]"))
+//        animalItem.add(UrgentAnimalData("D-2", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "페르시안", "[전라도] "))
+//        animalItem.add(UrgentAnimalData("D-1", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "믹스견", "[충청]"))
+//        animalItem.add(UrgentAnimalData("D-2", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "페르시안", "[전라도] "))
+//        animalItem.add(UrgentAnimalData("D-1", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "믹스견", "[충청]"))
+//        animalItem.add(UrgentAnimalData("D-2", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "페르시안", "[전라도] "))
+//        animalItem.add(UrgentAnimalData("D-1", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "믹스견", "[충청]"))
+//        animalItem.add(UrgentAnimalData("D-2", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "페르시안", "[전라도] "))
+//        animalItem.add(UrgentAnimalData("D-1", "http://img.hani.co.kr/imgdb/resize/2018/0907/00502739_20180907.JPG", "믹스견", "[충청]"))
 
         //animalItem.add(UrgentAnimalData("D-3","", "","","[인천] 러시안 블루" ))
 
         var interestAnimalAdapter = InterestAnimalAdapter(this, animalItem)
 
         rv_interest_ani_act.adapter = interestAnimalAdapter
-        rv_interest_ani_act.layoutManager = GridLayoutManager(this, 2)
+        //rv_interest_ani_act.layoutManager = GridLayoutManager(this, 2)
     }
 }
