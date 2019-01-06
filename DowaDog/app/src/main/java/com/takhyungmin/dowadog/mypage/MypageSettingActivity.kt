@@ -24,15 +24,7 @@ import com.bumptech.glide.Glide.get
 import com.bumptech.glide.Glide.init
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
-import com.takhyungmin.dowadog.mypage.model.Data
-import com.takhyungmin.dowadog.mypage.model.MypageObject
-import com.takhyungmin.dowadog.mypage.model.MypageSettingObject
-import com.takhyungmin.dowadog.mypage.model.get.GETMypageResponse
-import com.takhyungmin.dowadog.mypage.model.put.PUTMypageSettingResponse
-import com.takhyungmin.dowadog.presenter.activity.MypageActivityPresenter
-import com.takhyungmin.dowadog.presenter.activity.MypageSettingActivityPresenter
 import kotlinx.android.synthetic.main.activity_community_write.*
-import kotlinx.android.synthetic.main.activity_mypage.*
 import kotlinx.android.synthetic.main.activity_mypage_setting.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -40,7 +32,6 @@ import okhttp3.RequestBody
 import org.jetbrains.anko.sdk25.coroutines.onFocusChange
 import org.jetbrains.anko.toast
 import java.io.ByteArrayOutputStream
-import java.io.File
 import java.io.FileNotFoundException
 import java.io.InputStream
 
@@ -70,6 +61,7 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
 
             et_name_mod_mypage_setting_act -> {
                 gravityRightNameHint()
+//                disappearNameHint()
             }
         }
     }
@@ -78,11 +70,6 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
     val My_READ_STORAGE_REQUEST_CODE = 7777
     lateinit var data: Uri
 
-    private lateinit var mypageSettingActivityPresenter: MypageSettingActivityPresenter
-
-    lateinit var mypagePutdata : PUTMypageSettingResponse
-    private var mimage: MultipartBody.Part? = null
-
     var imageURI : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -90,10 +77,6 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
         setContentView(R.layout.activity_mypage_setting)
 
         init()
-        initPresenter()
-
-        mypageSettingActivityPresenter.initView()
-        mypageSettingActivityPresenter.requestData(mimage)
 
     }
 
@@ -161,21 +144,9 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
                 //data.data에는 앨범에서 선택한 사진의 Uri가 들어있습니다!! 그러니까 제대로 선택됐는지 null인지 아닌지를 체크!!!
                 if (data != null) {
 
+                    val selectedImageUri: Uri = data.data
                     //Uri를 getRealPathFromURI라는 메소드를 통해 절대 경로를 알아내고, 인스턴스 변수 imageURI에 넣어줍니다!
                     //imageURI = getRealPathFromURI(selectedImageUri)
-
-                    this.data = data!!.data
-
-                    val selectedImageUri: Uri = data.data
-                    val options = BitmapFactory.Options()
-                    var inputstream: InputStream? = contentResolver.openInputStream(selectedImageUri)  // here, you need to get your context.
-                    val bitmap = BitmapFactory.decodeStream(inputstream, null, options)
-                    val byteArrayOutputStream = ByteArrayOutputStream()
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 20, byteArrayOutputStream)
-                    val photoBody = RequestBody.create(MediaType.parse("image/jpg"), byteArrayOutputStream.toByteArray())
-
-                    mimage = MultipartBody.Part.createFormData("profileImgFile", File(selectedImageUri.toString()).name, photoBody)
-
 
                     Glide.with(this@MypageSettingActivity)
                             .load(selectedImageUri)
@@ -209,29 +180,6 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
                 }
             }
         })
-    }
-
-    fun responseData(data: PUTMypageSettingResponse) {
-
-        data?.let {
-
-            mypagePutdata = data
-            //여기에 받아온 데이터들을 가져와서 보여주는 것을 해야함 (함수로 만들던 여기에 구현하던)
-            Log.v("TAGG", "엑티비티 리스폰스데이터")
-
-        }
-    }
-
-    //view에 presenter 붙여주기
-    private fun initPresenter() {
-
-        mypageSettingActivityPresenter = MypageSettingActivityPresenter()
-        // 뷰 붙여주는 작업
-        mypageSettingActivityPresenter.view = this
-        MypageSettingObject.mypageSettingActivityPresenter = mypageSettingActivityPresenter
-
-        Log.v("TAGG", "mypagesetting 엑티비티 이닛프레젠터")
-
     }
 
 }
