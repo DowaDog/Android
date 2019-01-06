@@ -54,7 +54,9 @@
             android:id="@+id/img_profile_mypage_act"
             android:layout_width="68dp"
             android:layout_height="68dp"
-            android:layout_marginStart="24dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="22dp"
             android:src="@drawable/mypage_profile_img" />
 
         <LinearLayout
@@ -76,13 +78,15 @@
 
 
             <TextView
+                android:id="@+id/tv_username_mypage_act"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/nanum_extra_bold"
-                android:text="최형윤님"
+                android:text="로그인을 해주세요."
                 android:textColor="#434343"
                 android:textSize="18sp" />
+
 
         </LinearLayout>
 
@@ -159,6 +163,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_interest_animal_mypage_act"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -206,6 +211,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_scrap_num_mypage_act"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -253,6 +259,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_write_num_mypage_act"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -314,6 +321,7 @@
                     android:textSize="20sp" />
 
                 <ImageView
+                    android:id="@+id/img_new_mypage_act"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"

@@ -390,7 +390,6 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
 
     //view에 presenter 붙여주기
     private fun initPresenter() {
-
         signInfoWriteActivityPresenter = SignInfoWriteActivityPresenter()
         // 뷰 붙여주는 작업
         signInfoWriteActivityPresenter.view = this

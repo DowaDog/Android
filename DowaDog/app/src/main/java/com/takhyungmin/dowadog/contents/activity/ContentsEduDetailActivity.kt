@@ -4,16 +4,25 @@ import android.os.Bundle
 import android.support.v4.widget.NestedScrollView
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.contents.ContentsObject
 import com.takhyungmin.dowadog.contents.adapter.ContentsEduDetailItem
 import com.takhyungmin.dowadog.contents.adapter.ContentsEduDetailRvAdapter
+import com.takhyungmin.dowadog.contents.model.ContentEduDetailObject
+import com.takhyungmin.dowadog.contents.model.get.GETContentsEduDetailResponse
+import com.takhyungmin.dowadog.letter.LetterAdapter
+import com.takhyungmin.dowadog.letter.model.LetterObject
+import com.takhyungmin.dowadog.letter.model.get.GETLetterActivityResponse
 import com.takhyungmin.dowadog.presenter.activity.ContentsEduDetailActivityPresenter
+import com.takhyungmin.dowadog.presenter.activity.LetterActivityPresenter
 import kotlinx.android.synthetic.main.activity_contents_edu_detail.*
+import kotlinx.android.synthetic.main.activity_letter.*
 
 
 class ContentsEduDetailActivity : AppCompatActivity() {
@@ -34,19 +43,24 @@ class ContentsEduDetailActivity : AppCompatActivity() {
         rv_contents_edu_detail_content.setFocusable(false)
         layout_edu_detail.requestFocus()
         init()
+
     }
 
     private fun init(){
         contentsEduDetailActivityPresenter = ContentsEduDetailActivityPresenter()
         contentsEduDetailActivityPresenter.view = this
-        contentsEduDetailActivityPresenter.initView()
+        val id = intent.getIntExtra("id", 19)
+        contentsEduDetailActivityPresenter.requestData(19)
+        //contentsEduDetailActivityPresenter.initView()
+        initPresenter()
         setScrollListener()
         setOnBinding()
+
     }
 
     fun initView(contentsEduDetailItems : ArrayList<ContentsEduDetailItem>){
         requestManager = Glide.with(this)
-        contentsEduDetailRvAdapter = ContentsEduDetailRvAdapter(contentsEduDetailItems, requestManager)
+        //contentsEduDetailRvAdapter = ContentsEduDetailRvAdapter(contentsEduDetailItems, requestManager)
         rv_contents_edu_detail_content.layoutManager = LinearLayoutManager(this)
         rv_contents_edu_detail_content.adapter = contentsEduDetailRvAdapter
     }
@@ -113,5 +127,37 @@ class ContentsEduDetailActivity : AppCompatActivity() {
 
         }
     }
+
+    fun responseData(data: GETContentsEduDetailResponse) {
+
+        data?.let {
+
+            requestManager = Glide.with(this)
+
+            var setContentsEduDetailAdapter = ContentsEduDetailRvAdapter(it.data.content, requestManager)
+            //여기에 받아온 데이터들을 가져와서 보여주는 것을 해야함 (함수로 만들던 여기에 구현하던)
+             Log.v("ygyg", it.data.content.toString())
+
+
+            rv_contents_edu_detail_content.adapter = setContentsEduDetailAdapter
+            rv_contents_edu_detail_content.layoutManager = LinearLayoutManager(this)
+
+            rv_contents_edu_detail_content.setNestedScrollingEnabled(false)
+
+        }
+    }
+
+    //view에 presenter 붙여주기
+    private fun initPresenter() {
+
+        contentsEduDetailActivityPresenter= ContentsEduDetailActivityPresenter()
+        // 뷰 붙여주는 작업
+        contentsEduDetailActivityPresenter.view = this
+        ContentEduDetailObject.contentsEduDetailActivityPresenter = contentsEduDetailActivityPresenter
+
+        Log.v("TAGG", "EduDetail 엑티비티 이닛프레젠터")
+
+    }
+
 
 }

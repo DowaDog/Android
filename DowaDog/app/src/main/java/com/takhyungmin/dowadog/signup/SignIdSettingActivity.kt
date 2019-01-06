@@ -68,7 +68,6 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
 
             btn_agree_sign_id_set_act -> {
                 signIdSettingPresenter.requestData(mimage)
-
             }
 
         }
@@ -316,7 +315,7 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
 
         data?.let {
 
-            Log.v("바보", data!!.message)
+            Log.v("되랏!", data!!.message)
 
         }
     }
