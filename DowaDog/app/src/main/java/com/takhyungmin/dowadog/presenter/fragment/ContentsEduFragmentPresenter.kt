@@ -1,5 +1,6 @@
 package com.takhyungmin.dowadog.presenter.fragment
 
+import android.util.Log
 import com.takhyungmin.dowadog.contents.adapter.ContentsEduItem
 import com.takhyungmin.dowadog.contents.fragment.ContentsEduFragment
 import com.takhyungmin.dowadog.contents.model.ContentsModel
@@ -12,17 +13,14 @@ class ContentsEduFragmentPresenter : BasePresenter<ContentsEduFragment>() {
         ContentsModel()
     }
     lateinit var contentsEduItems : ArrayList<ContentsEduItem>
-    fun initView(){
 
-
-        view!!.initView(contentsEduItems)
-    }
 
 //    fun toDetail(width : Int, height : Int, left : Int, top : Int, title : String, sub : String){
 //        view!!.toDetail(width, height, left, top, title, sub)
 //    }
 
     val requestData = {
+        Log.v("들어옴1", "들어옴1")
         contentsModel.requestList()
     }
 

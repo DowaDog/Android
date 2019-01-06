@@ -24,22 +24,30 @@ class ContentsModel {
     }
 
     fun requestList(){
+        Log.v("들어옴2", "들어옴2")
         contentsNetworkService.getEduContentsList(ApplicationData.auth).enqueue(object : Callback<GetEduContentsResponse>{
             override fun onFailure(call: Call<GetEduContentsResponse>, t: Throwable) {
                 Log.v("ConetnstList", t.toString())
+                Log.v("들어옴3", "들어옴3")
             }
 
             override fun onResponse(call: Call<GetEduContentsResponse>, response: Response<GetEduContentsResponse>) {
                 if(response.isSuccessful){
+                    Log.v("들어옴4", "들어옴4")
+                    Log.v("ConetnstList", response.body()!!.data.content[0].title)
                     Observable.just(response.body()!!.data.content)
                             .subscribe { contents -> ContentsObject.contentsEduFragmentPresenter.responseList(contents) }
+                }else{
+                    Log.v("들어옴5", "들어옴5")
+                    Log.v("ConetnstList", response.body()!!.message)
+
                 }
             }
         })
     }
 
     fun requestSenseList(){
-        contentsNetworkService.getEduContentsList(ApplicationData.auth).enqueue(object : Callback<GetEduContentsResponse>{
+        contentsNetworkService.getSenseContentsList(ApplicationData.auth, 0, 10).enqueue(object : Callback<GetEduContentsResponse>{
             override fun onFailure(call: Call<GetEduContentsResponse>, t: Throwable) {
                 Log.v("ConetnstList", t.toString())
             }
@@ -47,7 +55,7 @@ class ContentsModel {
             override fun onResponse(call: Call<GetEduContentsResponse>, response: Response<GetEduContentsResponse>) {
                 if(response.isSuccessful){
                     Observable.just(response.body()!!.data.content)
-                            .subscribe { contents -> ContentsObject.contentsEduFragmentPresenter.responseList(contents) }
+                            .subscribe { contents -> ContentsObject.contentsSenseFragmentPresenter.responseData(contents) }
                 }
             }
         })
