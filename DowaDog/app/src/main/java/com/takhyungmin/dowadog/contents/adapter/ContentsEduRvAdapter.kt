@@ -9,10 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.RequestManager
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.contents.model.get.GetEduContentsContents
 import com.takhyungmin.dowadog.presenter.fragment.ContentsEduFragmentPresenter
 
 
-class ContentsEduRvAdapter(private var contentsEduItems : ArrayList<ContentsEduItem>, private var requestManager: RequestManager, private var contentsEduFragmentPresenter : ContentsEduFragmentPresenter, var context : Context) : RecyclerView.Adapter<ContentsEduViewHolder>() {
+class ContentsEduRvAdapter(private var contentsEduItems : ArrayList<GetEduContentsContents>, private var requestManager: RequestManager, private var contentsEduFragmentPresenter : ContentsEduFragmentPresenter, var context : Context) : RecyclerView.Adapter<ContentsEduViewHolder>() {
 
     private var onItemClick : View.OnClickListener? = null
     lateinit var mainView : View
@@ -27,16 +28,15 @@ class ContentsEduRvAdapter(private var contentsEduItems : ArrayList<ContentsEduI
     override fun getItemCount(): Int = contentsEduItems.size
 
     override fun onBindViewHolder(holder: ContentsEduViewHolder, position: Int) {
-        holder.contentsTitle.text = contentsEduItems[position].contentsTitle
-        holder.contentsSub.text = contentsEduItems[position].contentsSub
-        requestManager.load(contentsEduItems[position].contentsFeed).into(holder.contentsFeed)
-        if (!contentsEduItems[position].contentsRead)
+        holder.contentsTitle.text = contentsEduItems[position].title
+        holder.contentsSub.text = contentsEduItems[position].subtitle
+        requestManager.load(contentsEduItems[position].imgPath).into(holder.contentsFeed)
+        if (!contentsEduItems[position].educated)
             holder.contentsCheck.setBackgroundColor(Color.parseColor("#ffc233"))
         else
             holder.contentsCheck.setBackgroundColor(Color.parseColor("#f0f0f0"))
         holder.contentsFrame.setOnClickListener {
-            contentsEduFragmentPresenter.toDetail(contentsEduItems[position].contentsTitle,
-                    contentsEduItems[position].contentsSub)
+            contentsEduFragmentPresenter.toDetail(contentsEduItems[position].id)
         }
     }
 
