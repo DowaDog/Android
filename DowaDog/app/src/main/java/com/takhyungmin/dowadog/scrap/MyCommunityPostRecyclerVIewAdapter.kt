@@ -30,9 +30,9 @@ class MyCommunityPostRecyclerVIewAdapter(var ctx: Context, var dataList: ArrayLi
         }
 
         if(dataList[position].createAt != dataList[position].updateAt){
-            holder.date.text = dataList[position].updateAt
+            holder.date.text = dataList[position].updateAt.substring(0, 10)
         }else {
-            holder.date.text = dataList[position].createAt
+            holder.date.text = dataList[position].createAt.substring(0, 10)
         }
 
         holder.title.text = dataList[position].title

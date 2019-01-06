@@ -9,7 +9,7 @@ interface MyCommunityPostNetwork {
 
     // 내가 쓴글 조회
     @GET("api/normal/mypage/community")
-    fun getCommunityList(
+    fun getMyCommunityPostList(
             @Header("Authorization") authorization: String)
     :Call<GetMyCommunityPostResponse>
 }
