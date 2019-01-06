@@ -23,7 +23,7 @@ class MyCommunityPostModel {
 
     fun getMyCommunityPost() {
 
-        myCommunityPostNetwork.getCommunityList(ApplicationData.auth).enqueue(object : Callback<GetMyCommunityPostResponse>{
+        myCommunityPostNetwork.getMyCommunityPostList(ApplicationData.auth).enqueue(object : Callback<GetMyCommunityPostResponse>{
             override fun onFailure(call: Call<GetMyCommunityPostResponse>?, t: Throwable?) {
                 Log.e("getMyCommunityPost통신실패", t.toString())
             }

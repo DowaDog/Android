@@ -6,73 +6,73 @@ import android.view.View
 import android.widget.LinearLayout
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.presenter.activity.ScrapActivityPresenter
+import com.takhyungmin.dowadog.scrap.scrapmodel.ScrapObject
+import com.takhyungmin.dowadog.scrap.scrapmodel.get.GetMyScrapData
+import com.takhyungmin.dowadog.scrap.scrapmodel.get.GetMyScrapResponse
 import kotlinx.android.synthetic.main.activity_scrap.*
 
 class ScrapActivity : BaseActivity(), View.OnClickListener {
+
+    lateinit var myScrapList: GetMyScrapResponse
+
+    lateinit var scrapActivityPresenter: ScrapActivityPresenter
+
+
     override fun onClick(v: View?) {
-        when(v) {
+        when (v) {
             btn_back_scrap_act -> {
                 finish()
             }
         }
     }
 
-    private var isScrapAct = 0
+    lateinit var scrapRecyclerViewAdapter: ScrapRecyclerViewAdapter
 
-    val scrapRecyclerViewAdapter: ScrapRecyclerViewAdapter by lazy{
-        ScrapRecyclerViewAdapter(this@ScrapActivity, dataList, 1)
-    }
-
-    val fromMePostsRecyclerViewAdapter: ScrapRecyclerViewAdapter by lazy{
-        ScrapRecyclerViewAdapter(this@ScrapActivity, dataList, 0)
-    }
-
-    lateinit var dataList : ArrayList<ScrapRVData>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scrap)
-        setRVListener()
+        initPresenter()
+        scrapActivityPresenter.requestMyScrapList()
         init()
 
         initView()
     }
 
-    private fun init(){
+    private fun init() {
         btn_back_scrap_act.setOnClickListener(this)
     }
-    private fun initView(){
-        if(isScrapAct == 0){
-            tv_scrap_act.text = "내가 쓴글"
-        }
+
+    private fun initView() {
     }
 
-    private fun setRVListener(){
-        if(isScrapAct == 1){
-            dataList = ArrayList()
-            dataList.add(ScrapRVData(1, "작성자 이름", "2018.12.12"))
-            dataList.add(ScrapRVData(1, "작성자 이름", "2018.12.12"))
-            dataList.add(ScrapRVData(1, "작성자 이름", "2018.12.12"))
-            dataList.add(ScrapRVData(1, "작성자 이름", "2018.12.12"))
-            dataList.add(ScrapRVData(1, "작성자 이름", "2018.12.12"))
-            dataList.add(ScrapRVData(1, "작성자 이름", "2018.12.12"))
-            dataList.add(ScrapRVData(1, "작성자 이름", "2018.12.12"))
-            rv_scrap_act.adapter = scrapRecyclerViewAdapter
-            rv_scrap_act.layoutManager = LinearLayoutManager(applicationContext, LinearLayout.VERTICAL, false)
-        }
-        else{
+    private fun setRVListener(data : ArrayList<GetMyScrapData>) {
+//        dataList = ArrayList()
+//        dataList.add(ScrapRVData(1, "작성자 이름", "2018.12.12"))
+//        dataList.add(ScrapRVData(1, "작성자 이름", "2018.12.12"))
+//        dataList.add(ScrapRVData(1, "작성자 이름", "2018.12.12"))
+//        dataList.add(ScrapRVData(1, "작성자 이름", "2018.12.12"))
+//        dataList.add(ScrapRVData(1, "작성자 이름", "2018.12.12"))
+//        dataList.add(ScrapRVData(1, "작성자 이름", "2018.12.12"))
+//        dataList.add(ScrapRVData(1, "작성자 이름", "2018.12.12"))
+        scrapRecyclerViewAdapter = ScrapRecyclerViewAdapter(this@ScrapActivity, data)
+        rv_scrap_act.adapter = scrapRecyclerViewAdapter
+        rv_scrap_act.layoutManager = LinearLayoutManager(applicationContext, LinearLayout.VERTICAL, false)
+    }
 
-            dataList = ArrayList()
-            dataList.add(ScrapRVData(1, "내 이름", "2018.12.12"))
-            dataList.add(ScrapRVData(1, "작성자 이름", "2018.12.12"))
-            dataList.add(ScrapRVData(1, "작성자 이름", "2018.12.12"))
-            dataList.add(ScrapRVData(1, "작성자 이름", "2018.12.12"))
-            dataList.add(ScrapRVData(1, "작성자 이름", "2018.12.12"))
-            dataList.add(ScrapRVData(1, "작성자 이름", "2018.12.12"))
-            dataList.add(ScrapRVData(1, "작성자 이름", "2018.12.12"))
-            rv_scrap_act.adapter = fromMePostsRecyclerViewAdapter
-            rv_scrap_act.layoutManager = LinearLayoutManager(applicationContext, LinearLayout.VERTICAL, false)
+    private fun initPresenter() {
+        scrapActivityPresenter = ScrapActivityPresenter()
+        // 뷰 붙여주는 작엄
+        scrapActivityPresenter.view = this
+        ScrapObject.scrapActivityPresenter = scrapActivityPresenter
+    }
 
+    fun responseScrapData(data: GetMyScrapResponse) {
+        myScrapList = data
+        myScrapList?.data?.let {
+            setRVListener(it)
         }
+
     }
 }

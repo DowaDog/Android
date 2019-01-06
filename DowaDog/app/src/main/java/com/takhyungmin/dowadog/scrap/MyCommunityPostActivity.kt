@@ -55,7 +55,11 @@ class MyCommunityPostActivity: BaseActivity(), View.OnClickListener {
 
     fun requestMyCommunityPostList(data : GetMyCommunityPostResponse){
         myCommunityPostList = data
-        setRVListener()
+        data?.data
+                ?.let {
+            setRVListener()
+        }
+
     }
 
     private fun initPresenter() {
