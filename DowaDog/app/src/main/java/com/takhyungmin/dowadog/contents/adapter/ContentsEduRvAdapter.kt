@@ -1,6 +1,5 @@
 package com.takhyungmin.dowadog.contents.adapter
 
-import android.content.Context
 import android.graphics.Color
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -9,11 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.RequestManager
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.contents.ContentsObject
 import com.takhyungmin.dowadog.contents.model.get.GetEduContentsContents
-import com.takhyungmin.dowadog.presenter.fragment.ContentsEduFragmentPresenter
 
 
-class ContentsEduRvAdapter(private var contentsEduItems : ArrayList<GetEduContentsContents>, private var requestManager: RequestManager, private var contentsEduFragmentPresenter : ContentsEduFragmentPresenter, var context : Context) : RecyclerView.Adapter<ContentsEduViewHolder>() {
+class ContentsEduRvAdapter(private var contentsEduItems : ArrayList<GetEduContentsContents>, private var requestManager: RequestManager) : RecyclerView.Adapter<ContentsEduViewHolder>() {
 
     private var onItemClick : View.OnClickListener? = null
     lateinit var mainView : View
@@ -36,7 +35,7 @@ class ContentsEduRvAdapter(private var contentsEduItems : ArrayList<GetEduConten
         else
             holder.contentsCheck.setBackgroundColor(Color.parseColor("#f0f0f0"))
         holder.contentsFrame.setOnClickListener {
-            contentsEduFragmentPresenter.toDetail(contentsEduItems[position].id)
+            ContentsObject.contentsEduFragmentPresenter.toDetail(contentsEduItems[position].id)
         }
     }
 

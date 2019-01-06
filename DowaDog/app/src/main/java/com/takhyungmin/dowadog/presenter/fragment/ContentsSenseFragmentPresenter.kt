@@ -13,12 +13,6 @@ class ContentsSenseFragmentPresenter : BasePresenter<ContentsSenseFragment>() {
     }
 
     lateinit var contentsEduItems : ArrayList<ContentsSenseItem>
-    fun initView(){
-
-
-
-        view!!.initView(contentsEduItems)
-    }
 
     //    fun toDetail(width : Int, height : Int, left : Int, top : Int, title : String, sub : String){
 //        view!!.toDetail(width, height, left, top, title, sub)

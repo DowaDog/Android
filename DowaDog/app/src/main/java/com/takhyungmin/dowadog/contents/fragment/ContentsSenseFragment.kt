@@ -12,7 +12,6 @@ import com.bumptech.glide.RequestManager
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.contents.ContentsObject
 import com.takhyungmin.dowadog.contents.activity.ContentsSenseDetailActivity
-import com.takhyungmin.dowadog.contents.adapter.ContentsSenseItem
 import com.takhyungmin.dowadog.contents.adapter.ContentsSenseRvAdapter
 import com.takhyungmin.dowadog.contents.model.get.GetEduContentsContents
 import com.takhyungmin.dowadog.presenter.fragment.ContentsSenseFragmentPresenter
@@ -39,15 +38,9 @@ class ContentsSenseFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        contentsSenseFragmentPresenter.initView()
+        contentsSenseFragmentPresenter.requestData()
     }
 
-    fun initView(contentsItems : ArrayList<ContentsSenseItem>){
-//        contentsSenseRvAdapter = ContentsSenseRvAdapter(contentsItems, requestManager, contentsSenseFragmentPresenter)
-//        //contentsEduRvAdapter.setOnItemClickListener(this)
-//        rv_contents_sense_feeds.layoutManager = LinearLayoutManager(activity)
-//        rv_contents_sense_feeds.adapter = contentsSenseRvAdapter
-    }
 
     fun toDetail(id : Int){
         val intent = Intent(context, ContentsSenseDetailActivity::class.java)
