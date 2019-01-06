@@ -18,54 +18,55 @@
             android:layout_height="136dp"
             android:src="@drawable/main_slider_2step_img" />
 
-            <RelativeLayout
-                android:id="@+id/rl_animal_letter_act"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanum_extra_bold"
-                    android:text="동물들은"
-                    android:textColor="#ffffff"
-                    android:textSize="15sp" />
-
-                <ImageView
-                    android:id="@+id/rv_new_img_letter_act"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/mypage_new_icon" />
-
-            </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rl_animal_letter_act"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp">
 
             <TextView
-                android:id="@+id/tv_talk_letter_act"
+                android:id="@+id/tv_title_letter_act"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
                 android:fontFamily="@font/nanum_extra_bold"
-                android:text="행동으로 말해요!"
-                android:layout_below="@+id/rl_animal_letter_act"
+                android:text="동물들은"
                 android:textColor="#ffffff"
                 android:textSize="15sp" />
 
-            <TextView
+            <ImageView
+                android:id="@+id/rv_new_img_letter_act"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/nanum_light"
-                android:layout_below="@+id/tv_talk_letter_act"
-                android:text="컨텐츠 카테고리에서 더 알아보아요 :)"
-                android:textColor="#ffffff"
-                android:textSize="10sp" />
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/mypage_new_icon" />
 
         </RelativeLayout>
 
+        <TextView
+            android:id="@+id/tv_talk_letter_act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/nanum_extra_bold"
+            android:text="행동으로 말해요!"
+            android:layout_below="@+id/rl_animal_letter_act"
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/nanum_light"
+            android:layout_below="@+id/tv_talk_letter_act"
+            android:text="컨텐츠 카테고리에서 더 알아보아요 :)"
+            android:textColor="#ffffff"
+            android:textSize="10sp" />
+
     </RelativeLayout>
+
+</RelativeLayout>

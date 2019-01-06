@@ -1,8 +1,13 @@
 package com.takhyungmin.dowadog.presenter.activity
 
+import android.util.Log
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.contents.activity.ContentsEduDetailActivity
 import com.takhyungmin.dowadog.contents.adapter.ContentsEduDetailItem
+import com.takhyungmin.dowadog.contents.model.get.ContentsEduDetailModel
+import com.takhyungmin.dowadog.contents.model.get.GETContentsEduDetailResponse
+import com.takhyungmin.dowadog.letter.model.get.GETLetterActivityResponse
+import com.takhyungmin.dowadog.letter.model.get.LetterModel
 import com.takhyungmin.dowadog.presenter.BasePresenter
 
 class ContentsEduDetailActivityPresenter : BasePresenter<ContentsEduDetailActivity>() {
@@ -23,5 +28,21 @@ class ContentsEduDetailActivityPresenter : BasePresenter<ContentsEduDetailActivi
 
 
         view!!.initView(contentsEduDetailItems)
+    }
+
+    private val contentsEduDetailModel : ContentsEduDetailModel by lazy {
+        ContentsEduDetailModel()
+    }
+
+
+    //모델에게 일을 시킴
+    fun requestData(id : Int){
+        Log.v("TAGG", "Edu Detail 프레젠터 리퀘스트데이터")
+        contentsEduDetailModel.getContentsEduDetailData(id)
+    }
+    //view에게 데이터 전달
+    fun responseData(data : GETContentsEduDetailResponse){
+        Log.v("TAGG", "Edu Detail 프레젠터 리스폰스데이터")
+        view!!.responseData(data)
     }
 }
