@@ -26,8 +26,8 @@ class CommunityDetailActivityPresenter : BasePresenter<CommunityDetailActivity>(
         view!!.setViewPagerAdapter(viewPagerItemData)
 
     }
-    fun requestData(){
-        communityDetailModel.getCommunityPostDetailData()
+    fun requestData(communityId: Int){
+        communityDetailModel.getCommunityPostDetailData(communityId)
     }
 
     fun responseData(data : GetCommunityPostDetailResponse){

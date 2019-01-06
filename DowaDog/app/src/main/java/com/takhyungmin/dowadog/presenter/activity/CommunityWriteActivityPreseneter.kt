@@ -16,7 +16,7 @@ class CommunityWriteActivityPreseneter: BasePresenter<CommunityWriteActivity>() 
 
     }
 
-    fun requestData(input_title : String, input_contents: String, communityImgFiles: ArrayList<MultipartBody.Part>){
+    fun requestData(input_title: String, input_contents: String, communityImgFiles: ArrayList<MultipartBody.Part>){
         communityWriteModel.getCommunityPostDetailData(input_title, input_contents, communityImgFiles)
     }
 

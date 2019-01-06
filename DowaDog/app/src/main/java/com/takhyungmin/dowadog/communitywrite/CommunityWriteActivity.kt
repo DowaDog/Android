@@ -29,7 +29,7 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import org.jetbrains.anko.toast
 import java.io.ByteArrayOutputStream
-import java.io.File
+import java.io.FileNotFoundException
 import java.io.InputStream
 
 
@@ -41,6 +41,7 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
     private val REQUEST_PICK_PHOTO = 1
     private var presentImabeBoxNum = -1
     val My_READ_STORAGE_REQUEST_CODE = 7777
+    lateinit var image : ArrayList<MultipartBody.Part>
 
     private var customDialog : CustomDialog? = null
 
@@ -77,6 +78,8 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
                 // 통신 코드
                 Log.v("잘돼","눌림")
                 selectData()
+                // 어디로 가야하지 ?
+                finish()
             }
 
             // 사진 첫번째 박스
@@ -472,7 +475,7 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
             Log.v("잘돼","눌림2")
             if(et_content_community_write_act.text.toString().isNotEmpty()){
                 Log.v("잘돼","눌3")
-                communityWriteActivityPresenter.requestData(et_title_community_write_act.text.toString(), et_content_community_write_act.text.toString(), exchangeImgUrlToMultipart(imagesEncodedList))
+                communityWriteActivityPresenter.requestData(et_title_community_write_act.text.toString(), et_content_community_write_act.text.toString(), converToImage(imagesEncodedList))
             }else {
                 Log.v("잘돼","눌림4")
                 toast("제목을 입력해주세요")
@@ -484,23 +487,31 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
-    fun exchangeImgUrlToMultipart(imagesEncodedList: ArrayList<Uri>): ArrayList<MultipartBody.Part> {
-        var a : ArrayList<MultipartBody.Part> = ArrayList()
-        for ( i in 0 until imagesEncodedList.size){
-            var seletedPictureUri = imagesEncodedList[i]
+    fun converToImage(uris : ArrayList<Uri>) : ArrayList<MultipartBody.Part>{
+
+
+        image = ArrayList()
+        uris.forEach { uri ->
             val options = BitmapFactory.Options()
-            val inputStream: InputStream = contentResolver.openInputStream(seletedPictureUri)
-            val bitmap = BitmapFactory.decodeStream(inputStream, null, options)
-            val byteArrayOutputStream = ByteArrayOutputStream()
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 20, byteArrayOutputStream)
-            val photoBody = RequestBody.create(MediaType.parse("image/jpg"), byteArrayOutputStream.toByteArray()) //첫번째 매개변수 String을 꼭! 꼭! 서버 API에 명시된 이름으로 넣어주세요!!!
-            a!!.add(MultipartBody.Part.createFormData("photo", File(seletedPictureUri.toString()).name, photoBody))
+
+            var input: InputStream? = null // here, you need to get your context.
+            try {
+                input = contentResolver.openInputStream(uri)
+            } catch (e: FileNotFoundException) {
+                e.printStackTrace()
+            }
+
+            val bitmap = BitmapFactory.decodeStream(input, null, options) // InputStream 으로부터 Bitmap 을 만들어 준다.
+            val baos = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos)
+
+            val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
+
+            image.add(MultipartBody.Part.createFormData("communityImgFiles", "", photoBody))
         }
-        return a
+
+        return image
+
     }
-
-
-
-
 
 }

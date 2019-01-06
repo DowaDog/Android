@@ -13,7 +13,7 @@ interface CommunityDetailNetworkService {
 
 
     // 커뮤니티 포스트 디테일 보기
-    @GET("normal/community/{communityID}")
+    @GET("api/normal/community/{communityID}")
     fun GetCommunityPostDetailResponse(
             @Header("Authorization") authorization: String,
             @Header("Content-Type") content_type: String,
@@ -21,21 +21,21 @@ interface CommunityDetailNetworkService {
     ): Call<GetCommunityPostDetailResponse>
 
     // 커뮤니티 글 삭제
-    @DELETE("normal/community/{communityId}")
+    @DELETE("api/normal/community/{communityId}")
     fun deleteCommunityPostResponse(
             @Header("Authorization") authorization: String,
             @Path("communityId") communityId: Int
     ): Call<DeleteCommunityDetailPostResponse>
 
     // 댓글 가져오기
-    @GET("normal/community/{communityId}/comments")
+    @GET("api/normal/community/{communityId}/comments")
     fun getCommunityCommentResponse(
             @Header("Authorization") authorization: String,
             @Path("communityId") communityId: Int
     ): Call<GetCommunityCommentResponse>
 
     // 댓글 쓰기
-    @POST("normal/community/{communityId}/comments")
+    @POST("api/normal/community/{communityId}/comments")
     fun postCommunityCommentWriteResponse(
             @Header("Authorization") authorization: String,
             @Header("Content-Type") content_type: String,
@@ -44,11 +44,10 @@ interface CommunityDetailNetworkService {
     ): Call<PostCommunityCommentWriteResponse>
 
     // 댓글 삭제
-    @DELETE("normal/community/comments/{commentId}")
+    @DELETE("api/normal/community/comments/{commentId}")
     fun deleteCommunityCommentResponse(
             @Header("Authorization") authorization: String,
             @Header("Content-Type") content_type: String,
             @Path("commentId") commentId: Int
     ): Call<DeleteCommunityCommentResponse>
-
 }
