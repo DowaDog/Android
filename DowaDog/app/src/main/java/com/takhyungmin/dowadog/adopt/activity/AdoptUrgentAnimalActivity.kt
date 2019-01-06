@@ -30,6 +30,7 @@ class AdoptUrgentAnimalActivity : AppCompatActivity() {
     var isLoading = false
     var isLast = false
     val totalPage = 3
+    val pagingCount = 16
 
     override fun onCreate(savedInstanceState: Bundle?) {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
@@ -44,7 +45,7 @@ class AdoptUrgentAnimalActivity : AppCompatActivity() {
         adoptUrgentAnimalActivityPresenter = AdoptUrgentAnimalActivityPresenter()
         adoptUrgentAnimalActivityPresenter.view = this
         AdoptObject.adoptUrgentAnimalActivityPresenter = adoptUrgentAnimalActivityPresenter
-        adoptUrgentAnimalActivityPresenter.requestUrgentList(currentPage, 10)
+        adoptUrgentAnimalActivityPresenter.requestUrgentList(currentPage, pagingCount)
     }
 
     fun initView(urgentAnimalDatas : ArrayList<UrgentAnimalData>){
@@ -63,7 +64,7 @@ class AdoptUrgentAnimalActivity : AppCompatActivity() {
                     Handler().postDelayed(Runnable {
                         //communityFragmentPresenter.nextPage(currentPage, itemCount)
                         Log.v("scroll", "more")
-                        adoptUrgentAnimalActivityPresenter.requestUrgentList(currentPage, 10)
+                        adoptUrgentAnimalActivityPresenter.requestUrgentList(currentPage, pagingCount)
                     }, 2000)
                 }
             }
@@ -88,14 +89,14 @@ class AdoptUrgentAnimalActivity : AppCompatActivity() {
 //        })
 
     }
+
     fun loadNextPage(results : ArrayList<UrgentAnimalData>){
         Log.v("scroll", "add")
         urgentAnimalAdapter.addAll(results)
         //currentPage += 1
         isLoading = false
-        if (currentPage >= totalPage) {
+        if (pagingCount > results.size) {
             isLast = true
-            //rv_urgent_ani_act.stopScroll()
         }
     }
 

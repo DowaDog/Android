@@ -35,6 +35,7 @@ class CommunityFragment : Fragment() {
     var currentPage = 0
     var startPage = 0
     val itemCount = 5
+    val pagingCount = 16
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_community, container, false)
@@ -51,7 +52,8 @@ class CommunityFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        communityFragmentPresenter.initView(0, 3)
+        setOnBinding()
+        communityFragmentPresenter.initView(0, pagingCount)
     }
 
     fun initView(communityItems : ArrayList<GetCommunityContents>){
@@ -75,7 +77,7 @@ class CommunityFragment : Fragment() {
                     Handler().postDelayed(Runnable {
                         //communityFragmentPresenter.nextPage(currentPage, itemCount)
                         Log.v("scroll", "more")
-                        communityFragmentPresenter.requestCommunityList(currentPage, 3)
+                        communityFragmentPresenter.requestCommunityList(currentPage, pagingCount)
                     }, 2000)
                 }
             }
@@ -98,7 +100,7 @@ class CommunityFragment : Fragment() {
         communityAdapter.addAll(results)
         //currentPage += 1
         isLoading = false
-        if (currentPage >= TOTAL_PAGE)
+        if (pagingCount > results.size)
             isLast = true
     }
 }

@@ -94,11 +94,14 @@
 
 
                 </android.support.v7.widget.RecyclerView>
+
+
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/btn_adopt_filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/filter_floating_btn"

@@ -30,9 +30,13 @@ class AnimalFindNewAdapter(var newItems : ArrayList<UrgentAnimalData>, var newRe
         holder.tv_ani_kind.text = newItems[position].ani_kind
         holder.urgentLayout.visibility = View.GONE
 
-        holder.ani_img.clicks().subscribe {
-            AdoptObject.adoptAnimalFindFragmentPresnter.toApply()
-        }
+        if(newItems[position].ani_gender == "F")
+            holder.ani_gender.setImageResource(R.drawable.woman_icon_1227)
+        else
+            holder.ani_gender.setImageResource(R.drawable.man_icon_1227)
+//        holder.ani_img.clicks().subscribe {
+//            AdoptObject.adoptAnimalFindFragmentPresnter.toApply()
+//        }
 
         holder.ani_img.setClipToOutline(true)
 

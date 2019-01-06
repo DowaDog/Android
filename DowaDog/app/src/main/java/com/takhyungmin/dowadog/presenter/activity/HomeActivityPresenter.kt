@@ -5,6 +5,7 @@ import com.takhyungmin.dowadog.home.activity.HomeActivity
 import com.takhyungmin.dowadog.home.fragment.HomeFragment
 import com.takhyungmin.dowadog.home.model.HomeModel
 import com.takhyungmin.dowadog.home.model.get.GetDuplicateResponse
+import com.takhyungmin.dowadog.home.model.get.GetUserInfoData
 import com.takhyungmin.dowadog.presenter.BasePresenter
 
 class HomeActivityPresenter : BasePresenter<HomeActivity>() {
@@ -39,5 +40,13 @@ class HomeActivityPresenter : BasePresenter<HomeActivity>() {
 
     fun homeBtnClick(){
         view!!.clickedAdoptBtn()
+    }
+
+    fun requestUserInfo(){
+        homeModel.getUserInfo()
+    }
+
+    fun responseUserInfo(userData : GetUserInfoData){
+        view!!.responseUserInfo(userData)
     }
 }

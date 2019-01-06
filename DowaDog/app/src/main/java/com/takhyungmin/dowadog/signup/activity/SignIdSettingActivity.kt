@@ -371,7 +371,6 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
                 id, pwd
         ))
     }
-
     fun successGetToken(getLoginData: GetLoginData){
         SharedPreferenceController.setAccessToken(this, getLoginData.accessToken.data)
         SharedPreferenceController.setRefreshToken(this, getLoginData.refreshToken.data)
@@ -379,12 +378,14 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
         SharedPreferenceController.setAccessTokenExpired(this, getLoginData.accessToken.expiredAt)
         SharedPreferenceController.setId(this, this.id)
         SharedPreferenceController.setPwd(this, this.pwd)
-
-        startActivity(Intent(this, HomeActivity::class.java))
         ApplicationData.loginState = true
         ApplicationData.auth = getLoginData.accessToken.data
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
         finish()
     }
+
 
     fun responseDuplicateData(data : GetDuplicateResponse){
         idCheck = data.data

@@ -20,6 +20,7 @@ import com.takhyungmin.dowadog.adopt.adapter.AnimalFindNewAdapter
 import com.takhyungmin.dowadog.adopt.adapter.AnimalFindUrgentAdapter
 import com.takhyungmin.dowadog.adopt.model.get.UrgentAnimalData
 import com.takhyungmin.dowadog.dogdetail.DogDetailActivity
+import com.takhyungmin.dowadog.filter.FilterActivity
 import com.takhyungmin.dowadog.presenter.fragment.AdoptAnimalFindFragmentPresenter
 import kotlinx.android.synthetic.main.fragment_find.*
 
@@ -34,6 +35,7 @@ class AdoptAnimalFindFragment : Fragment() {
     var isLoading = false
     var isLast = false
     val totalPage = 3
+    val pagingCount = 10
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_find, container, false)
@@ -47,7 +49,7 @@ class AdoptAnimalFindFragment : Fragment() {
         setOnBinding()
 
         AdoptObject.adoptAnimalFindFragmentPresnter = adoptAnimalFindFragmentPresenter
-        adoptAnimalFindFragmentPresenter.requestNewList(currentPage, 10)
+        adoptAnimalFindFragmentPresenter.requestNewList(currentPage, pagingCount)
         adoptAnimalFindFragmentPresenter.requestUrgentList(currentPage, 2)
 
     }
@@ -55,6 +57,10 @@ class AdoptAnimalFindFragment : Fragment() {
     fun setOnBinding(){
         btn_find_fragment_more.clicks().subscribe {
             activity!!.startActivity(Intent(activity!!, AdoptUrgentAnimalActivity::class.java))
+        }
+
+        btn_adopt_filter.clicks().subscribe {
+            activity!!.startActivity(Intent(activity!!, FilterActivity::class.java))
         }
     }
 
@@ -106,7 +112,7 @@ class AdoptAnimalFindFragment : Fragment() {
                     Handler().postDelayed(Runnable {
                         //communityFragmentPresenter.nextPage(currentPage, itemCount)
                         Log.v("scroll", "more")
-                        adoptAnimalFindFragmentPresenter.requestNewList(currentPage, 10)
+                        adoptAnimalFindFragmentPresenter.requestNewList(currentPage, pagingCount)
                     }, 2000)
                 }
             }
@@ -119,7 +125,7 @@ class AdoptAnimalFindFragment : Fragment() {
         animalFindNewAdapter.addAll(results)
         //currentPage += 1
         isLoading = false
-        if (currentPage >= totalPage) {
+        if (pagingCount > results.size) {
             isLast = true
             //rv_urgent_ani_act.stopScroll()
         }

@@ -31,10 +31,13 @@ class AnimalFindUrgentAdapter(var urgentItems : ArrayList<UrgentAnimalData>,
         holder.ani_region.text = urgentItems[position].ani_region
         holder.tv_ani_kind.text = urgentItems[position].ani_kind
 
-
-        holder.ani_img.clicks().subscribe {
-            adoptAnimalFindFragmentPresenter.toApply()
-        }
+        if(urgentItems[position].ani_gender == "F")
+            holder.ani_gender.setImageResource(R.drawable.woman_icon_1227)
+        else
+            holder.ani_gender.setImageResource(R.drawable.man_icon_1227)
+//        holder.ani_img.clicks().subscribe {
+//            adoptAnimalFindFragmentPresenter.toApply()
+//        }
 
         holder.ani_img.setClipToOutline(true)
 

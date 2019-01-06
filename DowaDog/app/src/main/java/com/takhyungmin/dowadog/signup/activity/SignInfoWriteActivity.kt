@@ -16,6 +16,7 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.bumptech.glide.Glide
+import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.presenter.activity.SignInfoWriteActivityPresenter
@@ -195,7 +196,12 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
         btn_email_check_sign_info_wr_act.setOnClickListener(this)
 
         et_phonenum_sign_info_wr_act.addTextChangedListener(PhoneNumberFormattingTextWatcher())
+
+        btn_write_back.clicks().subscribe {
+            finish()
+        }
     }
+
 
     //이름 editText확인 name_sign_info_wr_act--> editText에 값이 들어갔는지 판별해주는 것
     private fun nameEditTextSetting() {
