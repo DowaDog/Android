@@ -25,5 +25,6 @@ class ContentsSenseRvAdapter(var contentsSenseItems : ArrayList<GetEduContentsCo
         holder.senseFrame.setOnClickListener {
             ContentsObject.contentsSenseFragmentPresenter.toDetail(contentsSenseItems[position].id)
         }
+        holder.senseFeed.setClipToOutline(true)
     }
 }

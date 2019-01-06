@@ -28,8 +28,8 @@ class ContentsEduFragmentPresenter : BasePresenter<ContentsEduFragment>() {
         view!!.responseList(contents)
     }
 
-    fun toDetail(id : Int){
-        view!!.toDetail(id)
+    fun toDetail(id : Int, num : Int){
+        view!!.toDetail(id, num)
     }
 
 }

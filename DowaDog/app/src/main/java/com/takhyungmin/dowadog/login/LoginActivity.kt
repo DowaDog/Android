@@ -26,7 +26,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         when(v) {
             btn_look_login_act -> {
                 ApplicationData.loginState = false
-                ApplicationData.auth = ""
+                ApplicationData.auth = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGFla3l1bmcwNDAyIiwiaXNzIjoiZG93YWRvZyIsImV4cCI6MTU3ODIyNjg0MX0.abzE4hLsRbVe5Xj-PigEC1SlUNwbcaYZfNRu0V4nsU0"
                 startActivity<HomeActivity>()
             }
             btn_signup_login_act -> {

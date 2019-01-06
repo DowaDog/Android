@@ -43,16 +43,16 @@ class ContentsEduFragment : Fragment(){
         contentsEduFragmentPresenter.requestData()
     }
 
-
-    fun toDetail(id : Int){
+    var num = 0
+    fun toDetail(id : Int, num : Int){
         val intent = Intent(context, ContentsEduDetailActivity::class.java)
         intent.putExtra("id", id)
+        intent.putExtra("num", num)
         activity!!.startActivity(intent)
     }
 
     fun responseList(contents : ArrayList<GetEduContentsContents>){
         contentsEduRvAdapter = ContentsEduRvAdapter(contents, requestManager)
-        //contentsEduRvAdapter.setOnItemClickListener(this)
         rv_contents_edu_feeds.layoutManager = LinearLayoutManager(activity)
         rv_contents_edu_feeds.adapter = contentsEduRvAdapter
     }
