@@ -8,8 +8,6 @@
     <RelativeLayout
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="19dp"
-        android:layout_centerInParent="true"
         android:layout_width="match_parent"
         android:background="@drawable/home_slide_third_text_frame"
         android:layout_height="240dp">
@@ -36,8 +34,8 @@
         android:fontFamily="@font/nanum_extra_bold"
         android:text="준비물"
         />
-    <TextView
 
+    <TextView
         android:layout_width="wrap_content"
         android:layout_marginTop="19dp"
         android:layout_height="wrap_content"
@@ -85,7 +83,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="12sp"
+        android:textSize="11sp"
         android:textColor="#838383"
         android:layout_gravity="center"
         android:layout_marginTop="19.1dp"
