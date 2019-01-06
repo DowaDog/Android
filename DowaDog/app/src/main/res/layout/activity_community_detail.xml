@@ -101,6 +101,7 @@
             
 
             <RelativeLayout
+                android:id="@+id/rl_vp_community_detail_act"
                 android:layout_width="wrap_content"
                 android:layout_height="260dp">
 
@@ -214,7 +215,7 @@
 
         <!--서클이미지 뷰 들어가야함-->
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_writter_comment_community_detail_act"
+            android:id="@+id/iv_writter_comment_community_detail_act2"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginLeft="16dp"
@@ -226,7 +227,7 @@
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/iv_writter_comment_community_detail_act"
+            android:layout_toRightOf="@+id/iv_writter_comment_community_detail_act2"
             android:layout_marginHorizontal="16dp"
             android:background="@drawable/community_detail_act_comment_box"
             >

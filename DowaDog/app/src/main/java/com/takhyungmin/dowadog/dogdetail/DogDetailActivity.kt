@@ -198,54 +198,80 @@ class DogDetailActivity : AppCompatActivity(), View.OnClickListener {
     fun responseData(data : GetDogDetailResponse){
         getDogDetailResponse = data
         initView(getDogDetailResponse.data)
+
     }
 
     fun initView(data: GetDogDetailData){
         Glide.with(this@DogDetailActivity).load(data.thumbnailImg).into(iv_top_dog_dog_detail_act)
-        tv_area_dog_detail_act.text = data.region
-        tv_kind_dog_detail_act.text = data.kindCd
-        tv_description_dog_detail_act.text = data.specialMark
 
-        if(data.sexCd == "M") {
-            iv_sex_dog_detail_act.setImageResource(R.drawable.findingdetail_man_icon)
-            tv_sex_dog_detail_act.text = "남아"
-        }else {
-            iv_sex_dog_detail_act.setImageResource(R.drawable.findingdetail_woman_icon)
-            tv_sex_dog_detail_act.text = "여아"
+        data.region?.let {
+            tv_area_dog_detail_act.text = it
         }
 
-        if(data.type == "개"){
-            iv_dog_or_cat_dog_detail_act.setImageResource(R.drawable.findingdetail_dog_icon)
-        }else {
-            iv_dog_or_cat_dog_detail_act.setImageResource(R.drawable.findingdetail_cat_icon)
+        data.kindCd?.let { tv_kind_dog_detail_act.text = it }
+
+        data.specialMark?.let {
+            tv_description_dog_detail_act.text = it
         }
 
-        tv_age_dog_detail_act.text = data.age
+        data.sexCd?.let{
+            if(it == "M") {
+                iv_sex_dog_detail_act.setImageResource(R.drawable.findingdetail_man_icon)
+                tv_sex_dog_detail_act.text = "남아"
+            }else {
+                iv_sex_dog_detail_act.setImageResource(R.drawable.findingdetail_woman_icon)
+                tv_sex_dog_detail_act.text = "여아"
+            }
+        }
 
-        tv_weight_dog_detail_act.text = data.weight
 
-        tv_announcement_number_dog_detail_act.text = data.noticeNo
+        data.type?.let {
+            if(it == "개"){
+                iv_dog_or_cat_dog_detail_act.setImageResource(R.drawable.findingdetail_dog_icon)
+            }else {
+                iv_dog_or_cat_dog_detail_act.setImageResource(R.drawable.findingdetail_cat_icon)
+            }
+        }
 
-        tv_term_dog_detail_act.text = data.noticeStdt.replace("-", ".") + " - " + data.noticeEddt.replace("-", ".")
+        data.age?.let {
+            tv_age_dog_detail_act.text = it
+        }
 
-        tv_discovery_spot_dog_detail_act.text = data.happenPlace
+        data.weight?.let {
+            tv_weight_dog_detail_act.text = it
+        }
 
-        tv_protect_spot_dog_detail_act.text = data.careName
+        data.noticeNo?.let{
+            tv_announcement_number_dog_detail_act.text = it
+        }
 
-        tv_protect_spot_telephone_num_dog_detail_act.text = data.careTel
 
-        val now = System.currentTimeMillis()
-        val date = Date(now)
-        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
-        val beginDate = sdf.format(date)
-        val today = sdf.parse(beginDate)
+        if (data.noticeEddt != null && data.noticeStdt != null){
+            tv_term_dog_detail_act.text = data.noticeStdt.replace("-", ".") + " - " + data.noticeEddt.replace("-", ".")
+            val now = System.currentTimeMillis()
+            val date = Date(now)
+            val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
+            val beginDate = sdf.format(date)
+            val today = sdf.parse(beginDate)
 
-        val endDate = sdf.parse(data.noticeEddt)
-        val diff = endDate.time - today.time
-        val dDay = diff / (24 * 60 * 60 * 1000)
+            val endDate = sdf.parse(data.noticeEddt)
+            val diff = endDate.time - today.time
+            val dDay = diff / (24 * 60 * 60 * 1000)
 
-        tv_dday_dog_detail_act.text = "D-" + dDay.toString()
+            tv_dday_dog_detail_act.text = "D-" + dDay.toString()
+        }
 
+        data.happenPlace?.let {
+            tv_discovery_spot_dog_detail_act.text = it
+        }
+
+        data.careName?.let {
+            tv_protect_spot_dog_detail_act.text = it
+        }
+
+        data.careTel?.let{
+            tv_protect_spot_telephone_num_dog_detail_act.text = it
+        }
     }
 }
 

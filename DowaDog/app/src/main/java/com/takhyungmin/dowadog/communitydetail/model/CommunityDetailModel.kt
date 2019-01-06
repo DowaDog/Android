@@ -44,9 +44,9 @@ class CommunityDetailModel {
         })
     }*/
 
-    fun getCommunityPostDetailData() {
+    fun getCommunityPostDetailData(communityId: Int) {
         communityDetailNetworkService.GetCommunityPostDetailResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGFla3l1bmciLCJpc3MiOiJkb3dhZG9nIiwiZXhwIjoxNTc3OTg4NDcyfQ.dZfpU_OPSH6kaVSeumubeDDtmhuhW4w8D_pNUaMn7-U",
-                "application/json", 5).enqueue(object : Callback<GetCommunityPostDetailResponse> {
+                "application/json", communityId).enqueue(object : Callback<GetCommunityPostDetailResponse> {
             override fun onFailure(call: Call<GetCommunityPostDetailResponse>?, t: Throwable?) {
                 Log.e("CommunityDetail통신실패", t.toString())
             }
@@ -138,5 +138,4 @@ class CommunityDetailModel {
                     }
                 })
     }
-
 }
