@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.contents.ContentsObject
 import com.takhyungmin.dowadog.contents.activity.ContentsEduDetailActivity
 import com.takhyungmin.dowadog.contents.adapter.ContentsEduItem
 import com.takhyungmin.dowadog.contents.adapter.ContentsEduRvAdapter
@@ -31,6 +32,7 @@ class ContentsEduFragment : Fragment(){
         super.onCreate(savedInstanceState)
         contentsEduFragmentPresenter = ContentsEduFragmentPresenter()
         contentsEduFragmentPresenter.view = this
+        ContentsObject.contentsEduFragmentPresenter = contentsEduFragmentPresenter
         requestManager = Glide.with(this)
     }
 

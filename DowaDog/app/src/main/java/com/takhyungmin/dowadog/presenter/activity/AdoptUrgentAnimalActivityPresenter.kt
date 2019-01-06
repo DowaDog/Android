@@ -33,4 +33,8 @@ class AdoptUrgentAnimalActivityPresenter : BasePresenter<AdoptUrgentAnimalActivi
         view!!.toDetail(detailDatas)
     }
 
+    val toDetailActivity = {id : Int ->
+        view!!.toDetailActivity(id)
+    }
+
 }

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.contents.ContentsObject
 import com.takhyungmin.dowadog.contents.activity.ContentsSenseDetailActivity
 import com.takhyungmin.dowadog.contents.adapter.ContentsSenseItem
 import com.takhyungmin.dowadog.contents.adapter.ContentsSenseRvAdapter
@@ -31,6 +32,7 @@ class ContentsSenseFragment : Fragment() {
         super.onCreate(savedInstanceState)
         contentsSenseFragmentPresenter = ContentsSenseFragmentPresenter()
         contentsSenseFragmentPresenter.view = this
+        ContentsObject.contentsSenseFragmentPresenter = contentsSenseFragmentPresenter
         requestManager = Glide.with(this)
     }
 

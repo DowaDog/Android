@@ -108,4 +108,10 @@ class AdoptUrgentAnimalActivity : AppCompatActivity() {
     fun toDetail(datas : GetAdoptPublicDetailData){
         startActivity(Intent(this, DogDetailActivity::class.java))
     }
+
+    fun toDetailActivity(id : Int){
+        val intent = Intent(this, DogDetailActivity::class.java)
+        intent.putExtra("animalId", id)
+        startActivity(intent)
+    }
 }

@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import com.bumptech.glide.RequestManager
 import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
-import com.takhyungmin.dowadog.presenter.fragment.AdoptAnimalFindFragmentPresenter
+import com.takhyungmin.dowadog.adopt.AdoptObject
 import com.takhyungmin.dowadog.adopt.model.get.UrgentAnimalData
+import com.takhyungmin.dowadog.presenter.fragment.AdoptAnimalFindFragmentPresenter
 
 class AnimalFindUrgentAdapter(var urgentItems : ArrayList<UrgentAnimalData>,
                               var urgentRequestManager : RequestManager, var adoptAnimalFindFragmentPresenter: AdoptAnimalFindFragmentPresenter) : RecyclerView.Adapter<AnimalFindUrgentViewHolder>() {
@@ -30,6 +31,7 @@ class AnimalFindUrgentAdapter(var urgentItems : ArrayList<UrgentAnimalData>,
         holder.ani_region.text = urgentItems[position].ani_region
         holder.tv_ani_kind.text = urgentItems[position].ani_kind
 
+
         holder.ani_img.clicks().subscribe {
             adoptAnimalFindFragmentPresenter.toApply()
         }
@@ -39,6 +41,10 @@ class AnimalFindUrgentAdapter(var urgentItems : ArrayList<UrgentAnimalData>,
         val params = holder.newFrame.layoutParams
         params.height = height
         holder.newFrame.layoutParams = params
+
+        holder.newFrame.clicks().subscribe {
+            AdoptObject.adoptAnimalFindFragmentPresnter.toDtail(urgentItems[position].id)
+        }
 
     }
 }

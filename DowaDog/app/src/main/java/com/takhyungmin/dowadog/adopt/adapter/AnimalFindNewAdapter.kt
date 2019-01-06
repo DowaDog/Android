@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import com.bumptech.glide.RequestManager
 import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.adopt.AdoptObject
 import com.takhyungmin.dowadog.adopt.model.get.UrgentAnimalData
-import com.takhyungmin.dowadog.presenter.fragment.AdoptAnimalFindFragmentPresenter
 
-class AnimalFindNewAdapter(var newItems : ArrayList<UrgentAnimalData>, var newRequestManager : RequestManager, var adoptAnimalFindFragmentPresenter: AdoptAnimalFindFragmentPresenter) : RecyclerView.Adapter<AnimalFindNewViewHolder>() {
+class AnimalFindNewAdapter(var newItems : ArrayList<UrgentAnimalData>, var newRequestManager : RequestManager) : RecyclerView.Adapter<AnimalFindNewViewHolder>() {
     var width = 0
     var height = 0
     var imgHeight = 0
@@ -28,9 +28,10 @@ class AnimalFindNewAdapter(var newItems : ArrayList<UrgentAnimalData>, var newRe
         newRequestManager.load(newItems[position].ani_img).into(holder.ani_img)
         holder.ani_region.text = newItems[position].ani_region
         holder.tv_ani_kind.text = newItems[position].ani_kind
+        holder.urgentLayout.visibility = View.GONE
 
         holder.ani_img.clicks().subscribe {
-            adoptAnimalFindFragmentPresenter.toApply()
+            AdoptObject.adoptAnimalFindFragmentPresnter.toApply()
         }
 
         holder.ani_img.setClipToOutline(true)
@@ -39,6 +40,16 @@ class AnimalFindNewAdapter(var newItems : ArrayList<UrgentAnimalData>, var newRe
         params.height = height
         holder.newFrame.layoutParams = params
 
+        holder.newFrame.clicks().subscribe {
+            AdoptObject.adoptAnimalFindFragmentPresnter.toDtail(newItems[position].id)
+        }
 
     }
+
+    fun addAll(result : ArrayList<UrgentAnimalData>){
+        newItems.addAll(result)
+        notifyItemRangeInserted(newItems.size,
+                result.size)
+    }
+
 }
