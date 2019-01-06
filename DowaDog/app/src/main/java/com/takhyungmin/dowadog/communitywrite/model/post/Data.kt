@@ -1,7 +1,7 @@
 package com.takhyungmin.dowadog.communitywrite.model.post
 
 data class CommunityPostWriteResponse(
-        val communityImgList: Any,
+        val communityImgList: ArrayList<PostCommunityImgList>,
         val createdAt: String,
         val detail: String,
         val id: Int,

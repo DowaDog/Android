@@ -41,18 +41,23 @@ class CommunityWriteModel {
     }*/
 
     fun getCommunityPostDetailData(input_title: String, input_contents: String, communityImgFiles: ArrayList<MultipartBody.Part>) {
+
+
+
+
+
         if (input_title.isNotEmpty() && input_contents.isNotEmpty()) {
 
             Log.v("잘돼", input_title)
             Log.v("잘돼", input_contents)
 
 
-            var title = RequestBody.create(MediaType.parse("form-data"), input_title)
-            var contents = RequestBody.create(MediaType.parse("form-data"), input_contents)
+            var title = RequestBody.create(MediaType.parse("text/plain"), input_title)
+            var contents = RequestBody.create(MediaType.parse("text/plain"), input_contents)
 
             Log.v("잘돼", "눌림1003")
             communityWriteNetworkService.postSignUpResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGFla3l1bmciLCJpc3MiOiJkb3dhZG9nIiwiZXhwIjoxNTc3OTg4NDcyfQ.dZfpU_OPSH6kaVSeumubeDDtmhuhW4w8D_pNUaMn7-U"
-                    , "application/json", title, contents, communityImgFiles).enqueue(object : Callback<PostCommunityPostWriteResponse> {
+                    , title, contents, communityImgFiles).enqueue(object : Callback<PostCommunityPostWriteResponse> {
                 override fun onFailure(call: Call<PostCommunityPostWriteResponse>?, t: Throwable?) {
                     Log.e("커뮤니티 글쓰기 실패", t.toString())
                 }

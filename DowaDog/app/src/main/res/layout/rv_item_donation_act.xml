@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="310dp"
+    android:layout_marginHorizontal="16dp"
+    android:background="@drawable/donation_rv_item_box"
+    android:layout_marginBottom="20dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="202dp">
+
+        <ImageView
+            android:id="@+id/iv_item_donation_act"
+            android:layout_width="match_parent"
+            android:layout_height="202dp"
+            android:scaleType="fitXY"
+            android:cropToPadding="true"
+            android:background="@drawable/abc"
+            android:src="@drawable/mypage_adopt_dog_img"
+            />
+
+        <RelativeLayout
+            android:layout_width="95dp"
+            android:layout_height="24dp"
+            android:background="@drawable/donation_act_rv_item_orange_box"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="18dp"
+            android:layout_marginLeft="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="제휴 할인 예정"
+                android:textSize="12sp"
+                android:textColor="#ffffff"
+                android:fontFamily="@font/nanum_bold"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:id="@+id/tv_store_item_donation_act"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="업체명"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:fontFamily="@font/nanum_extra_bold"
+        android:textSize="18sp"
+        android:textColor="#434343"
+        />
+
+    <TextView
+        android:id="@+id/tv_store_explain_item_donation_act"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="업체 소개"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="16dp"
+        android:fontFamily="@font/nanum_round"
+        android:textSize="13sp"
+        android:textColor="#525252"
+        />
+
+    <LinearLayout
+        android:id="@+id/btn_link_item_donation_act"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="링크 연결"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/nanum_round"
+            android:textSize="12sp"
+            android:textColor="#c7c7c7"
+            />
+
+        <TextView
+            android:id="@+id/tv_link_item_donation_act"
+            android:layout_marginTop="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="http://bit.ly/2s0LM6s "
+            android:fontFamily="@font/nanum_round"
+            android:textSize="12sp"
+            android:textColor="#c7c7c7"/>
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

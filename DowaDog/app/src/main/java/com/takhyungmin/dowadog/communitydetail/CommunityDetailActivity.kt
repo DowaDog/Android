@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.widget.LinearLayout
+import com.bumptech.glide.Glide
 import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
@@ -24,6 +25,7 @@ import com.takhyungmin.dowadog.utils.CustomDialog
 import kotlinx.android.synthetic.main.activity_community_detail.*
 import kotlinx.android.synthetic.main.custom_dialog_community_detail.*
 import org.jetbrains.anko.toast
+import java.text.SimpleDateFormat
 import java.util.*
 
 class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
@@ -36,6 +38,8 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
 
 
     private lateinit var communityDetailActivityPresenter: CommunityDetailActivityPresenter
+
+    private var communityId : Int = 9999
 
     // 0일 경우 글 수정
     // 1일 경우 글 삭제
@@ -58,19 +62,13 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_community_detail)
 
+
+        communityId = intent.getIntExtra("communityId", 9999)
+
         initPresenter()
         communityDetailActivityPresenter.initView()
-        communityDetailActivityPresenter.requestData()
-        communityDetailActivityPresenter.requestCommnetData(62)
-
-        // ## 댓글이 없으면 로직처리 확실하게 해야한다.
-        val viewPagerItemData: ArrayList<String> = ArrayList()
-        viewPagerItemData.add("https://s3.ap-northeast-2.amazonaws.com/liivlive/kb_login_profile_img.png")
-        viewPagerItemData.add("https://s3.ap-northeast-2.amazonaws.com/liivlive/kb_login_profile_img.png")
-        viewPagerItemData.add("https://s3.ap-northeast-2.amazonaws.com/liivlive/kb_login_profile_img.png")
-        viewPagerItemData.add("https://s3.ap-northeast-2.amazonaws.com/liivlive/kb_login_profile_img.png")
-
-        setViewPagerAdapter(viewPagerItemData)
+        communityDetailActivityPresenter.requestData(communityId)
+        communityDetailActivityPresenter.requestCommnetData(communityId)
         setEnterListener()
         init()
     }
@@ -108,7 +106,7 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
         }
         btn_comment_write_community_detail_act.clicks().subscribe{
             Log.v("tagg",et_comment_write_community_detail_act.toString())
-            communityDetailActivityPresenter.requestCommentWriteData(62, et_comment_write_community_detail_act.text.toString())
+            communityDetailActivityPresenter.requestCommentWriteData(communityId, et_comment_write_community_detail_act.text.toString())
             et_comment_write_community_detail_act.text.clear()
 
         }
@@ -202,6 +200,8 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
     fun responseData(data : GetCommunityPostDetailResponse){
         data?.let {
             communityPostDetailDataList = data.data
+            Log.v("TAGGGG222", communityPostDetailDataList.toString())
+            viewBind(it.data)
         }
     }
 
@@ -231,7 +231,7 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
         data?.let {
             communityCommentWriteData = data
             // 리사이클러뷰 통신 다시하기 ## 비효율 ==> add로 해결 ? 고민 중
-            communityDetailActivityPresenter.requestCommnetData(62)
+            communityDetailActivityPresenter.requestCommnetData(communityId)
         }
     }
 
@@ -244,7 +244,7 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
             // 리사이클러뷰 통신 다시하기 ## 비효율 ==> add로 해결 ? 고민 중
             if(data.message == "댓글 정보 삭제 성공"){
                 toast("댓글 삭제 성공")
-                communityDetailActivityPresenter.requestCommnetData(62)
+                communityDetailActivityPresenter.requestCommnetData(communityId)
             }else {
                 toast("댓글 삭제 실패")
             }
@@ -252,6 +252,62 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
+    fun viewBind(data :GetCommunityPostDetailData){
+        data.userProfileImg?.let{
+            Glide.with(this@CommunityDetailActivity).load(data.userProfileImg).into(iv_writter2_community_detail_act)
+        }
+        data.userId?.let{
+            tv_writter2_community_detail_act.text = data.userId
+        }
+
+        if(data.communityImgList == null || data.communityImgList.size <= 0){
+            rl_vp_community_detail_act.visibility = View.GONE
+            val viewPagerItemData: ArrayList<String> = ArrayList()
+            for (i in 0 until data.communityImgList.size){
+                viewPagerItemData.add(data.communityImgList[i].filePath)
+            }
+            setViewPagerAdapter(viewPagerItemData)
+
+        }
+
+        data.title?.let{
+            tv_title_community_detail_act.text = it
+        }
+
+        data.createdAt?.let{
+
+            if(data.today == true && data.today != null){
+                val now = System.currentTimeMillis()
+                val date = Date(now)
+                val sdf = SimpleDateFormat("HH:mm:ss")
+                // 현재시간 ex) 02:07:49
+                val getPresentTime = sdf.format(date)
+                // 현재시간 ex) 14:00:00
+                var time = it.subSequence(11, 19)
+                var pastTime = Integer.parseInt(getPresentTime.subSequence(0,2).toString()) - Integer.parseInt(time.subSequence(0,2).toString())
+                tv_date_community_detail_act.text = pastTime.toString() + "시간 전"
+                // 0시간에서 분으로 바꾸기.
+                if(pastTime == 0){
+                    pastTime = Integer.parseInt(getPresentTime.subSequence(3,5).toString()) - Integer.parseInt(time.subSequence(3,5).toString())
+                    tv_date_community_detail_act.text = pastTime.toString() + "분 전"
+                }
+
+                if(pastTime == 0){
+                    tv_date_community_detail_act.text = "방금 전"
+                }
+            }else if(data.today != null){
+                tv_date_community_detail_act.text = data.createdAt.subSequence(0, 10).toString()
+            }
+        }
+
+        data.detail?. let{
+            tv_content_community_detail_act.text = it
+        }
+
+        data.presentUserImg?.let{
+            Glide.with(this@CommunityDetailActivity).load(it).into(iv_writter_comment_community_detail_act2)
+        }
+    }
 }
 
 
