@@ -76,5 +76,6 @@ class AdoptActivity : BaseActivity(), View.OnClickListener {
 
     }
 
+
     private val responseListener = View.OnClickListener { customDialog!!.dismiss() }
 }

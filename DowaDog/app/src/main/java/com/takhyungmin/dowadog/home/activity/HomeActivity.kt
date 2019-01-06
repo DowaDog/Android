@@ -20,8 +20,10 @@ import com.takhyungmin.dowadog.contents.fragment.ContentsFragment
 import com.takhyungmin.dowadog.home.HomeObject
 import com.takhyungmin.dowadog.home.fragment.HomeFragment
 import com.takhyungmin.dowadog.home.model.get.GetDuplicateResponse
+import com.takhyungmin.dowadog.login.LoginActivity
 import com.takhyungmin.dowadog.mypage.MypageActivity
 import com.takhyungmin.dowadog.presenter.activity.HomeActivityPresenter
+import com.takhyungmin.dowadog.utils.ApplicationData
 import com.takhyungmin.dowadog.utils.CustomTypeSpan
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.navi_home.*
@@ -38,10 +40,21 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         initPresenter()
         homeActivityPresenter.initView()
-        homeActivityPresenter.requestData()
+        init()
+        //homeActivityPresenter.requestData()
         setBinding()
         textSizeChange(text_navi_home)
 
+    }
+
+    fun init(){
+        if(ApplicationData.loginState){
+            layout_navi_not_login.visibility = View.GONE
+            layout_navi_after_login.visibility = View.VISIBLE
+        }else{
+            layout_navi_not_login.visibility = View.VISIBLE
+            layout_navi_after_login.visibility = View.GONE
+        }
     }
 
     fun responseData(data : GetDuplicateResponse){
@@ -74,6 +87,11 @@ class HomeActivity : AppCompatActivity() {
 //            if (!drawer_home.isDrawerOpen(Gravity.START))
 //                drawer_home.openDrawer(Gravity.START)
 //        }
+
+        btn_navi_login.clicks().subscribe {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
         btn_home_drawer.clicks().subscribe {
             if (!drawer_home.isDrawerOpen(Gravity.START))
                 drawer_home.openDrawer(Gravity.START)

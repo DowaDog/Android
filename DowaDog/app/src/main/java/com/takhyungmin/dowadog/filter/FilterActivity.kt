@@ -5,13 +5,15 @@ import android.view.View
 import android.widget.SeekBar
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.searchresult.SearchResultActivity
 import kotlinx.android.synthetic.main.activity_filter.*
+import org.jetbrains.anko.startActivity
 
 class FilterActivity : BaseActivity(), View.OnClickListener {
 
     private var isDog = 0
     private var isCat = 0
-    private var isAllArea = 0
+    private var isAllArea = 1
     private var isSeoul = 0
     private var isGyeongggi = 0
     private var isIncheon = 0
@@ -20,6 +22,7 @@ class FilterActivity : BaseActivity(), View.OnClickListener {
     private var isJeonla = 0
     private var isGyeongsang = 0
     private var isJeju = 0
+    private var remainDate = 15
 
     private var areaNum = 0
 
@@ -31,7 +34,9 @@ class FilterActivity : BaseActivity(), View.OnClickListener {
             btn_dog_kinds_filter_act -> {
                 if (isDog == 0) {
                     btn_dog_kinds_filter_act.setImageResource(R.drawable.filter_dog_orange_1227)
+                    btn_cat_kinds_filter_act.setImageResource(R.drawable.filter_cat_gray_1227)
                     isDog = 1
+                    isCat = 0
                 } else {
                     btn_dog_kinds_filter_act.setImageResource(R.drawable.filter_dog_gray_1227)
                     isDog = 0
@@ -40,6 +45,8 @@ class FilterActivity : BaseActivity(), View.OnClickListener {
             btn_cat_kinds_filter_act -> {
                 if (isCat == 0) {
                     btn_cat_kinds_filter_act.setImageResource(R.drawable.filter_cat_orange_1227)
+                    btn_dog_kinds_filter_act.setImageResource(R.drawable.filter_dog_gray_1227)
+                    isDog = 0
                     isCat = 1
                 } else {
                     btn_cat_kinds_filter_act.setImageResource(R.drawable.filter_cat_gray_1227)
@@ -273,14 +280,45 @@ class FilterActivity : BaseActivity(), View.OnClickListener {
             }
             btn_confirm_filter_act -> {
                 // 통신코드
+                // 디폴트일 경우 (강아지 + 고양이 + 전체지역 + 15일 이상)
+                /*전체 지역 = 0
+                서울 = 1
+                경기 = 2
+                인천 = 3
+                강원 = 4
+                충청 = 5
+                전라 = 6
+                경상 = 7
+                제주 = 8*/
+                if(isAllArea == 1){
+                    areaNum = 0
+                }else if(isSeoul == 1){
+                    areaNum = 1
+                }else if(isGyeongggi == 1){
+                    areaNum = 2
+                }else if(isIncheon == 1){
+                    areaNum = 3
+                }else if(isGangwon == 1){
+                    areaNum = 4
+                }else if(isChungcheong == 1){
+                    areaNum = 5
+                }else if(isJeonla == 1){
+                    areaNum = 6
+                }else if(isGyeongsang == 1){
+                    areaNum = 7
+                }else if(isJeju == 1){
+                    areaNum = 8
+                }
+                startActivity<SearchResultActivity>("isDog" to isDog, "isCat" to isCat, "areaNum" to areaNum, "remainDate" to remainDate)
+
             }
             btn_return_filter_act -> {
                 btn_jeju_filter_act.setImageResource(R.drawable.jeju_gray)
                 isJeju = 0
                 btn_seoul_filter_act.setImageResource(R.drawable.seoul_gray)
                 isSeoul = 0
-                btn_all_area_filter_act.setImageResource(R.drawable.filter_gray)
-                isAllArea = 0
+                btn_all_area_filter_act.setImageResource(R.drawable.filter_orange)
+                isAllArea = 1
                 btn_gyeonggi_filter_act.setImageResource(R.drawable.gyeonggi_gray)
                 isGyeongggi = 0
                 btn_incheon_filter_act.setImageResource(R.drawable.incheon_gray)
@@ -336,6 +374,7 @@ class FilterActivity : BaseActivity(), View.OnClickListener {
 
                 // Seekbar의 최소값을 바꿀 수 없으므로 +1로 계산해서 사용
                var realProgress = progress + 1
+                remainDate = realProgress
                 if(realProgress == 16){
                     tv_term_last_filter_act.text = progress.toString() + "일 이상"
                 }else {

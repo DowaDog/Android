@@ -11,7 +11,9 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.adopt.AdoptObject
 import com.takhyungmin.dowadog.adopt.model.get.UrgentAnimalData
 
 class UrgentAnimalAdapter(val ctx : Context, val dataList: ArrayList<UrgentAnimalData>, val requestManager : RequestManager) : RecyclerView.Adapter<UrgentAnimalAdapter.Holder>() {
@@ -66,6 +68,10 @@ class UrgentAnimalAdapter(val ctx : Context, val dataList: ArrayList<UrgentAnima
         val params = holder.newFrame.layoutParams
         params.height = height
         holder.newFrame.layoutParams = params
+
+        holder.newFrame.clicks().subscribe {
+            AdoptObject.adoptUrgentAnimalActivityPresenter.toDetailActivity(dataList[position].id)
+        }
     }
 
     fun dpToPx(dp: Int): Int {

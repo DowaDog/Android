@@ -10,9 +10,11 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.takhyungmin.dowadog.R
+import com.takhyungmin.dowadog.contents.ContentsObject
 import com.takhyungmin.dowadog.contents.activity.ContentsEduDetailActivity
 import com.takhyungmin.dowadog.contents.adapter.ContentsEduItem
 import com.takhyungmin.dowadog.contents.adapter.ContentsEduRvAdapter
+import com.takhyungmin.dowadog.contents.model.get.GetEduContentsContents
 import com.takhyungmin.dowadog.presenter.fragment.ContentsEduFragmentPresenter
 import kotlinx.android.synthetic.main.fragment_contents_edu.*
 
@@ -31,6 +33,8 @@ class ContentsEduFragment : Fragment(){
         super.onCreate(savedInstanceState)
         contentsEduFragmentPresenter = ContentsEduFragmentPresenter()
         contentsEduFragmentPresenter.view = this
+        ContentsObject.contentsEduFragmentPresenter = contentsEduFragmentPresenter
+        contentsEduFragmentPresenter.requestData
         requestManager = Glide.with(this)
     }
 
@@ -40,17 +44,23 @@ class ContentsEduFragment : Fragment(){
     }
 
     fun initView(contentsItems : ArrayList<ContentsEduItem>){
-        contentsEduRvAdapter = ContentsEduRvAdapter(contentsItems, requestManager, contentsEduFragmentPresenter, context!!)
+//        contentsEduRvAdapter = ContentsEduRvAdapter(contentsItems, requestManager, contentsEduFragmentPresenter, context!!)
+//        //contentsEduRvAdapter.setOnItemClickListener(this)
+//        rv_contents_edu_feeds.layoutManager = LinearLayoutManager(activity)
+//        rv_contents_edu_feeds.adapter = contentsEduRvAdapter
+    }
+
+    fun toDetail(id : Int){
+        val intent = Intent(context, ContentsEduDetailActivity::class.java)
+        intent.putExtra("id", id)
+        activity!!.startActivity(intent)
+    }
+
+    fun responseList(contents : ArrayList<GetEduContentsContents>){
+        contentsEduRvAdapter = ContentsEduRvAdapter(contents, requestManager, contentsEduFragmentPresenter, context!!)
         //contentsEduRvAdapter.setOnItemClickListener(this)
         rv_contents_edu_feeds.layoutManager = LinearLayoutManager(activity)
         rv_contents_edu_feeds.adapter = contentsEduRvAdapter
-    }
-
-    fun toDetail(title : String, sub : String){
-        val intent = Intent(context, ContentsEduDetailActivity::class.java)
-        intent.putExtra("title", title)
-                .putExtra("sub", sub)
-        activity!!.startActivity(intent)
     }
 
 //    override fun onClick(v: View?) {

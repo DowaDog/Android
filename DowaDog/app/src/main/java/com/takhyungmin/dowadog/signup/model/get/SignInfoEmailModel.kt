@@ -1,10 +1,7 @@
 package com.takhyungmin.dowadog.signup.model.get
 
 import android.util.Log
-import com.takhyungmin.dowadog.communitydetail.CommunityDetailObject
-import com.takhyungmin.dowadog.communitydetail.model.CommunityDetailNetworkService
-import com.takhyungmin.dowadog.communitydetail.model.get.GetCommunityPostDetailResponse
-import com.takhyungmin.dowadog.signup.SignInfoEmailObject
+import com.takhyungmin.dowadog.signup.SignObject
 import com.takhyungmin.dowadog.signup.model.SignInfoEmailNetworkService
 import com.takhyungmin.dowadog.utils.ApplicationData
 import retrofit2.Call
@@ -38,7 +35,7 @@ class SignInfoEmailModel {
                 response?.takeIf { it.isSuccessful }
                         ?.body()
                         ?.let {
-                            SignInfoEmailObject.SignInfoWriteActivityPresenter.responseData(it)
+                            SignObject.SignInfoWriteActivityPresenter.responseData(it)
                         }
             }
         })

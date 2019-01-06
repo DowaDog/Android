@@ -1,5 +1,6 @@
 package com.takhyungmin.dowadog.adopt.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
@@ -13,7 +14,9 @@ import com.jakewharton.rxbinding2.view.scrollChangeEvents
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.adopt.AdoptObject
 import com.takhyungmin.dowadog.adopt.adapter.UrgentAnimalAdapter
+import com.takhyungmin.dowadog.adopt.model.get.GetAdoptPublicDetailData
 import com.takhyungmin.dowadog.adopt.model.get.UrgentAnimalData
+import com.takhyungmin.dowadog.dogdetail.DogDetailActivity
 import com.takhyungmin.dowadog.presenter.activity.AdoptUrgentAnimalActivityPresenter
 import kotlinx.android.synthetic.main.activity_urgent_animal.*
 
@@ -100,5 +103,15 @@ class AdoptUrgentAnimalActivity : AppCompatActivity() {
         btn_urgent_back.clicks().subscribe {
             finish()
         }
+    }
+
+    fun toDetail(datas : GetAdoptPublicDetailData){
+        startActivity(Intent(this, DogDetailActivity::class.java))
+    }
+
+    fun toDetailActivity(id : Int){
+        val intent = Intent(this, DogDetailActivity::class.java)
+        intent.putExtra("animalId", id)
+        startActivity(intent)
     }
 }
