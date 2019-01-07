@@ -1,13 +1,11 @@
 package com.takhyungmin.dowadog.mypage.model
 
+import com.takhyungmin.dowadog.mypage.model.get.GETMypageSettingResponse
 import com.takhyungmin.dowadog.mypage.model.put.PUTMypageSettingResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
-import retrofit2.http.Header
-import retrofit2.http.Multipart
-import retrofit2.http.PUT
-import retrofit2.http.Part
+import retrofit2.http.*
 
 interface MypageSettingNetworkService {
 
@@ -16,10 +14,15 @@ interface MypageSettingNetworkService {
     @PUT("api/normal/mypage")
     fun putMypageList(
             @Header("Authorization") authorization: String,
-            @Part("name") name : RequestBody,
-            @Part("phone") phone : RequestBody,
+            @Part("name") name: RequestBody,
+            @Part("phone") phone: RequestBody,
             @Part("email") email : RequestBody,
-            @Part("birth") birth : RequestBody,
-            @Part profileImgFile : MultipartBody.Part?
+            @Part("birth") birth: RequestBody,
+            @Part profileImgFile: MultipartBody.Part?
     ): Call<PUTMypageSettingResponse>
+
+    @GET("api/normal/mypage/myinfo")
+    fun getMypagesetting(
+            @Header("Authorization") authorization: String
+    ): Call<GETMypageSettingResponse>
 }

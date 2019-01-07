@@ -46,7 +46,7 @@ class ContentsEduDetailActivity : AppCompatActivity() {
     private fun init(){
         contentsEduDetailActivityPresenter = ContentsEduDetailActivityPresenter()
         contentsEduDetailActivityPresenter.view = this
-        id = intent.getIntExtra("id", 19)
+        id = intent.getIntExtra("id", 20)
         contentsEduDetailActivityPresenter.requestData(id)
         //contentsEduDetailActivityPresenter.initView()
         initPresenter()

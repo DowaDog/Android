@@ -3,6 +3,7 @@ package com.takhyungmin.dowadog.contents.model.get
 import android.util.Log
 import com.takhyungmin.dowadog.contents.model.ContentEduDetailObject
 import com.takhyungmin.dowadog.contents.model.ContentsEduDetailNetworkService
+import com.takhyungmin.dowadog.contents.model.ContentsSenseDetailObject
 import com.takhyungmin.dowadog.contents.model.post.PostScrapResponse
 import com.takhyungmin.dowadog.utils.ApplicationData
 import retrofit2.Call
@@ -80,6 +81,30 @@ class ContentsEduDetailModel {
                 }
             }
         })
+    }
+
+    //교육 컨텐츠 상식 데이터
+    fun getContentsSenseDetailData(id : Int) {
+
+        contentsEduDetailNetworkService.getContentsSenseDetailList(id,0,10)
+                .enqueue(object : Callback<ContentSenseDetailResponse> {
+
+                    override fun onFailure(call: Call<ContentSenseDetailResponse>?, t: Throwable?) {
+                        Log.e("상식Detail통신 실패", t.toString())
+                    }
+
+                    override fun onResponse(call: Call<ContentSenseDetailResponse>?, response: Response<ContentSenseDetailResponse>?) {
+
+                        response?.takeIf { it.isSuccessful }
+                                ?.body()
+                                ?.let {
+                                    Log.v("message", it.message)
+                                    ContentsSenseDetailObject.contentsSenseDetailActivityPresenter.responseData(it)
+                                    //Log.v("TAGG","모델 리스폰스")
+
+                                }
+                    }
+                })
     }
 
 }
