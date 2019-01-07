@@ -1,6 +1,5 @@
 package com.takhyungmin.dowadog.contents.adapter
 
-import android.graphics.Color
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -31,9 +30,9 @@ class ContentsEduRvAdapter(private var contentsEduItems : ArrayList<GetEduConten
         holder.contentsSub.text = contentsEduItems[position].subtitle
         requestManager.load(contentsEduItems[position].imgPath).into(holder.contentsFeed)
         if (contentsEduItems[position].educated)
-            holder.contentsCheck.setBackgroundColor(Color.parseColor("#ffc233"))
+            holder.contentsCheck.setBackgroundResource(R.drawable.content_edu_check)
         else
-            holder.contentsCheck.setBackgroundColor(Color.parseColor("#f0f0f0"))
+            holder.contentsCheck.setBackgroundResource(R.drawable.content_edu_uncheck)
         holder.contentsFrame.setOnClickListener {
             var num = 0
             contentsEduItems.forEach { it->

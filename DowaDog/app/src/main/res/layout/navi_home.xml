@@ -259,7 +259,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/nanum_round"
                 android:includeFontPadding="false"
-                android:text="입양 안내"
+                android:text="기다릴개와 함께할개"
                 android:textSize="16sp" />
 
         </RelativeLayout>

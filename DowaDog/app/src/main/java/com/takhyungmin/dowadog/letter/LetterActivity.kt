@@ -1,20 +1,16 @@
 package com.takhyungmin.dowadog.letter
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
-import android.view.View
-import com.bumptech.glide.Glide
+import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.letter.model.LetterObject
 import com.takhyungmin.dowadog.letter.model.get.GETLetterActivityResponse
-import com.takhyungmin.dowadog.mypage.model.MypageObject
-import com.takhyungmin.dowadog.mypage.model.get.GETMypageResponse
 import com.takhyungmin.dowadog.presenter.activity.LetterActivityPresenter
 import kotlinx.android.synthetic.main.activity_letter.*
 
-class LetterActivity : AppCompatActivity() {
+class LetterActivity : BaseActivity() {
 
     private lateinit var letterActivityPresenter: LetterActivityPresenter
 

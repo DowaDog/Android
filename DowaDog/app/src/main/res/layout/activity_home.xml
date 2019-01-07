@@ -77,6 +77,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
+                android:tint="#707070"
                 android:src="@drawable/search_icon"
                 android:visibility="gone"/>
         </RelativeLayout>
@@ -84,6 +85,7 @@
     </RelativeLayout>
 
         <RelativeLayout
+            android:focusable="true"
             android:alpha="0"
             android:id="@+id/layout_home_dim"
             android:fitsSystemWindows="true"

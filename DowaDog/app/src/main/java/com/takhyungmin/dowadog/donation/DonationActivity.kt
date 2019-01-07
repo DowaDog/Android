@@ -25,6 +25,8 @@ class DonationActivity : BaseActivity() {
         btn_back_donation_act.clicks().subscribe{
             finish()
         }
+
+        rv_donation_act.setFocusable(false)
     }
 
     fun setOnClickListener(){

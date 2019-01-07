@@ -170,11 +170,11 @@ class ContentsEduDetailActivity : AppCompatActivity() {
 
     fun responseScrap(clear : Boolean){
         if(clear){
-            btn_contents_edu_detail_scrap1.setImageResource(R.drawable.contents_scrap_btn)
-            btn_contents_edu_detail_scrap2.setImageResource(R.drawable.contents_scrap_btn)
+            btn_contents_edu_detail_scrap1_1.setImageResource(R.drawable.contents_scrap_btn)
+            btn_contents_edu_detail_scrap2_1.setImageResource(R.drawable.contents_scrap_btn)
         }else{
-            btn_contents_edu_detail_scrap1.setImageResource(R.drawable.contents_unscrap_btn)
-            btn_contents_edu_detail_scrap2.setImageResource(R.drawable.contents_unscrap_btn)
+            btn_contents_edu_detail_scrap1_1.setImageResource(R.drawable.contents_unscrap_btn)
+            btn_contents_edu_detail_scrap2_1.setImageResource(R.drawable.contents_unscrap_btn)
         }
     }
 

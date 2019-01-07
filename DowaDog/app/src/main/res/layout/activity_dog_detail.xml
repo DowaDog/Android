@@ -107,7 +107,7 @@
                     android:layout_height="30dp"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="16dp"
-                    android:background="#ffc233">
+                    android:background="@drawable/content_edu_check">
 
                     <TextView
                         android:id="@+id/tv_dday_dog_detail_act"

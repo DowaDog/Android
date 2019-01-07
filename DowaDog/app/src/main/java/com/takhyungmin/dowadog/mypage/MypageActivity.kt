@@ -1,12 +1,9 @@
 package com.takhyungmin.dowadog.mypage
 
 import android.content.Intent
-import android.support.v4.content.ContextCompat.startActivity
-import android.view.View
-import com.takhyungmin.dowadog.R.id.*
-import com.takhyungmin.dowadog.scrap.ScrapActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.bumptech.glide.Glide
 import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.BaseActivity
@@ -17,9 +14,10 @@ import com.takhyungmin.dowadog.mypage.model.Data
 import com.takhyungmin.dowadog.mypage.model.MypageObject
 import com.takhyungmin.dowadog.mypage.model.get.GETMypageResponse
 import com.takhyungmin.dowadog.presenter.activity.MypageActivityPresenter
+import com.takhyungmin.dowadog.scrap.MyCommunityPostActivity
+import com.takhyungmin.dowadog.scrap.ScrapActivity
 import com.takhyungmin.dowadog.utils.CustomDialog
 import kotlinx.android.synthetic.main.activity_mypage.*
-import kotlinx.android.synthetic.main.activity_mypage_setting.*
 import org.jetbrains.anko.startActivity
 
 class MypageActivity : BaseActivity(), View.OnClickListener {
@@ -78,7 +76,7 @@ class MypageActivity : BaseActivity(), View.OnClickListener {
         }
 
         btn_mypage_mine.clicks().subscribe {
-            startActivity(Intent(this, ScrapActivity::class.java))
+            startActivity(Intent(this, MyCommunityPostActivity::class.java))
         }
     }
 
