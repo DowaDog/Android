@@ -10,6 +10,7 @@ object SharedPreferenceController {
     private val ACCESS_EXPIRED = "access_expired"
     private val ID = "id"
     private val PASSWORD = "password"
+    private val FIRSTPOPFLAG = "first_pop_flag"
 
 
 
@@ -85,6 +86,18 @@ object SharedPreferenceController {
     fun getAccessTokenExpired(context : Context) : Long{
         val pref = context.getSharedPreferences(USER, Context.MODE_PRIVATE)
         return pref.getLong(ACCESS_EXPIRED, 0L)
+    }
+
+    fun setFirstPopUpFlag(context : Context, firstPopFlag : Int){
+        val pref = context.getSharedPreferences(USER, Context.MODE_PRIVATE)
+        val editor = pref.edit()
+        editor.putInt(FIRSTPOPFLAG, firstPopFlag)
+        editor.apply()
+    }
+
+    fun getFirstPopUpFlag(context : Context) : Int{
+        val pref = context.getSharedPreferences(USER, Context.MODE_PRIVATE)
+        return pref.getInt(FIRSTPOPFLAG, 0)
     }
 
 }

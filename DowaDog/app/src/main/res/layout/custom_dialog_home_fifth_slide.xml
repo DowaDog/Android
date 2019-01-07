@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="305dp">
+
+
+    <TextView
+        android:id="@+id/tv_bottom_custom_dialog_home_second_slide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/nanum_light"
+        android:gravity="center"
+        android:lineSpacingExtra="7sp"
+        android:text="여러분을 기다렸어요!"
+        android:textColor="#555555"
+        android:textSize="10sp" />
+
+
+    <TextView
+        android:id="@+id/tv_adopt_custom_dialog_home_second_slide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_bottom_custom_dialog_home_second_slide"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/nanum_extra_bold"
+        android:text="기다릴개와 함께할까요?"
+        android:layout_marginBottom="10dp"
+        android:textColor="#555555"
+        android:textSize="17sp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_adopt_custom_dialog_home_second_slide"
+        android:layout_marginBottom="13dp"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/nanum_light"
+        android:text="자 그럼,"
+        android:textColor="#555555"
+        android:textSize="17sp" />
+
+
+</RelativeLayout>

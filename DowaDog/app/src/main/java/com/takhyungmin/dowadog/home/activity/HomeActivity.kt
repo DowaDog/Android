@@ -15,6 +15,7 @@ import android.view.WindowManager
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.jakewharton.rxbinding2.view.clicks
+import com.takhyungmin.dowadog.CustomHomeDailogActivty
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.adopt.fragment.AdoptAnimalFindFragment
 import com.takhyungmin.dowadog.community.CommunityFragment
@@ -30,9 +31,10 @@ import com.takhyungmin.dowadog.presenter.activity.HomeActivityPresenter
 import com.takhyungmin.dowadog.search.SearchActivity
 import com.takhyungmin.dowadog.utils.ApplicationData
 import com.takhyungmin.dowadog.utils.CustomTypeSpan
+import com.takhyungmin.dowadog.utils.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.navi_home.*
-
+import org.jetbrains.anko.startActivity
 
 
 class HomeActivity : AppCompatActivity() {
@@ -51,6 +53,14 @@ class HomeActivity : AppCompatActivity() {
         //homeActivityPresenter.requestData()
         setBinding()
         textSizeChange(text_navi_home)
+
+        if(SharedPreferenceController.getFirstPopUpFlag(this@HomeActivity) == 0){
+            startActivity<CustomHomeDailogActivty>()
+            SharedPreferenceController.setFirstPopUpFlag(this@HomeActivity, 1)
+        }
+
+
+
 
     }
 
