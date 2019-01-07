@@ -30,11 +30,10 @@ interface ContentsEduDetailNetworkService {
             @Path("cardnewsId") cardnewsId: Int): Call<Unit>
 
     //컨텐츠 상식 카드뉴스 상세보기
-    @GET("api/normal/cardnews/{cardnewsId}/contents")
+    @GET("/api/normal/cardnews/{cardnewsId}/contents")
     fun getContentsSenseDetailList(
-            @Path("cardnewsId") cardnewsId: Int,
-            @Query("page") page: Int,
-            @Query("limit") limit: Int
+            @Header("Authorization") authorization: String,
+            @Path("cardnewsId") cardnewsId: Int
     ) : Call<ContentSenseDetailResponse>
 
 

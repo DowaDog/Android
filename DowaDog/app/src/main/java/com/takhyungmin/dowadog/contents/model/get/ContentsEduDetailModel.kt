@@ -15,7 +15,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ContentsEduDetailModel {
     private var contentsEduDetailNetworkService: ContentsEduDetailNetworkService
 
-
     init {
         val builder = Retrofit.Builder()
         val retrofit = builder
@@ -83,24 +82,24 @@ class ContentsEduDetailModel {
         })
     }
 
-    //교육 컨텐츠 상식 데이터
+    //교육 컨텐츠 상식 디테일
     fun getContentsSenseDetailData(id : Int) {
 
-        contentsEduDetailNetworkService.getContentsSenseDetailList(id,0,10)
+        contentsEduDetailNetworkService.getContentsSenseDetailList("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGFla3l1bmcwNDAyIiwiaXNzIjoiZG93YWRvZyIsImV4cCI6MTU3ODI4NDQzOH0.MTN9ke4pknmiqwu29Je24mUWn56GVM8OEuCca4HEPqI",id)
                 .enqueue(object : Callback<ContentSenseDetailResponse> {
 
                     override fun onFailure(call: Call<ContentSenseDetailResponse>?, t: Throwable?) {
-                        Log.e("상식Detail통신 실패", t.toString())
+
                     }
 
                     override fun onResponse(call: Call<ContentSenseDetailResponse>?, response: Response<ContentSenseDetailResponse>?) {
-
+                        Log.v("TAGG","모델 리스폰스231123")
                         response?.takeIf { it.isSuccessful }
                                 ?.body()
                                 ?.let {
-                                    Log.v("message", it.message)
+                                    Log.v("TAGG", it.message)
                                     ContentsSenseDetailObject.contentsSenseDetailActivityPresenter.responseData(it)
-                                    //Log.v("TAGG","모델 리스폰스")
+                                    Log.v("TAGG","모델 리스폰스")
 
                                 }
                     }

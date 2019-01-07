@@ -27,9 +27,9 @@ class MypageSettingActivityPresenter : BasePresenter<MypageSettingActivity>() {
     }
 
     //모델에게 일을 시킴 put
-    fun requestData(mimage : MultipartBody.Part?){
+    fun requestData(name : String, birth : String, phone : String,  mimage : MultipartBody.Part?){
         Log.v("TAGG", "mypagesetting 프레젠터 리퀘스트데이터")
-        mypageSettingModel.putMypageSetData(mimage)
+        mypageSettingModel.putMypageSetData(name, birth, phone, mimage)
     }
     //view에게 데이터 전달 put
     fun responseData(data : PUTMypageSettingResponse){

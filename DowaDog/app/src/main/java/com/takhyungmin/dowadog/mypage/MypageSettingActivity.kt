@@ -14,6 +14,8 @@ import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.CursorLoader
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.Gravity
 import android.view.View
@@ -37,10 +39,12 @@ import com.takhyungmin.dowadog.presenter.activity.MypageSettingActivityPresenter
 import kotlinx.android.synthetic.main.activity_community_write.*
 import kotlinx.android.synthetic.main.activity_mypage.*
 import kotlinx.android.synthetic.main.activity_mypage_setting.*
+import kotlinx.android.synthetic.main.activity_sign_id_setting.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import org.jetbrains.anko.sdk25.coroutines.onFocusChange
+import org.jetbrains.anko.sdk25.coroutines.textChangedListener
 import org.jetbrains.anko.toast
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -62,6 +66,7 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
             rl_mypage_setting_act -> {
                 downKeyboard(rl_mypage_setting_act)
             }
+            //취소버튼
             btn_cancle_mypage_setting_act -> {
                 //기존의 정보로 초기화시키고
                 finish()
@@ -71,9 +76,9 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
 
                 //put request
                 // editText로 작성한 것을 put
-                mypageSettingActivityPresenter.requestData(mimage)
+                checkFill()
 
-                finish()
+                //finish()
             }
 
             et_name_mod_mypage_setting_act -> {
@@ -91,6 +96,11 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
 
     lateinit var mypagePutdata : PUTMypageSettingResponse
     private var mimage: MultipartBody.Part? = null
+
+    var name : String = "name"
+    var birth : String = "1999-00-00"
+    var phone : String = "010-0000-0000"
+    var image : String = "asdlkjds"
 
     var imageURI : String? = null
 
@@ -122,6 +132,47 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
 
         //키보드 내려가게 하는 함수
         rl_mypage_setting_act.setOnClickListener(this)
+
+        et_name_mod_mypage_setting_act.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                name = s!!.toString()
+            }
+
+        })
+
+        et_phone_mod_mypage_setting_act.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                phone = s!!.toString()
+            }
+
+        })
+
+        et_birth_mod_mypage_setting_act.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                phone = s!!.toString()
+            }
+
+        })
+
+
     }
 
     // 저장소 권한 확인
@@ -222,14 +273,15 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
     fun responseGetData(data : GETMypageSettingResponse) {
         data?.let{
 
-            Glide.with(this@MypageSettingActivity)
-                    .load(data.data.thumbnailImg)
-                    .thumbnail(0.1f)
-                    .into(img_profile_mypage_set_act)
+            image = data.data.thumbnailImg
+            name = data.data.name
+            birth = data.data.birth
+            phone = data.data.phone
 
-            et_name_mod_mypage_setting_act.hint = data.data.name
-            et_birth_mod_mypage_setting_act.hint = data.data.birth
-            et_phone_mod_mypage_setting_act.hint = data.data.phone
+            et_name_mod_mypage_setting_act.hint = name
+            et_birth_mod_mypage_setting_act.hint = birth
+            et_phone_mod_mypage_setting_act.hint = phone
+            Glide.with(this).load(image).into(img_profile_mypage_set_act)
 
         }
     }
@@ -258,6 +310,35 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
         MypageSettingGetObject.mypageSettingGETActivityPresenter = mypageSettingActivityPresenter
 
         Log.v("TAGG", "mypagesetting 엑티비티 이닛프레젠터")
+
+    }
+
+    fun getEditText(){
+
+    }
+
+    fun checkFill(){
+
+        val selectedPictureUri = Uri.parse(image)
+        val options = BitmapFactory.Options()
+
+        var input: InputStream? = null // here, you need to get your context.
+        try {
+            input = contentResolver.openInputStream(selectedPictureUri)
+        } catch (e: FileNotFoundException) {
+            e.printStackTrace()
+        }
+
+        val bitmap = BitmapFactory.decodeStream(input, null, options) // InputStream 으로부터 Bitmap 을 만들어 준다.
+        val baos = ByteArrayOutputStream()
+        bitmap!!.compress(Bitmap.CompressFormat.JPEG, 20, baos)
+        val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
+        mimage = MultipartBody.Part.createFormData("profileImgFile", "", photoBody)
+        Glide.with(this).load(selectedPictureUri).thumbnail(0.1f).thumbnail(0.1f).into(img_profile_sign_id_set_act)
+
+
+
+        mypageSettingActivityPresenter.requestData(name, birth, phone, mimage)
 
     }
 }

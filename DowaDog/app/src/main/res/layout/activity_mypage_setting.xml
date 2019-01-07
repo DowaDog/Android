@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="#FFFFFF"
-            android:elevation="3dp">
+            android:elevation="1dp">
 
             <RelativeLayout
                 android:id="@+id/btn_cancle_mypage_setting_act"
@@ -159,7 +159,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_alignParentBottom="true"
-                    android:background="#c7c7c7" />
+                    android:background="#e0e0e0" />
 
             </RelativeLayout>
 
@@ -198,7 +198,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_alignParentBottom="true"
-                    android:background="#c7c7c7" />
+                    android:background="#e0e0e0" />
 
             </RelativeLayout>
 
@@ -238,7 +238,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_alignParentBottom="true"
-                    android:background="#c7c7c7" />
+                    android:background="#e0e0e0" />
 
             </RelativeLayout>
 
