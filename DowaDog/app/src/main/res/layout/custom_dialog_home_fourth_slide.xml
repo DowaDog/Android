@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="305dp">
+
+
+    <TextView
+        android:id="@+id/tv_bottom_custom_dialog_home_second_slide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="입양 전/후 다양한 정보를 제공해요."
+        android:gravity="center"
+        android:textSize="10sp"
+        android:textColor="#555555"
+        android:lineSpacingExtra="7sp"
+        android:fontFamily="@font/nanum_light"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"/>
+
+    <RelativeLayout
+        android:layout_above="@+id/tv_bottom_custom_dialog_home_second_slide"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        >
+
+        <RelativeLayout
+            android:id="@+id/rl_adopt_custom_dialog_home_second_slide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true">
+            <TextView
+                android:id="@+id/tv_adopt_custom_dialog_home_second_slide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="편지"
+                android:textSize="17sp"
+                android:textColor="#555555"
+                android:fontFamily="@font/nanum_extra_bold"
+                />
+
+            <TextView
+                android:layout_toRightOf="@+id/tv_adopt_custom_dialog_home_second_slide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="를 받아보세요"
+                android:textSize="17sp"
+                android:textColor="#555555"
+                android:fontFamily="@font/nanum_light"
+                />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_above="@+id/rl_adopt_custom_dialog_home_second_slide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="기다릴개에서 보내는"
+            android:textSize="17sp"
+            android:textColor="#555555"
+            android:fontFamily="@font/nanum_light"
+            />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

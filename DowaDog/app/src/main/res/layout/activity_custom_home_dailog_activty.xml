@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CustomHomeDailogActivty"
+    android:background="@android:color/transparent"
+    xmlns:attrs="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="264dp"
+        android:layout_height="410dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/custom_home_dialog_box">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_custom_home_dialog_activity"
+            android:layout_width="match_parent"
+            android:layout_height="305dp"
+            />
+
+        <com.rd.PageIndicatorView
+            android:id="@+id/pageIndicatorView_dialog_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/vp_custom_home_dialog_activity"
+            android:layout_marginTop="22dp"
+            app:piv_animationType="drop"
+            app:piv_dynamicCount="true"
+            app:piv_interactiveAnimation="true"
+            app:piv_selectedColor="#ffc233"
+            app:piv_unselectedColor="#FFFFFF"
+            app:piv_viewPager="@id/vp_custom_home_dialog_activity"
+            attrs:piv_padding="12dp"
+            attrs:piv_radius="4dp"
+            android:layout_marginBottom="16.6dp"
+            />
+
+
+        <RelativeLayout
+            android:id="@+id/btn_start_custom_home_dialog_activity"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/custom_home_dialog_bottom_box"
+            android:layout_alignParentBottom="true"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="시작할개요!"
+                android:textSize="17sp"
+                android:textColor="#ffffff"
+                android:fontFamily="@font/nanum_bold"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
