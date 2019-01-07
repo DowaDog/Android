@@ -54,12 +54,12 @@ class MypageSettingModel {
     }
 
     //회원정보 put
-    fun putMypageSetData(img : MultipartBody.Part?) {
+    fun putMypageSetData(name: String, phone : String, birth : String, img : MultipartBody.Part?) {
 
-        var name = RequestBody.create(MediaType.parse("text/plain"), "유가희")
-        var phone = RequestBody.create(MediaType.parse("text/plain"), "010-2222-2222")
-        var birth = RequestBody.create(MediaType.parse("text/plain"), "1997-04-02")
-        var email = RequestBody.create(MediaType.parse("text/plain"), "daldkfj@naver.com")
+        var name = RequestBody.create(MediaType.parse("text/plain"), name)
+        var phone = RequestBody.create(MediaType.parse("text/plain"), phone)
+        var birth = RequestBody.create(MediaType.parse("text/plain"), birth)
+        var email = RequestBody.create(MediaType.parse("text/plain"), "askfjsdl@alkd.co")
 
         mypageSettingNetworkService.putMypageList("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGFla3l1bmcwNDAyIiwiaXNzIjoiZG93YWRvZyIsImV4cCI6MTU3ODIyNjg0MX0.abzE4hLsRbVe5Xj-PigEC1SlUNwbcaYZfNRu0V4nsU0",
                 name, phone, email, birth, img)
