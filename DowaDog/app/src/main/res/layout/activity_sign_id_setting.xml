@@ -198,6 +198,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="16dp"
                         android:background="@null"
+                        android:textColor="#000000"
                         android:fontFamily="@font/nanum_round"
                         android:hint="패스워드(영문,숫자,특수문자 조합 8자 이상)"
                         android:inputType="textPassword"
@@ -221,6 +222,7 @@
                         android:background="@null"
                         android:fontFamily="@font/nanum_round"
                         android:hint="패스워드 확인"
+                        android:textColor="#000000"
                         android:inputType="textPassword"
                         android:textColorHint="#cecece"
                         android:textSize="13sp" />

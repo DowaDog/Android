@@ -69,8 +69,8 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         loginActivityPresenter.view = this
         LoginObject.loginActivityPresenter = loginActivityPresenter
 
-        if(checkRefresh())
-            loginActivityPresenter.requestRefresh(SharedPreferenceController.getRefreshToken(this))
+//        if(checkRefresh())
+//            loginActivityPresenter.requestRefresh(SharedPreferenceController.getRefreshToken(this))
 
 
         Log.v("access", SharedPreferenceController.getAccessToken(this))

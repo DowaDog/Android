@@ -37,6 +37,7 @@ import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.ByteArrayOutputStream
+import java.io.File
 import java.io.FileNotFoundException
 import java.io.InputStream
 
@@ -87,7 +88,7 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
 
 
                 signIdSettingPresenter.requestData(id, password, username, birth,
-                        phone, email, gender, deviceToken, type, mimage, pushAllow)
+                        phone, email, gender, deviceToken, type, profileImgFile, pushAllow)
 
             }
 
@@ -145,7 +146,7 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
     val My_READ_STORAGE_REQUEST_CODE = 88
     private val REQ_CODE_SELECT_IMAGE = 100
     lateinit var data: Uri
-    private var mimage: MultipartBody.Part? = null
+    private var profileImgFile: MultipartBody.Part? = null
 
     var et_id: Boolean = false
     var et_pw: Boolean = false
@@ -157,6 +158,8 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_id_setting)
+        authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->}
+        mfirebaseAuth = FirebaseAuth.getInstance()
 
         init()
         initPresenter()
@@ -298,13 +301,12 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
         btn_agree_sign_id_set_act.setOnClickListener(this)
 
         if(intent.getStringExtra("image") != ""){
-            Log.v("uri", intent.getStringExtra("image"))
             val selectedPictureUri = Uri.parse(intent.getStringExtra("image"))
             val options = BitmapFactory.Options()
 
             var input: InputStream? = null // here, you need to get your context.
             try {
-                input = contentResolver.openInputStream(selectedPictureUri)
+                input = contentResolver.openInputStream(Uri.parse(intent.getStringExtra("image")))
             } catch (e: FileNotFoundException) {
                 e.printStackTrace()
             }
@@ -313,7 +315,10 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
             val baos = ByteArrayOutputStream()
             bitmap!!.compress(Bitmap.CompressFormat.JPEG, 20, baos)
             val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
-            mimage = MultipartBody.Part.createFormData("profileImgFile", "", photoBody)
+            val photo = File(selectedPictureUri.toString())
+
+            //image.add(MultipartBody.Part.createFormData("communityImgFiles", "", photoBody))
+            profileImgFile = MultipartBody.Part.createFormData("profileImgFile", photo.name, photoBody)
             Glide.with(this).load(selectedPictureUri).thumbnail(0.1f).thumbnail(0.1f).into(img_profile_sign_id_set_act)
         }
     }
@@ -375,8 +380,9 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos)
 
                     val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
+                    val photo = File(this.data.toString()) // 가져온 파일의 이름을 알아내려고 사용합니다
 
-                    mimage = MultipartBody.Part.createFormData("profileImgFile", "", photoBody)
+                    profileImgFile = MultipartBody.Part.createFormData("profileImgFile", photo.name, photoBody)
 
                     Glide.with(this@SignIdSettingActivity)
                             .load(data.data)
@@ -460,6 +466,19 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
         }
 
     }
+
+    override fun onStart() {
+        super.onStart()
+        mfirebaseAuth.addAuthStateListener(authStateListener)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        if (authStateListener != null) {
+            mfirebaseAuth.removeAuthStateListener(authStateListener)
+        }
+    }
+
 
     private val mResponseClickListener = View.OnClickListener { idCheckDialog!!.dismiss() }
 
