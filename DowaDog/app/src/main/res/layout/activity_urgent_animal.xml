@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="#FFFFFF"
-        android:elevation="4dp">
+        android:elevation="1dp">
 
         <RelativeLayout
             android:id="@+id/btn_urgent_back"

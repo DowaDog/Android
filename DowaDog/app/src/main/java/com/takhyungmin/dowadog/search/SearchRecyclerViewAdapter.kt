@@ -1,6 +1,9 @@
 package com.takhyungmin.dowadog.search
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.graphics.Color
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -35,13 +38,18 @@ class SearchRecyclerViewAdapter(var ctx: Context, var recommendKeyword: ArrayLis
                     holder.sharp.textColor = Color.parseColor("#FFFFFF")
                     holder.btnRootView.isSelected = true
                     Log.v("TAGG", holder.recommendKeyword.text.toString())
-                    ctx.startActivity<SearchKeywordResultActivity>("keyword" to holder.recommendKeyword.text.toString())
                 }
 
                 MotionEvent.ACTION_UP -> {
                     holder.recommendKeyword.textColor = Color.parseColor("#707070")
                     holder.sharp.textColor = Color.parseColor("#707070")
                     holder.btnRootView.isSelected = false
+                    val it = Intent(ctx, SearchKeywordResultActivity::class.java)
+                    // 서비스는 태스크가 없기 때문에 액티비티를 시작하려면 new task 플래그를 줘야 한다
+                    it.addFlags(FLAG_ACTIVITY_NEW_TASK)
+                    it.putExtra("keyword", holder.recommendKeyword.text.toString())
+                    ctx.startActivity(it)
+                    // ctx.startActivity<SearchKeywordResultActivity>("keyword" to holder.recommendKeyword.text.toString())
                 }
             }
             true

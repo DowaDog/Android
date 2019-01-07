@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.WindowManager
 import com.bumptech.glide.Glide
 import com.takhyungmin.dowadog.login.LoginActivity
+import com.takhyungmin.dowadog.utils.GifDrawableImageViewTarget
 import kotlinx.android.synthetic.main.activity_splash.*
 import org.jetbrains.anko.startActivity
 
@@ -15,12 +16,13 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        Glide.with(this).load(R.drawable.splash).into(splash_image)
+        Glide.with(this).load(R.drawable.splash).into(GifDrawableImageViewTarget(splash_image,1))
 
         val handler = Handler()
         handler.postDelayed(Runnable {
             startActivity<LoginActivity>()
-        }, 2200)
+            finish()
+        }, 3000)
 
 
     }

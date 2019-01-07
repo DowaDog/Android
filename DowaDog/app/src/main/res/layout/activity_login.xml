@@ -19,24 +19,30 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="128dp">
 
-            <TextView
-                android:id="@+id/tv_we_login_act"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nanum_light"
-                android:text="우리가,"
-                android:textColor="#707070"
-                android:textSize="25sp" />
+            <!--<TextView-->
+                <!--android:id="@+id/tv_we_login_act"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:fontFamily="@font/nanum_light"-->
+                <!--android:text="우리가,"-->
+                <!--android:textColor="#707070"-->
+                <!--android:textSize="25sp" />-->
 
-            <TextView
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:layout_toRightOf="@+id/tv_we_login_act"-->
+                <!--android:fontFamily="@font/nanum_extra_bold"-->
+                <!--android:text="기다릴개"-->
+                <!--android:textColor="#707070"-->
+                <!--android:textSize="25sp" />-->
+
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_toRightOf="@+id/tv_we_login_act"
-                android:fontFamily="@font/nanum_extra_bold"
-                android:text="기다릴개"
-                android:textColor="#707070"
-                android:textSize="25sp" />
+                android:src="@drawable/login_app_logo"
+                />
         </RelativeLayout>
 
         <RelativeLayout

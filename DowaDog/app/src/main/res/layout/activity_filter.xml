@@ -7,7 +7,57 @@
     android:background="#FFFFFF"
     tools:context=".filter.FilterActivity">
 
+    <!--상단바-->
+    <RelativeLayout
+        android:id="@+id/rl_top_bar_filter_act"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#FFFFFF"
+        android:elevation="1dp">
+
+        <!--백버튼-->
+        <RelativeLayout
+            android:id="@+id/btn_back_filter_act"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginHorizontal="16dp"
+                android:src="@drawable/back_arrow" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/nanum_bold"
+            android:text="필터"
+            android:textColor="#707070"
+            android:textSize="18sp" />
+
+        <!--리턴버튼-->
+        <RelativeLayout
+            android:id="@+id/btn_return_filter_act"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginHorizontal="16dp"
+                android:src="@drawable/filter_refresh" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
     <ScrollView
+        android:layout_below="@+id/rl_top_bar_filter_act"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -18,53 +68,6 @@
             android:orientation="vertical">
 
 
-            <!--상단바-->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="#FFFFFF"
-                android:elevation="3dp">
-
-                <!--백버튼-->
-                <RelativeLayout
-                    android:id="@+id/btn_back_filter_act"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_marginHorizontal="16dp"
-                        android:src="@drawable/back_arrow" />
-
-                </RelativeLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:fontFamily="@font/nanum_bold"
-                    android:text="필터"
-                    android:textColor="#707070"
-                    android:textSize="18sp" />
-
-                <!--리턴버튼-->
-                <RelativeLayout
-                    android:id="@+id/btn_return_filter_act"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentRight="true">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_marginHorizontal="16dp"
-                        android:src="@drawable/filter_refresh" />
-
-                </RelativeLayout>
-            </RelativeLayout>
 
             <!--종류-->
             <RelativeLayout

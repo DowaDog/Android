@@ -139,6 +139,8 @@ class HomeActivity : AppCompatActivity() {
             btn_home_mypage.visibility = View.VISIBLE
             tv_home_title.text = "기다릴개"
             textSizeChange(text_navi_home)
+            iv_home_title.visibility = View.VISIBLE
+            tv_home_title.visibility = View.GONE
         }
 
         btn_navi_contents.clicks().subscribe {
@@ -154,6 +156,8 @@ class HomeActivity : AppCompatActivity() {
             btn_home_search.visibility = View.GONE
             textSizeChange(text_navi_contents)
             tv_home_title.text = "컨텐츠"
+            iv_home_title.visibility = View.GONE
+            tv_home_title.visibility = View.VISIBLE
 
         }
 
@@ -170,6 +174,8 @@ class HomeActivity : AppCompatActivity() {
             btn_home_search.visibility = View.GONE
             textSizeChange(text_navi_community)
             tv_home_title.text = "커뮤니티"
+            iv_home_title.visibility = View.GONE
+            tv_home_title.visibility = View.VISIBLE
         }
 
         btn_navi_adopt.clicks().subscribe {
@@ -187,6 +193,8 @@ class HomeActivity : AppCompatActivity() {
             textSizeChange(text_navi_adopt)
             tv_home_title.text = "입양 하기"
             btn_home_search.visibility = View.VISIBLE
+            iv_home_title.visibility = View.GONE
+            tv_home_title.visibility = View.VISIBLE
         }
 
         btn_navi_mypage.clicks().subscribe {
@@ -198,6 +206,7 @@ class HomeActivity : AppCompatActivity() {
             }
 
             startActivity(Intent(this, MypageActivity::class.java))
+
 
         }
 

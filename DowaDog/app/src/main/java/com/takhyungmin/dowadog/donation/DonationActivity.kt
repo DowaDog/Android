@@ -32,38 +32,11 @@ class DonationActivity : BaseActivity() {
     fun setOnClickListener(){
 
         var e = ArrayList<DoantionRecyclerViewAdpaterData>()
-        e.add(DoantionRecyclerViewAdpaterData("https://ryudd.s3.amazonaws.com/dowadog/myinfo/7ca5021b734043d1ac2eb15280c197aa사용자_프로필.png", "신발 엄청 큰거 신고다니는 애", "신발 엄청 큰거 신고다니는 애",
-                "http://bit.ly/2s0LM6s "))
+        e.add(DoantionRecyclerViewAdpaterData(R.drawable.fromella_img, "프롬엘라", "반려동물 사진 촬영 전문 스튜디오",
+                "https://fromella-pet.com"))
 
-        e.add(DoantionRecyclerViewAdpaterData("https://ryudd.s3.amazonaws.com/dowadog/myinfo/7ca5021b734043d1ac2eb15280c197aa사용자_프로필.png", "신발 엄청 큰거 신고다니는 애", "신발 엄청 큰거 신고다니는 애",
-                "http://bit.ly/2s0LM6s "))
-
-        e.add(DoantionRecyclerViewAdpaterData("dowadog/myinfo/7ca5021b734043d1ac2eb15280c197aa사용자_프로필.png", "신발 엄청 큰거 신고다니는 애", "신발 엄청 큰거 신고다니는 애",
-                "http://bit.ly/2s0LM6s "))
-
-        e.add(DoantionRecyclerViewAdpaterData("dowadog/myinfo/7ca5021b734043d1ac2eb15280c197aa사용자_프로필.png", "신발 엄청 큰거 신고다니는 애", "신발 엄청 큰거 신고다니는 애",
-                "http://bit.ly/2s0LM6s "))
-
-        e.add(DoantionRecyclerViewAdpaterData("dowadog/myinfo/7ca5021b734043d1ac2eb15280c197aa사용자_프로필.png", "신발 엄청 큰거 신고다니는 애", "신발 엄청 큰거 신고다니는 애",
-                "http://bit.ly/2s0LM6s "))
-
-        e.add(DoantionRecyclerViewAdpaterData("dowadog/myinfo/7ca5021b734043d1ac2eb15280c197aa사용자_프로필.png", "신발 엄청 큰거 신고다니는 애", "신발 엄청 큰거 신고다니는 애",
-                "http://bit.ly/2s0LM6s "))
-
-        e.add(DoantionRecyclerViewAdpaterData("dowadog/myinfo/7ca5021b734043d1ac2eb15280c197aa사용자_프로필.png", "신발 엄청 큰거 신고다니는 애", "신발 엄청 큰거 신고다니는 애",
-                "http://bit.ly/2s0LM6s "))
-
-        e.add(DoantionRecyclerViewAdpaterData("dowadog/myinfo/7ca5021b734043d1ac2eb15280c197aa사용자_프로필.png", "신발 엄청 큰거 신고다니는 애", "신발 엄청 큰거 신고다니는 애",
-                "http://bit.ly/2s0LM6s "))
-
-        e.add(DoantionRecyclerViewAdpaterData("dowadog/myinfo/7ca5021b734043d1ac2eb15280c197aa사용자_프로필.png", "신발 엄청 큰거 신고다니는 애", "신발 엄청 큰거 신고다니는 애",
-                "http://bit.ly/2s0LM6s "))
-        e.add(DoantionRecyclerViewAdpaterData("dowadog/myinfo/7ca5021b734043d1ac2eb15280c197aa사용자_프로필.png", "신발 엄청 큰거 신고다니는 애", "신발 엄청 큰거 신고다니는 애",
-                "http://bit.ly/2s0LM6s "))
-
-        e.add(DoantionRecyclerViewAdpaterData("dowadog/myinfo/7ca5021b734043d1ac2eb15280c197aa사용자_프로필.png", "신발 엄청 큰거 신고다니는 애", "신발 엄청 큰거 신고다니는 애",
-                "http://bit.ly/2s0LM6s "))
-
+        e.add(DoantionRecyclerViewAdpaterData(R.drawable.klorenz_img, "클로렌즈", "유기동물 보호소의 재정자립을 돕는 패션 브랜드",
+                "http://bit.ly/2s0LM6s"))
 
         donationRecyclerViewAdatper = DoantionRecyclerViewAdpater(this@DonationActivity, e)
         rv_donation_act.adapter = donationRecyclerViewAdatper

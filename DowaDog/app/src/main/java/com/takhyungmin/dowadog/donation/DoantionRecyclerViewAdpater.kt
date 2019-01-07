@@ -1,14 +1,20 @@
 package com.takhyungmin.dowadog.donation
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.takhyungmin.dowadog.R
+
+
+
 
 class DoantionRecyclerViewAdpater(var ctx: Context, var dataList: ArrayList<DoantionRecyclerViewAdpaterData>) : RecyclerView.Adapter<DoantionRecyclerViewAdpater.DonationRecyclerViewHolder>(){
 
@@ -34,6 +40,12 @@ class DoantionRecyclerViewAdpater(var ctx: Context, var dataList: ArrayList<Doan
         holder.explain.text = dataList[position].explain
         // 링크
         holder.link.text = dataList[position].link
+
+        holder.root.setOnClickListener {
+            val url = dataList[position].link
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            ctx.startActivity(intent)
+        }
     }
 
     inner class DonationRecyclerViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
@@ -41,12 +53,13 @@ class DoantionRecyclerViewAdpater(var ctx: Context, var dataList: ArrayList<Doan
         var name : TextView = itemView.findViewById(R.id.tv_store_item_donation_act)
         var explain : TextView = itemView.findViewById(R.id.tv_store_explain_item_donation_act)
         var link : TextView = itemView.findViewById(R.id.tv_link_item_donation_act)
+        var root : LinearLayout = itemView.findViewById(R.id.btn_root_donation_rv_item_act)
 
     }
 }
 
 data class DoantionRecyclerViewAdpaterData(
-        var img: String,
+        var img: Int,
         var name: String,
         var explain: String,
         var link: String

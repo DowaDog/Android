@@ -52,7 +52,16 @@
                 android:fontFamily="@font/nanum_bold"
                 android:textSize="18sp"
                 android:includeFontPadding="false"
-                android:text="기다릴개"/>
+                android:text="기다릴개"
+                android:visibility="gone"
+                />
+
+            <ImageView
+                android:id="@+id/iv_home_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/main_app_logo"
+                android:layout_centerInParent="true"/>
 
             <RelativeLayout
                 android:id="@+id/btn_home_mypage"
