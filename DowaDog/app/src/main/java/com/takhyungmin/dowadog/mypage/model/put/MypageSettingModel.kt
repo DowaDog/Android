@@ -30,7 +30,7 @@ class MypageSettingModel {
     //회원정보 가져오기 get
     fun getMypageSetData(img : MultipartBody.Part?) {
 
-        mypageSettingNetworkService.getMypagesetting("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGFla3l1bmcwNDAyIiwiaXNzIjoiZG93YWRvZyIsImV4cCI6MTU3ODI5MjY0MX0.vYv4lH8y-Q_DAinNkJrg3-t3MY5c1qROmBADn-MIMs4")
+        mypageSettingNetworkService.getMypagesetting(ApplicationData.auth)
                 .enqueue(object : Callback<GETMypageSettingResponse> {
 
                     override fun onFailure(call: Call<GETMypageSettingResponse>?, t: Throwable?) {
@@ -61,7 +61,7 @@ class MypageSettingModel {
         var birth = RequestBody.create(MediaType.parse("text/plain"), birth)
         var email = RequestBody.create(MediaType.parse("text/plain"), "askfjsdl@alkd.co")
 
-        mypageSettingNetworkService.putMypageList("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGFla3l1bmcwNDAyIiwiaXNzIjoiZG93YWRvZyIsImV4cCI6MTU3ODIyNjg0MX0.abzE4hLsRbVe5Xj-PigEC1SlUNwbcaYZfNRu0V4nsU0",
+        mypageSettingNetworkService.putMypageList(ApplicationData.auth,
                 name, phone, email, birth, img)
                 .enqueue(object : Callback<PUTMypageSettingResponse> {
 
@@ -79,7 +79,6 @@ class MypageSettingModel {
                                 ?.let {
                                     MypageSettingObject.mypageSettinActivityPresenter.responseData(it)
                                     Log.v("TAGG","모델 리스폰스")
-
                                 }
                     }
                 })

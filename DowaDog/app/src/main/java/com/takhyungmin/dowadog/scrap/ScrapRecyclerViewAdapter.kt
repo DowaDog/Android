@@ -30,7 +30,7 @@ class ScrapRecyclerViewAdapter(var ctx: Context, var dataList: ArrayList<GetMySc
 
         holder.title.text = dataList[position].title
 
-        holder.date.text = dataList[position].createAt.substring(0, 10)
+        holder.date.text = dataList[position].createdAt.substring(0, 10)
 
     }
 

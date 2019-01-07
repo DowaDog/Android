@@ -30,7 +30,7 @@ class ContentsSenseDetailActivity : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contents_sense_detail)
-        Glide.with(this).load(R.drawable.pic1).into(img_contents_sense_detail)
+        Glide.with(this).load(intent.getStringExtra("image")).into(img_contents_sense_detail)
         tv_contents_sense_detail_title.text = intent.getStringExtra("title")
         rv_contents_sense_detail_content.setFocusable(false)
         layout_sense_detail.requestFocus()
