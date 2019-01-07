@@ -10,9 +10,9 @@ import android.view.WindowManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.takhyungmin.dowadog.R
-import com.takhyungmin.dowadog.community.model.CommunityItem
-import com.takhyungmin.dowadog.contents.adapter.ContentsSenseDetailItem
 import com.takhyungmin.dowadog.contents.adapter.ContentsSenseDetailRvAdapter
+import com.takhyungmin.dowadog.contents.model.ContentsSenseDetailObject
+import com.takhyungmin.dowadog.contents.model.get.ContentSenseDetailResponse
 import com.takhyungmin.dowadog.presenter.activity.ContentsSenseDetailActivityPresenter
 import kotlinx.android.synthetic.main.activity_contents_sense_detail.*
 
@@ -21,6 +21,7 @@ class ContentsSenseDetailActivity : AppCompatActivity() {
     private lateinit var contentsSenseDetailActivityPresenter: ContentsSenseDetailActivityPresenter
     private lateinit var contentsSenseDetailRvAdapter: ContentsSenseDetailRvAdapter
     private lateinit var requestManager : RequestManager
+    var id = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         //ActivityCompat.setEnterSharedElementCallback(this, EnterTransitionCallback)
 //        requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -39,13 +40,18 @@ class ContentsSenseDetailActivity : AppCompatActivity() {
     private fun init(){
         contentsSenseDetailActivityPresenter = ContentsSenseDetailActivityPresenter()
         contentsSenseDetailActivityPresenter.view = this
-        contentsSenseDetailActivityPresenter.initView()
+
+
+        id = intent.getIntExtra("id", 27)
+        contentsSenseDetailActivityPresenter.requestData(id)
+        //contentsSenseDetailActivityPresenter.initView()
         setScrollListener()
+        initPresenter()
     }
 
-    fun initView(contentsSenseDetailItems : ArrayList<ContentsSenseDetailItem>){
+    fun initView(contentsSenseDetailItems : ArrayList<ContentSenseDetailResponse>){
         requestManager = Glide.with(this)
-        contentsSenseDetailRvAdapter = ContentsSenseDetailRvAdapter(contentsSenseDetailItems, requestManager)
+       // contentsSenseDetailRvAdapter = ContentsSenseDetailRvAdapter(contentsSenseDetailItems, requestManager)
         rv_contents_sense_detail_content.layoutManager = LinearLayoutManager(this)
         rv_contents_sense_detail_content.adapter = contentsSenseDetailRvAdapter
     }
@@ -91,5 +97,37 @@ class ContentsSenseDetailActivity : AppCompatActivity() {
                 layout_contents_sense_detail_toolbar_move.visibility = View.VISIBLE
             }
         })
+    }
+
+
+    fun responseSenseData(data: ContentSenseDetailResponse) {
+
+        data?.let {
+
+            requestManager = Glide.with(this)
+
+            var setContentsSenseDetailAdapter = ContentsSenseDetailRvAdapter(it.data.content, requestManager)
+            //여기에 받아온 데이터들을 가져와서 보여주는 것을 해야함 (함수로 만들던 여기에 구현하던)
+            Log.v("ygyg", it.data.content.toString())
+
+
+            rv_contents_sense_detail_content.adapter = setContentsSenseDetailAdapter
+            rv_contents_sense_detail_content.layoutManager = LinearLayoutManager(this)
+
+            rv_contents_sense_detail_content.setNestedScrollingEnabled(false)
+
+        }
+    }
+
+    //view에 presenter 붙여주기
+    private fun initPresenter() {
+
+        contentsSenseDetailActivityPresenter= ContentsSenseDetailActivityPresenter()
+        // 뷰 붙여주는 작업
+        contentsSenseDetailActivityPresenter.view = this
+        ContentsSenseDetailObject.contentsSenseDetailActivityPresenter = contentsSenseDetailActivityPresenter
+
+        Log.v("TAGG", "SenseDetail 엑티비티 이닛프레젠터")
+
     }
 }

@@ -26,8 +26,11 @@ import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.mypage.model.Data
 import com.takhyungmin.dowadog.mypage.model.MypageObject
+import com.takhyungmin.dowadog.mypage.model.MypageSettingGetObject
 import com.takhyungmin.dowadog.mypage.model.MypageSettingObject
 import com.takhyungmin.dowadog.mypage.model.get.GETMypageResponse
+import com.takhyungmin.dowadog.mypage.model.get.GETMypageSettingResponse
+import com.takhyungmin.dowadog.mypage.model.get.MypageSettingGETData
 import com.takhyungmin.dowadog.mypage.model.put.PUTMypageSettingResponse
 import com.takhyungmin.dowadog.presenter.activity.MypageActivityPresenter
 import com.takhyungmin.dowadog.presenter.activity.MypageSettingActivityPresenter
@@ -60,17 +63,23 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
                 downKeyboard(rl_mypage_setting_act)
             }
             btn_cancle_mypage_setting_act -> {
-                //기존의 정보로 저장하고
+                //기존의 정보로 초기화시키고
                 finish()
             }
+            //확인버튼
             btn_confirm_mypage_setting_act -> {
-                //editText로 작성된 것들을 저장한 후에
+
+                //put request
+                // editText로 작성한 것을 put
+                mypageSettingActivityPresenter.requestData(mimage)
+
                 finish()
             }
 
             et_name_mod_mypage_setting_act -> {
                 gravityRightNameHint()
             }
+
         }
     }
 
@@ -93,7 +102,8 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
         initPresenter()
 
         mypageSettingActivityPresenter.initView()
-        mypageSettingActivityPresenter.requestData(mimage)
+        //get request
+        mypageSettingActivityPresenter.requestGetData(mimage)
 
     }
 
@@ -151,7 +161,6 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
         startActivityForResult(intent, REQ_CODE_SELECT_IMAGE)
     }
 
-
     //startActivityForResult를 통해 실행한 엑티비티에 대한 callback을 처리하는 메소드입니다!
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -186,7 +195,6 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
-
     private fun downKeyboard(view : View) {
         val imm: InputMethodManager = applicationContext!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)
@@ -211,13 +219,29 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
         })
     }
 
+    fun responseGetData(data : GETMypageSettingResponse) {
+        data?.let{
+
+            Glide.with(this@MypageSettingActivity)
+                    .load(data.data.thumbnailImg)
+                    .thumbnail(0.1f)
+                    .into(img_profile_mypage_set_act)
+
+            et_name_mod_mypage_setting_act.hint = data.data.name
+            et_birth_mod_mypage_setting_act.hint = data.data.birth
+            et_phone_mod_mypage_setting_act.hint = data.data.phone
+
+        }
+    }
+
+    //회원정보 수정
     fun responseData(data: PUTMypageSettingResponse) {
 
         data?.let {
 
             mypagePutdata = data
             //여기에 받아온 데이터들을 가져와서 보여주는 것을 해야함 (함수로 만들던 여기에 구현하던)
-            Log.v("TAGG", "엑티비티 리스폰스데이터")
+            Log.v("TAGG", "put data 엑티비티 리스폰스데이터")
 
         }
     }
@@ -228,13 +252,16 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
         mypageSettingActivityPresenter = MypageSettingActivityPresenter()
         // 뷰 붙여주는 작업
         mypageSettingActivityPresenter.view = this
-        MypageSettingObject.mypageSettingActivityPresenter = mypageSettingActivityPresenter
+
+        MypageSettingObject.mypageSettinActivityPresenter = mypageSettingActivityPresenter
+
+        MypageSettingGetObject.mypageSettingGETActivityPresenter = mypageSettingActivityPresenter
 
         Log.v("TAGG", "mypagesetting 엑티비티 이닛프레젠터")
 
     }
-
 }
+
 
 /*
     fun getRealPathFromURI(context: Context, contentUri: Uri): String {
@@ -249,6 +276,5 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
             cursor?.close()
         }
     }
-    */
-
+*/
 

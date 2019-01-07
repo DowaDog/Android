@@ -246,7 +246,8 @@
                 android:id="@+id/rl_email_mypage_set_act"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:layout_below="@+id/rl_phone_mypage_set_act">
+                android:layout_below="@+id/rl_phone_mypage_set_act"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -258,17 +259,16 @@
                     android:textColor="#707070"
                     android:textSize="15sp" />
 
-                <EditText
+                <TextView
                     android:id="@+id/et_email_mod_mypage_setting_act"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="16dp"
                     android:background="@null"
                     android:fontFamily="@font/nanum_light"
-                    android:hint="jimin0004@naver.com"
-                    android:inputType="textEmailAddress"
+                    android:text="jimin0004@naver.com"
                     android:maxLines="1"
                     android:textColor="#707070"
                     android:textSize="14sp" />
@@ -282,6 +282,7 @@
             </RelativeLayout>
 
         </RelativeLayout>
+
     </RelativeLayout>
 
 </RelativeLayout>
