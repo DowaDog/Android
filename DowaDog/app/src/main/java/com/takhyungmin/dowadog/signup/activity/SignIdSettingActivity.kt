@@ -20,6 +20,7 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.home.activity.HomeActivity
@@ -75,12 +76,15 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
                 val id = et_id_sign_id_set_act.text.toString()
                 val gender = "M"
                 val password = et_pw_check_sign_id_set_act.text.toString()
-                val deviceToken = "token"
+                val deviceToken = singWithEmailPassword(email, password)
+
                 val type = "type"
                 val pushAllow = "true"
 
+
                 this.id = id
                 this.pwd = pwd
+
 
                 signIdSettingPresenter.requestData(id, password, username, birth,
                         phone, email, gender, deviceToken, type, mimage, pushAllow)
@@ -89,6 +93,47 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
 
         }
     }
+
+    fun createAcctount(email: String, pwd: String) {
+        mfirebaseAuth.createUserWithEmailAndPassword(email, pwd)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        singWithEmailPassword(email, pwd)
+                    } else {
+
+                    }
+                }
+    }
+
+
+
+    fun singWithEmailPassword(email: String, pwd: String) : String {
+        var id = ""
+        mfirebaseAuth.createUserWithEmailAndPassword(email, pwd)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        mfirebaseAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+
+                                val user = mfirebaseAuth.currentUser
+                                id = user!!.uid
+                                Log.v("deviceToken", id)
+                                //progressDialog.dismiss()
+                            } else {
+                                // If sign in fails, display a message to the user.
+                            }
+                        }
+
+
+                    } else {
+
+                    }
+                }
+        return id
+    }
+
 
     lateinit var idCheckDialog : CustomSingleResDialog
 
@@ -107,7 +152,8 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
     var et_pw_check: Boolean = false
     var idCheck = true
 
-
+    private lateinit var mfirebaseAuth: FirebaseAuth
+    private lateinit var authStateListener: FirebaseAuth.AuthStateListener
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_id_setting)
@@ -371,6 +417,10 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
                 id, pwd
         ))
     }
+
+
+
+
     fun successGetToken(getLoginData: GetLoginData){
         SharedPreferenceController.setAccessToken(this, getLoginData.accessToken.data)
         SharedPreferenceController.setRefreshToken(this, getLoginData.refreshToken.data)

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import com.google.firebase.auth.FirebaseAuth
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.home.activity.HomeActivity
@@ -47,9 +48,12 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     }
 
     lateinit var loginActivityPresenter: LoginActivityPresenter
+    private lateinit var mfirebaseAuth: FirebaseAuth
+    private lateinit var authStateListener: FirebaseAuth.AuthStateListener
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        mfirebaseAuth = FirebaseAuth.getInstance()
 
         init()
     }
@@ -86,6 +90,9 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         SharedPreferenceController.setPwd(this, et_pw_login_act.text.toString())
         ApplicationData.auth = data.accessToken.data
         ApplicationData.loginState = true
+
+
+
         startActivity<HomeActivity>()
         finish()
     }
@@ -112,6 +119,4 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
             return true
         return false
     }
-
-
 }

@@ -8,6 +8,7 @@
     <RelativeLayout
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="19dp"
         android:layout_width="match_parent"
         android:background="@drawable/home_slide_third_text_frame"
         android:layout_height="240dp">
