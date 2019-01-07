@@ -113,6 +113,7 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
     fun setViewPagerAdapter(viewPagerItemData: ArrayList<String>) {
         var communityDetailViewPagerAdapter = CommunityDetailViewPagerAdapter(this, viewPagerItemData)
         vp_community_detail_act.adapter = communityDetailViewPagerAdapter
+        pageIndicatorView.setCount(viewPagerItemData.size)
 
         vp_community_detail_act.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {

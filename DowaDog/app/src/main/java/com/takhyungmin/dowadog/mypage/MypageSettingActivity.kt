@@ -5,15 +5,12 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
-import android.support.v4.content.CursorLoader
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -22,33 +19,20 @@ import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import com.bumptech.glide.Glide
-import com.bumptech.glide.Glide.get
-import com.bumptech.glide.Glide.init
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
-import com.takhyungmin.dowadog.mypage.model.Data
-import com.takhyungmin.dowadog.mypage.model.MypageObject
 import com.takhyungmin.dowadog.mypage.model.MypageSettingGetObject
 import com.takhyungmin.dowadog.mypage.model.MypageSettingObject
-import com.takhyungmin.dowadog.mypage.model.get.GETMypageResponse
 import com.takhyungmin.dowadog.mypage.model.get.GETMypageSettingResponse
-import com.takhyungmin.dowadog.mypage.model.get.MypageSettingGETData
 import com.takhyungmin.dowadog.mypage.model.put.PUTMypageSettingResponse
-import com.takhyungmin.dowadog.presenter.activity.MypageActivityPresenter
 import com.takhyungmin.dowadog.presenter.activity.MypageSettingActivityPresenter
-import kotlinx.android.synthetic.main.activity_community_write.*
-import kotlinx.android.synthetic.main.activity_mypage.*
 import kotlinx.android.synthetic.main.activity_mypage_setting.*
-import kotlinx.android.synthetic.main.activity_sign_id_setting.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import org.jetbrains.anko.sdk25.coroutines.onFocusChange
-import org.jetbrains.anko.sdk25.coroutines.textChangedListener
-import org.jetbrains.anko.toast
+import org.jetbrains.anko.startActivity
 import java.io.ByteArrayOutputStream
 import java.io.File
-import java.io.FileNotFoundException
 import java.io.InputStream
 
 class MypageSettingActivity : BaseActivity(), View.OnClickListener {
@@ -294,7 +278,7 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
             mypagePutdata = data
             //여기에 받아온 데이터들을 가져와서 보여주는 것을 해야함 (함수로 만들던 여기에 구현하던)
             Log.v("TAGG", "put data 엑티비티 리스폰스데이터")
-
+            startActivity<MypageActivity>()
         }
     }
 
@@ -319,22 +303,22 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
 
     fun checkFill(){
 
-        val selectedPictureUri = Uri.parse(image)
-        val options = BitmapFactory.Options()
-
-        var input: InputStream? = null // here, you need to get your context.
-        try {
-            input = contentResolver.openInputStream(selectedPictureUri)
-        } catch (e: FileNotFoundException) {
-            e.printStackTrace()
-        }
-
-        val bitmap = BitmapFactory.decodeStream(input, null, options) // InputStream 으로부터 Bitmap 을 만들어 준다.
-        val baos = ByteArrayOutputStream()
-        bitmap!!.compress(Bitmap.CompressFormat.JPEG, 20, baos)
-        val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
-        mimage = MultipartBody.Part.createFormData("profileImgFile", "", photoBody)
-        Glide.with(this).load(selectedPictureUri).thumbnail(0.1f).thumbnail(0.1f).into(img_profile_sign_id_set_act)
+//        val selectedPictureUri = Uri.parse(image)
+//        val options = BitmapFactory.Options()
+//
+//        var input: InputStream? = null // here, you need to get your context.
+//        try {
+//            input = contentResolver.openInputStream(selectedPictureUri)
+//        } catch (e: FileNotFoundException) {
+//            e.printStackTrace()
+//        }
+//
+//        val bitmap = BitmapFactory.decodeStream(input, null, options) // InputStream 으로부터 Bitmap 을 만들어 준다.
+//        val baos = ByteArrayOutputStream()
+//        bitmap!!.compress(Bitmap.CompressFormat.JPEG, 20, baos)
+//        val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
+//        mimage = MultipartBody.Part.createFormData("profileImgFile", "", photoBody)
+//        Glide.with(this).load(selectedPictureUri).thumbnail(0.1f).thumbnail(0.1f).into(img_profile_sign_id_set_act)
 
 
 

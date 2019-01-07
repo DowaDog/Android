@@ -25,7 +25,7 @@ class MypageModel {
 
     fun getMypageData() {
 
-        mypageNetworkService.getMypageList("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGFla3l1bmcwNDAyIiwiaXNzIjoiZG93YWRvZyIsImV4cCI6MTU3ODIyNjg0MX0.abzE4hLsRbVe5Xj-PigEC1SlUNwbcaYZfNRu0V4nsU0")
+        mypageNetworkService.getMypageList(ApplicationData.auth)
                 .enqueue(object : Callback<GETMypageResponse> {
 
             override fun onFailure(call: Call<GETMypageResponse>?, t: Throwable?) {
