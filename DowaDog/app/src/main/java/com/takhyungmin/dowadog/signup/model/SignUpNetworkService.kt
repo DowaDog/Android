@@ -20,7 +20,6 @@ interface SignUpNetworkService {
     @Multipart
     @POST("api/signup")
     fun postSignIdSettingResponse(
-
             @Part("id") id : RequestBody,
             @Part("password") password : RequestBody,
             @Part("name") name : RequestBody,
@@ -31,7 +30,8 @@ interface SignUpNetworkService {
             @Part("deviceToken") deviceToken : RequestBody,
             @Part("type") type : RequestBody,
             @Part profileImgFile : MultipartBody.Part?,
-            @Part("pushAllow") pushAllow : RequestBody
+            @Part("pushAllow") pushAllow : RequestBody,
+            @Part("termsAllow") termsAllow : RequestBody
 
     ) : Call<PostSignIdSettingResponse>
 

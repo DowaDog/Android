@@ -45,8 +45,13 @@ class SignUpModel {
         val cDeviceToken = RequestBody.create(MediaType.parse("text/plain"), deviceToken)
         val cType = RequestBody.create(MediaType.parse("text/plain"), type)
         val cPushAllow = RequestBody.create(MediaType.parse("text/plain"), pushAllow)
-        signUpNetworkService.postSignIdSettingResponse( cId, cPassword, cName, cBirth,
-                cPhone, cEmail, cGender, cDeviceToken, cType, mimg, cPushAllow)
+        val cTermsAllow = RequestBody.create(MediaType.parse("text/plain"), "true")
+
+        Log.v("cDeviceToken", "들어옴")
+        Log.v("mimg", mimg!!.toString())
+
+        signUpNetworkService.postSignIdSettingResponse(cId, cPassword, cName, cBirth,
+                cPhone, cEmail, cGender, cDeviceToken, cType, mimg, cPushAllow, cTermsAllow)
                 .enqueue(object : Callback<PostSignIdSettingResponse> {
                     override fun onFailure(call: Call<PostSignIdSettingResponse>?, t: Throwable?) {
                         Log.e("회원가입 통신실패", t.toString())

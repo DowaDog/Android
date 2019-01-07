@@ -125,6 +125,17 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
 
     }
 
+    var phoneComplete = false
+    var birthComplete = false
+    var nameComplete = false
+    var emailComplete = false
+    //각 항목별 조건 충족 여부.
+
+    fun setOnBinding(){
+        //전화번호를 입력하다가 다른 곳으로 갔을 때 1. 형식에 맞았다. 2. 형식에 맞지 않았다.
+        //2일 때 토스트.
+    }
+
     private fun requestReadExternalStoragePermission() {
 
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -263,9 +274,6 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
 
                 et_birth = (text.length >= 10)
 
-
-
-
                 if (et_birth) {
                     if (et_name) {
                         if (et_phone) {
@@ -290,13 +298,17 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
     private fun phoneEditTextSetting() {
         et_phonenum_sign_info_wr_act.addTextChangedListener(object : PhoneNumberFormattingTextWatcher() {
             override fun afterTextChanged(s: Editable?) {
+                Log.v("after", "after")
+
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 //et_phone = false
+                Log.v("before", "before")
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                Log.v("change", "change")
 
                 val text = et_phonenum_sign_info_wr_act.text
                 //실제, 국제에서 사용하는 전화번호가 맞는지 체크
@@ -304,12 +316,6 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
 
                 et_phone = ((text.length == 12) or (text.length == 13))
 
-
-//                if (text.matches(Regex(phone_form)) && text.length < 12) {
-//                    et_phone = true
-//                } else {
-//                    et_phone = false
-//                }
 
                 if (et_phone) {
                     if (et_name) {
@@ -419,11 +425,12 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
                 Log.v("email", et_email.toString())
                 Log.v("phone", et_phone.toString())
                 Log.v("duplicate", signInfoEmaildataBoolean.toString())
-                if (et_name) {
+                if (!signInfoEmaildataBoolean) {
+                    if (et_name) {
                     if (et_birth) {
                         if (et_phone) {
                             if (et_email) {
-                                if (!signInfoEmaildataBoolean) {
+
                                     Log.v("들어옴", "들어옴")
                                     rl_next_btn_sign_info_wr_act.setBackgroundColor(Color.parseColor("#ffc233"))
                                     NextBtnFlag = 1
