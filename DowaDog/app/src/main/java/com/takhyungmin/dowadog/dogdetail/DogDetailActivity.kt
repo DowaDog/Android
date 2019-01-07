@@ -9,8 +9,8 @@ import android.view.View
 import android.view.WindowManager
 import com.bumptech.glide.Glide
 import com.jakewharton.rxbinding2.view.clicks
+import com.takhyungmin.dowadog.PressedAdoptActivity
 import com.takhyungmin.dowadog.R
-import com.takhyungmin.dowadog.adopt.AdoptActivity
 import com.takhyungmin.dowadog.dogdetail.model.DogDetailObject
 import com.takhyungmin.dowadog.dogdetail.model.get.GetDogDetailData
 import com.takhyungmin.dowadog.dogdetail.model.get.GetDogDetailResponse
@@ -21,6 +21,8 @@ import com.takhyungmin.dowadog.utils.CustomShareDogDialog
 import com.takhyungmin.dowadog.utils.CustomThanksDogDialog
 import kotlinx.android.synthetic.main.activity_dog_detail.*
 import kotlinx.android.synthetic.main.custom_dialog_share.*
+import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -103,7 +105,8 @@ class DogDetailActivity : AppCompatActivity(), View.OnClickListener {
         btn_share_dog_detail_act.setOnClickListener(this)
         btn_heart_dog_detail_act.setOnClickListener(this)
         btn_adopt_dog_detail_act.clicks().subscribe {
-            startActivity(Intent(this, AdoptActivity::class.java))
+            startActivity<PressedAdoptActivity>("num" to getDogDetailResponse.data.careTel, "spotName" to getDogDetailResponse.data.careName)
+            startActivity(Intent(this, PressedAdoptActivity::class.java))
         }
     }
 
@@ -176,13 +179,19 @@ class DogDetailActivity : AppCompatActivity(), View.OnClickListener {
             shareDogDialog.tv_link_share_custom_dialog_community_detail.setTextColor(Color.parseColor("#434343"))
             islinkShare = 0
             isKakaoShare = 0
+
+            // TODO : 클립보드에 복사하기
+
+
+
             shareThanksDialog.show()
         } else {
             shareDogDialog.tv_kakao_share_custom_dialog_community_detail.setTextColor(Color.parseColor("#434343"))
             shareDogDialog.tv_link_share_custom_dialog_community_detail.setTextColor(Color.parseColor("#434343"))
             islinkShare = 0
             isKakaoShare = 0
-            shareKaKaoDialog.show()
+
+            toast("준비 중인 기능입니다.")
         }
 
         shareDogDialog!!.dismiss()
@@ -216,10 +225,10 @@ class DogDetailActivity : AppCompatActivity(), View.OnClickListener {
 
         data.sexCd?.let{
             if(it == "M") {
-                iv_sex_dog_detail_act.setImageResource(R.drawable.findingdetail_man_icon)
+                iv_sex_dog_detail_act.setImageResource(R.drawable.findingdetail_woman_icon)
                 tv_sex_dog_detail_act.text = "남아"
             }else {
-                iv_sex_dog_detail_act.setImageResource(R.drawable.findingdetail_woman_icon)
+                iv_sex_dog_detail_act.setImageResource(R.drawable.findingdetail_man_icon)
                 tv_sex_dog_detail_act.text = "여아"
             }
         }

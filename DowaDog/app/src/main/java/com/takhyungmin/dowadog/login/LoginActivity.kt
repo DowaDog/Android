@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
@@ -18,6 +19,7 @@ import com.takhyungmin.dowadog.utils.ApplicationData
 import com.takhyungmin.dowadog.utils.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -33,12 +35,22 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
             }
             btn_signup_login_act -> {
+
                 startActivity<SignInfoWriteActivity>()
             }
             rl_login_act -> {
                 downKeyboard(rl_login_act)
             }
             btn_login_act -> {
+                if(et_id_login_act.text.isEmpty()){
+                    Toast.makeText(this, "아이디를 입력해주세요.", Toast.LENGTH_SHORT).show()
+                    return
+                }
+
+                if(et_pw_login_act.text.isEmpty()){
+                    Toast.makeText(this, "비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
+                    return
+                }
                 loginActivityPresenter.requestLogin(et_id_login_act.text.toString(),
                         et_pw_login_act.text.toString())
 
@@ -118,5 +130,9 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         if(dDay < 0)
             return true
         return false
+    }
+
+    fun toast(){
+        toast("계정 정보가 일치하지 않습니다.")
     }
 }

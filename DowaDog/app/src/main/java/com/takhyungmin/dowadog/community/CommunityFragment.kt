@@ -20,6 +20,7 @@ import com.takhyungmin.dowadog.communitydetail.CommunityDetailActivity
 import com.takhyungmin.dowadog.communitywrite.CommunityWriteActivity
 import com.takhyungmin.dowadog.presenter.fragment.CommunityFragmentPresenter
 import kotlinx.android.synthetic.main.fragment_community.*
+import org.jetbrains.anko.support.v4.startActivity
 
 
 class CommunityFragment : Fragment() {
@@ -85,8 +86,8 @@ class CommunityFragment : Fragment() {
         })
     }
 
-    fun toDetail(){
-        startActivity(Intent(activity, CommunityDetailActivity::class.java))
+    fun toDetail(communityId: Int){
+        startActivity<CommunityDetailActivity>("communityId" to communityId)
     }
 
     fun setOnBinding(){

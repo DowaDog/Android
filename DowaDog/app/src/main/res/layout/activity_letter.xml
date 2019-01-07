@@ -57,34 +57,34 @@
                 android:layout_height="240dp"
                 android:background="@drawable/post_main_img">
 
-                <TextView
-                    android:id="@+id/tv_wait_letter_act"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="18dp"
-                    android:fontFamily="@font/nanum_light"
-                    android:text="기다릴개에서"
-                    android:textColor="#434343"
-                    android:textSize="20sp" />
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_wait_letter_act"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginStart="16dp"-->
+                    <!--android:layout_marginTop="18dp"-->
+                    <!--android:fontFamily="@font/nanum_light"-->
+                    <!--android:text="기다릴개에서"-->
+                    <!--android:textColor="#434343"-->
+                    <!--android:textSize="20sp" />-->
 
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_wait_letter_act"
-                    android:layout_marginTop="8dp">
+                <!--<RelativeLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_below="@+id/tv_wait_letter_act"-->
+                    <!--android:layout_marginTop="8dp">-->
 
-                    <TextView
-                        android:id="@+id/tv_warm_letter__act"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:fontFamily="@font/nanum_bold"
-                        android:text="보내는 따뜻한편지"
-                        android:textColor="#434343"
-                        android:textSize="20sp" />
+                    <!--<TextView-->
+                        <!--android:id="@+id/tv_warm_letter__act"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginStart="16dp"-->
+                        <!--android:fontFamily="@font/nanum_bold"-->
+                        <!--android:text="보내는 따뜻한편지"-->
+                        <!--android:textColor="#434343"-->
+                        <!--android:textSize="20sp" />-->
 
-                </RelativeLayout>
+                <!--</RelativeLayout>-->
 
             </RelativeLayout>
 

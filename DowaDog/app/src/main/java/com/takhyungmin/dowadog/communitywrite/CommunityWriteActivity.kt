@@ -29,6 +29,7 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import org.jetbrains.anko.toast
 import java.io.ByteArrayOutputStream
+import java.io.File
 import java.io.FileNotFoundException
 import java.io.InputStream
 
@@ -461,8 +462,6 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
     fun responseData(data : PostCommunityPostWriteResponse){
         data?.let {
             communityWriteDataList = data
-            Log.v("잘돼?",data.data.toString()
-            )
         }
         finish()
     }
@@ -504,10 +503,11 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
             val bitmap = BitmapFactory.decodeStream(input, null, options) // InputStream 으로부터 Bitmap 을 만들어 준다.
             val baos = ByteArrayOutputStream()
             bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos)
+            val photo = File(uri.toString())
 
             val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
 
-            image.add(MultipartBody.Part.createFormData("communityImgFiles", "", photoBody))
+            image.add(MultipartBody.Part.createFormData("communityImgFiles", photo.name, photoBody))
         }
 
         return image

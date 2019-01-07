@@ -62,7 +62,6 @@
                     android:id="@+id/iv_writter2_community_detail_act"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:src="@color/colorPrimary"
                     android:layout_marginLeft="16dp"
                     android:layout_centerVertical="true"
                     />
@@ -110,7 +109,6 @@
                     android:id="@+id/vp_community_detail_act"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#343434"
                     >
                 </android.support.v4.view.ViewPager>
 
@@ -148,7 +146,7 @@
                     android:id="@+id/tv_title_community_detail_act"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="우리집에 처음 온 날,,"
+                    android:text="제목"
                     android:textColor="#434343"
                     android:textSize="18sp"
                     android:includeFontPadding="false"
@@ -163,7 +161,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_title_community_detail_act"
                     android:layout_marginTop="5dp"
-                    android:text="2019.01.09"
+                    android:text="작성일"
                     android:fontFamily="@font/nanum_round"
                     android:textColor="#a6a6a6"
                     android:textSize="14sp"/>
@@ -179,7 +177,7 @@
                     android:textColor="#484848"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까 글씨가 정말 많아지면 과연 어떻게 보여질까"
+                    android:text="글 내용"
                     android:fontFamily="@font/nanum_round"
                     android:layout_marginBottom="24dp"/>
             </RelativeLayout>
@@ -220,7 +218,7 @@
             android:layout_height="35dp"
             android:layout_marginLeft="16dp"
             android:layout_centerVertical="true"
-            android:src="@color/colorAccent"/>
+            />
 
         <!--댓글 입력해주세요 박스-->
         <RelativeLayout

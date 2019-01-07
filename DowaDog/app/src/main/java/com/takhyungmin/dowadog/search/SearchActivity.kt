@@ -1,9 +1,11 @@
 package com.takhyungmin.dowadog.search
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
@@ -33,15 +35,17 @@ class SearchActivity : BaseActivity(), View.OnClickListener {
             et_keyword_search_act -> {
                 rl_recommend_box_search_act.visibility = View.VISIBLE
             }
+            rv_search_act -> {
+                val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(rv_search_act.windowToken, 0)
+            }
+
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
-
-
-
 
 
         init()
@@ -70,6 +74,7 @@ class SearchActivity : BaseActivity(), View.OnClickListener {
         btn_search_search_act.setOnClickListener(this)
         btn_back_search_act.setOnClickListener(this)
         et_keyword_search_act.setOnClickListener(this)
+        rv_search_act.setOnClickListener(this)
     }
 
 

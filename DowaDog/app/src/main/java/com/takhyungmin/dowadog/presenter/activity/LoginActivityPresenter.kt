@@ -27,4 +27,8 @@ class LoginActivityPresenter : BasePresenter<LoginActivity>() {
     fun responseRefresh(data : PostRefreshData){
         view!!.responseRefresh(data)
     }
+
+    fun toast(){
+        view!!.toast()
+    }
 }

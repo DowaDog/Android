@@ -12,10 +12,26 @@ import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.community.model.get.GetCommunityContents
 import com.takhyungmin.dowadog.presenter.fragment.CommunityFragmentPresenter
 import com.takhyungmin.dowadog.utils.CustomDialog
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CommunityAdapter(var communityItems : ArrayList<GetCommunityContents>, var requestManager: RequestManager, var communityFragmentPresenter: CommunityFragmentPresenter, var context : Context) : RecyclerView.Adapter<CommunityViewHolder>() {
 
     lateinit var customDialog : CustomDialog
+
+    val now : Long
+    val date : Date
+    var sdf  : SimpleDateFormat
+    // 현재시간 ex) 02:07:49
+    val getPresentTime : String
+
+    init {
+        now = System.currentTimeMillis()
+        date = Date(now)
+        sdf = SimpleDateFormat("HH:mm:ss", Locale.KOREA)
+        getPresentTime = sdf.format(date)
+
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): CommunityViewHolder {
         val mainView = LayoutInflater.from(parent.context).inflate(R.layout.fragment_community_item, parent,false)
@@ -28,13 +44,33 @@ class CommunityAdapter(var communityItems : ArrayList<GetCommunityContents>, var
     override fun onBindViewHolder(holder: CommunityViewHolder, position: Int) {
         holder.communityName.text = communityItems[position].userId
         requestManager.load(communityItems[position].userProfileImg).into(holder.communityProfile)
-        holder.communityTime.text = communityItems[position].createdAt
-        holder.communityMore.setOnClickListener {
-            loadDialog()
-        }
-        holder.communityFrame.clicks().subscribe {
-            communityFragmentPresenter.toDetail()
-        }
+        //holder.communityTime.text = communityItems[position].createdAt
+         holder.communityTitle.text = communityItems[position].title
+
+
+        if(communityItems[position].today){
+            // 현재시간 ex) 14:00:00
+            var time = communityItems[position].updatedAt.subSequence(11, 19)
+            var pastTime = Integer.parseInt(getPresentTime.subSequence(0,2).toString()) - Integer.parseInt(time.subSequence(0,2).toString())
+            holder.communityTime.text = pastTime.toString() + "시간 전"
+            // 0시간에서 분으로 바꾸기.
+            if(pastTime == 0){
+                pastTime = Integer.parseInt(getPresentTime.subSequence(3,5).toString()) - Integer.parseInt(time.subSequence(3,5).toString())
+                holder.communityTime.text = pastTime.toString() + "분 전"
+            }
+
+            if(pastTime == 0){
+                holder.communityTime.text = "방금 전"
+            }
+        }else
+            holder.communityTime.text = communityItems[position].updatedAt.subSequence(0, 10).toString()
+
+
+
+            holder.communityFrame.clicks().subscribe {
+            communityFragmentPresenter.toDetail(communityItems[position].id)
+            }
+
         when(communityItems[position].communityImgList.size){
             1->{
                 holder.communityMain1.visibility = View.VISIBLE

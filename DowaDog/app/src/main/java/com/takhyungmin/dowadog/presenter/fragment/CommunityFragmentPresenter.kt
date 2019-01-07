@@ -19,8 +19,8 @@ class CommunityFragmentPresenter : BasePresenter<CommunityFragment>() {
         communityModel.getDuplicateData(page, limit)
     }
 
-    fun toDetail(){
-        view!!.toDetail()
+    fun toDetail(communityId: Int){
+        view!!.toDetail(communityId)
     }
 
 

@@ -14,6 +14,7 @@ class CustomHomeDailogActivty : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_custom_home_dailog_activty)
 
+        rl_root_box_home_idalog_activity.setClipToOutline(true)
         setviewPagerListener()
         init()
 

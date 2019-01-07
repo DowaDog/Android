@@ -10,6 +10,7 @@ import com.takhyungmin.dowadog.R
 
 class CommunityViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
     var communityFrame = itemView.findViewById(R.id.layout_community_frame) as RelativeLayout
+    var communityTitle : TextView = itemView.findViewById(R.id.tv_community_item_title) as TextView
 
     var communityProfile = itemView.findViewById(R.id.img_community_item_profile) as ImageView
     var communityName = itemView.findViewById(R.id.tv_community_item_name) as TextView

@@ -6,8 +6,9 @@
 
 
     <RelativeLayout
+        android:id="@+id/rl_root_letter_act"
         android:layout_width="match_parent"
-        android:layout_height="136dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:background="@drawable/rv_item_letter_act_box"
         android:orientation="vertical">
@@ -15,8 +16,8 @@
         <ImageView
             android:id="@+id/rv_ll_background_img_letter_act"
             android:layout_width="match_parent"
-            android:layout_height="136dp"
-            android:src="@drawable/main_slider_2step_img" />
+            android:layout_height="wrap_content"
+            />
 
         <RelativeLayout
             android:id="@+id/rl_animal_letter_act"

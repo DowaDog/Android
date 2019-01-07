@@ -1,14 +1,13 @@
 package com.takhyungmin.dowadog.letter
 
 import android.content.Context
-import android.media.Image
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.takhyungmin.dowadog.R
@@ -37,6 +36,8 @@ class LetterAdapter(var ctx : Context, var dataList : ArrayList<getletterData>) 
         }
 
         Glide.with(ctx).load(dataList[position].imgPath).into(holder.BackgroundImag)
+
+        holder.rootBtn.setClipToOutline(true)
     }
 
     inner class Holder(itemView : View) : RecyclerView.ViewHolder(itemView!!) {
@@ -44,5 +45,7 @@ class LetterAdapter(var ctx : Context, var dataList : ArrayList<getletterData>) 
         var subtext : TextView = itemView!!.findViewById(R.id.tv_talk_letter_act)
         var NewImg : ImageView = itemView!!.findViewById(R.id.rv_new_img_letter_act)
         var BackgroundImag : ImageView = itemView!!.findViewById(R.id.rv_ll_background_img_letter_act)
+        var rootBtn : RelativeLayout = itemView!!.findViewById(R.id.rl_root_letter_act)
+
     }
 }
