@@ -31,8 +31,7 @@ class SearchActivity : BaseActivity(), View.OnClickListener {
                 finish()
             }
             et_keyword_search_act -> {
-                rl_recommend_box_search_act.visibility = View.GONE
-                rl_past_keyword_box_search_act.visibility = View.VISIBLE
+                rl_recommend_box_search_act.visibility = View.VISIBLE
             }
         }
     }
@@ -65,15 +64,6 @@ class SearchActivity : BaseActivity(), View.OnClickListener {
         recommendKeyword3.add("코카니")
         recommendKeyword3.add("유기견입양")
         setThirdRVAdapter(recommendKeyword3)
-
-        var pastKeyword: ArrayList<String> = ArrayList()
-        pastKeyword.add("검색어")
-        pastKeyword.add("추천")
-        pastKeyword.add("키워드들")
-        pastKeyword.add("검색어")
-        pastKeyword.add("추천")
-        pastKeyword.add("키워드들")
-        setPastSearchKeywordRVAdapter(pastKeyword)
     }
 
     private fun init() {
@@ -87,7 +77,7 @@ class SearchActivity : BaseActivity(), View.OnClickListener {
         et_keyword_search_act.textChangedListener {
             afterTextChanged {
                 if (et_keyword_search_act.text.toString().length > 0) {
-                    btn_search_search_act.setBackgroundColor(Color.parseColor("#40D39F"))
+                    btn_search_search_act.setBackgroundColor(Color.parseColor("#ffc233"))
                 } else {
                     btn_search_search_act.setBackgroundColor(Color.parseColor("#C5C5C5"))
                 }

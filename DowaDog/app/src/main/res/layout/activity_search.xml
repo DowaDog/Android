@@ -12,7 +12,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:focusableInTouchMode="true"
+        android:focusable="true">
 
         <!--백버튼-->
         <RelativeLayout
@@ -45,7 +47,7 @@
             android:text="무엇을 찾으시나요?"
             android:textSize="25dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="12dp"/>
+            android:layout_marginTop="8dp"/>
 
         <!--검색어 EditTextBox-->
         <RelativeLayout

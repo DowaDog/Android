@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="#FFFFFF"
-        android:elevation="3dp">
+        android:elevation="1dp">
 
         <!--취소-->
         <RelativeLayout

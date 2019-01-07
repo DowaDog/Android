@@ -88,6 +88,12 @@
 
             </RelativeLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/rl_main_background_letter_act"
+                android:background="#838383"/>
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_letter_act"
                 android:layout_width="match_parent"
