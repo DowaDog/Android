@@ -76,10 +76,9 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
             // 확인하기 버튼
             btn_confirm_community_write_act -> {
                 // 통신 코드
-                Log.v("잘돼","눌림")
                 selectData()
                 // 어디로 가야하지 ?
-                finish()
+
             }
 
             // 사진 첫번째 박스
@@ -465,6 +464,7 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
             Log.v("잘돼?",data.data.toString()
             )
         }
+        finish()
     }
 
     fun selectData(){

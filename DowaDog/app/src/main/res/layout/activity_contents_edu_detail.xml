@@ -107,24 +107,38 @@
         android:layout_marginTop="24dp"
         android:layout_height="48dp">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"
+        <RelativeLayout
             android:id="@+id/btn_contents_edu_detail_back1"
-            android:src="@drawable/back_arrow_white" />
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/btn_contents_edu_detail_back1_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/back_arrow_white" />
 
-        <ImageView
+        </RelativeLayout>
+
+
+        <RelativeLayout
             android:id="@+id/btn_contents_edu_detail_scrap1"
-            android:layout_width="14dp"
-            android:layout_height="20dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="16dp"
-            android:tint="#ffffff"
-            android:scaleType="fitXY"
-            android:src="@drawable/contents_unscrap_btn"/>
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true">
+
+            <ImageView
+                android:id="@+id/btn_contents_edu_detail_scrap1_1"
+                android:layout_width="14dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="16dp"
+                android:tint="#ffffff"
+                android:scaleType="fitXY"
+                android:src="@drawable/contents_unscrap_btn"/>
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
@@ -135,23 +149,39 @@
         android:background="#ffffff"
         android:visibility="gone">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"
+        <RelativeLayout
             android:id="@+id/btn_contents_edu_detail_back2"
-            android:src="@drawable/back_arrow" />
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/btn_contents_edu_detail_back2_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="16dp"
+                android:src="@drawable/back_arrow" />
+        </RelativeLayout>
 
-        <ImageView
+
+        <RelativeLayout
             android:id="@+id/btn_contents_edu_detail_scrap2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:layout_marginEnd="16dp"
-            android:tint="#707070"
-            android:src="@drawable/contents_unscrap_btn"/>
+            >
+
+            <ImageView
+                android:id="@+id/btn_contents_edu_detail_scrap2_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="16dp"
+                android:scaleType="fitXY"
+                android:tint="#707070"
+                android:src="@drawable/contents_unscrap_btn"/>
+
+        </RelativeLayout>
+
 
     </RelativeLayout>
 

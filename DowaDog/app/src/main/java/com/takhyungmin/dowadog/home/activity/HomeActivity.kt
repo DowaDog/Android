@@ -20,6 +20,7 @@ import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.adopt.fragment.AdoptAnimalFindFragment
 import com.takhyungmin.dowadog.community.CommunityFragment
 import com.takhyungmin.dowadog.contents.fragment.ContentsFragment
+import com.takhyungmin.dowadog.donation.DonationActivity
 import com.takhyungmin.dowadog.home.HomeObject
 import com.takhyungmin.dowadog.home.fragment.HomeFragment
 import com.takhyungmin.dowadog.home.model.get.GetDuplicateResponse
@@ -232,6 +233,13 @@ class HomeActivity : AppCompatActivity() {
 
             startActivity(Intent(this, SearchActivity::class.java))
         }
+
+        btn_navi_adopt_info.clicks().subscribe{
+            startActivity<DonationActivity>()
+        }
+
+
+
     }
 
     fun textSizeChange(textView : TextView){
@@ -256,8 +264,10 @@ class HomeActivity : AppCompatActivity() {
         textSizeChange(text_navi_adopt)
     }
 
-    fun adjustDim(percent : Float){
+    fun adjustDim(percent : Float) {
         layout_home_dim.alpha = percent
+        Log.v("alphg", percent.toString())
+        btn_home_drawer.isClickable = (percent != 1.0f)
     }
 
     fun toNew(){

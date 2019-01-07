@@ -18,7 +18,7 @@ object SharedPreferenceController {
         val pref = context.getSharedPreferences(USER, Context.MODE_PRIVATE)
         val editor = pref.edit()
         editor.putString(ID, id)
-        editor.apply()
+        editor.commit()
     }
 
     fun getId(context : Context) : String{
@@ -30,7 +30,7 @@ object SharedPreferenceController {
         val pref = context.getSharedPreferences(USER, Context.MODE_PRIVATE)
         val editor = pref.edit()
         editor.putString(PASSWORD, pwd)
-        editor.apply()
+        editor.commit()
     }
 
     fun getPwd(context : Context) : String{
@@ -44,7 +44,7 @@ object SharedPreferenceController {
         val pref = context.getSharedPreferences(USER, Context.MODE_PRIVATE)
         val editor = pref.edit()
         editor.putString(ACCESS_TOKEN, accessToken)
-        editor.apply()
+        editor.commit()
     }
 
     fun getAccessToken(context : Context) : String{
@@ -56,7 +56,7 @@ object SharedPreferenceController {
         val pref = context.getSharedPreferences(USER, Context.MODE_PRIVATE)
         val editor = pref.edit()
         editor.putString(REFRESH_TOKEN, refreshToken)
-        editor.apply()
+        editor.commit()
     }
 
     fun getRefreshToken(context : Context) : String{
@@ -68,7 +68,7 @@ object SharedPreferenceController {
         val pref = context.getSharedPreferences(USER, Context.MODE_PRIVATE)
         val editor = pref.edit()
         editor.putLong(REFRESH_EXPIRED, expired)
-        editor.apply()
+        editor.commit()
     }
 
     fun getRefreshTokenExpired(context : Context) : Long{
@@ -80,7 +80,7 @@ object SharedPreferenceController {
         val pref = context.getSharedPreferences(USER, Context.MODE_PRIVATE)
         val editor = pref.edit()
         editor.putLong(ACCESS_EXPIRED, expired)
-        editor.apply()
+        editor.commit()
     }
 
     fun getAccessTokenExpired(context : Context) : Long{
@@ -92,7 +92,7 @@ object SharedPreferenceController {
         val pref = context.getSharedPreferences(USER, Context.MODE_PRIVATE)
         val editor = pref.edit()
         editor.putInt(FIRSTPOPFLAG, firstPopFlag)
-        editor.apply()
+        editor.commit()
     }
 
     fun getFirstPopUpFlag(context : Context) : Int{
