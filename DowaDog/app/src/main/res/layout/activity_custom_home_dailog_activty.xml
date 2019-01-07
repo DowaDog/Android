@@ -10,6 +10,7 @@
     xmlns:attrs="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
+        android:id="@+id/rl_root_box_home_idalog_activity"
         android:layout_width="264dp"
         android:layout_height="410dp"
         android:layout_centerInParent="true"

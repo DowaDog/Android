@@ -39,9 +39,10 @@ class ContentsEduRvAdapter(private var contentsEduItems : ArrayList<GetEduConten
                 if(it.educated)
                     num++
             }
-            ContentsObject.contentsEduFragmentPresenter.toDetail(contentsEduItems[position].id, num)
+            ContentsObject.contentsEduFragmentPresenter.toDetail(contentsEduItems[position].id, num, contentsEduItems[position].imgPath)
         }
 
+        // 여기부
         holder.contentsFeed.setClipToOutline(true)
     }
 

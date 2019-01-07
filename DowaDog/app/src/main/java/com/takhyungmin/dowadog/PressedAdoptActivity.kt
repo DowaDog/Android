@@ -12,13 +12,19 @@ import kotlinx.android.synthetic.main.activity_pressed_adopt.*
 
 class PressedAdoptActivity : BaseActivity() {
 
-    private val customShelterDialog: CustomPressedAdoptDialog by lazy {
-        CustomPressedAdoptDialog(this@PressedAdoptActivity, "보호소 이름이 들어가야함", "보호소 번호가 들어가야함", cancleBtnListener, confirmBtnListener, "취소", "확인")
-    }
+    var name = intent.getStringExtra("spotName")
+    var num = intent.getStringExtra("num")
+
+    lateinit var customShelterDialog : CustomPressedAdoptDialog
+
+//    private val customShelterDialog: CustomPressedAdoptDialog by lazy {
+//        CustomPressedAdoptDialog(this@PressedAdoptActivity, name, "보호소 번호가 들어가야함", cancleBtnListener, confirmBtnListener, "취소", "확인")
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pressed_adopt)
+
         init()
     }
 
@@ -27,6 +33,9 @@ class PressedAdoptActivity : BaseActivity() {
             finish()
         }
         btn_adopt_pressed_adopt_act.clicks().subscribe{
+
+            customShelterDialog = CustomPressedAdoptDialog(this, name, "tel:$num", cancleBtnListener, confirmBtnListener, "취소", "확인")
+
             customShelterDialog.show()
         }
     }
@@ -37,9 +46,8 @@ class PressedAdoptActivity : BaseActivity() {
 
     private var confirmBtnListener = View.OnClickListener {
         // 전화 번호
-        var mNum = "01035680465"
-        val tel = "tel:$mNum"
-        startActivity(Intent("android.intent.action.DIAL", Uri.parse(tel)))
+
+        startActivity(Intent("android.intent.action.DIAL", Uri.parse("tel:$num")))
 
         customShelterDialog.dismiss()
     }

@@ -55,9 +55,14 @@ class HomeActivity : AppCompatActivity() {
         setBinding()
         textSizeChange(text_navi_home)
 
-        if(SharedPreferenceController.getFirstPopUpFlag(this@HomeActivity) == 0){
+//        if (ApplicationData.firstLoginFlag == false) {
+//            startActivity<CustomHomeDailogActivty>()
+//            ApplicationData.firstLoginFlag = true
+//        }
+
+        if(SharedPreferenceController.getFirstPopUpFlag(this@HomeActivity) == 1){
             startActivity<CustomHomeDailogActivty>()
-            SharedPreferenceController.setFirstPopUpFlag(this@HomeActivity, 1)
+            SharedPreferenceController.setFirstPopUpFlag(this@HomeActivity, 0)
         }
 
 

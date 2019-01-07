@@ -70,11 +70,12 @@ class LoginModel {
 
             override fun onResponse(call: Call<GetLoginResponse>, response: Response<GetLoginResponse>) {
                 if(response.isSuccessful){
-                    Observable.just(response.body()!!.data)
-                            .subscribe { it ->  LoginObject.loginActivityPresenter.responseLogin(it)}
-
-                }else{
-
+                    if(response.body()!!.data != null) {
+                        Observable.just(response.body()!!.data)
+                                .subscribe { it ->  LoginObject.loginActivityPresenter.responseLogin(it)}
+                    }else{
+                        LoginObject.loginActivityPresenter.toast()
+                    }
                 }
             }
 

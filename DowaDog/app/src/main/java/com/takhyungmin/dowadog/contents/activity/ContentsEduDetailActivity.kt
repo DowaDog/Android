@@ -47,6 +47,8 @@ class ContentsEduDetailActivity : AppCompatActivity() {
         contentsEduDetailActivityPresenter = ContentsEduDetailActivityPresenter()
         contentsEduDetailActivityPresenter.view = this
         id = intent.getIntExtra("id", 20)
+        Log.v("image", intent.getStringExtra("image"))
+        Glide.with(this).load(intent.getStringExtra("image")).into(img_contents_edu_detail)
         contentsEduDetailActivityPresenter.requestData(id)
         //contentsEduDetailActivityPresenter.initView()
         initPresenter()

@@ -32,8 +32,6 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
 
     lateinit var communityDetailRecyclerViewAdapter: CommunityDetailRecyclerViewAdapter
 
-    lateinit var communityPostDetailDataList : GetCommunityPostDetailData
-    lateinit var communityCommentData : GetCommunityCommentResponse
     lateinit var communityCommentWriteData : PostCommunityCommentWriteResponse
 
 
@@ -66,7 +64,6 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
         communityId = intent.getIntExtra("communityId", 9999)
 
         initPresenter()
-        communityDetailActivityPresenter.initView()
         communityDetailActivityPresenter.requestData(communityId)
         communityDetailActivityPresenter.requestCommnetData(communityId)
         setEnterListener()
@@ -127,7 +124,7 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
             }
 
             override fun onPageSelected(position: Int) {
-                // pageIndicatorView.selection = position
+                pageIndicatorView.selection = position
             }
         })
     }
@@ -199,16 +196,15 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
 
     fun responseData(data : GetCommunityPostDetailResponse){
         data?.let {
-            communityPostDetailDataList = data.data
-            Log.v("TAGGGG222", communityPostDetailDataList.toString())
-            viewBind(it.data)
+            if(it.data != null){
+                viewBind(it.data)
+            }
         }
     }
 
 
     fun deleteResponseData(data: DeleteCommunityDetailPostResponse){
         data?.let {
-            Log.v("TAGG", data.toString())
             if(data.message=="커뮤니티 정보 삭제 성공"){
                 toast("커뮤니티 정보 삭제 성공")
             }else {
@@ -219,11 +215,10 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
 
     fun responseCommentData(data : GetCommunityCommentResponse){
         data?.let {
-            communityCommentData = data
-            Log.v("TAGGGGGG", communityCommentData.toString())
-
             // 어뎁터 만들기
-            setRVAdapter(data.data)
+            if(data.data != null){
+                setRVAdapter(data.data)
+            }
         }
     }
 
@@ -260,14 +255,14 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
             tv_writter2_community_detail_act.text = data.userId
         }
 
-        if(data.communityImgList == null || data.communityImgList.size <= 0){
-            rl_vp_community_detail_act.visibility = View.GONE
+        if(data.communityImgList != null || data.communityImgList.size > 0){
             val viewPagerItemData: ArrayList<String> = ArrayList()
             for (i in 0 until data.communityImgList.size){
                 viewPagerItemData.add(data.communityImgList[i].filePath)
             }
             setViewPagerAdapter(viewPagerItemData)
-
+        }else {
+            rl_vp_community_detail_act.visibility = View.GONE
         }
 
         data.title?.let{
