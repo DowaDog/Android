@@ -25,6 +25,7 @@ import com.takhyungmin.dowadog.presenter.activity.CommunityDetailActivityPresent
 import com.takhyungmin.dowadog.utils.ApplicationData
 import com.takhyungmin.dowadog.utils.CustomCommunityDetailDialog
 import com.takhyungmin.dowadog.utils.CustomDialog
+import com.takhyungmin.dowadog.utils.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_community_detail.*
 import kotlinx.android.synthetic.main.custom_dialog_community_detail.*
 import org.jetbrains.anko.toast
@@ -65,6 +66,8 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
 
 
         communityId = intent.getIntExtra("communityId", 9999)
+
+
 
         initPresenter()
         communityDetailActivityPresenter.requestData(communityId)
@@ -272,6 +275,9 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
     }
 
     fun viewBind(data :GetCommunityPostDetailData){
+        if(data.userId != SharedPreferenceController.getId(this))
+            btn_three_dot_community_detail.visibility = View.GONE
+
         data.userProfileImg?.let{
             Glide.with(this@CommunityDetailActivity).load(data.userProfileImg).into(iv_writter2_community_detail_act)
         }

@@ -65,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            android:src="#232323"
+            android:src="@drawable/community_non_image"
             />
         <LinearLayout
             android:id="@+id/img_community_item_main2"
