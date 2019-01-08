@@ -1,10 +1,10 @@
 package com.takhyungmin.dowadog.dogdetail
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import com.bumptech.glide.Glide
@@ -14,11 +14,9 @@ import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.dogdetail.model.DogDetailObject
 import com.takhyungmin.dowadog.dogdetail.model.get.GetDogDetailData
 import com.takhyungmin.dowadog.dogdetail.model.get.GetDogDetailResponse
+import com.takhyungmin.dowadog.login.LoginActivity
 import com.takhyungmin.dowadog.presenter.activity.DogDetailActivityPresenter
-import com.takhyungmin.dowadog.utils.CustomCompleteDogDialog
-import com.takhyungmin.dowadog.utils.CustomDialog
-import com.takhyungmin.dowadog.utils.CustomShareDogDialog
-import com.takhyungmin.dowadog.utils.CustomThanksDogDialog
+import com.takhyungmin.dowadog.utils.*
 import kotlinx.android.synthetic.main.activity_dog_detail.*
 import kotlinx.android.synthetic.main.custom_dialog_share.*
 import org.jetbrains.anko.startActivity
@@ -32,11 +30,16 @@ class DogDetailActivity : AppCompatActivity(), View.OnClickListener {
     private var isKakaoShare = 0
     private var islinkShare = 0
 
-    lateinit var getDogDetailResponse : GetDogDetailResponse
 
     lateinit var dogDetailActivityPresenter : DogDetailActivityPresenter
 
     var animalId : Int = 0
+
+    var educationState = true
+
+    var careTel = ""
+
+    var careName = ""
 
     val completeDogDialog: CustomCompleteDogDialog by lazy {
         CustomCompleteDogDialog(this@DogDetailActivity, "잠깐! 아직 입양 할 수 없어요!", completeConfirmListener, "확인")
@@ -79,7 +82,6 @@ class DogDetailActivity : AppCompatActivity(), View.OnClickListener {
                     isLike = 0
                     // 좋아요 취소 통신
                 }
-                completeDogDialog.show()
             }
 
 
@@ -106,13 +108,34 @@ class DogDetailActivity : AppCompatActivity(), View.OnClickListener {
         btn_heart_dog_detail_act.setOnClickListener(this)
         btn_adopt_dog_detail_act.clicks().subscribe {
 
-            // TODO : 왜 Intent가 안넘아가는지 확인
-            Log.v("TAGGGGGG", getDogDetailResponse.data.careTel.toString())
-            Log.v("TAGGGGGG", getDogDetailResponse.data.careName.toString())
+            if(ApplicationData.auth == "")
+                logoutCustomDialog.show()
+            else{
+                // TODO : 왜 Intent가 안넘아가는지 확인
 
-            startActivity<PressedAdoptActivity>("num" to getDogDetailResponse.data.careTel, "spotName" to getDogDetailResponse.data.careName)
-            // startActivity(Intent(this, PressedAdoptActivity::class.java))
+                if(educationState){
+                    startActivity<PressedAdoptActivity>("num" to careTel, "spotName" to careName)
+                }else{
+                    completeDogDialog.show()
+                }
+
+                // startActivity(Intent(this, PressedAdoptActivity::class.java))
+            }
         }
+    }
+
+    val logoutCustomDialog : CustomDialog  by lazy {
+        CustomDialog(this, "로그인이 필요한 서비스입니다.\n로그인 하시겠습니까?", responseRight, responseLeft,"취소", "확인")
+    }
+
+    private val responseRight = View.OnClickListener {
+
+        logoutCustomDialog!!.dismiss()
+    }
+    private val responseLeft = View.OnClickListener {
+        startActivity(Intent(this, LoginActivity::class.java))
+        logoutCustomDialog!!.dismiss()
+        //##로그아웃
     }
 
     // 상태바 투명하게 하는 함수
@@ -209,9 +232,14 @@ class DogDetailActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun responseData(data : GetDogDetailResponse){
-        getDogDetailResponse = data
-        initView(getDogDetailResponse.data)
+        data?.data?.also {
+            initView(it)
 
+        }?.let {
+            educationState = it.educationState
+            careName = it.careName
+            careTel = it.careTel
+        }
     }
 
     fun initView(data: GetDogDetailData){

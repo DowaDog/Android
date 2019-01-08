@@ -65,18 +65,18 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v) {
-        // 카메라 아이콘
+            // 카메라 아이콘
             btn_camera_community_write_act -> {
                 // 갤러리 접근 권한 확인 기능
                 requestReadExternalStoragePermission()
             }
 
-        // 취소 버튼
+            // 취소 버튼
             btn_cancle_community_write_act -> {
                 finish()
             }
 
-        // 확인하기 버튼
+            // 확인하기 버튼
             btn_confirm_community_write_act -> {
                 // 통신 코드
                 selectData()
@@ -84,7 +84,7 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
 
             }
 
-        // 사진 첫번째 박스
+            // 사진 첫번째 박스
             iv_first_picture_box_community_write_act -> {
 
                 // 이미지뷰에 담겨 있는 이미지 리소스 확인
@@ -278,7 +278,10 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
                         for (i in 0 until clipData.itemCount) {
 
                             // uri 가져오기
-                            val uri = clipData.getItemAt(i).uri
+                            val preUri = clipData.getItemAt(i).uri.toString()
+                            val uri = Uri.parse(preUri.split('%')[0])
+                            Log.v("ygyg", uri.toString())
+
 
                             // 인덱스 분기
                             when (i) {
@@ -344,6 +347,7 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
                         toast("4장 이하만 선택가능합니다.")
                     } else {
                         val uri = data?.data
+                        Log.v("ygyg", uri.toString())
 
                         // (선택 당시, 즉, 카메라 아이콘을 눌렀을 때) 이미 선택되어있는 Img가 하나도 없었을 경우
                         // 위 코드와 동일
@@ -508,48 +512,12 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos)
             // fixOrientation(bitmap, uri.toString())
             // val photo = File(uri.toString())
-
             val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
+            Log.v("TAGGGG", photo.name)
             image.add(MultipartBody.Part.createFormData("communityImgFiles", "photo", photoBody))
         }
 
         return image
 
     }
-
-    fun fixOrientation(bitmap : Bitmap, url: String): Bitmap {
-        var ei : ExifInterface? = null
-        Log.v("TAGGGGGGG", url)
-        try {
-            ei = ExifInterface(url)
-        } catch (e: IOException) {
-            Log.v("TAGGGGGGG", e.toString())
-            e.printStackTrace();
-        }
-        var orientation = ei!!.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
-
-        when(orientation) {
-            ExifInterface.ORIENTATION_ROTATE_90 -> {
-                var selectedBitmap = rotateImage(bitmap, 90)
-                return selectedBitmap
-            }
-            ExifInterface.ORIENTATION_ROTATE_180 -> {
-                var selectedBitmap = rotateImage(bitmap, 180)
-                return selectedBitmap
-            }
-            ExifInterface.ORIENTATION_ROTATE_270 -> {
-                var selectedBitmap = rotateImage(bitmap, 270)
-                return selectedBitmap
-            }
-            ExifInterface.ORIENTATION_NORMAL -> {
-                var selectedBitmap = bitmap
-                return selectedBitmap
-            }
-            else -> {
-                var selectedBitmap = bitmap
-                return selectedBitmap
-            }
-        }
-    }
-
 }

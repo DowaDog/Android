@@ -1,5 +1,6 @@
 package com.takhyungmin.dowadog.contents.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.widget.NestedScrollView
 import android.support.v7.app.AppCompatActivity
@@ -9,11 +10,16 @@ import android.view.View
 import android.view.WindowManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.contents.adapter.ContentsSenseDetailRvAdapter
 import com.takhyungmin.dowadog.contents.model.ContentsSenseDetailObject
 import com.takhyungmin.dowadog.contents.model.get.ContentSenseDetailResponse
+import com.takhyungmin.dowadog.login.LoginActivity
 import com.takhyungmin.dowadog.presenter.activity.ContentsSenseDetailActivityPresenter
+import com.takhyungmin.dowadog.utils.ApplicationData
+import com.takhyungmin.dowadog.utils.CustomDialog
+import kotlinx.android.synthetic.main.activity_contents_edu_detail.*
 import kotlinx.android.synthetic.main.activity_contents_sense_detail.*
 
 class ContentsSenseDetailActivity : AppCompatActivity() {
@@ -34,6 +40,7 @@ class ContentsSenseDetailActivity : AppCompatActivity() {
         tv_contents_sense_detail_title.text = intent.getStringExtra("title")
         rv_contents_sense_detail_content.setFocusable(false)
         layout_sense_detail.requestFocus()
+        setOnBinding()
         init()
     }
 
@@ -130,4 +137,54 @@ class ContentsSenseDetailActivity : AppCompatActivity() {
         Log.v("TAGG", "SenseDetail 엑티비티 이닛프레젠터")
 
     }
+
+    fun setOnBinding(){
+        btn_contents_sense_detail_back1.clicks().subscribe {
+            finish()
+        }
+
+        btn_contents_sense_detail_back2.clicks().subscribe {
+            finish()
+        }
+
+        btn_contents_sense_detail_scrap1.clicks().subscribe {
+            if(ApplicationData.auth == "")
+                logoutCustomDialog.show()
+            else
+                contentsSenseDetailActivityPresenter.requestScrap(id)
+        }
+
+        btn_contents_sense_detail_scrap2.clicks().subscribe {
+            if(ApplicationData.auth == "")
+                logoutCustomDialog.show()
+            else
+                contentsSenseDetailActivityPresenter.requestScrap(id)
+        }
+    }
+
+    val logoutCustomDialog : CustomDialog  by lazy {
+        CustomDialog(this, "로그인이 필요한 서비스입니다.\n로그인 하시겠습니까?", responseRight, responseLeft,"취소", "확인")
+    }
+
+    private val responseRight = View.OnClickListener {
+
+        logoutCustomDialog!!.dismiss()
+    }
+    private val responseLeft = View.OnClickListener {
+        startActivity(Intent(this, LoginActivity::class.java))
+        logoutCustomDialog!!.dismiss()
+        //##로그아웃
+    }
+
+    fun responseScrap(clear : Boolean){
+        if(clear){
+            btn_contents_sense_detail_scrap1_1.setImageResource(R.drawable.contents_scrap_btn)
+            btn_contents_edu_detail_scrap2_1.setImageResource(R.drawable.contents_scrap_btn)
+        }else{
+            btn_contents_edu_detail_scrap1_1.setImageResource(R.drawable.contents_unscrap_btn)
+            btn_contents_edu_detail_scrap2_1.setImageResource(R.drawable.contents_unscrap_btn)
+        }
+    }
+
+
 }

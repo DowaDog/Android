@@ -17,5 +17,6 @@ data class GetDogDetailData(
         val specialMark: String,
         val thumbnailImg: String,
         val type: String,
-        val weight: String
+        val weight: String,
+        var educationState : Boolean
 )

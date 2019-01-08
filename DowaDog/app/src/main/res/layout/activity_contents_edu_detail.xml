@@ -178,6 +178,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:scaleType="fitXY"
                 android:tint="#707070"
+
                 android:src="@drawable/contents_unscrap_btn"/>
 
         </RelativeLayout>

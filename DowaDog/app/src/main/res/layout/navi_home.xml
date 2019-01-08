@@ -112,6 +112,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="30dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/nanum_round"
                 android:includeFontPadding="false"
                 android:text="홈"
                 android:textSize="18sp" />
@@ -273,7 +274,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/nanum_light"
             android:paddingTop="6dp"
-            android:text="문의번호 : 010-3643-9714"
+            android:text="기다릴개 페이스북 바로가기"
             android:textSize="14sp" />
 
         <View

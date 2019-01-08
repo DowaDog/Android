@@ -7,6 +7,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.jakewharton.rxbinding2.view.clicks
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.home.activity.HomeActivity
@@ -84,6 +85,15 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 //        if(checkRefresh())
 //            loginActivityPresenter.requestRefresh(SharedPreferenceController.getRefreshToken(this))
 
+        if(intent.getIntExtra("splash", 0) == 1)
+            btn_login_back.visibility = View.GONE
+        else
+            btn_login_act.visibility = View.VISIBLE
+
+
+        btn_login_back.clicks().subscribe {
+            finish()
+        }
 
         Log.v("access", SharedPreferenceController.getAccessToken(this))
     }
