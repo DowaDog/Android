@@ -42,9 +42,9 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
     private val REQUEST_PICK_PHOTO = 1
     private var presentImabeBoxNum = -1
     val My_READ_STORAGE_REQUEST_CODE = 7777
-    lateinit var image : ArrayList<MultipartBody.Part>
+    lateinit var image: ArrayList<MultipartBody.Part>
 
-    private var customDialog : CustomDialog? = null
+    private var customDialog: CustomDialog? = null
 
     var firstPicAlbumFlag = 0
     var secondPicAlbumFlag = 0
@@ -53,7 +53,7 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
 
     private lateinit var communityWriteActivityPresenter: CommunityWriteActivityPreseneter
 
-    lateinit var communityWriteDataList : PostCommunityPostWriteResponse
+    lateinit var communityWriteDataList: PostCommunityPostWriteResponse
 
 
     val imagesEncodedList: ArrayList<Uri> by lazy {
@@ -63,18 +63,18 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v) {
-            // 카메라 아이콘
+        // 카메라 아이콘
             btn_camera_community_write_act -> {
                 // 갤러리 접근 권한 확인 기능
                 requestReadExternalStoragePermission()
             }
 
-            // 취소 버튼
+        // 취소 버튼
             btn_cancle_community_write_act -> {
                 finish()
             }
 
-            // 확인하기 버튼
+        // 확인하기 버튼
             btn_confirm_community_write_act -> {
                 // 통신 코드
                 selectData()
@@ -82,7 +82,7 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
 
             }
 
-            // 사진 첫번째 박스
+        // 사진 첫번째 박스
             iv_first_picture_box_community_write_act -> {
 
                 // 이미지뷰에 담겨 있는 이미지 리소스 확인
@@ -162,7 +162,6 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
         initPresenter()
 
         // 데이터 선별
-
 
 
         // 이미지 박스를 정사각형 네 개로 계산
@@ -257,6 +256,7 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
     // 저장소에서 Acitivity로 복귀한 후 분기
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        Log.v("ygyg", data!!.toString())
         if (requestCode == REQUEST_PICK_PHOTO) {
             if (resultCode == RESULT_OK) {
                 if (data == null) {
@@ -265,13 +265,14 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
 
                 ll_picture_box_coummunity_write_act.visibility = View.VISIBLE
                 val clipData = data!!.clipData
+                //Log.v("ygyg", clipData.toString())
 
                 // 다중 선택 로직
                 if (clipData != null) {
                     // 선택한 이미지 + 선택되어있던 이미지의 합이 4 이상이면 모든 로직 취소 후 Toast 발생
-                    if(clipData.itemCount + presentImabeBoxNum > 3){
+                    if (clipData.itemCount + presentImabeBoxNum > 3) {
                         toast("4장 이하만 선택가능합니다.")
-                    }else {
+                    } else {
                         for (i in 0 until clipData.itemCount) {
 
                             // uri 가져오기
@@ -337,9 +338,9 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
                     }
                 } else {
                     // 하나만 선택했을 때 Flow
-                    if(presentImabeBoxNum >= 3){
+                    if (presentImabeBoxNum >= 3) {
                         toast("4장 이하만 선택가능합니다.")
-                    }else{
+                    } else {
                         val uri = data?.data
 
                         // (선택 당시, 즉, 카메라 아이콘을 눌렀을 때) 이미 선택되어있는 Img가 하나도 없었을 경우
@@ -373,27 +374,27 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
     }
 
     // 이미지가 선택되어있는 상태에서 Click했을 경우 삭제 메소드
-    fun deleteImgBox(position: Int){
-        when(position){
+    fun deleteImgBox(position: Int) {
+        when (position) {
             0 -> {
                 // 첫번째 이미지 박스의 이미지가 있을 경우
-                if(imagesEncodedList.size > 0){
+                if (imagesEncodedList.size > 0) {
                     // 이미지 Uri 통신을 위한 Uri 삭제
                     imagesEncodedList.removeAt(0)
                     // 삭제된 이미지를 제외한 이미지가 0개일 경우
-                    if(imagesEncodedList.size == 0){
+                    if (imagesEncodedList.size == 0) {
                         iv_first_picture_box_community_write_act.setImageResource(R.drawable.img_plus_1227)
                     } // 삭제된 이미지를 제외한 이미지가 1개일 경우
-                    else if(imagesEncodedList.size == 1){
+                    else if (imagesEncodedList.size == 1) {
                         iv_second_picture_box_community_write_act.setImageResource(R.drawable.img_plus_1227)
                         Glide.with(applicationContext).load(imagesEncodedList[0]).into(iv_first_picture_box_community_write_act)
                     } // 삭제된 이미지를 제외한 이미지가 2개일 경우
-                    else if(imagesEncodedList.size == 2){
+                    else if (imagesEncodedList.size == 2) {
                         iv_third_picture_box_community_write_act.setImageResource(R.drawable.img_plus_1227)
                         Glide.with(applicationContext).load(imagesEncodedList[0]).into(iv_first_picture_box_community_write_act)
                         Glide.with(applicationContext).load(imagesEncodedList[1]).into(iv_second_picture_box_community_write_act)
                     } // 삭제된 이미지를 제외한 이미지가 3개일 경우
-                    else if(imagesEncodedList.size == 3){
+                    else if (imagesEncodedList.size == 3) {
                         iv_fourth_picture_box_community_write_act.setImageResource(R.drawable.img_plus_1227)
                         Glide.with(applicationContext).load(imagesEncodedList[0]).into(iv_first_picture_box_community_write_act)
                         Glide.with(applicationContext).load(imagesEncodedList[1]).into(iv_second_picture_box_community_write_act)
@@ -404,14 +405,14 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
             1 -> {
 
                 // 위와 동일
-                if(imagesEncodedList.size > 1) {
+                if (imagesEncodedList.size > 1) {
                     imagesEncodedList.removeAt(1)
-                    if(imagesEncodedList.size == 1){
+                    if (imagesEncodedList.size == 1) {
                         iv_second_picture_box_community_write_act.setImageResource(R.drawable.img_plus_1227)
-                    } else if(imagesEncodedList.size == 2){
+                    } else if (imagesEncodedList.size == 2) {
                         iv_third_picture_box_community_write_act.setImageResource(R.drawable.img_plus_1227)
                         Glide.with(applicationContext).load(imagesEncodedList[1]).into(iv_second_picture_box_community_write_act)
-                    }else if(imagesEncodedList.size == 3){
+                    } else if (imagesEncodedList.size == 3) {
                         iv_fourth_picture_box_community_write_act.setImageResource(R.drawable.img_plus_1227)
                         Glide.with(applicationContext).load(imagesEncodedList[1]).into(iv_second_picture_box_community_write_act)
                         Glide.with(applicationContext).load(imagesEncodedList[2]).into(iv_third_picture_box_community_write_act)
@@ -419,19 +420,19 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
                 }
             }
             2 -> {
-                if(imagesEncodedList.size > 2) {
+                if (imagesEncodedList.size > 2) {
                     imagesEncodedList.removeAt(2)
-                    if(imagesEncodedList.size == 2){
+                    if (imagesEncodedList.size == 2) {
                         iv_third_picture_box_community_write_act.setImageResource(R.drawable.img_plus_1227)
-                    } else if(imagesEncodedList.size == 3){
+                    } else if (imagesEncodedList.size == 3) {
                         iv_fourth_picture_box_community_write_act.setImageResource(R.drawable.img_plus_1227)
                         Glide.with(applicationContext).load(imagesEncodedList[2]).into(iv_third_picture_box_community_write_act)
                     }
                 }
             }
             3 -> {
-                if(imagesEncodedList.size > 3){
-                imagesEncodedList.removeAt(3)
+                if (imagesEncodedList.size > 3) {
+                    imagesEncodedList.removeAt(3)
                     iv_fourth_picture_box_community_write_act.setImageResource(R.drawable.img_plus_1227)
                 }
             }
@@ -452,41 +453,41 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
     private val leftListener = View.OnClickListener { customDialog!!.dismiss() }
 
 
-    private fun initPresenter(){
+    private fun initPresenter() {
         communityWriteActivityPresenter = CommunityWriteActivityPreseneter()
         // 뷰 붙여주는 작엄
         communityWriteActivityPresenter.view = this
-        CommunityWriteObject.communityWriteActivityPreseneter= communityWriteActivityPresenter
+        CommunityWriteObject.communityWriteActivityPreseneter = communityWriteActivityPresenter
     }
 
-    fun responseData(data : PostCommunityPostWriteResponse){
+    fun responseData(data: PostCommunityPostWriteResponse) {
         data?.let {
             communityWriteDataList = data
         }
         finish()
     }
 
-    fun selectData(){
+    fun selectData() {
         // 제목이 없을 때 분기
-        Log.v("잘돼","눌림1")
-        if(et_title_community_write_act.text.toString().isNotEmpty()){
+        Log.v("잘돼", "눌림1")
+        if (et_title_community_write_act.text.toString().isNotEmpty()) {
             // 내용이 없을 때 분기
-            Log.v("잘돼","눌림2")
-            if(et_content_community_write_act.text.toString().isNotEmpty()){
-                Log.v("잘돼","눌3")
+            Log.v("잘돼", "눌림2")
+            if (et_content_community_write_act.text.toString().isNotEmpty()) {
+                Log.v("잘돼", "눌3")
                 communityWriteActivityPresenter.requestData(et_title_community_write_act.text.toString(), et_content_community_write_act.text.toString(), converToImage(imagesEncodedList))
-            }else {
-                Log.v("잘돼","눌림4")
+            } else {
+                Log.v("잘돼", "눌림4")
                 toast("제목을 입력해주세요")
             }
 
-        }else {
-            Log.v("잘돼","눌림5")
+        } else {
+            Log.v("잘돼", "눌림5")
             toast("제목을 입력해주세요")
         }
     }
 
-    fun converToImage(uris : ArrayList<Uri>) : ArrayList<MultipartBody.Part>{
+    fun converToImage(uris: ArrayList<Uri>): ArrayList<MultipartBody.Part> {
 
 
         image = ArrayList()
@@ -503,9 +504,14 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
             val bitmap = BitmapFactory.decodeStream(input, null, options) // InputStream 으로부터 Bitmap 을 만들어 준다.
             val baos = ByteArrayOutputStream()
             bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos)
+//            fixOrientation(bitmap, uri.toString())
             val photo = File(uri.toString())
 
             val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
+
+
+            Log.v("TAGGGG", photo.name)
+
 
             image.add(MultipartBody.Part.createFormData("communityImgFiles", photo.name, photoBody))
         }
@@ -513,5 +519,44 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
         return image
 
     }
+
+//    fun fixOrientation(bitmap : Bitmap, url: String): Bitmap {
+//        var ei : ExifInterface? = null
+//        Log.v("TAGGGGGGG", url)
+//        try {
+//            ei = ExifInterface(url)
+//        } catch (e: IOException) {
+//            Log.v("TAGGGGGGG", e.toString())
+//            e.printStackTrace();
+//        }
+//        var orientation = ei!!.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
+//
+//        when(orientation) {
+//            ExifInterface.ORIENTATION_ROTATE_90 -> {
+//                var selectedBitmap = rotateImage(bitmap, 90)
+//                return selectedBitmap
+//            }
+//            ExifInterface.ORIENTATION_ROTATE_180 -> {
+//                var selectedBitmap = rotateImage(bitmap, 180)
+//                return selectedBitmap
+//            }
+//            ExifInterface.ORIENTATION_ROTATE_270 -> {
+//                var selectedBitmap = rotateImage(bitmap, 270)
+//                return selectedBitmap
+//            }
+//            ExifInterface.ORIENTATION_NORMAL -> {
+//                var selectedBitmap = bitmap
+//                return selectedBitmap
+//            }
+//            else -> {
+//                var selectedBitmap = bitmap
+//                return selectedBitmap
+//            }
+//
+//
+//
+//
+//        }
+//    }
 
 }

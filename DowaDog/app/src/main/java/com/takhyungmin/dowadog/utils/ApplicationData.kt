@@ -13,4 +13,10 @@ object ApplicationData {
     lateinit var applicationContext : Context
 
     var firstLoginFlag = false
+
+    var userName = ""
+
+    var userBirth = ""
+
+    var userPhone = ""
 }

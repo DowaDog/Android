@@ -26,11 +26,11 @@ import com.takhyungmin.dowadog.mypage.model.MypageSettingObject
 import com.takhyungmin.dowadog.mypage.model.get.GETMypageSettingResponse
 import com.takhyungmin.dowadog.mypage.model.put.PUTMypageSettingResponse
 import com.takhyungmin.dowadog.presenter.activity.MypageSettingActivityPresenter
+import com.takhyungmin.dowadog.utils.ApplicationData
 import kotlinx.android.synthetic.main.activity_mypage_setting.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import org.jetbrains.anko.startActivity
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.InputStream
@@ -81,9 +81,9 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
     lateinit var mypagePutdata : PUTMypageSettingResponse
     private var mimage: MultipartBody.Part? = null
 
-    var name : String = "name"
-    var birth : String = "1999-00-00"
-    var phone : String = "010-0000-0000"
+    var name : String = ApplicationData.userName
+    var birth : String = ApplicationData.userBirth
+    var phone : String = ApplicationData.userPhone
     var image : String = "asdlkjds"
 
     var imageURI : String? = null
@@ -277,8 +277,9 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
 
             mypagePutdata = data
             //여기에 받아온 데이터들을 가져와서 보여주는 것을 해야함 (함수로 만들던 여기에 구현하던)
-            Log.v("TAGG", "put data 엑티비티 리스폰스데이터")
-            startActivity<MypageActivity>()
+            //Log.v("yyg", mypagePutdata.message)
+            //startActivity<MypageActivity>()
+            finish()
         }
     }
 
@@ -321,8 +322,8 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
 //        Glide.with(this).load(selectedPictureUri).thumbnail(0.1f).thumbnail(0.1f).into(img_profile_sign_id_set_act)
 
 
-
         mypageSettingActivityPresenter.requestData(name, birth, phone, mimage)
+        //finish()
 
     }
 }
