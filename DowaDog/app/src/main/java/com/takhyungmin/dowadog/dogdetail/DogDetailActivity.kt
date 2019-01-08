@@ -1,10 +1,10 @@
 package com.takhyungmin.dowadog.dogdetail
 
-import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import com.bumptech.glide.Glide
@@ -105,8 +105,13 @@ class DogDetailActivity : AppCompatActivity(), View.OnClickListener {
         btn_share_dog_detail_act.setOnClickListener(this)
         btn_heart_dog_detail_act.setOnClickListener(this)
         btn_adopt_dog_detail_act.clicks().subscribe {
+
+            // TODO : 왜 Intent가 안넘아가는지 확인
+            Log.v("TAGGGGGG", getDogDetailResponse.data.careTel.toString())
+            Log.v("TAGGGGGG", getDogDetailResponse.data.careName.toString())
+
             startActivity<PressedAdoptActivity>("num" to getDogDetailResponse.data.careTel, "spotName" to getDogDetailResponse.data.careName)
-            startActivity(Intent(this, PressedAdoptActivity::class.java))
+            // startActivity(Intent(this, PressedAdoptActivity::class.java))
         }
     }
 
@@ -180,7 +185,6 @@ class DogDetailActivity : AppCompatActivity(), View.OnClickListener {
             islinkShare = 0
             isKakaoShare = 0
 
-            // TODO : 클립보드에 복사하기
 
 
 

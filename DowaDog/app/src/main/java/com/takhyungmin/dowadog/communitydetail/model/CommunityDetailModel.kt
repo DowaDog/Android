@@ -65,7 +65,7 @@ class CommunityDetailModel {
     }
 
     fun deleteCommunityPostDetailData(communityId: Int) {
-        communityDetailNetworkService.deleteCommunityPostResponse(SharedPreferenceController.getAccessToken(ApplicationData.applicationContext),
+        communityDetailNetworkService.deleteCommunityPostResponse(ApplicationData.auth,
                 communityId).enqueue(object : Callback<DeleteCommunityDetailPostResponse> {
             override fun onFailure(call: Call<DeleteCommunityDetailPostResponse>?, t: Throwable?) {
                 Log.e("커뮤니티 디테일 모델 통신 실패", t.toString())
@@ -73,6 +73,7 @@ class CommunityDetailModel {
 
             override fun onResponse(call: Call<DeleteCommunityDetailPostResponse>?, response: Response<DeleteCommunityDetailPostResponse>?) {
                 Log.e("TAGG", response.toString())
+                Log.e("TAGG", response!!.body().toString())
                 response?.takeIf { it.isSuccessful }
                         ?.body()
                         ?.let {

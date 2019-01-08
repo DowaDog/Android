@@ -12,8 +12,8 @@ import kotlinx.android.synthetic.main.activity_pressed_adopt.*
 
 class PressedAdoptActivity : BaseActivity() {
 
-    var name = intent.getStringExtra("spotName")
-    var num = intent.getStringExtra("num")
+    var name = ""
+    var num = ""
 
     lateinit var customShelterDialog : CustomPressedAdoptDialog
 
@@ -24,6 +24,9 @@ class PressedAdoptActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pressed_adopt)
+
+        name = intent.getStringExtra("spotName")
+        num = intent.getStringExtra("num")
 
         init()
     }
