@@ -32,7 +32,7 @@ class MypageActivity : BaseActivity(), View.OnClickListener {
             }
             //마이페이지 설정
             btn_next_setting_mypage_act -> {
-                startActivity<MypageSettingActivity>()
+                startActivityForResult(Intent(this, MypageSettingActivity::class.java), 3333)
             }
             btn_back_mypage_act -> {
                 finish()
@@ -77,6 +77,9 @@ class MypageActivity : BaseActivity(), View.OnClickListener {
 
         btn_mypage_mine.clicks().subscribe {
             startActivity(Intent(this, MyCommunityPostActivity::class.java))
+            //val intent = Intent(this, MyCommunityPostActivity::class.java)
+
+
         }
     }
 
@@ -99,10 +102,13 @@ class MypageActivity : BaseActivity(), View.OnClickListener {
 
         data?.let {
 
+            Log.v("yyg", "ygy22222")
+
             mypageGetData = data.data
             //여기에 받아온 데이터들을 가져와서 보여주는 것을 해야함 (함수로 만들던 여기에 구현하던)
             Log.v("TAGG", mypageGetData.toString())
 
+            Log.v("yyg", mypageGetData.userName)
 
             Glide.with(this@MypageActivity)
                     .load(mypageGetData.profileImg)
@@ -133,7 +139,14 @@ class MypageActivity : BaseActivity(), View.OnClickListener {
         MypageObject.mypageActivityPresenter = mypageActivityPresenter
 
         Log.v("TAGG", "엑티비티 이닛프레젠터")
-
     }
 
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        Log.v("yyg", "code" + requestCode)
+        if(requestCode == 3333){
+            Log.v("yyg", "ygy")
+            mypageActivityPresenter.requestData()
+        }
+    }
 }

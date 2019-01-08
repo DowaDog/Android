@@ -58,21 +58,23 @@
                     <RelativeLayout
                         android:id="@+id/btn_share_dog_detail_act"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toLeftOf="@+id/btn_heart_dog_detail_act"
+                        android:layout_height="match_parent"
                         android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
                         >
 
                         <ImageView
-                            android:layout_margin="4dp"
+                            android:layout_centerVertical="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="16dp"
                             android:src="@drawable/share_btn"/>
 
                     </RelativeLayout>
 
                     <RelativeLayout
                         android:id="@+id/btn_heart_dog_detail_act"
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"

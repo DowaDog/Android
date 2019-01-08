@@ -87,7 +87,12 @@ class HomeActivity : AppCompatActivity() {
 
     fun responseUserInfo(userData : GetUserInfoData){
         tv_navi_name.text = userData.name + "님,"
+
         Glide.with(this).load(userData.thumbnailImg).into(img_navi_profile)
+
+        ApplicationData.userName = userData.name
+        ApplicationData.userBirth = userData.birth
+        ApplicationData.userPhone = userData.phone
     }
 
     fun responseData(data : GetDuplicateResponse){

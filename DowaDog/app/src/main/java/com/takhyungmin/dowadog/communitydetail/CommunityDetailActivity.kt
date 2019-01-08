@@ -158,7 +158,7 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
     private val rightListener = View.OnClickListener {
         // 글 수정 또는 글 삭제뷰로 이동
         if(isModify == 0){
-            communityDetailActivityPresenter.requestDeleteData(41)
+            communityDetailActivityPresenter.requestDeleteData(communityId)
         }else {
 
         }
@@ -208,6 +208,7 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
         data?.let {
             if(data.message=="커뮤니티 정보 삭제 성공"){
                 toast("커뮤니티 정보 삭제 성공")
+                finish()
             }else {
                 toast("커뮤니티 정보 삭제 실패")
             }
