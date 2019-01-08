@@ -53,7 +53,7 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
 
     // 필수항목들을 입력해주세요.
     val SignInfoWrCustomSingleResDialog: CustomSingleResDialog by lazy {
-        CustomSingleResDialog(this@SignInfoWriteActivity, "##워딩##항목들을 입력해주세요.", reponseListener, "확인")
+        CustomSingleResDialog(this@SignInfoWriteActivity, "정보를 올바르게 입력해주세요.", reponseListener, "확인")
     }
     //이메일 형식에 맞지 않을 때???????이거 왜 만든거지?
     val emailCheckDialog: CustomSingleResDialog by lazy {
@@ -271,10 +271,13 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
 
                 val text = et_birth_sign_info_wr_act.text
                 //val birth_form = "/^[0-9]{0,8}\$/"
+                val birth_form = "^\\s*(\\d{4})(-|\\)|\\s)*(\\d{2})(-|\\s)*(\\d{2})\\s*$"
 
-                et_birth = (text.length >= 10)
+                et_birth = text.matches(Regex(birth_form))
+                //et_birth = (text.length >= 10)
 
                 if (et_birth) {
+                    img_sign_info_write_unfit_birth.visibility = View.INVISIBLE
                     if (et_name) {
                         if (et_phone) {
                             if (et_email) {
@@ -287,6 +290,7 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
                         }
                     }
                 } else {
+                    img_sign_info_write_unfit_birth.visibility = View.VISIBLE
                     rl_next_btn_sign_info_wr_act.setBackgroundColor(Color.parseColor("#e2e2e2"))
                     NextBtnFlag = 0
                 }
@@ -318,6 +322,7 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
 
 
                 if (et_phone) {
+                    img_sign_info_write_unfit_phone.visibility = View.INVISIBLE
                     if (et_name) {
                         if (et_birth) {
                             if (et_email) {
@@ -329,6 +334,7 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
                         }
                     }
                 } else {
+                    img_sign_info_write_unfit_phone.visibility = View.VISIBLE
                     rl_next_btn_sign_info_wr_act.setBackgroundColor(Color.parseColor("#e2e2e2"))
                     NextBtnFlag = 0
                 }
