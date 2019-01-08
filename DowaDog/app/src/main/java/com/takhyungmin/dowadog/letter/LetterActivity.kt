@@ -7,6 +7,7 @@ import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.letter.model.LetterObject
 import com.takhyungmin.dowadog.letter.model.get.GETLetterActivityResponse
+import com.takhyungmin.dowadog.letter.model.get.GetReadLetterResponse
 import com.takhyungmin.dowadog.presenter.activity.LetterActivityPresenter
 import kotlinx.android.synthetic.main.activity_letter.*
 
@@ -23,6 +24,7 @@ class LetterActivity : BaseActivity() {
         initPresenter()
         letterActivityPresenter.initView()
         letterActivityPresenter.requestData()
+        letterActivityPresenter.requestReadLetterData()
 
 
         btn_back_letter_act.setOnClickListener{
@@ -58,6 +60,17 @@ class LetterActivity : BaseActivity() {
 
         Log.v("TAGG", "letter 엑티비티 이닛프레젠터")
 
+    }
+
+    fun responseReadLetterData(data: GetReadLetterResponse) {
+
+        Log.v("TAGG","이녀석은 여기로 들어온다")
+        data?.let {
+            it.message?.let {
+                Log.v("TAGG",data.message)
+            }
+
+        }
     }
 
 

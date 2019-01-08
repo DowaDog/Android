@@ -3,9 +3,6 @@ package com.takhyungmin.dowadog.letter.model.get
 import android.util.Log
 import com.takhyungmin.dowadog.letter.model.LetterNetworkService
 import com.takhyungmin.dowadog.letter.model.LetterObject
-import com.takhyungmin.dowadog.mypage.model.MypageNetworkService
-import com.takhyungmin.dowadog.mypage.model.MypageObject
-import com.takhyungmin.dowadog.mypage.model.get.GETMypageResponse
 import com.takhyungmin.dowadog.utils.ApplicationData
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,7 +26,7 @@ class LetterModel {
 
     fun getMypageData() {
 
-        letterNetworkService.getLetterList("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGFla3l1bmcwNDAyIiwiaXNzIjoiZG93YWRvZyIsImV4cCI6MTU3ODIyNjg0MX0.abzE4hLsRbVe5Xj-PigEC1SlUNwbcaYZfNRu0V4nsU0")
+        letterNetworkService.getLetterList(ApplicationData.auth)
                 .enqueue(object : Callback<GETLetterActivityResponse> {
 
                     override fun onFailure(call: Call<GETLetterActivityResponse>?, t: Throwable?) {
@@ -50,6 +47,23 @@ class LetterModel {
                                 }
                     }
                 })
+    }
+
+    fun getReadLetterData() {
+
+        letterNetworkService.getReadLetterList(ApplicationData.auth).enqueue(object: Callback<GetReadLetterResponse>{
+            override fun onFailure(call: Call<GetReadLetterResponse>?, t: Throwable?) {
+                Log.e("편지 통신 실패", t.toString())
+            }
+
+            override fun onResponse(call: Call<GetReadLetterResponse>?, response: Response<GetReadLetterResponse>?) {
+                response?.takeIf { it.isSuccessful }
+                        ?.body()
+                        ?.let {
+                            LetterObject.letterActivityPresenter.reponseReadLetterData(it)
+                        }
+            }
+        })
     }
 
 

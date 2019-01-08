@@ -16,8 +16,8 @@ class SignInfoWriteActivityPresenter : BasePresenter<SignInfoWriteActivity>() {
     }
 
     //모델에게 일을 시킴
-    fun requestData(){
-        signInfoEmailModel.getSignInfoWriteData()
+    fun requestData(email: String){
+        signInfoEmailModel.getSignInfoWriteData(email)
     }
 
     //view에게 데이터 전달

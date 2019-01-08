@@ -103,7 +103,7 @@ class SignInfoWriteActivity : BaseActivity(), View.OnClickListener {
                     //통신
                     initPresenter()
                     signInfoWriteActivityPresenter.initView()
-                    signInfoWriteActivityPresenter.requestData()
+                    signInfoWriteActivityPresenter.requestData(et_email_sign_info_wr_act.text.toString())
 
 
                 } else {
