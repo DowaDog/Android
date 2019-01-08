@@ -23,7 +23,7 @@ class DogDetailModel {
 
     fun getDogDetailData(animalId: Int) {
 
-        dogDetailNetworkService.GetDogDetailResponse(animalId).enqueue(object : Callback<GetDogDetailResponse> {
+        dogDetailNetworkService.GetDogDetailResponse(ApplicationData.auth, animalId).enqueue(object : Callback<GetDogDetailResponse> {
             override fun onFailure(call: Call<GetDogDetailResponse>?, t: Throwable?) {
                 Log.e("getDogDetailData 통신 실패", t.toString())
             }

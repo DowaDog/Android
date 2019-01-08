@@ -65,7 +65,7 @@ class AdoptUrgentAnimalActivity : AppCompatActivity() {
                         //communityFragmentPresenter.nextPage(currentPage, itemCount)
                         Log.v("scroll", "more")
                         adoptUrgentAnimalActivityPresenter.requestUrgentList(currentPage, pagingCount)
-                    }, 2000)
+                    }, 800)
                 }
             }
         }

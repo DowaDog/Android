@@ -3,7 +3,6 @@ package com.takhyungmin.dowadog.communitywrite.model
 import android.util.Log
 import com.takhyungmin.dowadog.communitywrite.model.post.PostCommunityPostWriteResponse
 import com.takhyungmin.dowadog.utils.ApplicationData
-import com.takhyungmin.dowadog.utils.SharedPreferenceController
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -57,7 +56,7 @@ class CommunityWriteModel {
             var contents = RequestBody.create(MediaType.parse("text/plain"), input_contents)
 
             Log.v("잘돼", "눌림1003")
-            communityWriteNetworkService.postSignUpResponse(SharedPreferenceController.getAccessToken(ApplicationData.applicationContext)
+            communityWriteNetworkService.postSignUpResponse(ApplicationData.auth
                     , title, contents, communityImgFiles).enqueue(object : Callback<PostCommunityPostWriteResponse> {
                 override fun onFailure(call: Call<PostCommunityPostWriteResponse>?, t: Throwable?) {
                     Log.e("커뮤니티 글쓰기 실패", t.toString())

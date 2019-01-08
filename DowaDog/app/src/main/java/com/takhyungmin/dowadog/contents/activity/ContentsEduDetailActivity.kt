@@ -1,5 +1,6 @@
 package com.takhyungmin.dowadog.contents.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.widget.NestedScrollView
 import android.support.v7.app.AppCompatActivity
@@ -15,7 +16,10 @@ import com.takhyungmin.dowadog.contents.adapter.ContentsEduDetailItem
 import com.takhyungmin.dowadog.contents.adapter.ContentsEduDetailRvAdapter
 import com.takhyungmin.dowadog.contents.model.ContentEduDetailObject
 import com.takhyungmin.dowadog.contents.model.get.GETContentsEduDetailResponse
+import com.takhyungmin.dowadog.login.LoginActivity
 import com.takhyungmin.dowadog.presenter.activity.ContentsEduDetailActivityPresenter
+import com.takhyungmin.dowadog.utils.ApplicationData
+import com.takhyungmin.dowadog.utils.CustomDialog
 import com.takhyungmin.dowadog.utils.CustomPartlyCompleteDogDialog
 import kotlinx.android.synthetic.main.activity_contents_edu_detail.*
 
@@ -123,15 +127,25 @@ class ContentsEduDetailActivity : AppCompatActivity() {
         }
 
         btn_contents_edu_detail_scrap1.clicks().subscribe {
-            contentsEduDetailActivityPresenter.requestScrap(id)
+            if(ApplicationData.auth == "")
+                logoutCustomDialog.show()
+            else{
+                contentsEduDetailActivityPresenter.requestScrap(id)
+            }
         }
 
         btn_contents_edu_detail_scrap2.clicks().subscribe {
-            contentsEduDetailActivityPresenter.requestScrap(id)
+            if(ApplicationData.auth == ""){
+                logoutCustomDialog.show()
+            }else
+                contentsEduDetailActivityPresenter.requestScrap(id)
         }
 
         btn_contents_edu_detail_complete.clicks().subscribe {
-            contentsEduDetailActivityPresenter.requestComplete(id)
+            if(ApplicationData.auth == "")
+                logoutCustomDialog.show()
+            else
+                contentsEduDetailActivityPresenter.requestComplete(id)
         }
     }
 
@@ -179,6 +193,21 @@ class ContentsEduDetailActivity : AppCompatActivity() {
             btn_contents_edu_detail_scrap2_1.setImageResource(R.drawable.contents_unscrap_btn)
         }
     }
+
+    val logoutCustomDialog : CustomDialog  by lazy {
+        CustomDialog(this, "로그인이 필요한 서비스입니다.\n로그인 하시겠습니까?", responseRight, responseLeft,"취소", "확인")
+    }
+
+    private val responseRight = View.OnClickListener {
+
+        logoutCustomDialog!!.dismiss()
+    }
+    private val responseLeft = View.OnClickListener {
+        startActivity(Intent(this, LoginActivity::class.java))
+        logoutCustomDialog!!.dismiss()
+        //##로그아웃
+    }
+
 
     fun responseComplete(clear : Boolean){
         if(clear){

@@ -222,7 +222,7 @@ class SearchResultActivity : BaseActivity(), View.OnClickListener {
                         //communityFragmentPresenter.nextPage(currentPage, itemCount)
                         Log.v("scroll", "more")
                         searchResultActivityPresenter.responseData(type, region, remainDate, currentPage, 10)
-                    }, 2000)
+                    }, 800)
                 }
             }
 

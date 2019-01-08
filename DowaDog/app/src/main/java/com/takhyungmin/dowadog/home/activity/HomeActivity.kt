@@ -2,6 +2,7 @@ package com.takhyungmin.dowadog.home.activity
 
 import android.content.Intent
 import android.graphics.Typeface
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.Fragment
@@ -31,6 +32,7 @@ import com.takhyungmin.dowadog.mypage.MypageActivity
 import com.takhyungmin.dowadog.presenter.activity.HomeActivityPresenter
 import com.takhyungmin.dowadog.search.SearchActivity
 import com.takhyungmin.dowadog.utils.ApplicationData
+import com.takhyungmin.dowadog.utils.CustomDialog
 import com.takhyungmin.dowadog.utils.CustomTypeSpan
 import com.takhyungmin.dowadog.utils.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_home.*
@@ -42,6 +44,10 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var homeActivityPresenter : HomeActivityPresenter
     var clickedText : TextView? = null
+
+    val logoutCustomDialog : CustomDialog  by lazy {
+        CustomDialog(this@HomeActivity, "로그인이 필요한 서비스입니다.\n로그인 하시겠습니까?", responseRight, responseLeft,"취소", "확인")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
@@ -93,6 +99,7 @@ class HomeActivity : AppCompatActivity() {
         ApplicationData.userName = userData.name
         ApplicationData.userBirth = userData.birth
         ApplicationData.userPhone = userData.phone
+        ApplicationData.userImage = userData.thumbnailImg
     }
 
     fun responseData(data : GetDuplicateResponse){
@@ -208,27 +215,31 @@ class HomeActivity : AppCompatActivity() {
         }
 
         btn_navi_mypage.clicks().subscribe {
-            if (drawer_home.isDrawerOpen(Gravity.START)){
-                Handler().postDelayed(Runnable {
-                    //communityFragmentPresenter.nextPage(currentPage, itemCount)
-                    drawer_home.closeDrawer(Gravity.START)
-                }, 400)
+            if(ApplicationData.auth == ""){
+                logoutCustomDialog.show()
+            }else{
+                if (drawer_home.isDrawerOpen(Gravity.START)){
+                    Handler().postDelayed(Runnable {
+                        //communityFragmentPresenter.nextPage(currentPage, itemCount)
+                        drawer_home.closeDrawer(Gravity.START)
+                    }, 400)
+                }
+                startActivity(Intent(this, MypageActivity::class.java))
             }
-
-            startActivity(Intent(this, MypageActivity::class.java))
-
-
         }
 
         btn_home_mypage.clicks().subscribe {
-            if (drawer_home.isDrawerOpen(Gravity.START)){
-                Handler().postDelayed(Runnable {
-                    //communityFragmentPresenter.nextPage(currentPage, itemCount)
-                    drawer_home.closeDrawer(Gravity.START)
-                }, 400)
+            if(ApplicationData.auth == ""){
+                logoutCustomDialog.show()
+            }else{
+                if (drawer_home.isDrawerOpen(Gravity.START)){
+                    Handler().postDelayed(Runnable {
+                        //communityFragmentPresenter.nextPage(currentPage, itemCount)
+                        drawer_home.closeDrawer(Gravity.START)
+                    }, 400)
+                }
+                startActivity(Intent(this, MypageActivity::class.java))
             }
-
-            startActivity(Intent(this, MypageActivity::class.java))
         }
 
         btn_navi_introduce.clicks().subscribe {
@@ -254,16 +265,41 @@ class HomeActivity : AppCompatActivity() {
         }
 
         btn_navi_adopt_info.clicks().subscribe{
+
+            if (drawer_home.isDrawerOpen(Gravity.START)){
+                Handler().postDelayed(Runnable {
+                    //communityFragmentPresenter.nextPage(currentPage, itemCount)
+                    drawer_home.closeDrawer(Gravity.START)
+                }, 400)
+            }
+
             startActivity<DonationActivity>()
         }
 
+        btn_navi_contact.clicks().subscribe {
+            val url = "https://www.facebook.com/waitforudog/"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(intent)
+        }
 
+        btn_navi_login.clicks().subscribe {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
+    }
 
+    private val responseRight = View.OnClickListener {
+
+        logoutCustomDialog!!.dismiss()
+    }
+    private val responseLeft = View.OnClickListener {
+        startActivity(Intent(this, LoginActivity::class.java))
+        logoutCustomDialog!!.dismiss()
+        //##로그아웃
     }
 
     fun textSizeChange(textView : TextView){
         val font1 = Typeface.createFromAsset(assets, "nanum_square_extra_bold.ttf")
-        val font2 = Typeface.createFromAsset(assets, "nanum_square_light.ttf")
+        val font2 = Typeface.createFromAsset(assets, "nanum_square_regular.ttf")
 
         if(clickedText != null){
             val ssb2 = SpannableStringBuilder(clickedText!!.text.toString())

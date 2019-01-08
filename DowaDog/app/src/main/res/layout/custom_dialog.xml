@@ -23,8 +23,11 @@
                 android:layout_height="wrap_content"
                 android:text="사진을 삭제하시겠습니까"
                 android:textSize="17sp"
+                android:includeFontPadding="false"
+                android:lineSpacingExtra="2sp"
                 android:fontFamily="@font/nanum_bold"
                 android:textColor="#434343"
+                android:gravity="center"
                 android:layout_centerInParent="true"
                 />
 

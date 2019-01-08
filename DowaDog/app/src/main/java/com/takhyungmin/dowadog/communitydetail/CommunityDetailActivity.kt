@@ -1,5 +1,6 @@
 package com.takhyungmin.dowadog.communitydetail
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.view.ViewPager
@@ -19,7 +20,9 @@ import com.takhyungmin.dowadog.communitydetail.model.get.GetCommunityCommentResp
 import com.takhyungmin.dowadog.communitydetail.model.get.GetCommunityPostDetailData
 import com.takhyungmin.dowadog.communitydetail.model.get.GetCommunityPostDetailResponse
 import com.takhyungmin.dowadog.communitydetail.model.post.PostCommunityCommentWriteResponse
+import com.takhyungmin.dowadog.login.LoginActivity
 import com.takhyungmin.dowadog.presenter.activity.CommunityDetailActivityPresenter
+import com.takhyungmin.dowadog.utils.ApplicationData
 import com.takhyungmin.dowadog.utils.CustomCommunityDetailDialog
 import com.takhyungmin.dowadog.utils.CustomDialog
 import kotlinx.android.synthetic.main.activity_community_detail.*
@@ -103,12 +106,31 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
         }
         btn_comment_write_community_detail_act.clicks().subscribe{
             Log.v("tagg",et_comment_write_community_detail_act.toString())
-            communityDetailActivityPresenter.requestCommentWriteData(communityId, et_comment_write_community_detail_act.text.toString())
-            et_comment_write_community_detail_act.text.clear()
-
+            if(ApplicationData.auth == "")
+                logoutCustomDialog.show()
+            else{
+                communityDetailActivityPresenter.requestCommentWriteData(communityId, et_comment_write_community_detail_act.text.toString())
+                et_comment_write_community_detail_act.text.clear()
+            }
         }
-
     }
+
+    val logoutCustomDialog : CustomDialog  by lazy {
+        CustomDialog(this, "로그인이 필요한 서비스입니다.\n로그인 하시겠습니까?", responseRight, responseLeft,"취소", "확인")
+    }
+
+    private val responseRight = View.OnClickListener {
+
+        logoutCustomDialog!!.dismiss()
+    }
+    private val responseLeft = View.OnClickListener {
+        startActivity(Intent(this, LoginActivity::class.java))
+        logoutCustomDialog!!.dismiss()
+        //##로그아웃
+    }
+
+
+
 
     fun setViewPagerAdapter(viewPagerItemData: ArrayList<String>) {
         var communityDetailViewPagerAdapter = CommunityDetailViewPagerAdapter(this, viewPagerItemData)

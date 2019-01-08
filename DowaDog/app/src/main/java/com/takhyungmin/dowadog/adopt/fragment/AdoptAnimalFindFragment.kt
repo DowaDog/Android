@@ -113,7 +113,7 @@ class AdoptAnimalFindFragment : Fragment() {
                         //communityFragmentPresenter.nextPage(currentPage, itemCount)
                         Log.v("scroll", "more")
                         adoptAnimalFindFragmentPresenter.requestNewList(currentPage, pagingCount)
-                    }, 2000)
+                    }, 800)
                 }
             }
 
