@@ -31,18 +31,15 @@ class MyFirebaseMessagingService : com.google.firebase.messaging.FirebaseMessagi
 
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notificationBuilder = NotificationCompat.Builder(this)
-                .setLargeIcon(BitmapFactory.decodeResource(resources, android.R.drawable.ic_dialog_info))
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.wait_for_u_dog_app_icon))
+                .setSmallIcon(R.drawable.wait_for_u_dog_app_icon)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent)
-                .setNumber(999)
                 .setWhen(System.currentTimeMillis())
                 .setDefaults(Notification.DEFAULT_SOUND or Notification.DEFAULT_VIBRATE)
                 .setAutoCancel(true)
-                .addAction(R.drawable.adopt_camera_icon, "앞", pendingIntent)
-                .addAction(R.drawable.apply_adopt_icon, "뒤", pendingIntent)
                 .setPriority(Notification.PRIORITY_MAX)
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager

@@ -191,10 +191,22 @@
                         android:layout_marginStart="16dp"
                         android:background="@null"
                         android:fontFamily="@font/nanum_round"
-                        android:inputType="datetime"
-                        android:hint="생년월일(1990-00-00)"
+                        android:inputType="date"
+                        android:hint="생년월일(YYYY-MM-DD)"
                         android:textColorHint="#cecece"
+                        android:layout_marginEnd="8dp"
+                        android:layout_toLeftOf="@+id/img_sign_info_write_unfit_birth"
                         android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/img_sign_info_write_unfit_birth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/login_exclamation_mark"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="8dp"
+                        android:visibility="invisible"/>
 
                 </RelativeLayout>
 
@@ -213,9 +225,21 @@
                         android:background="@null"
                         android:fontFamily="@font/nanum_round"
                         android:inputType="phone"
-                        android:hint="전화번호"
+                        android:hint="전화번호(000-0000-0000)"
+
                         android:textColorHint="#cecece"
                         android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/img_sign_info_write_unfit_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/login_exclamation_mark"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="8dp"
+                        android:visibility="invisible"/>
+
 
                 </RelativeLayout>
 
@@ -239,8 +263,8 @@
                             android:layout_marginStart="16dp"
                             android:background="@null"
                             android:fontFamily="@font/nanum_round"
-                            android:hint="이메일"
-                            android:inputType="textShortMessage"
+                            android:hint="이메일(email@example.com)"
+                            android:inputType="textEmailAddress"
                             android:textColorHint="#cecece"
                             android:textSize="13sp" />
                     </RelativeLayout>

@@ -21,6 +21,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.iid.FirebaseInstanceId
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.home.activity.HomeActivity
@@ -45,6 +46,7 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
 
     var id = ""
     var pwd = ""
+    var settingFlag = false
     override fun onClick(v: View?) {
 
         when (v) {
@@ -77,62 +79,41 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
                 val id = et_id_sign_id_set_act.text.toString()
                 val gender = "M"
                 val password = et_pw_check_sign_id_set_act.text.toString()
-                val deviceToken = singWithEmailPassword(email, password)
+                var deviceToken = ""
+                deviceToken = FirebaseInstanceId.getInstance().token!!
 
                 val type = "type"
                 val pushAllow = "true"
 
-
                 this.id = id
                 this.pwd = pwd
 
-
                 signIdSettingPresenter.requestData(id, password, username, birth,
                         phone, email, gender, deviceToken, type, profileImgFile, pushAllow)
+                //progressDialog.dismiss()
 
+
+//                mfirebaseAuth.createUserWithEmailAndPassword(email, password)
+//                        .addOnCompleteListener(this) { task ->
+//                            if (task.isSuccessful) {
+//                                mfirebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task2 ->
+//                                    if (task2.isSuccessful) {
+//                                        val user = mfirebaseAuth.currentUser
+//                                        //deviceToken = user!!.uid
+//
+//
+//
+//                                    } else {
+//
+//                                    }
+//                                }
+//                            } else {
+//
+//                            }
+//                        }
             }
 
         }
-    }
-
-    fun createAcctount(email: String, pwd: String) {
-        mfirebaseAuth.createUserWithEmailAndPassword(email, pwd)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
-                        singWithEmailPassword(email, pwd)
-                    } else {
-
-                    }
-                }
-    }
-
-
-
-    fun singWithEmailPassword(email: String, pwd: String) : String {
-        var id = ""
-        mfirebaseAuth.createUserWithEmailAndPassword(email, pwd)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
-                        mfirebaseAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(this) { task ->
-                            if (task.isSuccessful) {
-
-                                val user = mfirebaseAuth.currentUser
-                                id = user!!.uid
-                                Log.v("deviceToken", id)
-                                //progressDialog.dismiss()
-                            } else {
-                                // If sign in fails, display a message to the user.
-                            }
-                        }
-
-
-                    } else {
-
-                    }
-                }
-        return id
     }
 
 
@@ -158,9 +139,9 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_id_setting)
-        authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->}
+        //authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->}
         mfirebaseAuth = FirebaseAuth.getInstance()
-
+        Log.v("인증", mfirebaseAuth.toString())
         init()
         initPresenter()
 
@@ -188,10 +169,12 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
                     if (et_pw) {
                         if (et_pw_check) {
                             if(!idCheck)
+                                settingFlag = true
                                 btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#ffc233"))
                         }
                     }
                 } else {
+                    settingFlag = false
                     btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#e2e2e2"))
                 }
             }
@@ -224,10 +207,12 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
                     if (et_id) {
                         if (et_pw_check) {
                             if(!idCheck)
+                                settingFlag = true
                                 btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#ffc233"))
                         }
                     }
                 } else {
+                    settingFlag = false
                     btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#e2e2e2"))
                 }
             }
@@ -257,13 +242,17 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
                 }
 
                 if (et_pw_check) {
+                    img_sign_id_set_unfit_check.visibility = View.INVISIBLE
                     if (et_id) {
                         if (et_pw) {
                             if(!idCheck)
+                                settingFlag = true
                                 btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#ffc233"))
                         }
                     }
                 } else {
+                    img_sign_id_set_unfit_check.visibility = View.VISIBLE
+                    settingFlag = false
                     btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#e2e2e2"))
                 }
             }
@@ -446,21 +435,23 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
     fun responseDuplicateData(data : GetDuplicateResponse){
         idCheck = data.data
 
-        if(!data.data){
+        if(!idCheck){
+            //중복 안 됨
             idCheckDialog = CustomSingleResDialog(this@SignIdSettingActivity, "사용가능한 아이디입니다.", mResponseClickListener, "확인")
             idCheckDialog.show()
-            if (et_id) {
+                if (et_id) {
                 if (et_pw) {
                     if (et_pw_check) {
                         if(!idCheck)
+                            settingFlag = true
                             btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#ffc233"))
                     }
                 }
-            } else {
-                btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#e2e2e2"))
             }
-
         }else{
+            //중복 됨
+            settingFlag = false
+            btn_agree_sign_id_set_act.setBackgroundColor(Color.parseColor("#e2e2e2"))
             idCheckDialog = CustomSingleResDialog(this@SignIdSettingActivity, "사용할 수 없는 아이디입니다.", mResponseClickListener, "확인")
             idCheckDialog.show()
         }
@@ -469,14 +460,11 @@ class SignIdSettingActivity : BaseActivity(), View.OnClickListener {
 
     override fun onStart() {
         super.onStart()
-        mfirebaseAuth.addAuthStateListener(authStateListener)
+        //mfirebaseAuth.addAuthStateListener(authStateListener)
     }
 
     override fun onStop() {
         super.onStop()
-        if (authStateListener != null) {
-            mfirebaseAuth.removeAuthStateListener(authStateListener)
-        }
     }
 
 

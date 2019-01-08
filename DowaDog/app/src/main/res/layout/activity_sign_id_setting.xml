@@ -205,6 +205,8 @@
                         android:textColorHint="#cecece"
                         android:textSize="13sp" />
 
+
+
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -225,8 +227,18 @@
                         android:textColor="#000000"
                         android:inputType="textPassword"
                         android:textColorHint="#cecece"
+                        android:layout_toLeftOf="@+id/img_sign_id_set_unfit_check"
+                        android:layout_marginEnd="8dp"
                         android:textSize="13sp" />
-
+                    <ImageView
+                        android:id="@+id/img_sign_id_set_unfit_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/login_exclamation_mark"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="8dp"
+                        android:visibility="invisible"/>
                 </RelativeLayout>
 
             </LinearLayout>
