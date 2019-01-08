@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.media.ExifInterface
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -17,6 +18,7 @@ import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.TransformationUtils.rotateImage
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.communitywrite.model.CommunityWriteObject
@@ -29,8 +31,8 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import org.jetbrains.anko.toast
 import java.io.ByteArrayOutputStream
-import java.io.File
 import java.io.FileNotFoundException
+import java.io.IOException
 import java.io.InputStream
 
 
@@ -504,59 +506,50 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
             val bitmap = BitmapFactory.decodeStream(input, null, options) // InputStream 으로부터 Bitmap 을 만들어 준다.
             val baos = ByteArrayOutputStream()
             bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos)
-//            fixOrientation(bitmap, uri.toString())
-            val photo = File(uri.toString())
+            // fixOrientation(bitmap, uri.toString())
+            // val photo = File(uri.toString())
 
             val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
-
-
-            Log.v("TAGGGG", photo.name)
-
-
-            image.add(MultipartBody.Part.createFormData("communityImgFiles", photo.name, photoBody))
+            image.add(MultipartBody.Part.createFormData("communityImgFiles", "photo", photoBody))
         }
 
         return image
 
     }
 
-//    fun fixOrientation(bitmap : Bitmap, url: String): Bitmap {
-//        var ei : ExifInterface? = null
-//        Log.v("TAGGGGGGG", url)
-//        try {
-//            ei = ExifInterface(url)
-//        } catch (e: IOException) {
-//            Log.v("TAGGGGGGG", e.toString())
-//            e.printStackTrace();
-//        }
-//        var orientation = ei!!.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
-//
-//        when(orientation) {
-//            ExifInterface.ORIENTATION_ROTATE_90 -> {
-//                var selectedBitmap = rotateImage(bitmap, 90)
-//                return selectedBitmap
-//            }
-//            ExifInterface.ORIENTATION_ROTATE_180 -> {
-//                var selectedBitmap = rotateImage(bitmap, 180)
-//                return selectedBitmap
-//            }
-//            ExifInterface.ORIENTATION_ROTATE_270 -> {
-//                var selectedBitmap = rotateImage(bitmap, 270)
-//                return selectedBitmap
-//            }
-//            ExifInterface.ORIENTATION_NORMAL -> {
-//                var selectedBitmap = bitmap
-//                return selectedBitmap
-//            }
-//            else -> {
-//                var selectedBitmap = bitmap
-//                return selectedBitmap
-//            }
-//
-//
-//
-//
-//        }
-//    }
+    fun fixOrientation(bitmap : Bitmap, url: String): Bitmap {
+        var ei : ExifInterface? = null
+        Log.v("TAGGGGGGG", url)
+        try {
+            ei = ExifInterface(url)
+        } catch (e: IOException) {
+            Log.v("TAGGGGGGG", e.toString())
+            e.printStackTrace();
+        }
+        var orientation = ei!!.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
+
+        when(orientation) {
+            ExifInterface.ORIENTATION_ROTATE_90 -> {
+                var selectedBitmap = rotateImage(bitmap, 90)
+                return selectedBitmap
+            }
+            ExifInterface.ORIENTATION_ROTATE_180 -> {
+                var selectedBitmap = rotateImage(bitmap, 180)
+                return selectedBitmap
+            }
+            ExifInterface.ORIENTATION_ROTATE_270 -> {
+                var selectedBitmap = rotateImage(bitmap, 270)
+                return selectedBitmap
+            }
+            ExifInterface.ORIENTATION_NORMAL -> {
+                var selectedBitmap = bitmap
+                return selectedBitmap
+            }
+            else -> {
+                var selectedBitmap = bitmap
+                return selectedBitmap
+            }
+        }
+    }
 
 }

@@ -23,7 +23,7 @@ class SignInfoEmailModel {
         signInfoEmailNetworkService = retrofit.create(SignInfoEmailNetworkService::class.java)
     }
 
-    fun getSignInfoWriteData(){
+    fun getSignInfoWriteData(email: String){
         signInfoEmailNetworkService.GetSignInfoEmailResponse("tae@gmail.com")
                 .enqueue(object: Callback<GetSignInfoEmailResponse> {
             override fun onFailure(call: Call<GetSignInfoEmailResponse>?, t: Throwable?) {

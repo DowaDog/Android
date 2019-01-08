@@ -5,7 +5,6 @@ import com.takhyungmin.dowadog.home.HomeObject
 import com.takhyungmin.dowadog.home.model.get.GetDuplicateResponse
 import com.takhyungmin.dowadog.home.model.get.GetUserInfoResponse
 import com.takhyungmin.dowadog.utils.ApplicationData
-import com.takhyungmin.dowadog.utils.SharedPreferenceController
 import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.Callback
@@ -42,7 +41,7 @@ class HomeModel {
     }
 
     fun getUserInfo(){
-        homeNetworkSerVice.getUserInfo(SharedPreferenceController.getAccessToken(ApplicationData.applicationContext)).enqueue(object : Callback<GetUserInfoResponse>{
+        homeNetworkSerVice.getUserInfo(ApplicationData.auth).enqueue(object : Callback<GetUserInfoResponse>{
             override fun onFailure(call: Call<GetUserInfoResponse>, t: Throwable) {
                 Log.v("fail", t.toString())
             }

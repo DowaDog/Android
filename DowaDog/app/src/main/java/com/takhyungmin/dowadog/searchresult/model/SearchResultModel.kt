@@ -24,7 +24,7 @@ class SearchResultModel {
 
     fun getSearchResulData(type: String, region: String, remainNoticeDate: Int, page: Int, limit: Int, searchKeyword : String) {
 
-        searchResultNetwork.getSearchResultFilterResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGFla3l1bmciLCJpc3MiOiJkb3dhZG9nIiwiZXhwIjoxNTc3OTg4NDcyfQ.dZfpU_OPSH6kaVSeumubeDDtmhuhW4w8D_pNUaMn7-U",
+        searchResultNetwork.getSearchResultFilterResponse(ApplicationData.auth,
                 type, region, remainNoticeDate, page, limit, searchKeyword).enqueue(object : Callback<ccc> {
             override fun onFailure(call: Call<ccc>?, t: Throwable?) {
                 Log.e("SearchResultData 통신 실패", t.toString())
@@ -55,7 +55,7 @@ class SearchResultModel {
 
     fun getKeywordSearchResulData(type: String, region: String, remainNoticeDate: Int, page: Int, limit: Int, searchKeyword : String) {
 
-        searchResultNetwork.getSearchResultFilterResponse("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGFla3l1bmciLCJpc3MiOiJkb3dhZG9nIiwiZXhwIjoxNTc3OTg4NDcyfQ.dZfpU_OPSH6kaVSeumubeDDtmhuhW4w8D_pNUaMn7-U",
+        searchResultNetwork.getSearchResultFilterResponse(ApplicationData.auth,
                 type, region, remainNoticeDate, page, limit, searchKeyword).enqueue(object : Callback<ccc> {
             override fun onFailure(call: Call<ccc>?, t: Throwable?) {
                 Log.e("SearchResultData 통신 실패", t.toString())

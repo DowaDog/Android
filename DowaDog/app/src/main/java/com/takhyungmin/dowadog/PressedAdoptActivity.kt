@@ -37,7 +37,7 @@ class PressedAdoptActivity : BaseActivity() {
         }
         btn_adopt_pressed_adopt_act.clicks().subscribe{
 
-            customShelterDialog = CustomPressedAdoptDialog(this, name, "tel:$num", cancleBtnListener, confirmBtnListener, "취소", "확인")
+            customShelterDialog = CustomPressedAdoptDialog(this, name, num, cancleBtnListener, confirmBtnListener, "취소", "확인")
 
             customShelterDialog.show()
         }

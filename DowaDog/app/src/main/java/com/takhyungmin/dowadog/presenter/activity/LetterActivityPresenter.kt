@@ -3,6 +3,7 @@ package com.takhyungmin.dowadog.presenter.activity
 import android.util.Log
 import com.takhyungmin.dowadog.letter.LetterActivity
 import com.takhyungmin.dowadog.letter.model.get.GETLetterActivityResponse
+import com.takhyungmin.dowadog.letter.model.get.GetReadLetterResponse
 import com.takhyungmin.dowadog.letter.model.get.LetterModel
 import com.takhyungmin.dowadog.presenter.BasePresenter
 
@@ -25,5 +26,13 @@ class LetterActivityPresenter : BasePresenter<LetterActivity>() {
     fun responseData(data : GETLetterActivityResponse){
         Log.v("TAGG", "프레젠터 리스폰스데이터")
         view!!.responseData(data)
+    }
+    //모델에게 일을 시킴
+    fun requestReadLetterData(){
+        letterModel.getReadLetterData()
+    }
+    //view에게 데이터 전달
+    fun reponseReadLetterData(data : GetReadLetterResponse){
+        view!!.responseReadLetterData(data)
     }
 }
