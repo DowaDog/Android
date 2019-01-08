@@ -38,6 +38,9 @@ class DonationActivity : BaseActivity() {
         e.add(DoantionRecyclerViewAdpaterData(R.drawable.klorenz_img, "클로렌즈", "유기동물 보호소의 재정자립을 돕는 패션 브랜드",
                 "http://bit.ly/2s0LM6s"))
 
+        e.add(DoantionRecyclerViewAdpaterData(R.drawable.petfit_img, "펫피트", "반려동물 건강관리 IOT 서비스",
+                "http://www.wepetfit.com/"))
+
         donationRecyclerViewAdatper = DoantionRecyclerViewAdpater(this@DonationActivity, e)
         rv_donation_act.adapter = donationRecyclerViewAdatper
         rv_donation_act.layoutManager = LinearLayoutManager(applicationContext, LinearLayout.VERTICAL, false)
