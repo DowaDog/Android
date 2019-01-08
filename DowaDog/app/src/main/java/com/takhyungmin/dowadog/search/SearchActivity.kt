@@ -54,19 +54,19 @@ class SearchActivity : BaseActivity(), View.OnClickListener {
 
         var recommendKeyword: ArrayList<String> = ArrayList()
         recommendKeyword.add("유기견")
-        recommendKeyword.add("유기견입양")
+        recommendKeyword.add("웰시 코기")
         recommendKeyword.add("서울")
         setFirstRVAdapter(recommendKeyword)
         var recommendKeyword2: ArrayList<String> = ArrayList()
-        recommendKeyword2.add("유기견입양")
-        recommendKeyword2.add("코카니")
-        recommendKeyword2.add("서울지역")
+        recommendKeyword2.add("고양이")
+        recommendKeyword2.add("보호소")
+        recommendKeyword2.add("강아지")
 
         setSecondRVAdapter(recommendKeyword2)
         var recommendKeyword3: ArrayList<String> = ArrayList()
-        recommendKeyword3.add("서울지역")
-        recommendKeyword3.add("코카니")
-        recommendKeyword3.add("유기견입양")
+        recommendKeyword3.add("동물병원")
+        recommendKeyword3.add("말라뮤트")
+        recommendKeyword3.add("믹스견")
         setThirdRVAdapter(recommendKeyword3)
     }
 

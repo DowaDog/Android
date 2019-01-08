@@ -62,7 +62,7 @@ class SearchKeywordResultActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun init() {
-        tv_keyword_search_act.text = keyword + "검색결과"
+        tv_keyword_search_act.text = "\'" + keyword + "\' " + "검색결과"
         tv_temp_search_act.text = ""
         btn_back_search_result_act.setOnClickListener(this)
         nested_scroll_search_result_act.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, _, scrollY, _, _ ->

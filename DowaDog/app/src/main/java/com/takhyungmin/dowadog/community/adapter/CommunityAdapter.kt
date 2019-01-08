@@ -119,7 +119,7 @@ class CommunityAdapter(var communityItems : ArrayList<GetCommunityContents>, var
                         .into(holder.communityMain33)
             }
             else->{
-                holder.communityMain1.visibility = View.GONE
+                holder.communityMain1.visibility = View.VISIBLE
                 holder.communityMain2.visibility = View.GONE
                 holder.communityMain3.visibility = View.GONE
                 holder.communityMain4.visibility = View.GONE

@@ -177,7 +177,7 @@ class ContentsSenseDetailActivity : AppCompatActivity() {
     }
 
     fun responseScrap(clear : Boolean){
-        if(clear){
+        if(!clear){
             btn_contents_sense_detail_scrap1_1.setImageResource(R.drawable.contents_scrap_btn)
             btn_contents_edu_detail_scrap2_1.setImageResource(R.drawable.contents_scrap_btn)
         }else{

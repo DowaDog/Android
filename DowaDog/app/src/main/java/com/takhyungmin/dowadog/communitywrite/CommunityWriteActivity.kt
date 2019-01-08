@@ -8,7 +8,6 @@ import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
-import android.media.ExifInterface
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -18,7 +17,6 @@ import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.TransformationUtils.rotateImage
 import com.takhyungmin.dowadog.BaseActivity
 import com.takhyungmin.dowadog.R
 import com.takhyungmin.dowadog.communitywrite.model.CommunityWriteObject
@@ -32,7 +30,6 @@ import okhttp3.RequestBody
 import org.jetbrains.anko.toast
 import java.io.ByteArrayOutputStream
 import java.io.FileNotFoundException
-import java.io.IOException
 import java.io.InputStream
 
 
@@ -513,7 +510,6 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
             // fixOrientation(bitmap, uri.toString())
             // val photo = File(uri.toString())
             val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
-            Log.v("TAGGGG", photo.name)
             image.add(MultipartBody.Part.createFormData("communityImgFiles", "photo", photoBody))
         }
 
