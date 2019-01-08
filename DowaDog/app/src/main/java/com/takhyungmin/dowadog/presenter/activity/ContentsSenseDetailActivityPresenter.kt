@@ -13,6 +13,10 @@ class ContentsSenseDetailActivityPresenter : BasePresenter<ContentsSenseDetailAc
 
     lateinit var contentsSenseDetailItems : ArrayList<ContentsSenseDetailItem>
 
+    private val contentsEduDetailModel : ContentsEduDetailModel by lazy {
+        ContentsEduDetailModel()
+    }
+
     fun initView(){
         contentsSenseDetailItems = ArrayList()
 
@@ -42,4 +46,13 @@ class ContentsSenseDetailActivityPresenter : BasePresenter<ContentsSenseDetailAc
         Log.v("TAGG", "sense Detail 프레젠터 리스폰스데이터")
         view!!.responseSenseData(data)
     }
+
+    fun requestScrap(id : Int){
+        contentsEduDetailModel.postEduContentsScrap(id)
+    }
+
+    fun responseScrap(clear : Boolean){
+        view!!.responseScrap(clear)
+    }
+
 }

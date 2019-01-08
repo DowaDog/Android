@@ -79,7 +79,7 @@ class SearchKeywordResultActivity : BaseActivity(), View.OnClickListener {
                         //communityFragmentPresenter.nextPage(currentPage, itemCount)
                         Log.v("scroll", "more")
                         searchKeywordResultActivityPresenter.responseData(currentPage, 10, keyword)
-                    }, 2000)
+                    }, 800)
                 }
             }
 

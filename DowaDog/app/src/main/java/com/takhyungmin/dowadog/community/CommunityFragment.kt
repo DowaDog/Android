@@ -18,7 +18,10 @@ import com.takhyungmin.dowadog.community.adapter.CommunityAdapter
 import com.takhyungmin.dowadog.community.model.get.GetCommunityContents
 import com.takhyungmin.dowadog.communitydetail.CommunityDetailActivity
 import com.takhyungmin.dowadog.communitywrite.CommunityWriteActivity
+import com.takhyungmin.dowadog.login.LoginActivity
 import com.takhyungmin.dowadog.presenter.fragment.CommunityFragmentPresenter
+import com.takhyungmin.dowadog.utils.ApplicationData
+import com.takhyungmin.dowadog.utils.CustomDialog
 import kotlinx.android.synthetic.main.fragment_community.*
 import org.jetbrains.anko.support.v4.startActivity
 
@@ -79,7 +82,7 @@ class CommunityFragment : Fragment() {
                         //communityFragmentPresenter.nextPage(currentPage, itemCount)
                         Log.v("scroll", "more")
                         communityFragmentPresenter.requestCommunityList(currentPage, pagingCount)
-                    }, 2000)
+                    }, 800)
                 }
             }
 
@@ -92,8 +95,25 @@ class CommunityFragment : Fragment() {
 
     fun setOnBinding(){
         btn_community_write.clicks().subscribe {
-            startActivity(Intent(activity, CommunityWriteActivity::class.java))
+            if(ApplicationData.auth == "")
+                logoutCustomDialog.show()
+            else
+                startActivity(Intent(activity, CommunityWriteActivity::class.java))
         }
+    }
+
+    val logoutCustomDialog : CustomDialog  by lazy {
+        CustomDialog(this@CommunityFragment.context!!, "로그인이 필요한 서비스입니다.\n로그인 하시겠습니까?", responseRight, responseLeft,"취소", "확인")
+    }
+
+    private val responseRight = View.OnClickListener {
+
+        logoutCustomDialog!!.dismiss()
+    }
+    private val responseLeft = View.OnClickListener {
+        activity!!.startActivity(Intent(activity!!, LoginActivity::class.java))
+        logoutCustomDialog!!.dismiss()
+        //##로그아웃
     }
 
     fun loadNextPage(results : ArrayList<GetCommunityContents>){

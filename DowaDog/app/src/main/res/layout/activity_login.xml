@@ -93,7 +93,7 @@
                     <EditText
                         android:id="@+id/et_pw_login_act"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="16dp"
                         android:background="@null"
@@ -176,8 +176,29 @@
                 android:text="회원가입"
                 android:textColor="#707070"
                 android:textSize="15sp" />
-
         </RelativeLayout>
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingBottom="4dp"
+        android:background="#FFFFFF"
+        >
+        <RelativeLayout
+            android:id="@+id/btn_login_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="16dp"
+                android:src="@drawable/back_arrow_btn" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
 </RelativeLayout>

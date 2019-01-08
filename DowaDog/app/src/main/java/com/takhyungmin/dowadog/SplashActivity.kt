@@ -1,5 +1,6 @@
 package com.takhyungmin.dowadog
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
@@ -9,7 +10,6 @@ import com.takhyungmin.dowadog.login.LoginActivity
 import com.takhyungmin.dowadog.utils.ApplicationData
 import com.takhyungmin.dowadog.utils.GifDrawableImageViewTarget
 import kotlinx.android.synthetic.main.activity_splash.*
-import org.jetbrains.anko.startActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +23,10 @@ class SplashActivity : AppCompatActivity() {
 
         val handler = Handler()
         handler.postDelayed(Runnable {
-            startActivity<LoginActivity>()
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.putExtra("splash", 1)
+            startActivity(intent)
+            //startActivity<LoginActivity>()
             finish()
         }, 3000)
 
