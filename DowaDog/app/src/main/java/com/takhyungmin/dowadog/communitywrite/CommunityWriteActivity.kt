@@ -494,7 +494,9 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
 
 
         image = ArrayList()
+        var count = 0
         uris.forEach { uri ->
+            count++
             val options = BitmapFactory.Options()
 
             var input: InputStream? = null // here, you need to get your context.
@@ -506,11 +508,11 @@ class CommunityWriteActivity : BaseActivity(), View.OnClickListener {
 
             val bitmap = BitmapFactory.decodeStream(input, null, options) // InputStream 으로부터 Bitmap 을 만들어 준다.
             val baos = ByteArrayOutputStream()
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos)
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos)
             // fixOrientation(bitmap, uri.toString())
             // val photo = File(uri.toString())
             val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
-            image.add(MultipartBody.Part.createFormData("communityImgFiles", "photo", photoBody))
+            image.add(MultipartBody.Part.createFormData("communityImgFiles", "photo$count", photoBody))
         }
 
         return image
