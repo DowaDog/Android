@@ -11,6 +11,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import android.telephony.PhoneNumberFormattingTextWatcher
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -117,6 +118,9 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
         //키보드 내려가게 하는 함수
         rl_mypage_setting_act.setOnClickListener(this)
 
+        et_phone_mod_mypage_setting_act.addTextChangedListener(PhoneNumberFormattingTextWatcher())
+
+
         et_name_mod_mypage_setting_act.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(s: Editable?) {
             }
@@ -130,7 +134,7 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
 
         })
 
-        et_phone_mod_mypage_setting_act.addTextChangedListener(object : TextWatcher{
+        et_phone_mod_mypage_setting_act.addTextChangedListener(object : PhoneNumberFormattingTextWatcher(){
             override fun afterTextChanged(s: Editable?) {
             }
 
@@ -279,6 +283,15 @@ class MypageSettingActivity : BaseActivity(), View.OnClickListener {
             //여기에 받아온 데이터들을 가져와서 보여주는 것을 해야함 (함수로 만들던 여기에 구현하던)
             //Log.v("yyg", mypagePutdata.message)
             //startActivity<MypageActivity>()
+            if(!et_name_mod_mypage_setting_act.text.isEmpty())
+                ApplicationData.userName = et_name_mod_mypage_setting_act.text.toString()
+            if(!et_birth_mod_mypage_setting_act.text.isEmpty())
+                ApplicationData.userBirth = et_birth_mod_mypage_setting_act.text.toString()
+            if(!et_phone_mod_mypage_setting_act.text.isEmpty())
+                ApplicationData.userPhone = et_phone_mod_mypage_setting_act.text.toString()
+            if(mimage != null)
+                ApplicationData.userImage = this.data.toString()
+
             finish()
         }
     }

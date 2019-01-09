@@ -224,7 +224,7 @@ class HomeActivity : AppCompatActivity() {
                         drawer_home.closeDrawer(Gravity.START)
                     }, 400)
                 }
-                startActivity(Intent(this, MypageActivity::class.java))
+                startActivityForResult(Intent(this, MypageActivity::class.java), 3009)
             }
         }
 
@@ -238,7 +238,7 @@ class HomeActivity : AppCompatActivity() {
                         drawer_home.closeDrawer(Gravity.START)
                     }, 400)
                 }
-                startActivity(Intent(this, MypageActivity::class.java))
+                startActivityForResult(Intent(this, MypageActivity::class.java), 3009)
             }
         }
 
@@ -328,5 +328,13 @@ class HomeActivity : AppCompatActivity() {
     fun toNew(){
         btn_home_mypage.visibility = View.GONE
         btn_home_search.visibility = View.VISIBLE
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == 3009){
+            tv_navi_name.text = ApplicationData.userName + "님,"
+            Glide.with(this).load(ApplicationData.userImage).into(img_navi_profile)
+        }
     }
 }

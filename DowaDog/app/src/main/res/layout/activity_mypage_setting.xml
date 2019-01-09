@@ -149,7 +149,6 @@
                     android:background="@null"
                     android:fontFamily="@font/nanum_light"
                     android:hint="닉네임"
-                    android:textDirection="rtl"
                     android:textCursorDrawable="@null"
                     android:inputType="textPersonName"
                     android:maxEms="5"
@@ -193,7 +192,6 @@
                     android:hint="0000.00.00"
                     android:inputType="datetime"
                     android:maxLines="1"
-                    android:textDirection="rtl"
                     android:textCursorDrawable="@null"
                     android:textColor="#707070"
                     android:textSize="14sp" />
@@ -231,7 +229,6 @@
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="16dp"
                     android:background="@null"
-                    android:textDirection="rtl"
                     android:textCursorDrawable="@null"
                     android:fontFamily="@font/nanum_light"
                     android:hint="010-0000-0000"

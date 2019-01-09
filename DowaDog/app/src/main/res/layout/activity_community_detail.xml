@@ -107,8 +107,10 @@
                     android:id="@+id/vp_community_detail_act"
                     android:layout_width="match_parent"
                     android:layout_height="231dp"
-                    android:background="@color/colorPrimary"
-                    ></android.support.v4.view.ViewPager>
+                    android:background="@drawable/community_non_image"
+                    >
+
+                </android.support.v4.view.ViewPager>
 
                 <RelativeLayout
                     android:id="@+id/rl_indicator_community_detail_act"
@@ -272,6 +274,7 @@
                 android:layout_toLeftOf="@+id/btn_comment_write_community_detail_act"
                 android:background="@android:color/transparent"
                 android:hint="댓글을 입력해주세요"
+                android:textCursorDrawable="@null"
                 android:textColor="#000000"
                 android:textColorHint="#e2e2e2"
                 android:textSize="16dp" />
