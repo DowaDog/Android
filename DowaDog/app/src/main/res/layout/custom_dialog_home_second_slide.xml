@@ -7,8 +7,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/a_2step_img"
-        android:layout_marginTop="51dp"
         android:layout_centerHorizontal="true"
+        android:layout_above="@+id/rl_bottom_custom_dialog_home_second_slide"
+        android:layout_marginBottom="14dp"
         />
 
 
@@ -26,6 +27,7 @@
         android:layout_alignParentBottom="true"/>
 
     <RelativeLayout
+        android:id="@+id/rl_bottom_custom_dialog_home_second_slide"
         android:layout_above="@+id/tv_bottom_custom_dialog_home_second_slide"
         android:layout_marginBottom="10dp"
         android:layout_width="wrap_content"

@@ -47,9 +47,6 @@ class SignUpModel {
         val cPushAllow = RequestBody.create(MediaType.parse("text/plain"), pushAllow)
         val cTermsAllow = RequestBody.create(MediaType.parse("text/plain"), "true")
 
-        Log.v("cDeviceToken", "들어옴")
-        Log.v("mimg", mimg!!.toString())
-
         signUpNetworkService.postSignIdSettingResponse(cId, cPassword, cName, cBirth,
                 cPhone, cEmail, cGender, cDeviceToken, cType, mimg, cPushAllow, cTermsAllow)
                 .enqueue(object : Callback<PostSignIdSettingResponse> {

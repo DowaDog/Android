@@ -138,8 +138,7 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
     fun setViewPagerAdapter(viewPagerItemData: ArrayList<String>) {
         var communityDetailViewPagerAdapter = CommunityDetailViewPagerAdapter(this, viewPagerItemData)
         vp_community_detail_act.adapter = communityDetailViewPagerAdapter
-        pageIndicatorView.setCount(viewPagerItemData.size)
-
+        setIndicator(viewPagerItemData.size)
         vp_community_detail_act.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
 
@@ -150,7 +149,32 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
             }
 
             override fun onPageSelected(position: Int) {
-                pageIndicatorView.selection = position
+                when (position) {
+                    0 -> {
+                        iv_first_indicator_community_detail_act.setImageResource(R.drawable.dot_indicator_orange)
+                        iv_second_indicator_community_detail_act.setImageResource(R.drawable.dot_indicator_gray)
+                        iv_third_indicator_community_detail_act.setImageResource(R.drawable.dot_indicator_gray)
+                        iv_fourth_indicator_community_detail_act.setImageResource(R.drawable.dot_indicator_gray)
+                    }
+                    1 -> {
+                        iv_first_indicator_community_detail_act.setImageResource(R.drawable.dot_indicator_gray)
+                        iv_second_indicator_community_detail_act.setImageResource(R.drawable.dot_indicator_orange)
+                        iv_third_indicator_community_detail_act.setImageResource(R.drawable.dot_indicator_gray)
+                        iv_fourth_indicator_community_detail_act.setImageResource(R.drawable.dot_indicator_gray)
+                    }
+                    2 -> {
+                        iv_first_indicator_community_detail_act.setImageResource(R.drawable.dot_indicator_gray)
+                        iv_second_indicator_community_detail_act.setImageResource(R.drawable.dot_indicator_gray)
+                        iv_third_indicator_community_detail_act.setImageResource(R.drawable.dot_indicator_orange)
+                        iv_fourth_indicator_community_detail_act.setImageResource(R.drawable.dot_indicator_gray)
+                    }
+                    3 -> {
+                        iv_first_indicator_community_detail_act.setImageResource(R.drawable.dot_indicator_gray)
+                        iv_second_indicator_community_detail_act.setImageResource(R.drawable.dot_indicator_gray)
+                        iv_third_indicator_community_detail_act.setImageResource(R.drawable.dot_indicator_gray)
+                        iv_fourth_indicator_community_detail_act.setImageResource(R.drawable.dot_indicator_orange)
+                    }
+                }
             }
         })
     }
@@ -331,6 +355,35 @@ class CommunityDetailActivity : BaseActivity(), View.OnClickListener {
 
         data.presentUserImg?.let{
             Glide.with(this@CommunityDetailActivity).load(it).into(iv_writter_comment_community_detail_act2)
+        }
+    }
+
+    fun setIndicator(dataSize : Int){
+        when(dataSize) {
+            0 -> {
+                rl_vp_community_detail_act.visibility = View.GONE
+            }
+            1 -> {
+                rl_indicator_community_detail_act.visibility = View.GONE
+            }
+            2 -> {
+                iv_first_indicator_community_detail_act.visibility = View.VISIBLE
+                iv_second_indicator_community_detail_act.visibility = View.VISIBLE
+                iv_third_indicator_community_detail_act.visibility = View.GONE
+                iv_fourth_indicator_community_detail_act.visibility = View.GONE
+            }
+            3 -> {
+                iv_first_indicator_community_detail_act.visibility = View.VISIBLE
+                iv_second_indicator_community_detail_act.visibility = View.VISIBLE
+                iv_third_indicator_community_detail_act.visibility = View.VISIBLE
+                iv_fourth_indicator_community_detail_act.visibility = View.GONE
+            }
+            4 -> {
+                iv_first_indicator_community_detail_act.visibility = View.VISIBLE
+                iv_second_indicator_community_detail_act.visibility = View.VISIBLE
+                iv_third_indicator_community_detail_act.visibility = View.VISIBLE
+                iv_fourth_indicator_community_detail_act.visibility = View.VISIBLE
+            }
         }
     }
 }

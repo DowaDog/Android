@@ -23,7 +23,7 @@ class ContentsSenseRvAdapter(var contentsSenseItems : ArrayList<GetEduContentsCo
         holder.senseSub.text = contentsSenseItems[position].subtitle
         requestManager.load(contentsSenseItems[position].imgPath).into(holder.senseFeed)
         holder.senseFrame.setOnClickListener {
-            ContentsObject.contentsSenseFragmentPresenter.toDetail(contentsSenseItems[position].id, contentsSenseItems[position].imgPath)
+            ContentsObject.contentsSenseFragmentPresenter.toDetail(contentsSenseItems[position].id, contentsSenseItems[position].imgPath, contentsSenseItems[position].title)
         }
         holder.senseFeed.setClipToOutline(true)
     }
