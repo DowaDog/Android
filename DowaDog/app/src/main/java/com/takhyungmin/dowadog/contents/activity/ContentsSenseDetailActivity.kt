@@ -27,6 +27,7 @@ class ContentsSenseDetailActivity : AppCompatActivity() {
     private lateinit var contentsSenseDetailActivityPresenter: ContentsSenseDetailActivityPresenter
     private lateinit var contentsSenseDetailRvAdapter: ContentsSenseDetailRvAdapter
     private lateinit var requestManager : RequestManager
+    val scrapFlag = false
     var id = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         //ActivityCompat.setEnterSharedElementCallback(this, EnterTransitionCallback)
@@ -117,7 +118,6 @@ class ContentsSenseDetailActivity : AppCompatActivity() {
             //여기에 받아온 데이터들을 가져와서 보여주는 것을 해야함 (함수로 만들던 여기에 구현하던)
             Log.v("ygyg", it.data.content.toString())
 
-
             rv_contents_sense_detail_content.adapter = setContentsSenseDetailAdapter
             rv_contents_sense_detail_content.layoutManager = LinearLayoutManager(this)
 
@@ -150,8 +150,16 @@ class ContentsSenseDetailActivity : AppCompatActivity() {
         btn_contents_sense_detail_scrap1.clicks().subscribe {
             if(ApplicationData.auth == "")
                 logoutCustomDialog.show()
-            else
+            else {
                 contentsSenseDetailActivityPresenter.requestScrap(id)
+                if(scrapFlag == false){
+                    btn_contents_sense_detail_scrap1_1.setImageResource(R.drawable.contents_unscrap_btn)
+                }else {
+                    btn_contents_sense_detail_scrap1_1.setImageResource(R.drawable.contents_scrap_btn)
+                }
+            }
+
+
         }
 
         btn_contents_sense_detail_scrap2.clicks().subscribe {

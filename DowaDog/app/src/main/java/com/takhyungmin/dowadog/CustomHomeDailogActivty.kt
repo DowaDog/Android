@@ -32,12 +32,15 @@ class CustomHomeDailogActivty : AppCompatActivity() {
             }
 
             override fun onPageSelected(position: Int) {
-                pageIndicatorView_dialog_activity.selection = position
                 if(position == 4){
                     btn_start_custom_home_dialog_activity.visibility = View.VISIBLE
+                    rl_indicator_community_detail_act.visibility = View.GONE
                 }else {
                     btn_start_custom_home_dialog_activity.visibility = View.GONE
+                    rl_indicator_community_detail_act.visibility = View.VISIBLE
                 }
+                setIndicaotrChange(position)
+
             }
         })
     }
@@ -45,6 +48,46 @@ class CustomHomeDailogActivty : AppCompatActivity() {
     fun init(){
         btn_start_custom_home_dialog_activity.clicks().subscribe(){
             finish()
+        }
+    }
+
+    fun setIndicaotrChange(position : Int){
+        when(position){
+            0 ->{
+                iv_first_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_orange)
+                iv_second_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_gray)
+                iv_third_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_gray)
+                iv_fourth_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_gray)
+                iv_fifth_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_gray)
+            }
+            1 ->{
+                iv_first_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_gray)
+                iv_second_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_orange)
+                iv_third_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_gray)
+                iv_fourth_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_gray)
+                iv_fifth_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_gray)
+            }
+            2 ->{
+                iv_first_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_gray)
+                iv_second_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_gray)
+                iv_third_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_orange)
+                iv_fourth_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_gray)
+                iv_fifth_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_gray)
+            }
+            3 ->{
+                iv_first_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_gray)
+                iv_second_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_gray)
+                iv_third_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_gray)
+                iv_fourth_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_orange)
+                iv_fifth_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_gray)
+            }
+//            4 ->{
+//                iv_first_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_gray)
+//                iv_second_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_gray)
+//                iv_third_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_gray)
+//                iv_fourth_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_gray)
+//                iv_fifth_indicator_home_dialog.setImageResource(R.drawable.dot_indicator_orange)
+//            }
         }
     }
 

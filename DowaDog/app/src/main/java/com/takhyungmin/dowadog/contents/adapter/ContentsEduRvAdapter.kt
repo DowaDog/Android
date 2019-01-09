@@ -39,7 +39,7 @@ class ContentsEduRvAdapter(private var contentsEduItems : ArrayList<GetEduConten
                 if(it.educated)
                     num++
             }
-            ContentsObject.contentsEduFragmentPresenter.toDetail(contentsEduItems[position].id, num, contentsEduItems[position].imgPath)
+            ContentsObject.contentsEduFragmentPresenter.toDetail(contentsEduItems[position].id, num, contentsEduItems[position].imgPath, contentsEduItems[position].title)
         }
 
         // 여기부
